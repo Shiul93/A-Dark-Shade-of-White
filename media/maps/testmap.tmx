@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="tilesheet_complete" tilewidth="32" tileheight="32" tilecount="2160" columns="54">
+  <image source="../sprites/Topdown Shooter/Tilesheet/tilesheet_complete.png" width="1728" height="1280"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="10" height="10">
+  <data encoding="csv">
+704,1036,1036,1036,1036,1036,1036,1036,1036,705,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+600,247,247,247,247,247,247,247,247,601,
+758,766,766,766,766,766,766,766,766,759
+</data>
+ </layer>
+</map>
