@@ -1,0 +1,12 @@
+# Numero layer, Nombre, Visible, colisionable, opacidad
+0  Suelo 1 0 255
+1  Muebles 1 0 255
+2  Vacio 1 1 255
+3  paredes 1 0 255
+4  Muebles2 1 0 255
+5  Objetos_pared 1 0 255
+6  Objetos 1 0 255
+7  paredes_verticales 1 1 255
+8  puertas 1 0 255
+9  Sombra 1 0 100
+10 COLISIONES 0 1 255
