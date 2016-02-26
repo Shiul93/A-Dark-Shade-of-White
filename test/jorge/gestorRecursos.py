@@ -13,6 +13,10 @@ class GestorRecursos(object):
             
     @classmethod
     def CargarImagen(cls, nombre, colorkey=None):
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -20,7 +24,7 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga la imagen indicando la carpeta en la que está
-            fullname = os.path.join('/Users/jabali/A-Dark-Shade-of-White/test/jorge/imagenes', nombre)
+            fullname = os.path.join(application_path,'imagenes', nombre)
             try:
                 imagen = pygame.image.load(fullname)
             except pygame.error, message:
@@ -38,6 +42,11 @@ class GestorRecursos(object):
 
     @classmethod
     def CargarArchivoCoordenadas(cls, nombre):
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -45,7 +54,7 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga el recurso indicando el nombre de su carpeta
-            fullname = os.path.join('/Users/jabali/A-Dark-Shade-of-White/test/jorge/imagenes', nombre)
+            fullname = os.path.join(application_path,'imagenes', nombre)
             pfile=open(fullname,'r')
             datos=pfile.read()
             pfile.close()
