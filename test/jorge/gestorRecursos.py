@@ -20,7 +20,7 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga la imagen indicando la carpeta en la que está
-            fullname = os.path.join('imagenes', nombre)
+            fullname = os.path.join('/Users/jabali/A-Dark-Shade-of-White/test/jorge/imagenes', nombre)
             try:
                 imagen = pygame.image.load(fullname)
             except pygame.error, message:
@@ -45,7 +45,7 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga el recurso indicando el nombre de su carpeta
-            fullname = os.path.join('imagenes', nombre)
+            fullname = os.path.join('/Users/jabali/A-Dark-Shade-of-White/test/jorge/imagenes', nombre)
             pfile=open(fullname,'r')
             datos=pfile.read()
             pfile.close()

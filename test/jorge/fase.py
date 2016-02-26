@@ -5,6 +5,11 @@ from escena import *
 from personajes import *
 from pygame.locals import *
 
+
+#Carga la fase, controla el scroll y las colisiones con el decorado
+#LA idea es que carge la fase a paretir de un script
+
+
 # -------------------------------------------------
 # -------------------------------------------------
 # Constantes
@@ -20,6 +25,7 @@ MINIMO_Y_JUGADOR = 50
 MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 # -------------------------------------------------
 # Clase Fase
+
 
 class Fase(Escena):
     def __init__(self, director):
@@ -224,7 +230,7 @@ class Decorado:
         #Cargamos la imagen del fondo
         self.imagen = GestorRecursos.CargarImagen('museo_1.png', 1)
         #Cargamos el mapa de colisiones
-        self.collmap= GestorRecursos.CargarImagen('museo_1_coll.png',-1)
+        self.collmap= GestorRecursos.CargarImagen('museo_1_coll2.png',-1)
         self.rect = self.imagen.get_rect()
         #self.rect.bottom = 1200#ALTO_PANTALLA
 

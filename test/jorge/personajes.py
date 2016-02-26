@@ -21,14 +21,10 @@ CARRERA=3
 
 # Direccion
 
-DERECHA = 0
-ABAJODER = 315
-ABAJO = 270
-ABAJOIZQ = 225
-IZQUIERDA = 180
-ARRIBAIZQ = 135
-ARRIBA = 90
-ARRIBADER = 45
+ABAJO=0
+IZQUIERDA=1
+DERECHA=2
+ARRIBA=3
 
 #Posturas
 SPRITE_QUIETO = 0
@@ -109,20 +105,36 @@ class Personaje(MiSprite):
         MiSprite.__init__(self);
 
         # Se carga la hoja (por ahora no se usa sino que cojo nu sprite normal y lo giro
+
         self.hoja = GestorRecursos.CargarImagen(archivoImagen,-1)
         self.hoja = self.hoja.convert_alpha()
 
-        self.imagen = GestorRecursos.CargarImagen("hitman1_stand.png",-1)
-        self.image = GestorRecursos.CargarImagen("hitman1_stand.png",-1)
+        datos = GestorRecursos.CargarArchivoCoordenadas(archivoCoordenadas)
+        datos = datos.split()
+        cont=0
+        #Valores para la imagen de la animacion. las posturas en este caso son las direcciones y las imagenes los distintos frames
+        self.numPostura=0;
+        self.numImagenPostura = 0;
+        self.coordenadasHoja=[]
+        for linea in range(0, 4):
+            self.coordenadasHoja.append([])
+            tmp = self.coordenadasHoja[linea]
+            for postura in range(1, 5):
+                tmp.append(pygame.Rect((int(datos[cont]), int(datos[cont+1])), (int(datos[cont+2]), int(datos[cont+3]))))
+                cont += 4
+
         # El movimiento que esta realizando
         self.movimiento = QUIETO
         # Lado hacia el que esta mirando
         self.mirando = ABAJO
 
+
+
+
         # El retardo a la hora de cambiar la imagen del Sprite (para que no se mueva demasiado rápido)
         self.retardoMovimiento = 0;
         # El rectangulo del Sprite
-        self.rect = pygame.Rect(0,0,24,24)
+        self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height)
         # Las velocidades de caminar , correr, etc
         self.velocidadCarrera = velocidadCarrera
         # El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)
@@ -140,17 +152,37 @@ class Personaje(MiSprite):
 
 
     def actualizarPostura(self):
-        #El código está pensado para cambiar entre varias animaciones y flipearlas segun si va a la izquierda o a la derecha
-        #Rotamos la imagen segun hacia donde esté mirando
-        self.image= pygame.transform.rotate(self.imagen,self.mirando)
+        # Coloca al personaje mirando hacia la direccion correcta y en el punto adecuado de la animacion
+        # self.image= pygame.transform.rotate(self.imagen,self.mirando)
+        self.numPostura=self.mirando
+        self.retardoMovimiento -= 1
+        # Miramos si ha pasado el retardo para dibujar una nueva postura
+        if (self.retardoMovimiento < 0):
+            self.retardoMovimiento = self.retardoAnimacion
+            # Si ha pasado, actualizamos la postura
+            self.numImagenPostura += 1
+            #Si llega al final vuelve al principio
+            if self.numImagenPostura >= len(self.coordenadasHoja[self.numPostura]):
+                self.numImagenPostura = 0;
+
+            if self.numImagenPostura < 0:
+                self.numImagenPostura = len(self.coordenadasHoja[self.numPostura])-1
+
+        self.image = self.hoja.subsurface(self.coordenadasHoja[self.numPostura][self.numImagenPostura])
 
 
     def update(self, decorado, tiempo):
-
+        velocidadx=0
+        velocidady=0
         # Esta mirando hacia donde vayamos
-        velocidadx=self.velocidadMovimiento*math.cos(self.mirando*PI/180)
-        velocidady=-self.velocidadMovimiento*math.sin(self.mirando*PI/180)
-
+        if(self.mirando==ARRIBA):
+            velocidady=self.velocidadMovimiento*-1
+        elif(self.mirando==ABAJO):
+            velocidady=self.velocidadMovimiento
+        elif(self.mirando==DERECHA):
+            velocidadx=self.velocidadMovimiento
+        elif(self.mirando==IZQUIERDA):
+            velocidadx=self.velocidadMovimiento*-1
         self.actualizarPostura()
 
         # Aplicamos la velocidad en cada eje      
@@ -184,27 +216,17 @@ class Jugador(Personaje):
     "Cualquier personaje del juego"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        Personaje.__init__(self,'Jugador.png','coordJugador.txt', [6, 12, 6], VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
+        Personaje.__init__(self,'oak.png','coordoak.txt', [6, 12, 6], VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
 
 
     def mover(self, teclasPulsadas, arriba, abajo, izquierda, derecha,sigilo,correr):
         # Indicamos la acción a realizar segun la tecla pulsada para el jugador
-        direccion=ARRIBA
+        direccion=self.mirando
         movimiento=NORMAL
         if teclasPulsadas[arriba]:
-            if(teclasPulsadas[izquierda]):
-                direccion=ARRIBAIZQ
-            elif(teclasPulsadas[derecha]):
-                direccion=ARRIBADER
-            else:
-                direccion=ARRIBA
+            direccion=ARRIBA
         elif teclasPulsadas[abajo]:
-            if(teclasPulsadas[izquierda]):
-                direccion=ABAJOIZQ
-            elif(teclasPulsadas[derecha]):
-                direccion=ABAJODER
-            else:
-                direccion=ABAJO
+            direccion=ABAJO
         elif teclasPulsadas[izquierda]:
             direccion=IZQUIERDA
         elif teclasPulsadas[derecha]:
@@ -245,7 +267,7 @@ class Sniper(NoJugador):
     "El enemigo 'Sniper'"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Sniper.png','coordSniper.txt', [5, 10, 6], VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
+        NoJugador.__init__(self,'Guardias.png','coordguardia.txt', [5, 10, 6], VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
 
     # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
@@ -256,11 +278,17 @@ class Sniper(NoJugador):
             #Calcula la distancia enambos ejes
             difx=jugador1.posicion[0]-self.posicion[0];
             dify=jugador1.posicion[1]-self.posicion[1];
-            #Calcula el angulo
-            ang=math.atan2(-dify,difx)
-            direccion=ang*180/PI
-            #Se mueve en esa direccion
-            Personaje.mover(self,CARRERA,direccion)
+            #Calcula el mayor
+            if(abs(difx)>abs(dify)):
+                if(difx>0):
+                    Personaje.mover(self,CARRERA,DERECHA)
+                else:
+                    Personaje.mover(self,CARRERA,IZQUIERDA)
+            else:
+                if(dify>0):
+                    Personaje.mover(self,CARRERA,ABAJO)
+                else:
+                    Personaje.mover(self,CARRERA,ARRIBA)
         # Si este personaje no esta en pantalla, no hara nada
         else:
             Personaje.mover(self,QUIETO,ARRIBA)
