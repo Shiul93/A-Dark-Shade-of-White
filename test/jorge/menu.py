@@ -96,6 +96,7 @@ class PantallaGUI:
     def __init__(self, menu, nombreImagen):
         self.menu = menu
         # Se carga la imagen de fondo
+        GestorRecursos.getPath() #ESTA LLAMADA SE REALIZA ANTES DE CARGAR NINGUN ARCHIVO PARA QUE CALCULE EL PATH PORQUE ME DABA PROBLEMAS
         self.imagen = GestorRecursos.CargarImagen(nombreImagen)
         self.imagen = pygame.transform.scale(self.imagen, (ANCHO_PANTALLA, ALTO_PANTALLA))
         # Se tiene una lista de elementos GUI
@@ -177,7 +178,7 @@ class Menu(Escena):
         self.director.salirPrograma()
 
     def ejecutarJuego(self):
-        fase = Fase(self.director)
+        fase = Fase('fase1.txt',self.director)
         self.director.apilarEscena(fase)
 
     def mostrarPantallaInicial(self):

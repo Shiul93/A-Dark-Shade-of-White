@@ -10,13 +10,18 @@ from pygame.locals import *
 # En este caso se implementa como una clase vacía, solo con métodos de clase
 class GestorRecursos(object):
     recursos = {}
-            
+
+    @classmethod
+    def getPath(cls):
+      if getattr(sys, 'frozen', False):
+            cls.application_path = os.path.dirname(sys.executable)
+      elif __file__:
+            cls.application_path = os.path.dirname(__file__)
+
+
     @classmethod
     def CargarImagen(cls, nombre, colorkey=None):
-        if getattr(sys, 'frozen', False):
-            application_path = os.path.dirname(sys.executable)
-        elif __file__:
-            application_path = os.path.dirname(__file__)
+
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -24,7 +29,7 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga la imagen indicando la carpeta en la que está
-            fullname = os.path.join(application_path,'imagenes', nombre)
+            fullname = os.path.join(cls.application_path,'imagenes', nombre)
             try:
                 imagen = pygame.image.load(fullname)
             except pygame.error, message:
@@ -42,10 +47,7 @@ class GestorRecursos(object):
 
     @classmethod
     def CargarArchivoCoordenadas(cls, nombre):
-        if getattr(sys, 'frozen', False):
-            application_path = os.path.dirname(sys.executable)
-        elif __file__:
-            application_path = os.path.dirname(__file__)
+
 
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
@@ -54,11 +56,43 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga el recurso indicando el nombre de su carpeta
-            fullname = os.path.join(application_path,'imagenes', nombre)
+            fullname = os.path.join(cls.application_path,'imagenes', nombre)
             pfile=open(fullname,'r')
             datos=pfile.read()
             pfile.close()
             # Se almacena
             cls.recursos[nombre] = datos
             # Se devuelve
+            return datos
+
+    @classmethod
+    def CargarArchivoFase(cls,nombre):
+
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+        # Si no ha sido cargado anteriormente
+        else:
+            datos = {}
+            fullname = os.path.join(cls.application_path,'fases', nombre)
+            f=open(fullname, 'r')
+            line = f.readline()
+            while line != '':
+                if not(str.startswith(line,'#')):
+                    info = line.rstrip().split()
+                    key=info[0]
+                    if len(info)>2:
+                        value=[]
+                        for i in range (1, len(info)):
+                            value.append(int(info[i]))
+                        datos[key]=value
+                    elif len(info)==2:
+                        if info[0].startswith("$"):
+                            value=info[1]
+                            datos[key]=value
+                        else :
+                            value=int(info[1])
+                            datos[key]=value
+                line = f.readline()
+            cls.recursos[nombre]=datos
             return datos

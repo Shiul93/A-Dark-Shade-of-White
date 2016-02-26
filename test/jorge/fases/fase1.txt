@@ -1,0 +1,18 @@
+#Fase 1
+#Las almoadillas son comentarios
+#Las keys que empiezan con $ son Strings
+#Las que no empiezan con $ y solo tienen un valor son int
+#Las que no empiezan con $ y tienen varios valores son un array de ints
+#Se carga en un diccionario
+#
+#Archivo del escenario
+$decorado museo_1.png
+#
+#Archivo de colisiones
+$colisiones museo_1_coll2.png
+#
+#Enemigos: numero y pares de coordenadas (por ejemplo enemigo 3 400 300 1200 600 800 400 )
+enemigo 3 582 716 1309 1113 386 356
+#En el futuro quizas sea mas practico hacer una linea por cada enemigo con sus waypoints o bien hacer lineas con paths y asignarlas a enemios
+#Posicion inicial: x e y
+posicion_inicial 400 980

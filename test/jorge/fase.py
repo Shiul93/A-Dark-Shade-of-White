@@ -28,7 +28,7 @@ MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 
 
 class Fase(Escena):
-    def __init__(self, director):
+    def __init__(self,archivoFase, director):
 
         # Habria que pasarle como parámetro el número de fase, a partir del cual se cargue
         #  un fichero donde este la configuracion de esa fase en concreto, con cosas como
@@ -43,8 +43,12 @@ class Fase(Escena):
         # Primero invocamos al constructor de la clase padre
         Escena.__init__(self, director)
 
+        datos = GestorRecursos.CargarArchivoFase(archivoFase)
+        print(datos)
+
+
         # Creamos el decorado y el fondo
-        self.decorado = Decorado()
+        self.decorado = Decorado(datos['$decorado'],datos['$colisiones'])
 
         # Que parte del decorado estamos visualizando
         self.scrollx = 0
@@ -57,25 +61,21 @@ class Fase(Escena):
         self.grupoJugadores = pygame.sprite.Group( self.jugador1 )
 
         # Ponemos a los jugadores en sus posiciones iniciales
-        self.jugador1.establecerPosicion((400, 980))
+        self.jugador1.establecerPosicion((datos['posicion_inicial'][0],datos['posicion_inicial'][1]))
 
+        #Creamos los grupos de sprites con el jugador
+        self.grupoSpritesDinamicos = pygame.sprite.Group( self.jugador1)
+        self.grupoSprites = pygame.sprite.Group( self.jugador1)
 
-        # Y los enemigos que tendran en este decorado
-        enemigo1 = Sniper()
-        enemigo1.establecerPosicion((582, 716))
-        enemigo2 = Sniper()
-        enemigo2.establecerPosicion((1309, 1113))
-        enemigo3 = Sniper()
-        enemigo3.establecerPosicion((386, 356))
-        # Creamos un grupo con los enemigos
-        self.grupoEnemigos = pygame.sprite.Group( enemigo1 , enemigo2 , enemigo3 )
-
-
-        # Creamos un grupo con los Sprites que se mueven
-        #  En este caso, solo los personajes, pero podría haber más (proyectiles, etc.)
-        self.grupoSpritesDinamicos = pygame.sprite.Group( self.jugador1,  enemigo1, enemigo2,enemigo3 )
-        # Creamos otro grupo con todos los Sprites
-        self.grupoSprites = pygame.sprite.Group( self.jugador1,  enemigo1,enemigo2,enemigo3)
+        # Cargamos los enemigos
+        enemigo=[]
+        self.grupoEnemigos=pygame.sprite.Group()
+        for i in range (0,datos['enemigo'][0]):
+          enemigo.append(Sniper())
+          enemigo[i].establecerPosicion((datos['enemigo'][(2*i+1)],datos['enemigo'][(2*i+2)]))
+          self.grupoEnemigos.add(enemigo[i])
+          self.grupoSpritesDinamicos.add(enemigo[i] )
+          self.grupoSprites.add(enemigo[i])
 
 
 
@@ -226,11 +226,11 @@ class Fase(Escena):
 # Clase Decorado
 
 class Decorado:
-    def __init__(self):
+    def __init__(self,fondo,colisiones):
         #Cargamos la imagen del fondo
-        self.imagen = GestorRecursos.CargarImagen('museo_1.png', 1)
+        self.imagen = GestorRecursos.CargarImagen(fondo, 1)
         #Cargamos el mapa de colisiones
-        self.collmap= GestorRecursos.CargarImagen('museo_1_coll2.png',-1)
+        self.collmap= GestorRecursos.CargarImagen(colisiones,-1)
         self.rect = self.imagen.get_rect()
         #self.rect.bottom = 1200#ALTO_PANTALLA
 

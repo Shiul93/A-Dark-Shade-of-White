@@ -112,6 +112,11 @@ class Personaje(MiSprite):
         datos = GestorRecursos.CargarArchivoCoordenadas(archivoCoordenadas)
         datos = datos.split()
         cont=0
+
+        #
+        #CARGAMOS LOS DATOS DE LA ANIMACION
+        #
+
         #Valores para la imagen de la animacion. las posturas en este caso son las direcciones y las imagenes los distintos frames
         self.numPostura=0;
         self.numImagenPostura = 0;
