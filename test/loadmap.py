@@ -85,7 +85,11 @@ class tmxmap:
 
         pygame.display.flip()
 
-
+    #Comprueba colision en una posicion. se le pasa el id de la capa de colision y devuelve 0 si no hay nada y 1 si hay algo
+    #En principiio para usar solo con la capa de colisiones pero se podria usar con cualquiera
+    def collision(self,x,y,id):
+        layer=self.layers[id];
+        image = self.tiled_map.get_tile_image(x*32, y*32, layer[0]);
 
 
 

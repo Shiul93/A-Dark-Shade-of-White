@@ -53,23 +53,16 @@ class Fase(Escena):
         self.grupoJugadores = pygame.sprite.Group( self.jugador1 )
 
         # Ponemos a los jugadores en sus posiciones iniciales
-        self.jugador1.establecerPosicion((400, 301))
+        self.jugador1.establecerPosicion((400, 980))
 
-        # Creamos las plataformas del decorado
-        # La plataforma que conforma todo el suelo
-        plataformaSuelo = Plataforma(pygame.Rect(0, 550, 1200, 15))
-        # La plataforma del techo del edificio
-        plataformaCasa = Plataforma(pygame.Rect(870, 417, 200, 10))
-        # y el grupo con las mismas
-        self.grupoPlataformas = pygame.sprite.Group( plataformaSuelo, plataformaCasa )
 
         # Y los enemigos que tendran en este decorado
         enemigo1 = Sniper()
-        enemigo1.establecerPosicion((1000, 418))
+        enemigo1.establecerPosicion((582, 716))
         enemigo2 = Sniper()
-        enemigo2.establecerPosicion((800, 418))
+        enemigo2.establecerPosicion((1309, 1113))
         enemigo3 = Sniper()
-        enemigo3.establecerPosicion((400, 418))
+        enemigo3.establecerPosicion((386, 356))
         # Creamos un grupo con los enemigos
         self.grupoEnemigos = pygame.sprite.Group( enemigo1 , enemigo2 , enemigo3 )
 
@@ -78,7 +71,7 @@ class Fase(Escena):
         #  En este caso, solo los personajes, pero podría haber más (proyectiles, etc.)
         self.grupoSpritesDinamicos = pygame.sprite.Group( self.jugador1,  enemigo1, enemigo2,enemigo3 )
         # Creamos otro grupo con todos los Sprites
-        self.grupoSprites = pygame.sprite.Group( self.jugador1,  enemigo1,enemigo2,enemigo3, plataformaSuelo, plataformaCasa)
+        self.grupoSprites = pygame.sprite.Group( self.jugador1,  enemigo1,enemigo2,enemigo3)
 
 
 
@@ -181,7 +174,7 @@ class Fase(Escena):
         # De esta forma, se simula que cambian todos a la vez
         # Esta operación de update ya comprueba que los movimientos sean correctos
         #  y, si lo son, realiza el movimiento de los Sprites
-        self.grupoSpritesDinamicos.update(self.grupoPlataformas, tiempo)
+        self.grupoSpritesDinamicos.update(self.decorado, tiempo)
         # Dentro del update ya se comprueba que todos los movimientos son válidos
         #  (que no choque con paredes, etc.)
 
@@ -246,16 +239,17 @@ class Plataforma(MiSprite):
 
 class Decorado:
     def __init__(self):
-        self.imagen = GestorRecursos.CargarImagen('testmap.png', 0)
-        self.imagen = pygame.transform.scale(self.imagen, (1200, 1200))
-
+        self.imagen = GestorRecursos.CargarImagen('museo_1.png', 1)
+        #self.imagen = pygame.transform.scale(self.imagen, (1200, 1200))
+        self.collmap= GestorRecursos.CargarImagen('museo_1_coll.png',-1)
+        #self.collmap = pygame.transform.scale(self.imagen, (1200, 1200))
         self.rect = self.imagen.get_rect()
-        self.rect.bottom = 1200#ALTO_PANTALLA
+        #self.rect.bottom = 1200#ALTO_PANTALLA
 
         # La subimagen que estamos viendo
         self.rectSubimagen = pygame.Rect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA)
         self.rectSubimagen.left = 0 # El scroll horizontal empieza en la posicion 0 por defecto
-        self.rectSubimagen.top = 0 # El scroll horizontal empieza en la posicion 0 por defecto
+        self.rectSubimagen.top = 0 # El scroll vertical empieza en la posicion 0 por defecto
 
     def update(self, scrollx,scrolly):
         self.rectSubimagen.left = scrollx
@@ -264,3 +258,12 @@ class Decorado:
 
     def dibujar(self, pantalla):
         pantalla.blit(self.imagen, self.rect, self.rectSubimagen)
+
+    def colision(self,rect):
+        color1=self.collmap.get_at(rect.topleft)
+        color2=self.collmap.get_at(rect.topright)
+        color3=self.collmap.get_at(rect.bottomleft)
+        color4=self.collmap.get_at(rect.bottomright)
+        self.collmap.set_at(rect.bottomright,color1)
+        return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
+

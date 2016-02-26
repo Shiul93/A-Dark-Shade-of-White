@@ -120,7 +120,7 @@ class Personaje(MiSprite):
         # El retardo a la hora de cambiar la imagen del Sprite (para que no se mueva demasiado rápido)
         self.retardoMovimiento = 0;
         # El rectangulo del Sprite
-        self.rect = pygame.Rect(100,100,0,0)
+        self.rect = pygame.Rect(0,0,24,24)
         # Las velocidades de caminar y salto
         self.velocidadCarrera = velocidadCarrera
         # El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)
@@ -143,7 +143,7 @@ class Personaje(MiSprite):
         self.image= pygame.transform.rotate(self.imagen,self.mirando)
 
 
-    def update(self, grupoPlataformas, tiempo):
+    def update(self, decorado, tiempo):
 
         # Esta mirando hacia donde vayamos
         velocidadx=self.velocidadMovimiento*math.cos(self.mirando*PI/180)
@@ -153,10 +153,23 @@ class Personaje(MiSprite):
 
         # Aplicamos la velocidad en cada eje      
         self.velocidad = (velocidadx, velocidady)
-
+        #Comprobamos las colisiones primero en el eje x
+        #Si se mueve a la derecha sumamos el anchod el personaje
+        #Si colisiona en el eje x ponemos la velocidad x a 0
+        self.rect.bottomleft=self.posicion
+        newposrect=self.rect
+        newposrect.left=self.posicion[0]+velocidadx*tiempo
+        if(decorado.colision(newposrect)):
+            self.velocidad=(0,self.velocidad[1])
+            newposrect.left=self.posicion[0]
+        #colisiones verticales
+        newposrect.bottom=self.posicion[1]+velocidady*tiempo
+        if(decorado.colision(newposrect)):
+            self.velocidad=(self.velocidad[0],0)
+        MiSprite.update(self, tiempo)
         # Y llamamos al método de la superclase para que, según la velocidad y el tiempo
         #  calcule la nueva posición del Sprite
-        MiSprite.update(self, tiempo)
+
         
         return
 

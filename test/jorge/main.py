@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 # Importar modulos
-import pygame
 import director
 from director import *
 from menu import Menu
