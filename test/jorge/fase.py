@@ -11,8 +11,6 @@ from pygame.locals import *
 # -------------------------------------------------
 # -------------------------------------------------
 
-VELOCIDAD_SOL = 0.1 # Pixeles por milisegundo
-
 # Los bordes de la pantalla para hacer scroll horizontal
 MINIMO_X_JUGADOR = 50
 MAXIMO_X_JUGADOR = ANCHO_PANTALLA - MINIMO_X_JUGADOR
@@ -94,7 +92,7 @@ class Fase(Escena):
 
                 actualizar=True; # Se ha actualizado el scroll
 
-        # Si el jugador de la derecha se encuentra más allá del borde derecho
+        # Si el jugador  se encuentra más allá del borde derecho
         elif (jugador.rect.right>MAXIMO_X_JUGADOR):
 
             # Se calcula cuantos pixeles esta fuera del borde
@@ -103,7 +101,7 @@ class Fase(Escena):
             # Si el escenario ya está a la derecha del todo, no lo movemos mas
             if self.scrollx + ANCHO_PANTALLA >= self.decorado.rect.right:
                 self.scrollx = self.decorado.rect.right - ANCHO_PANTALLA
-                # En su lugar, colocamos al jugador que esté más a la derecha a la derecha de todo
+                # En su lugar, colocamos al jugador a la derecha de todo
                 jugador.establecerPosicion((self.scrollx+MAXIMO_X_JUGADOR-jugador.rect.width, jugador.posicion[1]))
             else:
                  # Calculamos el nivel de scroll actual: el anterior + desplazamiento
@@ -117,12 +115,12 @@ class Fase(Escena):
             # Si el escenario ya está arriba del todo, no lo movemos mas
             if self.scrolly <= 0:
                 self.scrolly = 0
-                # En su lugar, colocamos al jugador que esté más a la arriba de todo
+                # En su lugar, colocamos al jugador arriba de todo
                 jugador.establecerPosicion((jugador.posicion[0],MINIMO_Y_JUGADOR+jugador.rect.height))
-             # Si no, se puede hacer scroll a la izquierda
+             # Si no, se puede hacer scroll a la arriba
             else:
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
-                #  (desplazamos a la izquierda)
+                #  (desplazamos ariba)
                 self.scrolly = self.scrolly - desplazamiento;
                 actualizar= True; # Se ha actualizado el scroll
         elif (jugador.rect.bottom>MAXIMO_Y_JUGADOR):
@@ -131,12 +129,12 @@ class Fase(Escena):
             # Si el escenario ya está abajo del todo, no lo movemos mas
             if self.scrolly + ALTO_PANTALLA >= self.decorado.rect.bottom:
                 self.scrolly = self.decorado.rect.bottom-ALTO_PANTALLA
-                # En su lugar, colocamos al jugador que esté más a la izquierda a la izquierda de todo
+                # En su lugar, colocamos al jugador abajo de todo
                 jugador.establecerPosicion((jugador.posicion[0],self.scrolly+MAXIMO_Y_JUGADOR))
-             # Si no, se puede hacer scroll a la izquierda
+             # Si no, se puede hacer scroll abajo
             else:
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
-                #  (desplazamos a la izquierda)
+                #  (desplazamos aabajo)
                 self.scrolly = self.scrolly + desplazamiento;
                 actualizar=True; # Se ha actualizado el scroll
         # Si el jugador están entre los dos límites de la pantalla, no se hace nada
@@ -151,7 +149,7 @@ class Fase(Escena):
             # Actualizamos la posición en pantalla de todos los Sprites según el scroll actual
             for sprite in iter(self.grupoSprites):
                 sprite.establecerPosicionPantalla(self.scrollx, self.scrolly)
-     # Ademas, actualizamos el decorado para que se muestre una parte distinta
+        # Ademas, actualizamos el decorado para que se muestre una parte distinta
             self.decorado.update(self.scrollx,self.scrolly)
 
 
@@ -186,9 +184,9 @@ class Fase(Escena):
         # Comprobamos si hay colision entre algun jugador y algun enemigo
         # Se comprueba la colision entre ambos grupos
         # Si la hay, indicamos que se ha finalizado la fase
-        #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
+        if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
             # Se le dice al director que salga de esta escena y ejecute la siguiente en la pila
-            #self.director.salirEscena()
+            self.director.salirEscena()
 
         # Actualizamos el scroll
         self.actualizarScroll(self.jugador1)
@@ -217,32 +215,16 @@ class Fase(Escena):
         teclasPulsadas = pygame.key.get_pressed()
         self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
 
-# -------------------------------------------------
-# Clase Plataforma
-
-#class Plataforma(pygame.sprite.Sprite):
-class Plataforma(MiSprite):
-    def __init__(self,rectangulo):
-        # Primero invocamos al constructor de la clase padre
-        MiSprite.__init__(self)
-        # Rectangulo con las coordenadas en pantalla que ocupara
-        self.rect = rectangulo
-        # Y lo situamos de forma global en esas coordenadas
-        self.establecerPosicion((self.rect.left, self.rect.bottom))
-        # En el caso particular de este juego, las plataformas no se van a ver, asi que no se carga ninguna imagen
-        self.image = pygame.Surface((0, 0))
-
-
 
 # -------------------------------------------------
 # Clase Decorado
 
 class Decorado:
     def __init__(self):
+        #Cargamos la imagen del fondo
         self.imagen = GestorRecursos.CargarImagen('museo_1.png', 1)
-        #self.imagen = pygame.transform.scale(self.imagen, (1200, 1200))
+        #Cargamos el mapa de colisiones
         self.collmap= GestorRecursos.CargarImagen('museo_1_coll.png',-1)
-        #self.collmap = pygame.transform.scale(self.imagen, (1200, 1200))
         self.rect = self.imagen.get_rect()
         #self.rect.bottom = 1200#ALTO_PANTALLA
 
@@ -252,18 +234,25 @@ class Decorado:
         self.rectSubimagen.top = 0 # El scroll vertical empieza en la posicion 0 por defecto
 
     def update(self, scrollx,scrolly):
+        #Cuando cambia el scroll cambiamos la posicion del rectangulo que define el trozo de fondo que se muestra
         self.rectSubimagen.left = scrollx
         self.rectSubimagen.top = scrolly
 
 
     def dibujar(self, pantalla):
+        #Vuelca el rectángulo con el trozo corresponiente de la imagen
         pantalla.blit(self.imagen, self.rect, self.rectSubimagen)
 
     def colision(self,rect):
+        #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
+        #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
+        #En este caso se comprueba que el rojo no valga 0
+        #Si vale 0 en las 4 esquinas no hay colision
+        #Se podria usar tambien el alfa ( seria mas lógico)
+        #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
         color1=self.collmap.get_at(rect.topleft)
         color2=self.collmap.get_at(rect.topright)
         color3=self.collmap.get_at(rect.bottomleft)
         color4=self.collmap.get_at(rect.bottomright)
-        self.collmap.set_at(rect.bottomright,color1)
         return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
 

@@ -45,8 +45,6 @@ RETARDO_ANIMACION_SNIPER = 5 # updates que durará cada imagen del personaje
                              # debería de ser un valor distinto para cada postura
 # El Sniper camina un poco más lento que el jugador, y salta menos
 
-GRAVEDAD = 0.0003 # Píxeles / ms2
-
 # -------------------------------------------------
 # -------------------------------------------------
 # Clases de los objetos del juego
@@ -56,8 +54,10 @@ GRAVEDAD = 0.0003 # Píxeles / ms2
 
 # -------------------------------------------------
 # Clase MiSprite
+# Clase base de la que derivaran las demas clases de sprite
 class MiSprite(pygame.sprite.Sprite):
     "Los Sprites que tendra este juego"
+
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.posicion = (0, 0)
@@ -65,13 +65,14 @@ class MiSprite(pygame.sprite.Sprite):
         self.scroll   = (0, 0)
 
     def establecerPosicion(self, posicion):
+        #Establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
         self.posicion = posicion
         self.rect.left = self.posicion[0] - self.scroll[0]
         self.rect.bottom = self.posicion[1] - self.scroll[1]
 
     def establecerPosicionPantalla(self, scrollx,scrolly):
+        #Actualiza el scroll y establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
         self.scroll = (scrollx,scrolly)
-        #(scrollx, scrolly) = self.scroll;
         (posx, posy) = self.posicion
         self.rect.left = posx - scrollx
         self.rect.bottom = posy - scrolly
@@ -82,6 +83,7 @@ class MiSprite(pygame.sprite.Sprite):
         self.establecerPosicion((posx+incrementox, posy+incrementoy))
 
     def update(self, tiempo):
+        #Actualiza la posicion segun la velocidad y el tiempo
         incrementox = self.velocidad[0]*tiempo
         incrementoy = self.velocidad[1]*tiempo
         self.incrementarPosicion((incrementox, incrementoy))
@@ -121,7 +123,7 @@ class Personaje(MiSprite):
         self.retardoMovimiento = 0;
         # El rectangulo del Sprite
         self.rect = pygame.Rect(0,0,24,24)
-        # Las velocidades de caminar y salto
+        # Las velocidades de caminar , correr, etc
         self.velocidadCarrera = velocidadCarrera
         # El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)
         self.retardoAnimacion = retardoAnimacion
@@ -154,7 +156,6 @@ class Personaje(MiSprite):
         # Aplicamos la velocidad en cada eje      
         self.velocidad = (velocidadx, velocidady)
         #Comprobamos las colisiones primero en el eje x
-        #Si se mueve a la derecha sumamos el anchod el personaje
         #Si colisiona en el eje x ponemos la velocidad x a 0
         self.rect.bottomleft=self.posicion
         newposrect=self.rect
@@ -163,6 +164,7 @@ class Personaje(MiSprite):
             self.velocidad=(0,self.velocidad[1])
             newposrect.left=self.posicion[0]
         #colisiones verticales
+        #Si colisiona en el eje y ponemos la velocidad y a 0
         newposrect.bottom=self.posicion[1]+velocidady*tiempo
         if(decorado.colision(newposrect)):
             self.velocidad=(self.velocidad[0],0)
@@ -223,6 +225,7 @@ class Jugador(Personaje):
 
 class NoJugador(Personaje):
     "El resto de personajes no jugadores"
+    #Interfaz para las clases de los no jugadores que implementa mover_cpu para la IA
     def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad,  retardoAnimacion):
         # Primero invocamos al constructor de la clase padre con los parametros pasados
         Personaje.__init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad,  retardoAnimacion);
@@ -253,8 +256,10 @@ class Sniper(NoJugador):
             #Calcula la distancia enambos ejes
             difx=jugador1.posicion[0]-self.posicion[0];
             dify=jugador1.posicion[1]-self.posicion[1];
+            #Calcula el angulo
             ang=math.atan2(-dify,difx)
             direccion=ang*180/PI
+            #Se mueve en esa direccion
             Personaje.mover(self,CARRERA,direccion)
         # Si este personaje no esta en pantalla, no hara nada
         else:
