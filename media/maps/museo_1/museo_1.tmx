@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="32" tileheight="32" nextobjectid="1">
  <tileset firstgid="1" name="Interior general" tilewidth="32" tileheight="32" tilecount="2008" columns="8">
-  <image source="../sprites/pokemon/Interior general.PNG" width="256" height="8032"/>
+  <image source="../../sprites/pokemon/Interior general.PNG" width="256" height="8032"/>
  </tileset>
  <tileset firstgid="2009" name="Factory interior" tilewidth="32" tileheight="32" tilecount="224" columns="8">
-  <image source="../sprites/pokemon/Factory interior.PNG" width="256" height="896"/>
+  <image source="../../sprites/pokemon/Factory interior.PNG" width="256" height="896"/>
  </tileset>
  <tileset firstgid="2233" name="Trainer Tower interior" tilewidth="32" tileheight="32" tilecount="440" columns="8">
-  <image source="../sprites/pokemon/Trainer Tower interior.png" width="256" height="1760"/>
+  <image source="../../sprites/pokemon/Trainer Tower interior.png" width="256" height="1760"/>
  </tileset>
  <layer name="Suelo" width="50" height="40">
   <data encoding="csv">

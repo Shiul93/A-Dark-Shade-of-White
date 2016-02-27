@@ -20,7 +20,7 @@ class mapa:
             st = st+'\t' +layer[1]+'\n'
         st = st+'Heigth: '+str(self.height)+' tiles\n'
         st = st+'Width: '+str(self.width)+' tiles\n'
-        st = st+'Bits: '+str(self.bits)+'\n'
+        st = st+'Pixels: '+str(self.pixels)+'\n'
         return st
 
     def parse_layer_info(self):
@@ -29,32 +29,41 @@ class mapa:
         f=open(self.path + 'museo_1.layers', 'r+')
 
         while line != '':
-            if not(str.startswith(line,'#')):
+            if (str.startswith(line,'W')):
+                self.width = int(line.rstrip().split()[1])
+            elif (str.startswith(line,'H')):
+                self.height = int(line.rstrip().split()[1])
+            elif (str.startswith(line,'P')):
+                self.pixels = int(line.rstrip().split()[1])
+
+            elif not(str.startswith(line,'#')):
                 info = line.rstrip().split()
                 info[0]=int(info[0])
                 info[2]=int(info[2])
                 info[3]=int(info[3])
                 info[4]=int(info[4])
                 layers.append(info)
-                print info
+
 
             line = f.readline()
         return layers
 
     def load_layers(self):
         for layer in self.layers:
-            self.images[layer[1]]= GestorRecursos.CargarImagen(self.path+layer[5])
+            self.images[layer[1]]= GestorRecursos.CargarImagen(self.path+layer[5]).convert_alpha()
+
 
     def paint_all(self):
 
         for layer in self.layers:
 
             if layer[2]:
-
+                print layer[1]
                 pantalla.blit(self.images[layer[1]],(0, 0))
 
 
-                pygame.display.flip()
+        pygame.display.flip()
+        print self.images
 
 
 
@@ -69,7 +78,7 @@ class mapa:
 
 
 pygame.init()
-pantalla = pygame.display.set_mode((2000, 1800), 0, 32)
+pantalla = pygame.display.set_mode((1600, 1280), 0, 32)
 
 
 m = mapa('../media/maps/museo_1/')
