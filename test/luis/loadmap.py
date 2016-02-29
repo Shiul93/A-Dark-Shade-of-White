@@ -2,8 +2,8 @@
 from pytmx.util_pygame import load_pygame
 import pygame
 from gestorRecursos import *
-ANCHO_PANTALLA =1600
-ALTO_PANTALLA =1280
+ANCHO_PANTALLA =800
+ALTO_PANTALLA =720
 class mapa:
 
     def __init__(self,path):
@@ -54,6 +54,8 @@ class mapa:
                 info[2]=int(info[2])
                 info[3]=int(info[3])
                 info[4]=int(info[4])
+                info[5]=info[5]
+                info[6]=int(info[6])
                 layers.append(info)
 
 
@@ -86,9 +88,31 @@ class mapa:
         pygame.display.flip()
 
 
+    def dibujar_pre(self):
+        """Dibuja secuencialmente todas las capas marcadas como visibles"""
+        #todo Cambiar nombre del metodo
+        for layer in self.layers:
+
+            if layer[2] and (layer[6]==0):
+                #Layer[2] es el atributo de visibilidad
+                #Layer[1] es el nombre de la capa
+                pantalla.blit(self.images[layer[1]],(0, 0))
 
 
+        pygame.display.flip()
 
+    def dibujar_post(self):
+        """Dibuja secuencialmente todas las capas marcadas como visibles"""
+        #todo Cambiar nombre del metodo
+        for layer in self.layers:
+
+            if layer[2] and (layer[6]==1):
+                #Layer[2] es el atributo de visibilidad
+                #Layer[1] es el nombre de la capa
+                pantalla.blit(self.images[layer[1]],(0, 0))
+
+
+        pygame.display.flip()
 
     #Comprueba colision en una posicion. se le pasa el id de la capa de colision y devuelve 0 si no hay nada y 1 si hay algo
     #En principiio para usar solo con la capa de colisiones pero se podria usar con cualquiera
@@ -106,7 +130,11 @@ pantalla = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA), 0, 32)
 
 m = mapa('../../media/maps/museo_1/')
 
-m.paint_all()
+m.dibujar_pre()
 
+
+raw_input('Presiona tecla para continuar')
+
+m.dibujar_post()
 
 raw_input('Presiona tecla para continuar')
