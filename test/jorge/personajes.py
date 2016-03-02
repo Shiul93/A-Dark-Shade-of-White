@@ -99,7 +99,7 @@ class Personaje(MiSprite):
     #  Numero de imagenes en cada postura
     #  Velocidad de caminar y de salto
     #  Retardo para mostrar la animacion del personaje
-    def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidadCarrera, retardoAnimacion):
+    def __init__(self, archivoImagen, archivoCoordenadas, velocidadCarrera, retardoAnimacion):
 
         # Primero invocamos al constructor de la clase padre
         MiSprite.__init__(self);
@@ -221,7 +221,7 @@ class Jugador(Personaje):
     "Cualquier personaje del juego"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        Personaje.__init__(self,'oak.png','coordoak.txt', [6, 12, 6], VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
+        Personaje.__init__(self,'oak.png','coordoak.txt', VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
 
 
     def mover(self, teclasPulsadas, arriba, abajo, izquierda, derecha,sigilo,correr):
@@ -253,9 +253,9 @@ class Jugador(Personaje):
 class NoJugador(Personaje):
     "El resto de personajes no jugadores"
     #Interfaz para las clases de los no jugadores que implementa mover_cpu para la IA
-    def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad,  retardoAnimacion):
+    def __init__(self, archivoImagen, archivoCoordenadas,  velocidad,  retardoAnimacion):
         # Primero invocamos al constructor de la clase padre con los parametros pasados
-        Personaje.__init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad,  retardoAnimacion);
+        Personaje.__init__(self, archivoImagen, archivoCoordenadas,  velocidad,  retardoAnimacion);
 
     # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion por defecto, este metodo deberia de ser implementado en las clases inferiores
@@ -272,7 +272,7 @@ class Sniper(NoJugador):
     "El enemigo 'Sniper'"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt', [5, 10, 6], VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
+        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
 
     # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular

@@ -3,6 +3,7 @@
 import pygame, escena
 from escena import *
 from personajes import *
+from mapa import *
 from pygame.locals import *
 
 
@@ -48,7 +49,7 @@ class Fase(Escena):
 
 
         # Creamos el decorado y el fondo
-        self.decorado = Decorado(datos['$decorado'],datos['$colisiones'])
+        self.decorado = Mapa(datos['$mapa'])
 
         # Que parte del decorado estamos visualizando
         self.scrollx = 0
@@ -190,9 +191,9 @@ class Fase(Escena):
         # Comprobamos si hay colision entre algun jugador y algun enemigo
         # Se comprueba la colision entre ambos grupos
         # Si la hay, indicamos que se ha finalizado la fase
-        if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
+        #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
             # Se le dice al director que salga de esta escena y ejecute la siguiente en la pila
-            self.director.salirEscena()
+        #    self.director.salirEscena()
 
         # Actualizamos el scroll
         self.actualizarScroll(self.jugador1)
@@ -202,13 +203,12 @@ class Fase(Escena):
 
         
     def dibujar(self, pantalla):
-        # Ponemos primero el fondo
-        #self.fondo.dibujar(pantalla)
-        # Después el decorado
-        self.decorado.dibujar(pantalla)
+        #Primero las capas que no tapan a los sprites
+        self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
         self.grupoSprites.draw(pantalla)
-
+        #Luego las capas que tapan a los sprites
+        self.decorado.dibujar_post(pantalla)
 
     def eventos(self, lista_eventos):
         # Miramos a ver si hay algun evento de salir del programa
@@ -220,45 +220,4 @@ class Fase(Escena):
         # Indicamos la acción a realizar segun la tecla pulsada para cada jugador
         teclasPulsadas = pygame.key.get_pressed()
         self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
-
-
-# -------------------------------------------------
-# Clase Decorado
-
-class Decorado:
-    def __init__(self,fondo,colisiones):
-        #Cargamos la imagen del fondo
-        self.imagen = GestorRecursos.CargarImagen(fondo, 1)
-        #Cargamos el mapa de colisiones
-        self.collmap= GestorRecursos.CargarImagen(colisiones,-1)
-        self.rect = self.imagen.get_rect()
-        #self.rect.bottom = 1200#ALTO_PANTALLA
-
-        # La subimagen que estamos viendo
-        self.rectSubimagen = pygame.Rect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA)
-        self.rectSubimagen.left = 0 # El scroll horizontal empieza en la posicion 0 por defecto
-        self.rectSubimagen.top = 0 # El scroll vertical empieza en la posicion 0 por defecto
-
-    def update(self, scrollx,scrolly):
-        #Cuando cambia el scroll cambiamos la posicion del rectangulo que define el trozo de fondo que se muestra
-        self.rectSubimagen.left = scrollx
-        self.rectSubimagen.top = scrolly
-
-
-    def dibujar(self, pantalla):
-        #Vuelca el rectángulo con el trozo corresponiente de la imagen
-        pantalla.blit(self.imagen, self.rect, self.rectSubimagen)
-
-    def colision(self,rect):
-        #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
-        #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
-        #En este caso se comprueba que el rojo no valga 0
-        #Si vale 0 en las 4 esquinas no hay colision
-        #Se podria usar tambien el alfa ( seria mas lógico)
-        #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
-        color1=self.collmap.get_at(rect.topleft)
-        color2=self.collmap.get_at(rect.topright)
-        color3=self.collmap.get_at(rect.bottomleft)
-        color4=self.collmap.get_at(rect.bottomright)
-        return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
 

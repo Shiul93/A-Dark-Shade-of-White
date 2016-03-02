@@ -5,11 +5,13 @@
 #Las que no empiezan con $ y tienen varios valores son un array de ints
 #Se carga en un diccionario
 #
+#Directorio del mapa
+$mapa museo_1.layers2
 #Archivo del escenario
-$decorado museo_1.png
+#$decorado museo_1.png
 #
 #Archivo de colisiones
-$colisiones museo_1_coll2.png
+#$colisiones museo_1_coll2.png
 #
 #Enemigos: numero y pares de coordenadas (por ejemplo enemigo 3 400 300 1200 600 800 400 )
 enemigo 3 582 716 1309 1113 386 356

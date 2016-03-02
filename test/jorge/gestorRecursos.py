@@ -41,6 +41,7 @@ class GestorRecursos(object):
                     colorkey = imagen.get_at((0,0))
                 imagen.set_colorkey(colorkey, RLEACCEL)
             # Se almacena
+            print("Cargando imagen "+ fullname)
             cls.recursos[nombre] = imagen
             # Se devuelve
             return imagen
@@ -53,13 +54,15 @@ class GestorRecursos(object):
         if nombre in cls.recursos:
             # Se devuelve ese recurso
             return cls.recursos[nombre]
+
         # Si no ha sido cargado anteriormente
         else:
             # Se carga el recurso indicando el nombre de su carpeta
-            fullname = os.path.join(cls.application_path,'imagenes', nombre)
+            fullname = os.path.join(cls.application_path,'imagenes', nombre) #Deberia estar en sup propia carpeta
             pfile=open(fullname,'r')
             datos=pfile.read()
             pfile.close()
+            print("Cargando archivo de coordenadas"+nombre)
             # Se almacena
             cls.recursos[nombre] = datos
             # Se devuelve
@@ -94,5 +97,35 @@ class GestorRecursos(object):
                             value=int(info[1])
                             datos[key]=value
                 line = f.readline()
+            print("Cargando fase"+nombre)
             cls.recursos[nombre]=datos
             return datos
+    @classmethod
+    def CargarArchivoCapas(cls,nombre):
+        """Obtiene los datos a partir del fichero de configuracion de capas"""
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+        # Si no ha sido cargado anteriormente
+        else:
+            layers = []
+            line = '#'
+            fullname = os.path.join(cls.application_path,'mapas', nombre)
+            f=open(fullname, 'r+')
+
+            while line != '':
+                if not(str.startswith(line,'#')):
+                    #Se obtienen el resto de caracteristicas del fichero de configuracion
+                    info = line.rstrip().split()
+                    info[0]=int(info[0])
+                    info[2]=int(info[2])
+                    info[3]=int(info[3])
+                    info[4]=int(info[4])
+                    info[5]=info[5]
+                    info[6]=int(info[6])
+                    layers.append(info)
+
+
+                line = f.readline()
+            print("Cargando mapa"+nombre)
+            return layers
