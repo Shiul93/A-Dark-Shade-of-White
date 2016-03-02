@@ -2,49 +2,44 @@
 
 import pygame, sys, os
 from pygame.locals import *
+from escena import *
 from gestorRecursos import *
-
+import math
 # -------------------------------------------------
 # -------------------------------------------------
 # Constantes
 # -------------------------------------------------
 # -------------------------------------------------
 
-ANCHO_PANTALLA = 800
-ALTO_PANTALLA = 600
+PI=math.pi
 
-# Movimientos
-QUIETO = 0
-IZQUIERDA = 1
-DERECHA = 2
-ARRIBA = 3
-ABAJO = 4
+#Movimiento
+QUIETO=0
+SIGILO=1
+NORMAL=2
+CARRERA=3
+
+# Direccion
+
+ABAJO=0
+IZQUIERDA=1
+DERECHA=2
+ARRIBA=3
 
 #Posturas
 SPRITE_QUIETO = 0
 SPRITE_ANDANDO = 1
-SPRITE_SALTANDO = 2
+
 
 # Velocidades de los distintos personajes
 VELOCIDAD_JUGADOR = 0.2 # Pixeles por milisegundo
-VELOCIDAD_SALTO_JUGADOR = 0.3 # Pixeles por milisegundo
 RETARDO_ANIMACION_JUGADOR = 5 # updates que durará cada imagen del personaje
                               # debería de ser un valor distinto para cada postura
 
 VELOCIDAD_SNIPER = 0.12 # Pixeles por milisegundo
-VELOCIDAD_SALTO_SNIPER = 0.27 # Pixeles por milisegundo
 RETARDO_ANIMACION_SNIPER = 5 # updates que durará cada imagen del personaje
                              # debería de ser un valor distinto para cada postura
 # El Sniper camina un poco más lento que el jugador, y salta menos
-
-GRAVEDAD = 0.0003 # Píxeles / ms2
-
-# -------------------------------------------------
-# -------------------------------------------------
-# Funciones auxiliares
-# -------------------------------------------------
-# -------------------------------------------------
-
 
 # -------------------------------------------------
 # -------------------------------------------------
@@ -55,8 +50,10 @@ GRAVEDAD = 0.0003 # Píxeles / ms2
 
 # -------------------------------------------------
 # Clase MiSprite
+# Clase base de la que derivaran las demas clases de sprite
 class MiSprite(pygame.sprite.Sprite):
     "Los Sprites que tendra este juego"
+
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.posicion = (0, 0)
@@ -64,16 +61,17 @@ class MiSprite(pygame.sprite.Sprite):
         self.scroll   = (0, 0)
 
     def establecerPosicion(self, posicion):
+        #Establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
         self.posicion = posicion
         self.rect.left = self.posicion[0] - self.scroll[0]
         self.rect.bottom = self.posicion[1] - self.scroll[1]
 
-    def establecerPosicionPantalla(self, scrollDecorado):
-        self.scroll = scrollDecorado;
-        (scrollx, scrolly) = self.scroll;
-        (posx, posy) = self.posicion;
-        self.rect.left = posx - scrollx;
-        self.rect.bottom = posy - scrolly;
+    def establecerPosicionPantalla(self, scrollx,scrolly):
+        #Actualiza el scroll y establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
+        self.scroll = (scrollx,scrolly)
+        (posx, posy) = self.posicion
+        self.rect.left = posx - scrollx
+        self.rect.bottom = posy - scrolly
 
     def incrementarPosicion(self, incremento):
         (posx, posy) = self.posicion
@@ -81,6 +79,7 @@ class MiSprite(pygame.sprite.Sprite):
         self.establecerPosicion((posx+incrementox, posy+incrementoy))
 
     def update(self, tiempo):
+        #Actualiza la posicion segun la velocidad y el tiempo
         incrementox = self.velocidad[0]*tiempo
         incrementoy = self.velocidad[1]*tiempo
         self.incrementarPosicion((incrementox, incrementoy))
@@ -100,160 +99,117 @@ class Personaje(MiSprite):
     #  Numero de imagenes en cada postura
     #  Velocidad de caminar y de salto
     #  Retardo para mostrar la animacion del personaje
-    def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidadCarrera, velocidadSalto, retardoAnimacion):
+    def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidadCarrera, retardoAnimacion):
 
         # Primero invocamos al constructor de la clase padre
         MiSprite.__init__(self);
 
-        # Se carga la hoja
-        self.hoja = GestorRecursos.CargarImagen(archivoImagen, -1)
+        # Se carga la hoja (por ahora no se usa sino que cojo nu sprite normal y lo giro
 
+        self.hoja = GestorRecursos.CargarImagen(archivoImagen,-1)
         self.hoja = self.hoja.convert_alpha()
-        # El movimiento que esta realizando
-        self.movimiento = QUIETO
-        # Lado hacia el que esta mirando
-        self.mirando = IZQUIERDA
 
-        # Leemos las coordenadas de un archivo de texto
         datos = GestorRecursos.CargarArchivoCoordenadas(archivoCoordenadas)
         datos = datos.split()
-        self.numPostura = 1;
+        cont=0
+
+        #
+        #CARGAMOS LOS DATOS DE LA ANIMACION
+        #
+
+        #Valores para la imagen de la animacion. las posturas en este caso son las direcciones y las imagenes los distintos frames
+        self.numPostura=0;
         self.numImagenPostura = 0;
-        cont = 0;
-        self.coordenadasHoja = [];
-        for linea in range(0, 3):
+        self.coordenadasHoja=[]
+        for linea in range(0, 4):
             self.coordenadasHoja.append([])
             tmp = self.coordenadasHoja[linea]
-            for postura in range(1, numImagenes[linea]+1):
+            for postura in range(1, 5):
                 tmp.append(pygame.Rect((int(datos[cont]), int(datos[cont+1])), (int(datos[cont+2]), int(datos[cont+3]))))
                 cont += 4
 
+        # El movimiento que esta realizando
+        self.movimiento = QUIETO
+        # Lado hacia el que esta mirando
+        self.mirando = ABAJO
+
+
+
+
         # El retardo a la hora de cambiar la imagen del Sprite (para que no se mueva demasiado rápido)
         self.retardoMovimiento = 0;
-
-        # En que postura esta inicialmente
-        self.numPostura = QUIETO
-
         # El rectangulo del Sprite
-        self.rect = pygame.Rect(100,100,self.coordenadasHoja[self.numPostura][self.numImagenPostura][2],self.coordenadasHoja[self.numPostura][self.numImagenPostura][3])
-
-        # Las velocidades de caminar y salto
+        self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height)
+        # Las velocidades de caminar , correr, etc
         self.velocidadCarrera = velocidadCarrera
-        self.velocidadSalto = velocidadSalto
-
         # El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)
         self.retardoAnimacion = retardoAnimacion
-
         # Y actualizamos la postura del Sprite inicial, llamando al metodo correspondiente
         self.actualizarPostura()
 
 
     # Metodo base para realizar el movimiento: simplemente se le indica cual va a hacer, y lo almacena
-    def mover(self, movimiento):
-        if movimiento == ARRIBA:
-            # Si estamos en el aire y el personaje quiere saltar, ignoramos este movimiento
-            if self.numPostura == SPRITE_SALTANDO:
-                self.movimiento = QUIETO
-            else:
-                self.movimiento = ARRIBA
-        else:
-            self.movimiento = movimiento
+    def mover(self, movimiento,direccion):
+        self.movimiento=movimiento
+        self.mirando=direccion
+        self.velocidadMovimiento=self.velocidadCarrera*self.movimiento/4
+
 
 
     def actualizarPostura(self):
+        # Coloca al personaje mirando hacia la direccion correcta y en el punto adecuado de la animacion
+        # self.image= pygame.transform.rotate(self.imagen,self.mirando)
+        self.numPostura=self.mirando
         self.retardoMovimiento -= 1
         # Miramos si ha pasado el retardo para dibujar una nueva postura
         if (self.retardoMovimiento < 0):
             self.retardoMovimiento = self.retardoAnimacion
             # Si ha pasado, actualizamos la postura
             self.numImagenPostura += 1
+            #Si llega al final vuelve al principio
             if self.numImagenPostura >= len(self.coordenadasHoja[self.numPostura]):
                 self.numImagenPostura = 0;
+
             if self.numImagenPostura < 0:
                 self.numImagenPostura = len(self.coordenadasHoja[self.numPostura])-1
-            self.image = self.hoja.subsurface(self.coordenadasHoja[self.numPostura][self.numImagenPostura])
 
-            # Si esta mirando a la izquiera, cogemos la porcion de la hoja
-            if self.mirando == IZQUIERDA:
-                self.image = self.hoja.subsurface(self.coordenadasHoja[self.numPostura][self.numImagenPostura])
-            #  Si no, si mira a la derecha, invertimos esa imagen
-            elif self.mirando == DERECHA:
-                self.image = pygame.transform.flip(self.hoja.subsurface(self.coordenadasHoja[self.numPostura][self.numImagenPostura]), 1, 0)
+        self.image = self.hoja.subsurface(self.coordenadasHoja[self.numPostura][self.numImagenPostura])
 
 
-    def update(self, grupoPlataformas, tiempo):
-
-        # Las velocidades a las que iba hasta este momento
-        (velocidadx, velocidady) = self.velocidad
-
-        # Si vamos a la izquierda o a la derecha
-        if (self.movimiento == IZQUIERDA) or (self.movimiento == DERECHA):
-            # Esta mirando hacia ese lado
-            self.mirando = self.movimiento
-
-            # Si vamos a la izquierda, le ponemos velocidad en esa dirección
-            if self.movimiento == IZQUIERDA:
-                velocidadx = -self.velocidadCarrera
-            # Si vamos a la derecha, le ponemos velocidad en esa dirección
-            else:
-                velocidadx = self.velocidadCarrera
-
-            # Si no estamos en el aire
-            if self.numPostura != SPRITE_SALTANDO:
-                # La postura actual sera estar caminando
-                self.numPostura = SPRITE_ANDANDO
-                # Ademas, si no estamos encima de ninguna plataforma, caeremos
-                if pygame.sprite.spritecollideany(self, grupoPlataformas) == None:
-                    self.numPostura = SPRITE_SALTANDO
-
-        # Si queremos saltar
-        elif self.movimiento == ARRIBA:
-            # La postura actual sera estar saltando
-            self.numPostura = SPRITE_SALTANDO
-            # Le imprimimos una velocidad en el eje y
-            velocidady = -self.velocidadSalto
-
-        # Si no se ha pulsado ninguna tecla
-        elif self.movimiento == QUIETO:
-            # Si no estamos saltando, la postura actual será estar quieto
-            if not self.numPostura == SPRITE_SALTANDO:
-                self.numPostura = SPRITE_QUIETO
-            velocidadx = 0
-
-
-
-        # Además, si estamos en el aire
-        if self.numPostura == SPRITE_SALTANDO:
-
-            # Miramos a ver si hay que parar de caer: si hemos llegado a una plataforma
-            #  Para ello, miramos si hay colision con alguna plataforma del grupo
-            plataforma = pygame.sprite.spritecollideany(self, grupoPlataformas)
-            #  Ademas, esa colision solo nos interesa cuando estamos cayendo
-            #  y solo es efectiva cuando caemos encima, no de lado, es decir,
-            #  cuando nuestra posicion inferior esta por encima de la parte de abajo de la plataforma
-            if (plataforma != None) and (velocidady>0) and (plataforma.rect.bottom>self.rect.bottom):
-                # Lo situamos con la parte de abajo un pixel colisionando con la plataforma
-                #  para poder detectar cuando se cae de ella
-                self.establecerPosicion((self.posicion[0], plataforma.posicion[1]-plataforma.rect.height+1))
-                # Lo ponemos como quieto
-                self.numPostura = SPRITE_QUIETO
-                # Y estará quieto en el eje y
-                velocidady = 0
-
-            # Si no caemos en una plataforma, aplicamos el efecto de la gravedad
-            else:
-                velocidady += GRAVEDAD * tiempo
-
-        # Actualizamos la imagen a mostrar
+    def update(self, decorado, tiempo):
+        velocidadx=0
+        velocidady=0
+        # Esta mirando hacia donde vayamos
+        if(self.mirando==ARRIBA):
+            velocidady=self.velocidadMovimiento*-1
+        elif(self.mirando==ABAJO):
+            velocidady=self.velocidadMovimiento
+        elif(self.mirando==DERECHA):
+            velocidadx=self.velocidadMovimiento
+        elif(self.mirando==IZQUIERDA):
+            velocidadx=self.velocidadMovimiento*-1
         self.actualizarPostura()
 
-        # Aplicamos la velocidad en cada eje
+        # Aplicamos la velocidad en cada eje      
         self.velocidad = (velocidadx, velocidady)
-
+        #Comprobamos las colisiones primero en el eje x
+        #Si colisiona en el eje x ponemos la velocidad x a 0
+        self.rect.bottomleft=self.posicion
+        newposrect=self.rect
+        newposrect.left=self.posicion[0]+velocidadx*tiempo
+        if(decorado.colision(newposrect)):
+            self.velocidad=(0,self.velocidad[1])
+            newposrect.left=self.posicion[0]
+        #colisiones verticales
+        #Si colisiona en el eje y ponemos la velocidad y a 0
+        newposrect.bottom=self.posicion[1]+velocidady*tiempo
+        if(decorado.colision(newposrect)):
+            self.velocidad=(self.velocidad[0],0)
+        MiSprite.update(self, tiempo)
         # Y llamamos al método de la superclase para que, según la velocidad y el tiempo
         #  calcule la nueva posición del Sprite
-        MiSprite.update(self, tiempo)
 
+        
         return
 
 
@@ -265,29 +221,41 @@ class Jugador(Personaje):
     "Cualquier personaje del juego"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        Personaje.__init__(self,'Jugador.png','coordJugador.txt', [6, 12, 6], VELOCIDAD_JUGADOR, VELOCIDAD_SALTO_JUGADOR, RETARDO_ANIMACION_JUGADOR);
+        Personaje.__init__(self,'oak.png','coordoak.txt', [6, 12, 6], VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
 
 
-    def mover(self, teclasPulsadas, arriba, abajo, izquierda, derecha):
+    def mover(self, teclasPulsadas, arriba, abajo, izquierda, derecha,sigilo,correr):
         # Indicamos la acción a realizar segun la tecla pulsada para el jugador
+        direccion=self.mirando
+        movimiento=NORMAL
         if teclasPulsadas[arriba]:
-            Personaje.mover(self,ARRIBA)
+            direccion=ARRIBA
+        elif teclasPulsadas[abajo]:
+            direccion=ABAJO
         elif teclasPulsadas[izquierda]:
-            Personaje.mover(self,IZQUIERDA)
+            direccion=IZQUIERDA
         elif teclasPulsadas[derecha]:
-            Personaje.mover(self,DERECHA)
+           direccion=DERECHA
         else:
-            Personaje.mover(self,QUIETO)
+            movimiento=QUIETO
 
+        if movimiento!=QUIETO:
+            if teclasPulsadas[sigilo]:
+                movimiento=SIGILO
+            elif teclasPulsadas[correr]:
+                movimiento=CARRERA
+
+        Personaje.mover(self,movimiento,direccion)
 
 # -------------------------------------------------
 # Clase NoJugador
 
 class NoJugador(Personaje):
     "El resto de personajes no jugadores"
-    def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad, velocidadSalto, retardoAnimacion):
+    #Interfaz para las clases de los no jugadores que implementa mover_cpu para la IA
+    def __init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad,  retardoAnimacion):
         # Primero invocamos al constructor de la clase padre con los parametros pasados
-        Personaje.__init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad, velocidadSalto, retardoAnimacion);
+        Personaje.__init__(self, archivoImagen, archivoCoordenadas, numImagenes, velocidad,  retardoAnimacion);
 
     # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion por defecto, este metodo deberia de ser implementado en las clases inferiores
@@ -304,28 +272,29 @@ class Sniper(NoJugador):
     "El enemigo 'Sniper'"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Sniper.png','coordSniper.txt', [5, 10, 6], VELOCIDAD_SNIPER, VELOCIDAD_SALTO_SNIPER, RETARDO_ANIMACION_SNIPER);
+        NoJugador.__init__(self,'Guardias.png','coordguardia.txt', [5, 10, 6], VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
 
     # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
-    def mover_cpu(self, jugador1, jugador2):
+    def mover_cpu(self, jugador1):
 
         # Movemos solo a los enemigos que esten en la pantalla
         if self.rect.left>0 and self.rect.right<ANCHO_PANTALLA and self.rect.bottom>0 and self.rect.top<ALTO_PANTALLA:
-
-            # Por ejemplo, intentara acercarse al jugador mas cercano en el eje x
-            # Miramos cual es el jugador mas cercano
-            if abs(jugador1.posicion[0]-self.posicion[0])<abs(jugador2.posicion[0]-self.posicion[0]):
-                jugadorMasCercano = jugador1
+            #Calcula la distancia enambos ejes
+            difx=jugador1.posicion[0]-self.posicion[0];
+            dify=jugador1.posicion[1]-self.posicion[1];
+            #Calcula el mayor
+            if(abs(difx)>abs(dify)):
+                if(difx>0):
+                    Personaje.mover(self,CARRERA,DERECHA)
+                else:
+                    Personaje.mover(self,CARRERA,IZQUIERDA)
             else:
-                jugadorMasCercano = jugador2
-            # Y nos movemos andando hacia el
-            if jugadorMasCercano.posicion[0]<self.posicion[0]:
-                Personaje.mover(self,IZQUIERDA)
-            else:
-                Personaje.mover(self,DERECHA)
-
+                if(dify>0):
+                    Personaje.mover(self,CARRERA,ABAJO)
+                else:
+                    Personaje.mover(self,CARRERA,ARRIBA)
         # Si este personaje no esta en pantalla, no hara nada
         else:
-            Personaje.mover(self,QUIETO)
+            Personaje.mover(self,QUIETO,ARRIBA)
 
