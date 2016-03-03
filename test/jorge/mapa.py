@@ -14,7 +14,7 @@ class Mapa:
         self.images = {}
         self.load_layers()
 
-        self.rect = self.images["suelo"].get_rect() #deberia coger la primera
+        self.rect = self.images[self.layers.pop()[1]].get_rect() #deberia coger la primera
         self.rectSubimagen = pygame.Rect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA)
         self.rectSubimagen.left = 0 # El scroll horizontal empieza en la posicion 0 por defecto
         self.rectSubimagen.top = 0 # El scroll vertical empieza en la posicion 0 por defecto

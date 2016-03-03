@@ -4,6 +4,7 @@ import pygame, sys, os
 from pygame.locals import *
 from escena import *
 from gestorRecursos import *
+from debuger import *
 import math
 # -------------------------------------------------
 # -------------------------------------------------
@@ -59,6 +60,7 @@ class MiSprite(pygame.sprite.Sprite):
         self.posicion = (0, 0)
         self.velocidad = (0, 0)
         self.scroll   = (0, 0)
+
 
     def establecerPosicion(self, posicion):
         #Establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
@@ -139,7 +141,7 @@ class Personaje(MiSprite):
         # El retardo a la hora de cambiar la imagen del Sprite (para que no se mueva demasiado rápido)
         self.retardoMovimiento = 0;
         # El rectangulo del Sprite
-        self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height)
+        self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height/2)
         # Las velocidades de caminar , correr, etc
         self.velocidadCarrera = velocidadCarrera
         # El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)
@@ -160,7 +162,8 @@ class Personaje(MiSprite):
         # Coloca al personaje mirando hacia la direccion correcta y en el punto adecuado de la animacion
         # self.image= pygame.transform.rotate(self.imagen,self.mirando)
         self.numPostura=self.mirando
-        self.retardoMovimiento -= 1
+        if self.movimiento!=QUIETO:
+            self.retardoMovimiento -= 1
         # Miramos si ha pasado el retardo para dibujar una nueva postura
         if (self.retardoMovimiento < 0):
             self.retardoMovimiento = self.retardoAnimacion
@@ -194,18 +197,21 @@ class Personaje(MiSprite):
         self.velocidad = (velocidadx, velocidady)
         #Comprobamos las colisiones primero en el eje x
         #Si colisiona en el eje x ponemos la velocidad x a 0
-        self.rect.bottomleft=self.posicion
+        self.rect.bottomleft=self.posicion #ponoa bottomleft
         newposrect=self.rect
-        newposrect.left=self.posicion[0]+velocidadx*tiempo
-        if(decorado.colision(newposrect)):
-            self.velocidad=(0,self.velocidad[1])
-            newposrect.left=self.posicion[0]
-        #colisiones verticales
-        #Si colisiona en el eje y ponemos la velocidad y a 0
-        newposrect.bottom=self.posicion[1]+velocidady*tiempo
-        if(decorado.colision(newposrect)):
-            self.velocidad=(self.velocidad[0],0)
+        newposrect.topleft=self.rect.bottomleft
+        newposrect.left=newposrect.left+velocidadx*tiempo
+        newposrect.bottom=newposrect.bottom+velocidady*tiempo
+        Debuger.anadirObjeto("rectangulo"+str(self),newposrect)
+        if(decorado.colision(newposrect) and self.movimiento!=CARRERA):
+            self.velocidad=(0,0)
+        Debuger.anadirLinea(newposrect.topleft,newposrect.topright)
+        Debuger.anadirLinea(newposrect.topleft,newposrect.bottomleft)
+        Debuger.anadirLinea(newposrect.bottomleft,newposrect.bottomright)
+        Debuger.anadirLinea(newposrect.bottomright,newposrect.topright)
+
         MiSprite.update(self, tiempo)
+
         # Y llamamos al método de la superclase para que, según la velocidad y el tiempo
         #  calcule la nueva posición del Sprite
 
@@ -235,7 +241,7 @@ class Jugador(Personaje):
         elif teclasPulsadas[izquierda]:
             direccion=IZQUIERDA
         elif teclasPulsadas[derecha]:
-           direccion=DERECHA
+            direccion=DERECHA
         else:
             movimiento=QUIETO
 
@@ -244,7 +250,8 @@ class Jugador(Personaje):
                 movimiento=SIGILO
             elif teclasPulsadas[correr]:
                 movimiento=CARRERA
-
+            else:
+                movimiento=NORMAL
         Personaje.mover(self,movimiento,direccion)
 
 # -------------------------------------------------
@@ -286,14 +293,14 @@ class Sniper(NoJugador):
             #Calcula el mayor
             if(abs(difx)>abs(dify)):
                 if(difx>0):
-                    Personaje.mover(self,CARRERA,DERECHA)
+                    Personaje.mover(self,NORMAL,DERECHA)
                 else:
-                    Personaje.mover(self,CARRERA,IZQUIERDA)
+                    Personaje.mover(self,NORMAL,IZQUIERDA)
             else:
                 if(dify>0):
-                    Personaje.mover(self,CARRERA,ABAJO)
+                    Personaje.mover(self,NORMAL,ABAJO)
                 else:
-                    Personaje.mover(self,CARRERA,ARRIBA)
+                    Personaje.mover(self,NORMAL,ARRIBA)
         # Si este personaje no esta en pantalla, no hara nada
         else:
             Personaje.mover(self,QUIETO,ARRIBA)

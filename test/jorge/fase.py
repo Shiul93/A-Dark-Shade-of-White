@@ -3,6 +3,7 @@
 import pygame, escena
 from escena import *
 from personajes import *
+import debuger
 from mapa import *
 from pygame.locals import *
 
@@ -209,6 +210,8 @@ class Fase(Escena):
         self.grupoSprites.draw(pantalla)
         #Luego las capas que tapan a los sprites
         self.decorado.dibujar_post(pantalla)
+        Debuger.dibujarTexto(pantalla)
+        Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
 
     def eventos(self, lista_eventos):
         # Miramos a ver si hay algun evento de salir del programa
