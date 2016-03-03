@@ -1,0 +1,24 @@
+-Ventana de mensajes
+-Cargar y guardar partida (Estado) +
+-Objetos interactivos (Camaras, botones ,puertas, luces)
+    -Accionables (boton, puerta)
+    -Afectables (camara,puerta,luz)
+-Musica
+-Sonidos
+
+-Sistema de paredes: mapa de colision, los personajes que esten en zona de colision se dibujan antes que la capa intermedia??
+
+
+    -Sistema de eventos
+        evento
+            desencadenantes
+                accionar un objeto
+                    -Estar en su lugar & pulsar accion
+                llegar a un punto
+                    -Estar en el lugar
+
+            acciones
+                -Activar un objeto (Puerta | Camara | Luz)
+                -Emitir un sonido
+                -Mostrar un mensaje
+                -Finalizar fase
