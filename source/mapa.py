@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pytmx.util_pygame import load_pygame
+
 import pygame
 import os
 from os import path
