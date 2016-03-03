@@ -101,3 +101,44 @@ class GestorRecursos(object):
                 line = f.readline()
             cls.recursos[nombre] = datos
             return datos
+
+    @classmethod
+    def CargarArchivoCapas(cls,nombre,mapa):
+        """Obtiene los datos a partir del fichero de configuracion de capas"""
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+        # Si no ha sido cargado anteriormente
+        else:
+            layers = []
+            line = '#'
+            fullname = os.path.join(cls.application_path,'media','maps', nombre)
+            f=open(fullname, 'r+')
+
+            while line != '':
+                if (str.startswith(line,'W')):
+                    #Anchura del mapa (EN TILES)
+                    mapa.width = int(line.rstrip().split()[1])
+                elif (str.startswith(line,'H')):
+                    #Altura del mapa (EN TILES)
+                    mapa.height = int(line.rstrip().split()[1])
+                elif (str.startswith(line,'P')):
+                    #Lado del tile [EN PIXELS)
+                    mapa.pixels = int(line.rstrip().split()[1])
+
+                elif not(str.startswith(line,'#')):
+                    #Se obtienen el resto de caracteristicas del fichero de configuracion
+                    info = line.rstrip().split()
+                    info[0]=int(info[0])#Numero de capa
+                    info[1]=info[1]#Nombre de capa
+                    info[2]=int(info[2])#Visibilidad
+                    info[3]=int(info[3])#Colisionable
+                    info[4]=int(info[4])#Opacidad
+                    info[5]=info[5]#Nombre de archivo de imagen
+                    info[6]=int(info[6])#Pre o Post dibujado
+                    layers.append(info)
+
+
+                line = f.readline()
+            print("Cargando mapa: "+nombre)
+            return layers

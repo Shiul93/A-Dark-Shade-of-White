@@ -13,11 +13,11 @@ class Mapa:
         self.path  = 'maps'+os.path.sep+nombre+os.path.sep
         print self.path
         self.nombre = nombre
-        self.layers = self.parse_layer_info()
+        self.layers = GestorRecursos.CargarArchivoCapas(path.join(nombre,nombre+".layers"),self)
         self.images = {}
         self.load_layers()
 
-        #todo Manejar el scroll
+
         self.rect = self.images[(self.layers[0])[1]].get_rect()
         self.rectSubimagen = pygame.Rect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA)
         self.rectSubimagen.left = 0 # El scroll horizontal empieza en la posicion 0 por defecto
@@ -35,39 +35,7 @@ class Mapa:
         st = st+'Pixels: '+str(self.pixels)+'\n'
         return st
 
-    def parse_layer_info(self):
-        """Obtiene los datos a partir del fichero de configuracion de capas"""
-        layers = []
 
-        line = '#'
-        f=open(path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)),"media",self.path,self.nombre+".layers") ,'r+')
-
-        while line != '':
-            if (str.startswith(line,'W')):
-                #Anchura del mapa (EN TILES)
-                self.width = int(line.rstrip().split()[1])
-            elif (str.startswith(line,'H')):
-                #Altura del mapa (EN TILES)
-                self.height = int(line.rstrip().split()[1])
-            elif (str.startswith(line,'P')):
-                #Lado del tile [EN PIXELS)
-                self.pixels = int(line.rstrip().split()[1])
-
-            elif not(str.startswith(line,'#')):
-                #Se obtienen el resto de caracteristicas del fichero de configuracion
-                info = line.rstrip().split()
-                info[0]=int(info[0])#Numero de capa
-                info[1]=info[1]#Nombre de capa
-                info[2]=int(info[2])#Visibilidad
-                info[3]=int(info[3])#Colisionable
-                info[4]=int(info[4])#Opacidad
-                info[5]=info[5]#Nombre de archivo de imagen
-                info[6]=int(info[6])#Pre o Post dibujado
-                layers.append(info)
-
-
-            line = f.readline()
-        return layers
 
     def load_layers(self):
         """Utiliza el gestor de recursos para cargar las imagenes correspondientes a las capas del mapa"""
