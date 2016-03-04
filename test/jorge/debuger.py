@@ -46,8 +46,14 @@ class Debuger(object):
     def anadirLineas(cls,list):
         for linea in list:
             if isinstance(linea,tuple)and len(linea)==2:
-                if isinstance(linea[0],tuple) and isinstance(linea[1],tuple) and len(linea[0])==2 and len(linea[2])==2:
+                if isinstance(linea[0],tuple) and isinstance(linea[1],tuple) and len(linea[0])==2 and len(linea[1])==2:
                     cls.puntos.append(linea)
+    @classmethod
+    def anadirRectangulo(cls,rect):
+        cls.anadirLinea(rect.topleft,rect.topright)
+        cls.anadirLinea(rect.topleft,rect.bottomleft)
+        cls.anadirLinea(rect.topright,rect.bottomright)
+        cls.anadirLinea(rect.bottomleft,rect.bottomright)
 
 
     @classmethod

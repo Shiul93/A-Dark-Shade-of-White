@@ -5,6 +5,7 @@ from pygame.locals import *
 from escena import *
 from gestorRecursos import *
 from debuger import *
+from mysprite import *
 import math
 # -------------------------------------------------
 # -------------------------------------------------
@@ -47,44 +48,6 @@ RETARDO_ANIMACION_SNIPER = 5 # updates que durará cada imagen del personaje
 # Clases de los objetos del juego
 # -------------------------------------------------
 # -------------------------------------------------
-
-
-# -------------------------------------------------
-# Clase MiSprite
-# Clase base de la que derivaran las demas clases de sprite
-class MiSprite(pygame.sprite.Sprite):
-    "Los Sprites que tendra este juego"
-
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.posicion = (0, 0)
-        self.velocidad = (0, 0)
-        self.scroll   = (0, 0)
-
-
-    def establecerPosicion(self, posicion):
-        #Establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
-        self.posicion = posicion
-        self.rect.left = self.posicion[0] - self.scroll[0]
-        self.rect.bottom = self.posicion[1] - self.scroll[1]
-
-    def establecerPosicionPantalla(self, scrollx,scrolly):
-        #Actualiza el scroll y establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
-        self.scroll = (scrollx,scrolly)
-        (posx, posy) = self.posicion
-        self.rect.left = posx - scrollx
-        self.rect.bottom = posy - scrolly
-
-    def incrementarPosicion(self, incremento):
-        (posx, posy) = self.posicion
-        (incrementox, incrementoy) = incremento
-        self.establecerPosicion((posx+incrementox, posy+incrementoy))
-
-    def update(self, tiempo):
-        #Actualiza la posicion segun la velocidad y el tiempo
-        incrementox = self.velocidad[0]*tiempo
-        incrementoy = self.velocidad[1]*tiempo
-        self.incrementarPosicion((incrementox, incrementoy))
 
 
 
@@ -202,13 +165,11 @@ class Personaje(MiSprite):
         newposrect.topleft=self.rect.bottomleft
         newposrect.left=newposrect.left+velocidadx*tiempo
         newposrect.bottom=newposrect.bottom+velocidady*tiempo
+        self.newposrect=newposrect
         Debuger.anadirObjeto("rectangulo"+str(self),newposrect)
         if(decorado.colision(newposrect) and self.movimiento!=CARRERA):
             self.velocidad=(0,0)
-        Debuger.anadirLinea(newposrect.topleft,newposrect.topright)
-        Debuger.anadirLinea(newposrect.topleft,newposrect.bottomleft)
-        Debuger.anadirLinea(newposrect.bottomleft,newposrect.bottomright)
-        Debuger.anadirLinea(newposrect.bottomright,newposrect.topright)
+        Debuger.anadirRectangulo(newposrect)
 
         MiSprite.update(self, tiempo)
 
@@ -254,6 +215,11 @@ class Jugador(Personaje):
                 movimiento=NORMAL
         Personaje.mover(self,movimiento,direccion)
 
+
+    def update(self,decorado,tiempo):
+        "Acciones especificas del jugador(activar objetos etc)"
+
+        Personaje.update(self,decorado,tiempo)
 # -------------------------------------------------
 # Clase NoJugador
 

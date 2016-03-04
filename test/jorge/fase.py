@@ -6,6 +6,7 @@ from personajes import *
 import debuger
 from mapa import *
 from pygame.locals import *
+from objetos import *
 
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
@@ -79,6 +80,15 @@ class Fase(Escena):
           self.grupoSpritesDinamicos.add(enemigo[i] )
           self.grupoSprites.add(enemigo[i])
 
+        #Cargamos los objetos
+        self.boton=accionable("boton_verde_pequeno.png",(187,562),pygame.Rect(170,573,66,55))
+        self.grupoSprites.add(self.boton) #(NO SE PORQUE NO)
+
+        #Cuadro de texto (provisional podria pasarse a una clase GUI)
+        self.cuadrotexto=CuadroTexto()
+        self.pausa=False
+        self.haymensaje=False
+        self.actiondropped=True
 
 
         
@@ -169,49 +179,38 @@ class Fase(Escena):
     #     Actualizar el scroll implica tener que desplazar todos los sprites por pantalla
     #  Se actualiza la posicion del sol y el color del cielo
     def update(self, tiempo):
-
+        if(not self.pausa):
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
-        for enemigo in iter(self.grupoEnemigos):
-            enemigo.mover_cpu(self.jugador1)
-        # Esta operación es aplicable también a cualquier Sprite que tenga algún tipo de IA
-        # En el caso de los jugadores, esto ya se ha realizado
+            for enemigo in iter(self.grupoEnemigos):
+                enemigo.mover_cpu(self.jugador1)
 
-        # Actualizamos los Sprites dinamicos
-        # De esta forma, se simula que cambian todos a la vez
-        # Esta operación de update ya comprueba que los movimientos sean correctos
-        #  y, si lo son, realiza el movimiento de los Sprites
-        self.grupoSpritesDinamicos.update(self.decorado, tiempo)
-        # Dentro del update ya se comprueba que todos los movimientos son válidos
-        #  (que no choque con paredes, etc.)
+            self.grupoSpritesDinamicos.update(self.decorado, tiempo)
+            #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
+            #    self.director.salirEscena()
 
-        # Los Sprites que no se mueven no hace falta actualizarlos,
-        #  si se actualiza el scroll, sus posiciones en pantalla se actualizan más abajo
-        # En cambio, sí haría falta actualizar los Sprites que no se mueven pero que tienen que
-        #  mostrar alguna animación
-
-        # Comprobamos si hay colision entre algun jugador y algun enemigo
-        # Se comprueba la colision entre ambos grupos
-        # Si la hay, indicamos que se ha finalizado la fase
-        #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
-            # Se le dice al director que salga de esta escena y ejecute la siguiente en la pila
-        #    self.director.salirEscena()
-
-        # Actualizamos el scroll
-        self.actualizarScroll(self.jugador1)
+            # Actualizamos el scroll
+            self.actualizarScroll(self.jugador1)
   
-        # Actualizamos el fondo:
-        #  la posicion del sol y el color del cielo
 
         
     def dibujar(self, pantalla):
         #Primero las capas que no tapan a los sprites
         self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
-        self.grupoSprites.draw(pantalla)
+
         #Luego las capas que tapan a los sprites
         self.decorado.dibujar_post(pantalla)
+        self.grupoSprites.draw(pantalla)
+        Debuger.anadirRectangulo(self.boton.area)
+        #Debuger.anadirRectangulo(self.boton.areaPos)
+        Debuger.anadirObjeto("cuadrotexto.rect",self.cuadrotexto.rect)
+        Debuger.anadirObjeto("cuadrotextro.imagen",self.cuadrotexto.image)
+
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
+        if(self.haymensaje):
+            self.cuadrotexto.draw(pantalla)
+
 
     def eventos(self, lista_eventos):
         # Miramos a ver si hay algun evento de salir del programa
@@ -222,5 +221,27 @@ class Fase(Escena):
 
         # Indicamos la acción a realizar segun la tecla pulsada para cada jugador
         teclasPulsadas = pygame.key.get_pressed()
-        self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
+        if(not self.pausa):
+            self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
+            #eventos de accion aqui
+            if  not teclasPulsadas[K_RETURN]:
+                self.actiondropped=True
+            elif self.actiondropped:
+                if(self.boton.objetoEnArea(self.jugador1.newposrect)):
+                    self.mostrarMensaje("Has pulsado el boton 1")
+        else:
+            if not teclasPulsadas[K_RETURN]:
+                self.actiondropped=True
+            elif self.actiondropped:
+                self.pausa=False
+                self.haymensaje=False
+                self.actiondropped=False
 
+
+        #AQUI SE DEBERIAN COMROBAR LOS EVENTOS DEL JUEGO
+
+    def mostrarMensaje(self,texto):
+        self.cuadrotexto.establecerTexto(texto)
+        self.pausa=True
+        self.haymensaje=True
+        self.actiondropped=False
