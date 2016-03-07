@@ -48,7 +48,7 @@ class accionable(MiSprite):
         self.image=self.image.transform.rotate(angulo)
     '''
     def objetoEnArea(self,rect_objeto):
-        return self.areaPos.contains(rect_objeto)
+        return self.area.contains(rect_objeto)
 
 
     def establecerPosicionPantalla(self,scrollx, scrolly):

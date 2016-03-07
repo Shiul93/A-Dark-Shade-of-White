@@ -69,14 +69,7 @@ class Fase(Escena):
         self.grupoSprites = pygame.sprite.Group( self.jugador1)
         self.grupoJugadores=pygame.sprite.Group(self.jugador1)
         # Cargamos los enemigos
-        enemigo=[]
-        self.grupoEnemigos=pygame.sprite.Group()
-        for i in range (0,datos['enemigo'][0]):
-          enemigo.append(Sniper())
-          enemigo[i].establecerPosicion((datos['enemigo'][(2*i+1)],datos['enemigo'][(2*i+2)]))
-          self.grupoEnemigos.add(enemigo[i])
-          #self.grupoSpritesDinamicos.add(enemigo[i] )
-          self.grupoSprites.add(enemigo[i])
+        #DESPUES DEL GRAFO
 
         self.grupoSpritesDinamicos = pygame.sprite.Group()
         self.grupoColisionables = pygame.sprite.Group()
@@ -134,31 +127,114 @@ class Fase(Escena):
         #Grafo de prueba
         grafo={'1050 994':['1050 1118','1050 924','1175 994'] ,
                '1050 1118':['1050 994','1304 1118','920 1118'],
-               '1304 994':['1304 1118','1175 994','1304 786'],
+               '1304 994':['1304 1118','1175 994','1304 800'],
                '1304 1118':['1050 1118','1304 994'],
-               '920 1118':['1050 994','802 1118','920 924'],
-               '802 1118':['920 1118','687 1118','802 924'],
-               '687 1118':['802 1118','687 924'],
-               '1050 924':['1050 994','920 924','1050 786'],
-               '920 924':['920 1118','1050 924','802 924'],
-               '802 924':['802 1118','920 924','687 924'],
-               '687 924':['687 1118', '802 924'],
-               '1175 994':['1050 994','1304 994','1175 786'],
-               '1050 786':['1050 924','1175 786','1050 604'],
-               '1175 786':['1175 994','1050 786', '1304 786'],
-               '1304 786':['1304 994','1175 994','1304 604'],
-               '1050 604':['1050 786','1175 604'],
-               '1175 604':['1175 786','1050 604','1304 604'],
-               '1304 604':['1304 786','1175 604']}
+               '920 1118':['1050 1118','790 1118','920 924'],
+               '790 1118':['920 1118','665 1118','790 924'],
+               '665 1118':['790 1118','665 924'],
+               '1050 924':['1050 994','920 924','1050 800'],
+               '920 924':['920 1118','1050 924','790 924'],
+               '790 924':['790 1118','920 924','665 924'],
+               '665 924':['665 1118', '790 924'],
+               '1175 994':['1050 994','1304 994','1175 800'],
+               '1050 800':['1050 924','1175 800','1050 604'],
+               '1175 800':['1175 994','1050 800', '1304 800'],
+               '1304 800':['1304 994','1175 800','1304 604'],
+               '1050 604':['1050 800','1175 604'],
+               '1175 604':['1175 800','1050 604','1304 604'],
+               '1304 604':['1304 800','1175 604']}
+
+        lista_nodos=[(0,0),#Nodo 0 la lista empieza en el 1
+                     (354,387),
+                     (856,387),
+
+                     (354,541),
+                     (607,541),
+                     (856,541),
+                     (1175,541),
+
+                     (202,604),
+                     (1050,604),
+                     (1175,604),
+                     (1304,604),
+
+                     (567,663),
+                     (607,663),
+
+                     (202,735),
+                     (388,735),
+                     (567,735),
+                     (778,735),
+                     (856,735),
+
+                     (1050,800),
+                     (1175,800),
+                     (1304,800),
+
+                     (388,924),
+                     (665,924),
+                     (790,924),
+                     (856,924),
+                     (920,924),
+                     (1050,924),
+
+                     (1050,994),
+                     (1175,994),
+                     (1304,994),
+                     (665,1118),
+                     (790,1118),
+                     (920,1118),
+                     (1050,1118),
+                     (1304,1118)]
+
+        grafo2=[[],
+                [2,3],
+                [1,5],
+                [1,4],
+                [3,5,12],
+                [2,4,17],
+                [9],
+                [13],
+                [9,18],
+                [6,8,10],
+                [9,20],
+                [12,15],
+                [4,11],
+                [7,14],
+                [13,15,21],
+                [11,14],
+                [17],
+                [5,16,24],
+                [8,19,26],
+                [9,18,20,28],
+                [10,19,29],
+                [14],
+                [23,30],
+                [22,24,31],
+                [17,23,25],
+                [24,26,32],
+                [18,27],
+                [26,28,33],
+                [19,27,29],
+                [20,28,34],
+                [22,31],
+                [23,30,32],
+                [25,31,33],
+                [27,32,34],
+                [29,33]
+                ]
 
 
-
-
-
-
+        enemigo=[]
+        self.grupoEnemigos=pygame.sprite.Group()
+        for i in range (0,datos['enemigo'][0]):
+          enemigo.append(Sniper(lista_nodos,grafo2,datos['enemigo'][i+1]))
+          self.grupoEnemigos.add(enemigo[i])
+          #self.grupoSpritesDinamicos.add(enemigo[i] )
+          self.grupoSprites.add(enemigo[i])
         #Enemigo con grafo
-        patrulla=Patrulla(grafo)
-        patrulla.establecerPosicion((1050,998))
+        patrulla=Patrulla(lista_nodos,grafo2,34)
+        patrulla.establecerPosicion((1304,1118))
         self.grupoEnemigos.add(patrulla)
         #self.grupoSpritesDinamicos.add(enemigo[i] )
         self.grupoSprites.add(patrulla)
@@ -253,6 +329,7 @@ class Fase(Escena):
     #  Se actualiza la posicion del sol y el color del cielo
     def update(self, tiempo):
         if(not self.pausa):
+            Debuger.anadirTextoDebug("FPS: "+str(int(1000/tiempo)))
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
             for enemigo in iter(self.grupoEnemigos):
                 enemigo.mover_cpu(self.jugador1)
@@ -281,6 +358,7 @@ class Fase(Escena):
         Debuger.anadirRectangulo(self.boton.area)
         Debuger.anadirRectangulo(self.puerta.area)
         Debuger.anadirRectangulo(self.meta.area)
+
 
 
         Debuger.dibujarTexto(pantalla)

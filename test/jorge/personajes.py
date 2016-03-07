@@ -48,6 +48,9 @@ def pardeclave(string):
     values=string.split()
     return (int(values[0]),int(values[1]))
 
+def dist(punto1,punto2):
+    return math.hypot(punto1[0]-punto2[0],punto1[1]-punto2[1])
+
 # -------------------------------------------------
 # -------------------------------------------------
 # Clases de los objetos del juego
@@ -110,7 +113,7 @@ class Personaje(MiSprite):
         # El retardo a la hora de cambiar la imagen del Sprite (para que no se mueva demasiado rápido)
         self.retardoMovimiento = 0;
         # El rectangulo del Sprite
-        self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height/2)
+        self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height)
         self.newposrect=pygame.Rect(800,600,32,54)
         # Las velocidades de caminar , correr, etc
         self.velocidadCarrera = velocidadCarrera
@@ -150,7 +153,7 @@ class Personaje(MiSprite):
 
 
     def update(self, fase, tiempo):
-        if tiempo>1000 :tiempo=1000
+        #if tiempo>1000 :tiempo=1000
         velocidadx=0
         velocidady=0
         # Esta mirando hacia donde vayamos
@@ -168,18 +171,15 @@ class Personaje(MiSprite):
         self.velocidad = (velocidadx, velocidady)
         #Comprobamos las colisiones primero en el eje x
         #Si colisiona en el eje x ponemos la velocidad x a 0
-        print self.posicion
-        self.rect.bottomleft=self.posicion #ponoa bottomleft
-        newposrect=pygame.Rect(0,0,1,1)
-        newposrect=self.rect
-        newposrect.topleft=self.rect.bottomleft
+        #print self.posicion
+        newposrect=pygame.Rect(0,0,self.rect.width*2/3,self.rect.height/3)
+        newposrect.bottomleft=(self.posicion[0]+self.rect.width/6,self.posicion[1])
         newposrect.left=newposrect.left+velocidadx*tiempo
         newposrect.bottom=newposrect.bottom+velocidady*tiempo
         self.newposrect=newposrect
-        if(fase.colision(self.rect.copy()) and self.movimiento!=CARRERA):
+        if(fase.colision(self.newposrect.copy()) and self.movimiento!=CARRERA):
             self.velocidad=(0,0)
         Debuger.anadirRectangulo(newposrect)
-
         MiSprite.update(self, tiempo)
 
         # Y llamamos al método de la superclase para que, según la velocidad y el tiempo
@@ -251,62 +251,87 @@ class NoJugador(Personaje):
 # Clase Sniper
 
 class Sniper(NoJugador):
-    "El enemigo tonto 'Sniper'"
-    def __init__(self):
+    "El  guardia que te persigue por un grafo de nodos"
+    def __init__(self,nodos,grafo,nodoinicial):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
         NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
-
-    # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
-    # La implementacion de la inteligencia segun este personaje particular
-    def mover_cpu(self, jugador1):
-
-        # Movemos solo a los enemigos que esten en la pantalla
-        if self.rect.left>0 and self.rect.right<ANCHO_PANTALLA and self.rect.bottom>0 and self.rect.top<ALTO_PANTALLA:
-            #Calcula la distancia enambos ejes
-            difx=jugador1.posicion[0]-self.posicion[0];
-            dify=jugador1.posicion[1]-self.posicion[1];
-            #Calcula el mayor
-            if(abs(difx)>abs(dify)):
-                if(difx>0):
-                    Personaje.mover(self,NORMAL,DERECHA)
-                else:
-                    Personaje.mover(self,NORMAL,IZQUIERDA)
-            else:
-                if(dify>0):
-                    Personaje.mover(self,NORMAL,ABAJO)
-                else:
-                    Personaje.mover(self,NORMAL,ARRIBA)
-        # Si este personaje no esta en pantalla, no hara nada
-        else:
-            Personaje.mover(self,QUIETO,ARRIBA)
-
-
-class Patrulla(NoJugador):
-    "El  guardia que da vueltas por un grafo de nodos"
-    def __init__(self,grafo):
-        # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
+        self.nodos=nodos
         self.grafo=grafo
-        self.inicio='1050 994' #la primera del
-        self.destino='1050 994'
+        self.inicio=nodoinicial #la primera del
+        self.destino=nodoinicial
+        self.posicion=nodos[nodoinicial]
         # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
     def mover_cpu(self, jugador1):
 
         # Movemos solo a los enemigos que esten en la pantalla
             #Calcula la distancia enambos ejes
-            dest=pardeclave(self.destino)
-            dist=(dest[0]-self.posicion[0],dest[1]-self.posicion[1])
-            if abs(dist[0]+dist[1])<2 : #Si llega a un destino
-                self.destino=self.grafo[self.destino][randint(0,len(self.grafo[self.destino])-1)]
+            dest=self.nodos[self.destino]
+            distancia=(dest[0]-self.posicion[0],dest[1]-self.posicion[1])
+            #Dibujar el grafo
+            for i in range(0,len(self.grafo)):
+                ldestinos=self.grafo[i]
+                for destino in ldestinos:
+                    Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
+            Debuger.anadirLinea(self.posicion,dest)
+            if abs(distancia[0]+distancia[1])<2 : #Si llega a un destino
+                listaDestinos=self.grafo[self.destino]
+                mindist=dist(jugador1.posicion,self.nodos[listaDestinos[0]])
+                mindistindex=0
+                for i in range(0,len(listaDestinos)):#De todos los destinos calcula cual esta mas cerca de personaje
+                    newdist=dist(jugador1.posicion,self.nodos[listaDestinos[i]])
+                    if newdist<mindist:
+                        mindist=newdist
+                        mindistindex=i
+                self.destino=listaDestinos[mindistindex]
             else: #Si aun no llego
-                if(abs(dist[0])>abs(dist[1])):
-                    if(dist[0]>0):
+                if(abs(distancia[0])>abs(distancia[1])):
+                    if(distancia[0]>0):
                         Personaje.mover(self,NORMAL,DERECHA)
                     else:
                         Personaje.mover(self,NORMAL,IZQUIERDA)
                 else:
-                    if(dist[1]>0):
+                    if(distancia[1]>0):
+                        Personaje.mover(self,NORMAL,ABAJO)
+                    else:
+                        Personaje.mover(self,NORMAL,ARRIBA)
+
+
+
+class Patrulla(NoJugador):
+    "El  guardia que da vueltas por un grafo de nodos"
+    def __init__(self,nodos,grafo,nodoinicial):
+        # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
+        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
+        self.nodos=nodos
+        self.grafo=grafo
+        self.inicio=nodoinicial #la primera del
+        self.destino=nodoinicial
+        self.posicion=nodos[nodoinicial]
+        # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
+    # La implementacion de la inteligencia segun este personaje particular
+    def mover_cpu(self, jugador1):
+
+        # Movemos solo a los enemigos que esten en la pantalla
+            #Calcula la distancia enambos ejes
+            dest=self.nodos[self.destino]
+            distancia=(dest[0]-self.posicion[0],dest[1]-self.posicion[1])
+            #Dibujar el grafo
+            for i in range(0,len(self.grafo)):
+                ldestinos=self.grafo[i]
+                for destino in ldestinos:
+                    Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
+            Debuger.anadirLinea(self.posicion,dest)
+            if abs(distancia[0]+distancia[1])<2 : #Si llega a un destino
+                self.destino=self.grafo[self.destino][randint(0,len(self.grafo[self.destino])-1)]
+            else: #Si aun no llego
+                if(abs(distancia[0])>abs(distancia[1])):
+                    if(distancia[0]>0):
+                        Personaje.mover(self,NORMAL,DERECHA)
+                    else:
+                        Personaje.mover(self,NORMAL,IZQUIERDA)
+                else:
+                    if(distancia[1]>0):
                         Personaje.mover(self,NORMAL,ABAJO)
                     else:
                         Personaje.mover(self,NORMAL,ARRIBA)

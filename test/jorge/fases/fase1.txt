@@ -13,8 +13,8 @@ $mapa museo_1.layers2
 #Archivo de colisiones
 #$colisiones museo_1_coll2.png
 #
-#Enemigos: numero y pares de coordenadas (por ejemplo enemigo 3 400 300 1200 600 800 400 )
-enemigo 3 582 716 1309 1113 386 356
+#Enemigos: numero y nodo inicial (por ejemplo enemigo 3 14 18 21 )
+enemigo 2 15 1
 #En el futuro quizas sea mas practico hacer una linea por cada enemigo con sus waypoints o bien hacer lineas con paths y asignarlas a enemios
 #Posicion inicial: x e y
 posicion_inicial 400 980
