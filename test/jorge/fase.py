@@ -33,211 +33,94 @@ MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 
 class Fase(Escena):
     def __init__(self,archivoFase, director):
-
-        # Habria que pasarle como parámetro el número de fase, a partir del cual se cargue
-        #  un fichero donde este la configuracion de esa fase en concreto, con cosas como
-        #   - Nombre del archivo con el decorado
-        #   - Posiciones de las plataformas
-        #   - Posiciones de los enemigos
-        #   - Posiciones de inicio de los jugadores
-        #  etc.
-        # Y cargar esa configuracion del archivo en lugar de ponerla a mano, como aqui abajo
-        # De esta forma, se podrian tener muchas fases distintas con esta clase
-
-        # Primero invocamos al constructor de la clase padre
-        Escena.__init__(self, director)
-
-        datos = GestorRecursos.CargarArchivoFase(archivoFase)
-        print(datos)
-
-
-        # Creamos el decorado y el fondo
-        self.decorado = Mapa(datos['$mapa'])
-
-        # Que parte del decorado estamos visualizando
+        #VARIABLES LOCALES DE LA FASE
         self.scrollx = 0
         self.scrolly = 0
-        #  En ese caso solo hay scroll horizontal
-        #  Si ademas lo hubiese vertical, seria self.scroll = (0, 0)
-
-        # Creamos los sprites de los jugadores
-        self.jugador1 = Jugador()
-        # Ponemos a los jugadores en sus posiciones iniciales
-        self.jugador1.establecerPosicion((datos['posicion_inicial'][0],datos['posicion_inicial'][1]))
-
-        #Creamos los grupos de sprites con el jugador
-        self.grupoSprites = pygame.sprite.Group( self.jugador1)
-        self.grupoJugadores=pygame.sprite.Group(self.jugador1)
-        # Cargamos los enemigos
-        #DESPUES DEL GRAFO
-
-        self.grupoSpritesDinamicos = pygame.sprite.Group()
-        self.grupoColisionables = pygame.sprite.Group()
-        ##TODO ESTO DESDE ARCHIVO FASE
-
-        #Cargamos los objetos
-        self.boton=accionable("boton_verde_pequeno.png",(187,562),pygame.Rect(170,573,66,55))
-        self.grupoSprites.add(self.boton) #(NO SE PORQUE NO)
-        self.boton2=accionable("boton_verde_pequeno.png",(556,623),pygame.Rect(546,623,66,55))
-        self.grupoSprites.add(self.boton2) #(NO SE PORQUE NO)
-
-        self.meta=accionable("boton_verde_pequeno.png",(1140,170),pygame.Rect(1111,192,146,128))
-        self.grupoSprites.add(self.meta) #(NO SE PORQUE NO)
-
-
-
-
-        self.puerta=activable("puerta_pequeña.png","coord_puerta_pequena",(368,898),pygame.Rect(362,890,68,60),False,1000)
-        self.grupoSprites.add(self.puerta)
-        self.grupoSpritesDinamicos.add(self.puerta)
-        self.grupoColisionables.add(self.puerta)
-        self.puerta2=activable("puerta_pequeña.png","coord_puerta_pequena",(594,610),pygame.Rect(0,0,1,1),False,1000)
-        self.grupoSprites.add(self.puerta2)
-        self.grupoSpritesDinamicos.add(self.puerta2)
-        self.grupoColisionables.add(self.puerta2)
-        self.luz=activable("luzprueba.png","coordenadasluz.txt",(328,575),pygame.Rect(328,575,497,143),True,1000)
-        self.grupoSprites.add(self.luz)
-        self.grupoSpritesDinamicos.add(self.luz)
-
-        #Causas
-        pulsar_puerta_1=causa(ACCION_AREA,self.puerta)
-        pulsar_boton_1=causa(ACCION_AREA,self.boton)
-        pulsar_boton_2=causa(ACCION_AREA,self.boton2)
-        llegar_a_meta=causa(AREA,self.meta)
-
-        #Consecuencias
-        cambiar_puerta_1=accion(CAMBIAR,self.puerta,"",None)
-        cambiar_puerta_2=accion(CAMBIAR,self.puerta2,"",None)
-        cambiar_luz=accion(CAMBIAR,self.luz,"",None)
-        mensaje_puerta=accion(MENSAJE,None,"Escuchas una puerta a lo lejos",None)
-        mensaje_luz=accion(MENSAJE,None,"Escuchas el zuimbido de un tubo fluorescente ",None)
-        fin=accion(FIN,None,"",None)
-        self.listaeventos=[]
-        self.listaeventos.append(evento([pulsar_puerta_1], [cambiar_puerta_1]))
-        self.listaeventos.append(evento([pulsar_boton_1], [cambiar_puerta_2,mensaje_puerta]))
-        self.listaeventos.append(evento([pulsar_boton_2], [cambiar_luz,mensaje_luz]))
-        self.listaeventos.append(evento([llegar_a_meta], [fin]))
-
-        #Cuadro de texto (provisional podria pasarse a una clase GUI)
-        self.cuadrotexto=CuadroTexto()
         self.pausa=False
         self.haymensaje=False
         self.actiondropped=True
+        self.grupoSpritesDinamicos = pygame.sprite.Group()
+        self.grupoColisionables = pygame.sprite.Group()
+        self.grupoJugadores =pygame.sprite.Group()
+        self.grupoSprites=pygame.sprite.Group()
+        self.grupoEnemigos = pygame.sprite.Group()
+        self.objetos={}
+        self.causas={}
+        self.consecuencias={}
+        self.listaeventos={}
+        self.cuadrotexto=CuadroTexto()
+        self.finfase=False
 
-        #Grafo de prueba
-        grafo={'1050 994':['1050 1118','1050 924','1175 994'] ,
-               '1050 1118':['1050 994','1304 1118','920 1118'],
-               '1304 994':['1304 1118','1175 994','1304 800'],
-               '1304 1118':['1050 1118','1304 994'],
-               '920 1118':['1050 1118','790 1118','920 924'],
-               '790 1118':['920 1118','665 1118','790 924'],
-               '665 1118':['790 1118','665 924'],
-               '1050 924':['1050 994','920 924','1050 800'],
-               '920 924':['920 1118','1050 924','790 924'],
-               '790 924':['790 1118','920 924','665 924'],
-               '665 924':['665 1118', '790 924'],
-               '1175 994':['1050 994','1304 994','1175 800'],
-               '1050 800':['1050 924','1175 800','1050 604'],
-               '1175 800':['1175 994','1050 800', '1304 800'],
-               '1304 800':['1304 994','1175 800','1304 604'],
-               '1050 604':['1050 800','1175 604'],
-               '1175 604':['1175 800','1050 604','1304 604'],
-               '1304 604':['1304 800','1175 604']}
+        Escena.__init__(self, director)
 
-        lista_nodos=[(0,0),#Nodo 0 la lista empieza en el 1
-                     (354,387),
-                     (856,387),
+        #CARGA EL ARCHIVO DE FASE
+        datos = GestorRecursos.CargarArchivoFaseJSON(archivoFase)
+        print(datos)
 
-                     (354,541),
-                     (607,541),
-                     (856,541),
-                     (1175,541),
+        # Creamos el decorado
+        self.decorado = Mapa(datos['mapa'])
 
-                     (202,604),
-                     (1050,604),
-                     (1175,604),
-                     (1304,604),
+        # Creamos los sprites de los jugadores
+        self.jugador1 = Jugador()
+        self.jugador1.establecerPosicion((datos['pos_inicial'][0],datos['pos_inicial'][1]))
+        self.grupoSprites.add(self.jugador1)
+        self.grupoJugadores.add(self.jugador1)
 
-                     (567,663),
-                     (607,663),
+         ##TODO ESTO DESDE ARCHIVO FASE
 
-                     (202,735),
-                     (388,735),
-                     (567,735),
-                     (778,735),
-                     (856,735),
+        #Cargamos los objetos
+        for nombre,boton in datos["Interruptores"].iteritems():
+            self.objetos[nombre]=Interruptor(boton[0], pygame.Rect(boton[1][0], boton[1][1], boton[1][2], boton[1][3]))
+            self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
+        for nombre,meta in datos["Metas"].iteritems():
+            self.objetos[nombre]=Meta(meta[0],pygame.Rect(meta[1][0],meta[1][1],meta[1][2],meta[1][3]))
+        for nombre,puerta in datos["Puertas"].iteritems():
+            self.objetos[nombre]=Puerta_pequena(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
+            self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+        for nombre,luz in datos["Luces"].iteritems():
+            self.objetos[nombre]=Luz(luz[0],pygame.Rect(luz[1][0],luz[1][1],luz[1][2],luz[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
 
-                     (1050,800),
-                     (1175,800),
-                     (1304,800),
+        print self.objetos
 
-                     (388,924),
-                     (665,924),
-                     (790,924),
-                     (856,924),
-                     (920,924),
-                     (1050,924),
+        for nombre,causa in datos["Causas"].iteritems():
+            self.causas[nombre]=Causa(DiccCausas[causa[0]],self.objetos[causa[1]])
 
-                     (1050,994),
-                     (1175,994),
-                     (1304,994),
-                     (665,1118),
-                     (790,1118),
-                     (920,1118),
-                     (1050,1118),
-                     (1304,1118)]
+        for nombre,consecuencia in datos["Consecuencias"].iteritems():
+            tipo=DiccConsecuencias[consecuencia[0]]
+            if tipo==CAMBIAR:
+               self.consecuencias[nombre]=Accion(CAMBIAR,self.objetos[consecuencia[1]],"",None)
+            elif tipo==MENSAJE:
+               self.consecuencias[nombre]=Accion(MENSAJE,None,consecuencia[1],None)
+            elif tipo==FIN:
+               self.consecuencias[nombre]=Accion(FIN,None,None,None)
 
-        grafo2=[[],
-                [2,3],
-                [1,5],
-                [1,4],
-                [3,5,12],
-                [2,4,17],
-                [9],
-                [13],
-                [9,18],
-                [6,8,10],
-                [9,20],
-                [12,15],
-                [4,11],
-                [7,14],
-                [13,15,21],
-                [11,14],
-                [17],
-                [5,16,24],
-                [8,19,26],
-                [9,18,20,28],
-                [10,19,29],
-                [14],
-                [23,30],
-                [22,24,31],
-                [17,23,25],
-                [24,26,32],
-                [18,27],
-                [26,28,33],
-                [19,27,29],
-                [20,28,34],
-                [22,31],
-                [23,30,32],
-                [25,31,33],
-                [27,32,34],
-                [29,33]
-                ]
+        for nombre,evento in datos["Eventos"].iteritems():
+            causas=[]
+            consecuencias=[]
+            for causa in evento[0]:
+                causas.append(self.causas[causa])
+            for consecuencia in evento[1]:
+                consecuencias.append(self.consecuencias[consecuencia])
+            self.listaeventos[nombre]=Evento(causas,consecuencias)
+
+
 
 
         enemigo=[]
+        patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
-        for i in range (0,datos['enemigo'][0]):
-          enemigo.append(Sniper(lista_nodos,grafo2,datos['enemigo'][i+1]))
+        for i in range (0,len(datos['Snipers'])):
+          enemigo.append(Sniper(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
           self.grupoEnemigos.add(enemigo[i])
-          #self.grupoSpritesDinamicos.add(enemigo[i] )
           self.grupoSprites.add(enemigo[i])
-        #Enemigo con grafo
-        patrulla=Patrulla(lista_nodos,grafo2,34)
-        patrulla.establecerPosicion((1304,1118))
-        self.grupoEnemigos.add(patrulla)
-        #self.grupoSpritesDinamicos.add(enemigo[i] )
-        self.grupoSprites.add(patrulla)
+        for i in range (0,len(datos['Patrullas'])):
+          patrulla.append(Patrulla(datos['nodos'],datos['grafo'],datos['Patrullas'][i]))
+          self.grupoEnemigos.add(patrulla[i])
+          self.grupoSprites.add(patrulla[i])
 
 
         
@@ -355,9 +238,9 @@ class Fase(Escena):
         #Luego las capas que tapan a los sprites
         self.decorado.dibujar_post(pantalla)
 
-        Debuger.anadirRectangulo(self.boton.area)
-        Debuger.anadirRectangulo(self.puerta.area)
-        Debuger.anadirRectangulo(self.meta.area)
+        Debuger.anadirRectangulo(self.objetos["boton1"].area)
+        Debuger.anadirRectangulo(self.objetos["puerta1"].area)
+        Debuger.anadirRectangulo(self.objetos["meta"].area)
 
 
 
@@ -393,7 +276,7 @@ class Fase(Escena):
                 self.actiondropped=True
              elif self.actiondropped:
                 action=True
-             for evento in self.listaeventos:
+             for evento in self.listaeventos.itervalues():
                  if evento.comprobar(self.jugador1,action):
                      evento.lanzar(self)
         else:
@@ -403,6 +286,9 @@ class Fase(Escena):
                 self.pausa=False
                 self.haymensaje=False
                 self.actiondropped=False
+                if(self.finfase):
+                    nuevafase = Fase('fase2.json',self.director)
+                    self.director.apilarEscena(nuevafase)
 
 
         #AQUI SE DEBERIAN COMROBAR LOS EVENTOS DEL JUEGO

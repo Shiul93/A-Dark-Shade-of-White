@@ -2,7 +2,7 @@
 
 import pygame, sys, os
 from pygame.locals import *
-
+import json
 
 # -------------------------------------------------
 # Clase GestorRecursos
@@ -100,6 +100,22 @@ class GestorRecursos(object):
             print("Cargando fase"+nombre)
             cls.recursos[nombre]=datos
             return datos
+
+    @classmethod
+    def CargarArchivoFaseJSON(cls,nombre):
+
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+        # Si no ha sido cargado anteriormente
+        else:
+            fullname = os.path.join(cls.application_path,'fases', nombre)
+            f=open(fullname, 'r')
+            datos=json.load(f)
+            print("Cargando fase"+nombre)
+            cls.recursos[nombre]=datos
+            return datos
+
     @classmethod
     def CargarArchivoCapas(cls,nombre):
         """Obtiene los datos a partir del fichero de configuracion de capas"""

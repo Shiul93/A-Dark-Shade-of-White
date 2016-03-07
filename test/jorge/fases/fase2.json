@@ -1,0 +1,120 @@
+{
+  "mapa":"museo2.layers",
+  "pos_inicial":[400,970],
+  "nodos":[[0,0],
+                     [354,387],
+                     [856,387],
+
+                     [354,541],
+                     [607,541],
+                     [856,541],
+                     [1175,541],
+
+                     [202,604],
+                     [1050,604],
+                     [1175,604],
+                     [1304,604],
+
+                     [567,663],
+                     [607,663],
+
+                     [202,735],
+                     [388,735],
+                     [567,735],
+                     [778,735],
+                     [856,735],
+
+                     [1050,800],
+                     [1175,800],
+                     [1304,800],
+
+                     [388,924],
+                     [665,924],
+                     [790,924],
+                     [856,924],
+                     [920,924],
+                     [1050,924],
+
+                     [1050,994],
+                     [1175,994],
+                     [1304,994],
+                     [665,1118],
+                     [790,1118],
+                     [920,1118],
+                     [1050,1118],
+                     [1304,1118]],
+  "grafo":[[],
+                [2,3],
+                [1,5],
+                [1,4],
+                [3,5,12],
+                [2,4,17],
+                [9],
+                [13],
+                [9,18],
+                [6,8,10],
+                [9,20],
+                [12,15],
+                [4,11],
+                [7,14],
+                [13,15,21],
+                [11,14],
+                [17],
+                [5,16,24],
+                [8,19,26],
+                [9,18,20,28],
+                [10,19,29],
+                [14],
+                [23,30],
+                [22,24,31],
+                [17,23,25],
+                [24,26,32],
+                [18,27],
+                [26,28,33],
+                [19,27,29],
+                [20,28,34],
+                [22,31],
+                [23,30,32],
+                [25,31,33],
+                [27,32,34],
+                [29,33]
+                ],
+  "Snipers":[15,1],
+  "Patrullas":[34,18],
+  "Interruptores":{
+    "boton1":[[187,562],[170,573,66,55]],
+    "boton2":[[556,623],[546,623,66,55]]
+  },
+  "Puertas":{
+    "puerta1":[[368,898],[362,890,68,60]],
+    "puerta2":[[594,610],[0,0,1,1]]
+  },
+  "Luces":{
+    "luz1":[[328,575],[328,575,497,143]]
+  },
+  "Metas":{
+    "meta":[[0,0],[1111,192,146,128]]
+  },
+  "Causas":{
+    "pulsar_puerta1":["accion","puerta1"],
+    "pulsar_boton1":["accion","boton1"],
+    "pulsar_boton2":["accion","boton2"],
+    "llegar_a_meta":["area","meta"]
+  },
+  "Consecuencias":{
+    "cambiar_puerta1":["cambiar","puerta1"],
+    "cambiar_puerta2":["cambiar","puerta2"],
+    "cambiar_luz":["cambiar","luz1"],
+    "mensaje_puerta2":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_luz":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
+    "fin_fase":["fin"]
+  },
+  "Eventos":{
+    "abrir_puerta_1":[["pulsar_puerta1"],["cambiar_puerta1"]],
+    "abrir_puerta_2":[["pulsar_boton1"],["cambiar_puerta2","mensaje_puerta2"]],
+    "activar_luz":[["pulsar_boton2"],["mensaje_luz","cambiar_luz"]],
+    "meta":[["llegar_a_meta"],["fin_fase"]]
+
+  }
+}

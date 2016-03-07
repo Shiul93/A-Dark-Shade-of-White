@@ -4,6 +4,7 @@ import pygame, sys, os
 from mysprite import *
 from gestorRecursos import *
 from debuger import *
+from fase import *
 
 
 class CuadroTexto(MiSprite):
@@ -137,15 +138,21 @@ class activable(accionable):#Dos estados, animable para pasar de un estado a otr
           MiSprite.update(self,tiempo)
           Debuger.anadirRectangulo(self.pos_inicial)
 
-'''
-def establecerPosicionPantalla(self,scrollx, scrolly):
-        self.scroll=(scrollx,scrolly)
-        Debuger.anadirRectangulo(self.rect)
-        #self.rect.left=self.rect.left-scrollx
-        #self.rect.bottom=self.rect.bottom-scrolly
-        MiSprite.establecerPosicionPantalla(self,0,0)
-        Debuger.anadirRectangulo(self.rect)
-        self.rect.left=self.rect.left+scrollx
-        self.rect.bottom=self.rect.bottom+scrolly
-        Debuger.anadirRectangulo(self.rect)
-'''
+class Interruptor(accionable):
+    def __init__(self,pos,area):
+        accionable.__init__(self,"boton_verde_pequeno.png",pos,area)
+
+class Meta(accionable):
+    def __init__(self,pos,area):
+        accionable.__init__(self,"boton_verde_pequeno.png",pos,area) #No deberia verse nada
+
+
+class Puerta_pequena(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,False,1000)
+
+class Luz(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"luzprueba.png","coordenadasluz.txt",pos,area,True,200)
+
+

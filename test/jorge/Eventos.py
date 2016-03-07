@@ -1,12 +1,20 @@
 # -*- coding: utf-8 -*-
-from objetos import *
-
+import pygame
+from pygame.locals import *
+from escena import *
+from gestorRecursos import *
+from fase import *
 #Causas
 
 #Entrar en un area
 AREA=0
 #Pulsar accion estando en el area de un accionable
 ACCION_AREA=1
+DiccCausas={
+    "area":0,
+    "accion":1,
+}
+
 
 #Consecuencias
 #Activar un objeto activable, desactivar o cambiar su estado (si esta encendid apagar ys i esta apagado encender
@@ -19,8 +27,13 @@ MENSAJE=3
 SONIDO=4
 #Termina la escena
 FIN=5
+DiccConsecuencias={
+    "cambiar":2,
+    "mensaje":3,
+    "fin":5
+}
 
-class evento:
+class Evento:
     def __init__(self,listaCausas,listaAcciones):
         self.causas=listaCausas
         self.acciones=listaAcciones
@@ -35,7 +48,7 @@ class evento:
         for accion in self.acciones:
             accion.lanzar(fase)
 
-class causa:
+class Causa:
     def __init__(self,tipo,objeto):
         self.tipo=tipo
         self.objeto=objeto
@@ -48,7 +61,7 @@ class causa:
 
 
 
-class accion:
+class Accion:
     def __init__(self,tipo,objeto,mensaje,sonido):
         self.tipo=tipo
         if self.tipo==ACTIVAR or self.tipo==DESACTIVAR or self.tipo==CAMBIAR:
@@ -67,4 +80,7 @@ class accion:
         elif self.tipo==MENSAJE :
             fase.mostrarMensaje(self.mensaje)
         elif self.tipo==FIN:
-            fase.director.salirEscena()
+            fase.finfase=True
+            fase.mostrarMensaje("Fase terminada, enhorabuena")
+
+
