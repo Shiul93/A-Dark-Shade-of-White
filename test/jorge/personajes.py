@@ -6,6 +6,7 @@ from escena import *
 from gestorRecursos import *
 from debuger import *
 from mysprite import *
+from random import *
 import math
 # -------------------------------------------------
 # -------------------------------------------------
@@ -42,6 +43,10 @@ VELOCIDAD_SNIPER = 0.12 # Pixeles por milisegundo
 RETARDO_ANIMACION_SNIPER = 5 # updates que durará cada imagen del personaje
                              # debería de ser un valor distinto para cada postura
 # El Sniper camina un poco más lento que el jugador, y salta menos
+
+def pardeclave(string):
+    values=string.split()
+    return (int(values[0]),int(values[1]))
 
 # -------------------------------------------------
 # -------------------------------------------------
@@ -97,6 +102,7 @@ class Personaje(MiSprite):
         self.movimiento = QUIETO
         # Lado hacia el que esta mirando
         self.mirando = ABAJO
+        self.velocidadMovimiento=0
 
 
 
@@ -105,6 +111,7 @@ class Personaje(MiSprite):
         self.retardoMovimiento = 0;
         # El rectangulo del Sprite
         self.rect = pygame.Rect(0,0,self.coordenadasHoja[0][0].width,self.coordenadasHoja[0][0].height/2)
+        self.newposrect=pygame.Rect(800,600,32,54)
         # Las velocidades de caminar , correr, etc
         self.velocidadCarrera = velocidadCarrera
         # El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)
@@ -142,7 +149,8 @@ class Personaje(MiSprite):
         self.image = self.hoja.subsurface(self.coordenadasHoja[self.numPostura][self.numImagenPostura])
 
 
-    def update(self, decorado, tiempo):
+    def update(self, fase, tiempo):
+        if tiempo>1000 :tiempo=1000
         velocidadx=0
         velocidady=0
         # Esta mirando hacia donde vayamos
@@ -160,14 +168,15 @@ class Personaje(MiSprite):
         self.velocidad = (velocidadx, velocidady)
         #Comprobamos las colisiones primero en el eje x
         #Si colisiona en el eje x ponemos la velocidad x a 0
+        print self.posicion
         self.rect.bottomleft=self.posicion #ponoa bottomleft
+        newposrect=pygame.Rect(0,0,1,1)
         newposrect=self.rect
         newposrect.topleft=self.rect.bottomleft
         newposrect.left=newposrect.left+velocidadx*tiempo
         newposrect.bottom=newposrect.bottom+velocidady*tiempo
         self.newposrect=newposrect
-        Debuger.anadirObjeto("rectangulo"+str(self),newposrect)
-        if(decorado.colision(newposrect) and self.movimiento!=CARRERA):
+        if(fase.colision(self.rect.copy()) and self.movimiento!=CARRERA):
             self.velocidad=(0,0)
         Debuger.anadirRectangulo(newposrect)
 
@@ -216,10 +225,10 @@ class Jugador(Personaje):
         Personaje.mover(self,movimiento,direccion)
 
 
-    def update(self,decorado,tiempo):
+    def update(self,fase,tiempo):
         "Acciones especificas del jugador(activar objetos etc)"
 
-        Personaje.update(self,decorado,tiempo)
+        Personaje.update(self,fase,tiempo)
 # -------------------------------------------------
 # Clase NoJugador
 
@@ -242,7 +251,7 @@ class NoJugador(Personaje):
 # Clase Sniper
 
 class Sniper(NoJugador):
-    "El enemigo 'Sniper'"
+    "El enemigo tonto 'Sniper'"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
         NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
@@ -271,3 +280,33 @@ class Sniper(NoJugador):
         else:
             Personaje.mover(self,QUIETO,ARRIBA)
 
+
+class Patrulla(NoJugador):
+    "El  guardia que da vueltas por un grafo de nodos"
+    def __init__(self,grafo):
+        # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
+        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
+        self.grafo=grafo
+        self.inicio='1050 994' #la primera del
+        self.destino='1050 994'
+        # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
+    # La implementacion de la inteligencia segun este personaje particular
+    def mover_cpu(self, jugador1):
+
+        # Movemos solo a los enemigos que esten en la pantalla
+            #Calcula la distancia enambos ejes
+            dest=pardeclave(self.destino)
+            dist=(dest[0]-self.posicion[0],dest[1]-self.posicion[1])
+            if abs(dist[0]+dist[1])<2 : #Si llega a un destino
+                self.destino=self.grafo[self.destino][randint(0,len(self.grafo[self.destino])-1)]
+            else: #Si aun no llego
+                if(abs(dist[0])>abs(dist[1])):
+                    if(dist[0]>0):
+                        Personaje.mover(self,NORMAL,DERECHA)
+                    else:
+                        Personaje.mover(self,NORMAL,IZQUIERDA)
+                else:
+                    if(dist[1]>0):
+                        Personaje.mover(self,NORMAL,ABAJO)
+                    else:
+                        Personaje.mover(self,NORMAL,ARRIBA)

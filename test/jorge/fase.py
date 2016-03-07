@@ -7,6 +7,7 @@ import debuger
 from mapa import *
 from pygame.locals import *
 from objetos import *
+from Eventos import *
 
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
@@ -61,15 +62,12 @@ class Fase(Escena):
 
         # Creamos los sprites de los jugadores
         self.jugador1 = Jugador()
-        self.grupoJugadores = pygame.sprite.Group( self.jugador1 )
-
         # Ponemos a los jugadores en sus posiciones iniciales
         self.jugador1.establecerPosicion((datos['posicion_inicial'][0],datos['posicion_inicial'][1]))
 
         #Creamos los grupos de sprites con el jugador
-        self.grupoSpritesDinamicos = pygame.sprite.Group( self.jugador1)
         self.grupoSprites = pygame.sprite.Group( self.jugador1)
-
+        self.grupoJugadores=pygame.sprite.Group(self.jugador1)
         # Cargamos los enemigos
         enemigo=[]
         self.grupoEnemigos=pygame.sprite.Group()
@@ -77,18 +75,93 @@ class Fase(Escena):
           enemigo.append(Sniper())
           enemigo[i].establecerPosicion((datos['enemigo'][(2*i+1)],datos['enemigo'][(2*i+2)]))
           self.grupoEnemigos.add(enemigo[i])
-          self.grupoSpritesDinamicos.add(enemigo[i] )
+          #self.grupoSpritesDinamicos.add(enemigo[i] )
           self.grupoSprites.add(enemigo[i])
+
+        self.grupoSpritesDinamicos = pygame.sprite.Group()
+        self.grupoColisionables = pygame.sprite.Group()
+        ##TODO ESTO DESDE ARCHIVO FASE
 
         #Cargamos los objetos
         self.boton=accionable("boton_verde_pequeno.png",(187,562),pygame.Rect(170,573,66,55))
         self.grupoSprites.add(self.boton) #(NO SE PORQUE NO)
+        self.boton2=accionable("boton_verde_pequeno.png",(556,623),pygame.Rect(546,623,66,55))
+        self.grupoSprites.add(self.boton2) #(NO SE PORQUE NO)
+
+        self.meta=accionable("boton_verde_pequeno.png",(1140,170),pygame.Rect(1111,192,146,128))
+        self.grupoSprites.add(self.meta) #(NO SE PORQUE NO)
+
+
+
+
+        self.puerta=activable("puerta_pequeña.png","coord_puerta_pequena",(368,898),pygame.Rect(362,890,68,60),False,1000)
+        self.grupoSprites.add(self.puerta)
+        self.grupoSpritesDinamicos.add(self.puerta)
+        self.grupoColisionables.add(self.puerta)
+        self.puerta2=activable("puerta_pequeña.png","coord_puerta_pequena",(594,610),pygame.Rect(0,0,1,1),False,1000)
+        self.grupoSprites.add(self.puerta2)
+        self.grupoSpritesDinamicos.add(self.puerta2)
+        self.grupoColisionables.add(self.puerta2)
+        self.luz=activable("luzprueba.png","coordenadasluz.txt",(328,575),pygame.Rect(328,575,497,143),True,1000)
+        self.grupoSprites.add(self.luz)
+        self.grupoSpritesDinamicos.add(self.luz)
+
+        #Causas
+        pulsar_puerta_1=causa(ACCION_AREA,self.puerta)
+        pulsar_boton_1=causa(ACCION_AREA,self.boton)
+        pulsar_boton_2=causa(ACCION_AREA,self.boton2)
+        llegar_a_meta=causa(AREA,self.meta)
+
+        #Consecuencias
+        cambiar_puerta_1=accion(CAMBIAR,self.puerta,"",None)
+        cambiar_puerta_2=accion(CAMBIAR,self.puerta2,"",None)
+        cambiar_luz=accion(CAMBIAR,self.luz,"",None)
+        mensaje_puerta=accion(MENSAJE,None,"Escuchas una puerta a lo lejos",None)
+        mensaje_luz=accion(MENSAJE,None,"Escuchas el zuimbido de un tubo fluorescente ",None)
+        fin=accion(FIN,None,"",None)
+        self.listaeventos=[]
+        self.listaeventos.append(evento([pulsar_puerta_1], [cambiar_puerta_1]))
+        self.listaeventos.append(evento([pulsar_boton_1], [cambiar_puerta_2,mensaje_puerta]))
+        self.listaeventos.append(evento([pulsar_boton_2], [cambiar_luz,mensaje_luz]))
+        self.listaeventos.append(evento([llegar_a_meta], [fin]))
 
         #Cuadro de texto (provisional podria pasarse a una clase GUI)
         self.cuadrotexto=CuadroTexto()
         self.pausa=False
         self.haymensaje=False
         self.actiondropped=True
+
+        #Grafo de prueba
+        grafo={'1050 994':['1050 1118','1050 924','1175 994'] ,
+               '1050 1118':['1050 994','1304 1118','920 1118'],
+               '1304 994':['1304 1118','1175 994','1304 786'],
+               '1304 1118':['1050 1118','1304 994'],
+               '920 1118':['1050 994','802 1118','920 924'],
+               '802 1118':['920 1118','687 1118','802 924'],
+               '687 1118':['802 1118','687 924'],
+               '1050 924':['1050 994','920 924','1050 786'],
+               '920 924':['920 1118','1050 924','802 924'],
+               '802 924':['802 1118','920 924','687 924'],
+               '687 924':['687 1118', '802 924'],
+               '1175 994':['1050 994','1304 994','1175 786'],
+               '1050 786':['1050 924','1175 786','1050 604'],
+               '1175 786':['1175 994','1050 786', '1304 786'],
+               '1304 786':['1304 994','1175 994','1304 604'],
+               '1050 604':['1050 786','1175 604'],
+               '1175 604':['1175 786','1050 604','1304 604'],
+               '1304 604':['1304 786','1175 604']}
+
+
+
+
+
+
+        #Enemigo con grafo
+        patrulla=Patrulla(grafo)
+        patrulla.establecerPosicion((1050,998))
+        self.grupoEnemigos.add(patrulla)
+        #self.grupoSpritesDinamicos.add(enemigo[i] )
+        self.grupoSprites.add(patrulla)
 
 
         
@@ -154,9 +227,9 @@ class Fase(Escena):
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
                 #  (desplazamos aabajo)
                 self.scrolly = self.scrolly + desplazamiento;
-                actualizar=True; # Se ha actualizado el scroll
+                actualizar=True # Se ha actualizado el scroll
         # Si el jugador están entre los dos límites de la pantalla, no se hace nada
-        return actualizar;
+        return actualizar
 
 
     def actualizarScroll(self, jugador1):
@@ -183,8 +256,12 @@ class Fase(Escena):
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
             for enemigo in iter(self.grupoEnemigos):
                 enemigo.mover_cpu(self.jugador1)
-
-            self.grupoSpritesDinamicos.update(self.decorado, tiempo)
+            #self.grupoJugadores.update(self,tiempo)
+            self.jugador1.update(self,tiempo)
+            #self.grupoEnemigos.update(self,tiempo) provisionalmente 1 a 1
+            for enemigo in self.grupoEnemigos.sprites():
+                enemigo.update(self,tiempo)
+            self.grupoSpritesDinamicos.update(tiempo)
             #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
             #    self.director.salirEscena()
 
@@ -197,19 +274,28 @@ class Fase(Escena):
         #Primero las capas que no tapan a los sprites
         self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
-
+        self.grupoSprites.draw(pantalla)
         #Luego las capas que tapan a los sprites
         self.decorado.dibujar_post(pantalla)
-        self.grupoSprites.draw(pantalla)
+
         Debuger.anadirRectangulo(self.boton.area)
-        #Debuger.anadirRectangulo(self.boton.areaPos)
-        Debuger.anadirObjeto("cuadrotexto.rect",self.cuadrotexto.rect)
-        Debuger.anadirObjeto("cuadrotextro.imagen",self.cuadrotexto.image)
+        Debuger.anadirRectangulo(self.puerta.area)
+        Debuger.anadirRectangulo(self.meta.area)
+
 
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
         if(self.haymensaje):
             self.cuadrotexto.draw(pantalla)
+
+    def colision(self,rect):
+       rectlist=[]
+       for sprite in self.grupoColisionables.sprites():
+           if not sprite.estado:
+              rectlist.append(sprite.pos_inicial)
+       collidesprite=rect.collidelist(rectlist)
+       Debuger.anadirTextoDebug("colisiones "+str(collidesprite))
+       return self.decorado.colision(rect) or collidesprite>-1
 
 
     def eventos(self, lista_eventos):
@@ -221,14 +307,17 @@ class Fase(Escena):
 
         # Indicamos la acción a realizar segun la tecla pulsada para cada jugador
         teclasPulsadas = pygame.key.get_pressed()
+
         if(not self.pausa):
-            self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
-            #eventos de accion aqui
-            if  not teclasPulsadas[K_RETURN]:
+             self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
+             action=False
+             if  not teclasPulsadas[K_RETURN]:
                 self.actiondropped=True
-            elif self.actiondropped:
-                if(self.boton.objetoEnArea(self.jugador1.newposrect)):
-                    self.mostrarMensaje("Has pulsado el boton 1")
+             elif self.actiondropped:
+                action=True
+             for evento in self.listaeventos:
+                 if evento.comprobar(self.jugador1,action):
+                     evento.lanzar(self)
         else:
             if not teclasPulsadas[K_RETURN]:
                 self.actiondropped=True
