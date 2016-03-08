@@ -1,19 +1,14 @@
-#Fase 1
+#Fase 2
 #Las almoadillas son comentarios
 #Las keys que empiezan con $ son Strings
 #Las que no empiezan con $ y solo tienen un valor son int
 #Las que no empiezan con $ y tienen varios valores son un array de ints
 #Se carga en un diccionario
 #
-#Directorio del mapa
-$mapa museo_1.layers2
-#Archivo del escenario
-#$decorado museo_1.png
+#Archivo del mapa
+$mapa museo2.layers
 #
-#Archivo de colisiones
-#$colisiones museo_1_coll2.png
-#
-#Enemigos: numero y nodo inicial (por ejemplo enemigo 3 14 18 21 )
+#Enemigos:(snipers) numero y nodo inicial (por ejemplo enemigo 3 14 18 21 )
 enemigo 2 15 1
 #En el futuro quizas sea mas practico hacer una linea por cada enemigo con sus waypoints o bien hacer lineas con paths y asignarlas a enemios
 #Posicion inicial: x e y
