@@ -4,7 +4,8 @@ import pygame
 from pygame.locals import *
 from escena import *
 from gestorRecursos import *
-from fase import *
+from fase import Fase
+
 # -------------------------------------------------
 # Clase abstracta ElementoGUI
 
@@ -177,7 +178,7 @@ class Menu(Escena):
         self.director.salirPrograma()
 
     def ejecutarJuego(self):
-        fase = Fase('fase1.json',self.director)
+        fase = Fase('fase1.txt',self.director)
         self.director.apilarEscena(fase)
 
     def mostrarPantallaInicial(self):

@@ -1,6 +1,6 @@
 {
-  "mapa":"museo2.layers",
-  "pos_inicial":[1732,201],
+  "mapa":"museo_1.layers2",
+  "pos_inicial":[400,980],
   "nodos":[[0,0],
                      [354,387],
                      [856,387],
@@ -106,7 +106,7 @@
     "cambiar_puerta2":["cambiar","puerta2"],
     "cambiar_luz":["cambiar","luz1"],
     "mensaje_puerta2":["mensaje","Escuchas una puerta a lo lejos"],
-    "mensaje_luz":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
     "fin_fase":["fin"]
   },

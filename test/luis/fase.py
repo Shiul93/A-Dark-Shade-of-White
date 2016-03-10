@@ -3,8 +3,12 @@
 import pygame, escena
 from escena import *
 from personajes import *
+import debuger
+from mapa import *
 from pygame.locals import *
-from loadmap import *
+from objetos import *
+from Eventos import *
+
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
 #LA idea es que carge la fase a paretir de un script
@@ -29,54 +33,94 @@ MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 
 class Fase(Escena):
     def __init__(self,archivoFase, director):
-
-        # Habria que pasarle como parámetro el número de fase, a partir del cual se cargue
-        #  un fichero donde este la configuracion de esa fase en concreto, con cosas como
-        #   - Nombre del archivo con el decorado
-        #   - Posiciones de las plataformas
-        #   - Posiciones de los enemigos
-        #   - Posiciones de inicio de los jugadores
-        #  etc.
-        # Y cargar esa configuracion del archivo en lugar de ponerla a mano, como aqui abajo
-        # De esta forma, se podrian tener muchas fases distintas con esta clase
-
-        # Primero invocamos al constructor de la clase padre
-        Escena.__init__(self, director)
-
-        datos = GestorRecursos.CargarArchivoFase(archivoFase)
-        print(datos)
-
-
-        # Creamos el decorado y el fondo
-        self.decorado = Decorado(datos['$decorado'],datos['$colisiones'])
-
-        # Que parte del decorado estamos visualizando
+        #VARIABLES LOCALES DE LA FASE
         self.scrollx = 0
         self.scrolly = 0
-        #  En ese caso solo hay scroll horizontal
-        #  Si ademas lo hubiese vertical, seria self.scroll = (0, 0)
+        self.pausa=False
+        self.haymensaje=False
+        self.actiondropped=True
+        self.grupoSpritesDinamicos = pygame.sprite.Group()
+        self.grupoColisionables = pygame.sprite.Group()
+        self.grupoJugadores =pygame.sprite.Group()
+        self.grupoSprites=pygame.sprite.Group()
+        self.grupoEnemigos = pygame.sprite.Group()
+        self.objetos={}
+        self.causas={}
+        self.consecuencias={}
+        self.listaeventos={}
+        self.cuadrotexto=CuadroTexto()
+        self.finfase=False
+
+        Escena.__init__(self, director)
+
+        #CARGA EL ARCHIVO DE FASE
+        datos = GestorRecursos.CargarArchivoFaseJSON(archivoFase)
+        print(datos)
+
+        # Creamos el decorado
+        self.decorado = Mapa(datos['mapa'])
 
         # Creamos los sprites de los jugadores
         self.jugador1 = Jugador()
-        self.grupoJugadores = pygame.sprite.Group( self.jugador1 )
+        self.jugador1.establecerPosicion((datos['pos_inicial'][0],datos['pos_inicial'][1]))
+        self.grupoSprites.add(self.jugador1)
+        self.grupoJugadores.add(self.jugador1)
 
-        # Ponemos a los jugadores en sus posiciones iniciales
-        self.jugador1.establecerPosicion((datos['posicion_inicial'][0],datos['posicion_inicial'][1]))
+         ##TODO ESTO DESDE ARCHIVO FASE
 
-        #Creamos los grupos de sprites con el jugador
-        self.grupoSpritesDinamicos = pygame.sprite.Group( self.jugador1)
-        self.grupoSprites = pygame.sprite.Group( self.jugador1)
+        #Cargamos los objetos
+        for nombre,boton in datos["Interruptores"].iteritems():
+            self.objetos[nombre]=Interruptor(boton[0], pygame.Rect(boton[1][0], boton[1][1], boton[1][2], boton[1][3]))
+            self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
+        for nombre,meta in datos["Metas"].iteritems():
+            self.objetos[nombre]=Meta(meta[0],pygame.Rect(meta[1][0],meta[1][1],meta[1][2],meta[1][3]))
+        for nombre,puerta in datos["Puertas"].iteritems():
+            self.objetos[nombre]=Puerta_pequena(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
+            self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+        for nombre,luz in datos["Luces"].iteritems():
+            self.objetos[nombre]=Luz(luz[0],pygame.Rect(luz[1][0],luz[1][1],luz[1][2],luz[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
 
-        # Cargamos los enemigos
+        print self.objetos
+
+        for nombre,causa in datos["Causas"].iteritems():
+            self.causas[nombre]=Causa(DiccCausas[causa[0]],self.objetos[causa[1]])
+
+        for nombre,consecuencia in datos["Consecuencias"].iteritems():
+            tipo=DiccConsecuencias[consecuencia[0]]
+            if tipo==CAMBIAR:
+               self.consecuencias[nombre]=Accion(CAMBIAR,self.objetos[consecuencia[1]],"",None)
+            elif tipo==MENSAJE:
+               self.consecuencias[nombre]=Accion(MENSAJE,None,consecuencia[1],None)
+            elif tipo==FIN:
+               self.consecuencias[nombre]=Accion(FIN,None,None,None)
+
+        for nombre,evento in datos["Eventos"].iteritems():
+            causas=[]
+            consecuencias=[]
+            for causa in evento[0]:
+                causas.append(self.causas[causa])
+            for consecuencia in evento[1]:
+                consecuencias.append(self.consecuencias[consecuencia])
+            self.listaeventos[nombre]=Evento(causas,consecuencias)
+
+
+
+
         enemigo=[]
+        patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
-        for i in range (0,datos['enemigo'][0]):
-          enemigo.append(Sniper())
-          enemigo[i].establecerPosicion((datos['enemigo'][(2*i+1)],datos['enemigo'][(2*i+2)]))
+        for i in range (0,len(datos['Snipers'])):
+          enemigo.append(Sniper(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
           self.grupoEnemigos.add(enemigo[i])
-          self.grupoSpritesDinamicos.add(enemigo[i] )
           self.grupoSprites.add(enemigo[i])
-
+        for i in range (0,len(datos['Patrullas'])):
+          patrulla.append(Patrulla(datos['nodos'],datos['grafo'],datos['Patrullas'][i]))
+          self.grupoEnemigos.add(patrulla[i])
+          self.grupoSprites.add(patrulla[i])
 
 
         
@@ -142,9 +186,9 @@ class Fase(Escena):
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
                 #  (desplazamos aabajo)
                 self.scrolly = self.scrolly + desplazamiento;
-                actualizar=True; # Se ha actualizado el scroll
+                actualizar=True # Se ha actualizado el scroll
         # Si el jugador están entre los dos límites de la pantalla, no se hace nada
-        return actualizar;
+        return actualizar
 
 
     def actualizarScroll(self, jugador1):
@@ -167,47 +211,52 @@ class Fase(Escena):
     #     Actualizar el scroll implica tener que desplazar todos los sprites por pantalla
     #  Se actualiza la posicion del sol y el color del cielo
     def update(self, tiempo):
-
+        if(not self.pausa):
+            Debuger.anadirTextoDebug("FPS: "+str(int(1000/tiempo)))
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
-        for enemigo in iter(self.grupoEnemigos):
-            enemigo.mover_cpu(self.jugador1)
-        # Esta operación es aplicable también a cualquier Sprite que tenga algún tipo de IA
-        # En el caso de los jugadores, esto ya se ha realizado
+            for enemigo in iter(self.grupoEnemigos):
+                enemigo.mover_cpu(self.jugador1)
+            #self.grupoJugadores.update(self,tiempo)
+            self.jugador1.update(self,tiempo)
+            #self.grupoEnemigos.update(self,tiempo) provisionalmente 1 a 1
+            for enemigo in self.grupoEnemigos.sprites():
+                enemigo.update(self,tiempo)
+            self.grupoSpritesDinamicos.update(tiempo)
+            #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
+            #    self.director.salirEscena()
 
-        # Actualizamos los Sprites dinamicos
-        # De esta forma, se simula que cambian todos a la vez
-        # Esta operación de update ya comprueba que los movimientos sean correctos
-        #  y, si lo son, realiza el movimiento de los Sprites
-        self.grupoSpritesDinamicos.update(self.decorado, tiempo)
-        # Dentro del update ya se comprueba que todos los movimientos son válidos
-        #  (que no choque con paredes, etc.)
-
-        # Los Sprites que no se mueven no hace falta actualizarlos,
-        #  si se actualiza el scroll, sus posiciones en pantalla se actualizan más abajo
-        # En cambio, sí haría falta actualizar los Sprites que no se mueven pero que tienen que
-        #  mostrar alguna animación
-
-        # Comprobamos si hay colision entre algun jugador y algun enemigo
-        # Se comprueba la colision entre ambos grupos
-        # Si la hay, indicamos que se ha finalizado la fase
-        if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
-            # Se le dice al director que salga de esta escena y ejecute la siguiente en la pila
-            self.director.salirEscena()
-
-        # Actualizamos el scroll
-        self.actualizarScroll(self.jugador1)
+            # Actualizamos el scroll
+            self.actualizarScroll(self.jugador1)
   
-        # Actualizamos el fondo:
-        #  la posicion del sol y el color del cielo
 
         
     def dibujar(self, pantalla):
-        # Ponemos primero el fondo
-        #self.fondo.dibujar(pantalla)
-        # Después el decorado
-        self.decorado.dibujar(pantalla)
+        #Primero las capas que no tapan a los sprites
+        self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
         self.grupoSprites.draw(pantalla)
+        #Luego las capas que tapan a los sprites
+        self.decorado.dibujar_post(pantalla)
+
+        Debuger.anadirRectangulo(self.objetos["boton1"].area)
+        Debuger.anadirRectangulo(self.objetos["puerta1"].area)
+        Debuger.anadirRectangulo(self.objetos["meta"].area)
+
+
+
+        Debuger.dibujarTexto(pantalla)
+        Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
+        if(self.haymensaje):
+            self.cuadrotexto.draw(pantalla)
+
+    def colision(self,rect):
+       rectlist=[]
+       for sprite in self.grupoColisionables.sprites():
+           if not sprite.estado:
+              rectlist.append(sprite.pos_inicial)
+       collidesprite=rect.collidelist(rectlist)
+       Debuger.anadirTextoDebug("colisiones "+str(collidesprite))
+       return self.decorado.colision(rect) or collidesprite>-1
 
 
     def eventos(self, lista_eventos):
@@ -219,46 +268,33 @@ class Fase(Escena):
 
         # Indicamos la acción a realizar segun la tecla pulsada para cada jugador
         teclasPulsadas = pygame.key.get_pressed()
-        self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
+
+        if(not self.pausa):
+             self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
+             action=False
+             if  not teclasPulsadas[K_RETURN]:
+                self.actiondropped=True
+             elif self.actiondropped:
+                action=True
+             for evento in self.listaeventos.itervalues():
+                 if evento.comprobar(self.jugador1,action):
+                     evento.lanzar(self)
+        else:
+            if not teclasPulsadas[K_RETURN]:
+                self.actiondropped=True
+            elif self.actiondropped:
+                self.pausa=False
+                self.haymensaje=False
+                self.actiondropped=False
+                if(self.finfase):
+                    nuevafase = Fase('fase2.json',self.director)
+                    self.director.apilarEscena(nuevafase)
 
 
-# -------------------------------------------------
-# Clase Decorado
+        #AQUI SE DEBERIAN COMROBAR LOS EVENTOS DEL JUEGO
 
-class Decorado:
-    def __init__(self,fondo,colisiones):
-        #Cargamos la imagen del fondo
-        self.imagen = GestorRecursos.CargarImagen(fondo, 1)
-        #Cargamos el mapa de colisiones
-        self.collmap= GestorRecursos.CargarImagen(colisiones,-1)
-        self.rect = self.imagen.get_rect()
-        #self.rect.bottom = 1200#ALTO_PANTALLA
-
-        # La subimagen que estamos viendo
-        self.rectSubimagen = pygame.Rect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA)
-        self.rectSubimagen.left = 0 # El scroll horizontal empieza en la posicion 0 por defecto
-        self.rectSubimagen.top = 0 # El scroll vertical empieza en la posicion 0 por defecto
-
-    def update(self, scrollx,scrolly):
-        #Cuando cambia el scroll cambiamos la posicion del rectangulo que define el trozo de fondo que se muestra
-        self.rectSubimagen.left = scrollx
-        self.rectSubimagen.top = scrolly
-
-
-    def dibujar(self, pantalla):
-        #Vuelca el rectángulo con el trozo corresponiente de la imagen
-        pantalla.blit(self.imagen, self.rect, self.rectSubimagen)
-
-    def colision(self,rect):
-        #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
-        #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
-        #En este caso se comprueba que el rojo no valga 0
-        #Si vale 0 en las 4 esquinas no hay colision
-        #Se podria usar tambien el alfa ( seria mas lógico)
-        #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
-        color1=self.collmap.get_at(rect.topleft)
-        color2=self.collmap.get_at(rect.topright)
-        color3=self.collmap.get_at(rect.bottomleft)
-        color4=self.collmap.get_at(rect.bottomright)
-        return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
-
+    def mostrarMensaje(self,texto):
+        self.cuadrotexto.establecerTexto(texto)
+        self.pausa=True
+        self.haymensaje=True
+        self.actiondropped=False
