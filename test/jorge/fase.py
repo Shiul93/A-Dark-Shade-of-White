@@ -21,11 +21,11 @@ from Eventos import *
 # -------------------------------------------------
 
 # Los bordes de la pantalla para hacer scroll horizontal
-MINIMO_X_JUGADOR = 50
+MINIMO_X_JUGADOR = 150
 MAXIMO_X_JUGADOR = ANCHO_PANTALLA - MINIMO_X_JUGADOR
 
 
-MINIMO_Y_JUGADOR = 50
+MINIMO_Y_JUGADOR = 150
 MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 # -------------------------------------------------
 # Clase Fase
@@ -44,12 +44,15 @@ class Fase(Escena):
         self.grupoJugadores =pygame.sprite.Group()
         self.grupoSprites=pygame.sprite.Group()
         self.grupoEnemigos = pygame.sprite.Group()
+        self.grupoOpacos=pygame.sprite.Group()
         self.objetos={}
         self.causas={}
         self.consecuencias={}
         self.listaeventos={}
         self.cuadrotexto=CuadroTexto()
         self.finfase=False
+        self.nodos=[]
+        self.grafo=[]
 
         Escena.__init__(self, director)
 
@@ -66,7 +69,6 @@ class Fase(Escena):
         self.grupoSprites.add(self.jugador1)
         self.grupoJugadores.add(self.jugador1)
 
-         ##TODO ESTO DESDE ARCHIVO FASE
 
         #Cargamos los objetos
         for nombre,boton in datos["Interruptores"].iteritems():
@@ -79,10 +81,13 @@ class Fase(Escena):
             self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
+
         for nombre,luz in datos["Luces"].iteritems():
             self.objetos[nombre]=Luz(luz[0],pygame.Rect(luz[1][0],luz[1][1],luz[1][2],luz[1][3]))
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
 
         print self.objetos
 
@@ -107,20 +112,21 @@ class Fase(Escena):
                 consecuencias.append(self.consecuencias[consecuencia])
             self.listaeventos[nombre]=Evento(causas,consecuencias)
 
-
-
-
+        self.grafo=datos['grafo']
+        self.nodos=datos['nodos']
         enemigo=[]
         patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
         for i in range (0,len(datos['Snipers'])):
-          enemigo.append(Sniper(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
+          enemigo.append(Guardia(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
           self.grupoEnemigos.add(enemigo[i])
           self.grupoSprites.add(enemigo[i])
         for i in range (0,len(datos['Patrullas'])):
           patrulla.append(Patrulla(datos['nodos'],datos['grafo'],datos['Patrullas'][i]))
           self.grupoEnemigos.add(patrulla[i])
           self.grupoSprites.add(patrulla[i])
+
+        print self.calcular_ruta_anchura(1,32)
 
 
         
@@ -215,15 +221,15 @@ class Fase(Escena):
             Debuger.anadirTextoDebug("FPS: "+str(int(1000/tiempo)))
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
             for enemigo in iter(self.grupoEnemigos):
-                enemigo.mover_cpu(self.jugador1)
+                enemigo.mover_cpu(self.jugador1,self)
             #self.grupoJugadores.update(self,tiempo)
             self.jugador1.update(self,tiempo)
             #self.grupoEnemigos.update(self,tiempo) provisionalmente 1 a 1
             for enemigo in self.grupoEnemigos.sprites():
                 enemigo.update(self,tiempo)
             self.grupoSpritesDinamicos.update(tiempo)
-            #if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
-            #    self.director.salirEscena()
+            if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
+                self.director.salirEscena()
 
             # Actualizamos el scroll
             self.actualizarScroll(self.jugador1)
@@ -250,13 +256,91 @@ class Fase(Escena):
             self.cuadrotexto.draw(pantalla)
 
     def colision(self,rect):
+       rectlist=self.listaRectangulosColisionables()
+       collidesprite=rect.collidelist(rectlist)
+       return self.decorado.colision(rect) or collidesprite>-1
+
+
+    def listaRectangulosColisionables(self):
        rectlist=[]
        for sprite in self.grupoColisionables.sprites():
            if not sprite.estado:
-              rectlist.append(sprite.pos_inicial)
-       collidesprite=rect.collidelist(rectlist)
-       Debuger.anadirTextoDebug("colisiones "+str(collidesprite))
-       return self.decorado.colision(rect) or collidesprite>-1
+               rectlist.append(sprite.pos_inicial)
+       return rectlist
+
+    def listaRectangulosOpacos(self):
+       rectlist=[]
+       for sprite in self.grupoOpacos.sprites():
+           if not sprite.estado:
+               rectlist.append(sprite.pos_inicial)
+       return rectlist
+
+
+    def colisionLinea(self,origen,destino,step,offset=(0,0)):
+        dif=(destino[0]-origen[0],destino[1]-origen[1])
+        distancia=dist(origen,destino)
+        rectlist=self.listaRectangulosOpacos()
+        pointlist=[]
+        for i in range(0,int(distancia),step):
+            punto=(int(origen[0]+offset[0]+dif[0]*i/distancia),int(origen[1]+offset[1]+dif[1]*i/distancia))
+            Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
+            pointlist.append(punto)
+            if self.decorado.colisionPunto(punto):
+                return True
+            else:
+                for rect in rectlist:
+                    if rect.collidepoint(punto):
+                        return True
+        return False
+
+    def nodo_mas_cercano(self,pos,nodos):
+        mindist=dist(pos,nodos.values()[0])
+        minindex=0
+        for clave,valor in nodos.iteritems():
+            nodedist=dist(pos,valor)
+            if nodedist<mindist:
+                mindist=nodedist
+                minindex=clave
+        return minindex
+
+
+    def nodo_visible_mas_cercano(self,pos):
+        nodos={}
+        for i in range(0,len(self.nodos)):
+            nodos[i]=self.nodos[i]
+        nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
+        while len(nodos)>1:
+            if not self.colisionLinea(pos,nodos[nodo_mas_cercano],7,OFFSET):
+                return nodo_mas_cercano
+            else:
+                del(nodos[nodo_mas_cercano])
+                nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
+        return 0
+
+    def calcular_ruta_anchura(self,origen,destino):#La mas sencilla a saco sin distancias ni ostias??
+        visitados=[origen]
+        frontera=[origen]
+        ruta=[destino]
+        padre={}
+        padre[origen]=None
+        while len(frontera)>0:
+            abrir=frontera.pop()#El ultimo por defecto(profundidad?)
+            print("abriendo"+str(self.nodos[abrir]))
+            if abrir==destino:
+                anterior=padre[abrir]
+                while anterior is not None:
+                    ruta.append(anterior)
+                    anterior=padre[anterior]
+                return ruta
+            else:
+                for nodo in self.grafo[abrir]:
+                    if not visitados.__contains__(nodo):
+                        padre[nodo]=abrir
+                        visitados.append(nodo)
+                        frontera.append(nodo)#Añadimos los adyacentes
+        return ruta
+
+
 
 
     def eventos(self, lista_eventos):

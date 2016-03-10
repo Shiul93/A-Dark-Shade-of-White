@@ -39,6 +39,7 @@ class accionable(MiSprite):
         self.image = GestorRecursos.CargarImagen(archivoImagen,-1)
         self.rect=pygame.Rect(self.image.get_rect())
         self.rect.bottomleft=pos
+        self.mirando=0
         MiSprite.establecerPosicion(self,pos)
 
         self.area=area
@@ -50,6 +51,9 @@ class accionable(MiSprite):
     '''
     def objetoEnArea(self,rect_objeto):
         return self.area.contains(rect_objeto)
+
+    def estaViendo(self,objeto):
+        return False
 
 
     def establecerPosicionPantalla(self,scrollx, scrolly):
@@ -154,5 +158,20 @@ class Puerta_pequena(activable):
 class Luz(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"luzprueba.png","coordenadasluz.txt",pos,area,True,200)
+
+class Camara(activable):
+    def __init__(self,pos,area,direccion,rangoGiro,rangoVision):
+        activable.__inbit__(self,"camara.png","coordenadascamara.txt",pos,area,True,1)
+        self.rangoGiro=rangoGiro
+        self.rangoVision=rangoVision
+        self.direccion=direccion
+        self.mirando=self.direccion
+
+    def estaViendo(self,fase,pos):    #Habria que ver si es mas eficiente mirando primero la colision o el angulo
+        if(self.estado):
+            angulo=math.atan2(pos[0]-self.posicion[0],pos[1]-self.posicion[1])
+            if(anguloEnRango(angulo,self.mirando,self.rangoVision)):
+                return not fase.colisionLinea(self.posicion,pos,7,OFFSET)
+        return False
 
 

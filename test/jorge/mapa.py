@@ -89,6 +89,10 @@ class Mapa:
 
     #Comprueba colision en una posicion. se le pasa el id de la capa de colision y devuelve 0 si no hay nada y 1 si hay algo
     #En principiio para usar solo con la capa de colisiones pero se podria usar con cualquiera
+    def colisionPunto(self,punto):
+        color=self.images["colisiones"].get_at(punto)
+        return color.r>0
+
     def colision(self,rect):
         #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
         #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
@@ -98,9 +102,9 @@ class Mapa:
         #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
 
        # for layer in self.layers:
-        color1=self.images["colisiones"].get_at(rect.topleft)
-        color2=self.images["colisiones"].get_at(rect.topright)
-        color3=self.images["colisiones"].get_at(rect.bottomleft)
-        color4=self.images["colisiones"].get_at(rect.bottomright)
-        return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
+        col1=self.colisionPunto(rect.topleft)
+        col2=self.colisionPunto(rect.topright)
+        col3=self.colisionPunto(rect.bottomleft)
+        col4=self.colisionPunto(rect.bottomright)
+        return col1 or col2 or col3 or col4
 
