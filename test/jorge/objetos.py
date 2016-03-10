@@ -52,7 +52,7 @@ class accionable(MiSprite):
     def objetoEnArea(self,rect_objeto):
         return self.area.contains(rect_objeto)
 
-    def estaViendo(self,objeto):
+    def estaViendo(self,fase,pos):
         return False
 
 
@@ -160,18 +160,49 @@ class Luz(activable):
         activable.__init__(self,"luzprueba.png","coordenadasluz.txt",pos,area,True,200)
 
 class Camara(activable):
-    def __init__(self,pos,area,direccion,rangoGiro,rangoVision):
-        activable.__inbit__(self,"camara.png","coordenadascamara.txt",pos,area,True,1)
+    def __init__(self,pos,area,direccion,rangoGiro,rangoVision,velocidadGiro):
+        activable.__init__(self,"camara.png","coord_camara.txt",pos,area,True,1)
         self.rangoGiro=rangoGiro
         self.rangoVision=rangoVision
         self.direccion=direccion
         self.mirando=self.direccion
+        self.direcciongiro=1
+        self.velocidadGiro=velocidadGiro
 
     def estaViendo(self,fase,pos):    #Habria que ver si es mas eficiente mirando primero la colision o el angulo
         if(self.estado):
             angulo=math.atan2(pos[0]-self.posicion[0],pos[1]-self.posicion[1])
+            Debuger.anadirRadio(self.posicion,self.mirando-self.rangoVision/2,140)
+            Debuger.anadirRadio(self.posicion,self.mirando+self.rangoVision/2,140)
+
             if(anguloEnRango(angulo,self.mirando,self.rangoVision)):
-                return not fase.colisionLinea(self.posicion,pos,7,OFFSET)
+                return not fase.colisionLinea(self.posicion,pos,7)
         return False
+
+    def update(self,tiempo):
+        if self.estado and self.rangoGiro>0:
+            if(self.direcciongiro>0):
+                if(self.mirando>self.direccion+self.rangoGiro/2):
+                    self.direcciongiro=-1
+                else:
+                    self.mirando=normalizarAngulo(self.mirando+self.velocidadGiro*tiempo)
+            else:
+                if(self.mirando<self.direccion-self.rangoGiro/2):
+                    self.direcciongiro=1
+                else:
+                    self.mirando=normalizarAngulo(self.mirando-self.velocidadGiro*tiempo)
+        numImagen=int(5*(self.mirando+(PI/2))/(PI))
+        if numImagen>4 :numImagen=4
+        print "numimagen: " + str(numImagen)
+        print "self.mirando : " + str(self.mirando)
+        if not numImagen==self.numImagen :
+            self.numImagen=numImagen
+            self.image=self.hoja.subsurface(self.coordenadas[self.numImagen])
+        Debuger.anadirRadio(self.posicion,self.mirando-self.rangoVision/2,100)
+        Debuger.anadirRadio(self.posicion,self.mirando+self.rangoVision/2,100)
+
+
+
+        MiSprite.update(self,tiempo)
 
 

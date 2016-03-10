@@ -89,6 +89,11 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
 
+        for nombre,camara in datos["Camaras"].iteritems():
+            self.objetos[nombre]=Camara(camara[0],pygame.Rect(0,0,1,1),camara[1],camara[2],camara[3],camara[4])
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+
         print self.objetos
 
         for nombre,causa in datos["Causas"].iteritems():
@@ -361,7 +366,7 @@ class Fase(Escena):
              elif self.actiondropped:
                 action=True
              for evento in self.listaeventos.itervalues():
-                 if evento.comprobar(self.jugador1,action):
+                 if evento.comprobar(self.jugador1,self,action):
                      evento.lanzar(self)
         else:
             if not teclasPulsadas[K_RETURN]:
@@ -382,3 +387,6 @@ class Fase(Escena):
         self.pausa=True
         self.haymensaje=True
         self.actiondropped=False
+
+    def reproducirSonido(self,sonido):#SONIDO ES UN STRING CON EL NOMBRE DEL SONIDO QUE SE DEBERA CARGAR ANTES
+        return False

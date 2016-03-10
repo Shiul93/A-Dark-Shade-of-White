@@ -96,11 +96,15 @@
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
   },
+  "Camaras":{
+    "camara1":[[523,680],0,3.1415,0.785375,0.00025]
+  },
   "Causas":{
     "pulsar_puerta1":["accion","puerta1"],
     "pulsar_puerta3":["accion","puerta3"],
     "pulsar_boton1":["accion","boton1"],
     "pulsar_boton2":["accion","boton2"],
+    "visto_camara1":["visto_camara","camara1"],
     "llegar_a_meta":["area","meta"]
   },
   "Consecuencias":{
@@ -111,6 +115,7 @@
     "mensaje_puerta2":["mensaje","Escuchas una puerta a lo lejos"],
     "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
+    "mensaje_camara":["mensaje","Has sido visto por la camara"],
     "fin_fase":["fin"]
   },
   "Eventos":{
@@ -118,6 +123,7 @@
     "abrir_puerta_2":[["pulsar_boton1"],["cambiar_puerta2","mensaje_puerta2"]],
     "abrir_puerta_3":[["pulsar_puerta3"],["cambiar_puerta3"]],
     "activar_luz":[["pulsar_boton2"],["mensaje_luz","cambiar_luz"]],
+    "camara_1":[["visto_camara1"],["mensaje_camara"]],
     "meta":[["llegar_a_meta"],["fin_fase"]]
 
   }

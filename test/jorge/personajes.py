@@ -449,6 +449,10 @@ class Guardia(NoJugador):
     # La implementacion de la inteligencia segun este personaje particular
     def mover_cpu(self, jugador1, fase):
             self.movimiento = NORMAL
+            for i in range(0,len(self.grafo)):
+                ldestinos=self.grafo[i]
+                for destino in ldestinos:
+                    Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
         # Movemos solo a los enemigos que esten en la pantalla
             #Calcula la distancia enambos ejes
             #Si ve al personaje...
