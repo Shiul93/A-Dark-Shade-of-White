@@ -107,7 +107,10 @@ class Fase(Escena):
                self.consecuencias[nombre]=Accion(MENSAJE,None,consecuencia[1],None)
             elif tipo==FIN:
                self.consecuencias[nombre]=Accion(FIN,None,None,None)
-
+            elif tipo==ALARMA:
+               self.consecuencias[nombre]=Accion(ALARMA,self.objetos[consecuencia[1]],None,None)
+            elif tipo==SONIDO:
+               self.consecuencias[nombre]=Accion(SONIDO,None,None,consecuencia[1]) #si se cargarran los sonidos en el json seria self.objetos[consecuencia[1]]
         for nombre,evento in datos["Eventos"].iteritems():
             causas=[]
             consecuencias=[]
@@ -260,6 +263,11 @@ class Fase(Escena):
         if(self.haymensaje):
             self.cuadrotexto.draw(pantalla)
 
+    def dispararAlarma(self,camara):
+        nodo=self.nodo_visible_mas_cercano(camara.posicion)
+        for enemigo in self.grupoEnemigos.sprites():
+              enemigo.alarma(self,nodo)
+
     def colision(self,rect):
        rectlist=self.listaRectangulosColisionables()
        collidesprite=rect.collidelist(rectlist)
@@ -315,7 +323,7 @@ class Fase(Escena):
             nodos[i]=self.nodos[i]
         nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
         while len(nodos)>1:
-            if not self.colisionLinea(pos,nodos[nodo_mas_cercano],7,OFFSET):
+            if not self.colisionLinea(pos,nodos[nodo_mas_cercano],7):
                 return nodo_mas_cercano
             else:
                 del(nodos[nodo_mas_cercano])

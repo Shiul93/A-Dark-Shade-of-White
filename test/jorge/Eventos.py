@@ -28,11 +28,13 @@ MENSAJE=3
 #Emite un sonido
 SONIDO=4
 #Termina la escena
-FIN=5
+ALARMA=5
+FIN=6
 DiccConsecuencias={
     "cambiar":2,
     "mensaje":3,
-    "fin":5
+    "alarma":5,
+    "fin":6
 }
 
 class Evento:
@@ -68,7 +70,7 @@ class Causa:
 class Accion:
     def __init__(self,tipo,objeto,mensaje,sonido):
         self.tipo=tipo
-        if self.tipo==ACTIVAR or self.tipo==DESACTIVAR or self.tipo==CAMBIAR:
+        if self.tipo==ACTIVAR or self.tipo==DESACTIVAR or self.tipo==CAMBIAR or self.tipo==ALARMA:
             self.objeto=objeto
         elif self.tipo==MENSAJE:
             self.mensaje=mensaje
@@ -85,8 +87,9 @@ class Accion:
         elif self.tipo==MENSAJE :
             fase.mostrarMensaje(self.mensaje)
         elif self.tipo==SONIDO :
-            fase.reproducirSonido(self.sonido
-                                 )
+            fase.reproducirSonido(self.sonido)
+        elif self.tipo==ALARMA :
+            fase.dispararAlarma(self.objeto)
         elif self.tipo==FIN:
             fase.finfase=True
             fase.mostrarMensaje("Fase terminada, enhorabuena")

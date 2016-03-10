@@ -444,7 +444,7 @@ class Guardia(NoJugador):
         self.visto=False
         self.ruta=[self.destino]
         self.siguiente=nodoinicial
-        self.estado=LLENDO_A_ALARMA
+        self.estado=PATRULLANDO
         # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
     def mover_cpu(self, jugador1, fase):
@@ -453,10 +453,11 @@ class Guardia(NoJugador):
                 ldestinos=self.grafo[i]
                 for destino in ldestinos:
                     Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
+            Debuger.anadirTextoDebug("Ruta : "+ str(self.ruta))
+            Debuger.anadirTextoDebug("Estado : " + str(self.estado))
         # Movemos solo a los enemigos que esten en la pantalla
             #Calcula la distancia enambos ejes
             #Si ve al personaje...
-            Debuger.anadirTextoDebug("EstaViendo: "+ str(self.visto))
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
                 if not self.visto:
                     self.visto=True
@@ -516,7 +517,14 @@ class Guardia(NoJugador):
              direccion=0
          Debuger.anadirRadio(self.posicion,direccion-rango/2,40)
          Debuger.anadirRadio(self.posicion,direccion+rango/2,40)
-         Debuger.anadirTextoDebug("direccion = " + str(direccion) + "\tangulo =" + str(angulo))
          if anguloEnRango(angulo,direccion,rango):#Mira si un angulo esta dentro del campo de vision con direccion direccion y rango rango (radianes todo
              return  not fase.colisionLinea(self.posicion,pos,7,OFFSET)
          return False
+
+    def alarma(self,fase,nodo):
+        if self.estado!=LLENDO_A_ALARMA:
+            self.estado=LLENDO_A_ALARMA
+        if(self.destino!=nodo):
+            self.destino=nodo
+            self.siguiente=fase.nodo_visible_mas_cercano(self.posicion)
+            self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)

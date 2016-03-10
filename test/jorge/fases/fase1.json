@@ -116,6 +116,7 @@
     "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
+    "alarma":["alarma","camara1"],
     "fin_fase":["fin"]
   },
   "Eventos":{
@@ -123,7 +124,7 @@
     "abrir_puerta_2":[["pulsar_boton1"],["cambiar_puerta2","mensaje_puerta2"]],
     "abrir_puerta_3":[["pulsar_puerta3"],["cambiar_puerta3"]],
     "activar_luz":[["pulsar_boton2"],["mensaje_luz","cambiar_luz"]],
-    "camara_1":[["visto_camara1"],["mensaje_camara"]],
+    "camara_1":[["visto_camara1"],["alarma"]],
     "meta":[["llegar_a_meta"],["fin_fase"]]
 
   }
