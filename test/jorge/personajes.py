@@ -20,8 +20,10 @@ PI=math.pi
 #Estados de la IA
 QUIETO=0
 PATRULLANDO=1
-PERSIGUIENDO=2
+DEAMBULANDO=2
 LLENDO_A_ALARMA=3
+VOLVIENDO_A_PATRULLA=4
+PERSIGUIENDO=4
 
 #Movimiento
 QUIETO=0
@@ -176,8 +178,8 @@ class Personaje(MiSprite):
         #Comprobamos las colisiones primero en el eje x
         #Si colisiona en el eje x ponemos la velocidad x a 0
         #print self.posicion
-        newposrect=pygame.Rect(0,0,self.rect.width*2/3,self.rect.height/3)
-        newposrect.bottomleft=(self.posicion[0]+self.rect.width/6,self.posicion[1])
+        newposrect=pygame.Rect(0,0,self.rect.width/3,self.rect.height/6)
+        newposrect.center=(self.posicion[0],self.posicion[1]+self.rect.height/2)
         newposrect.left=newposrect.left+velocidadx*tiempo
         newposrect.bottom=newposrect.bottom+velocidady*tiempo
         self.newposrect=newposrect
@@ -332,7 +334,7 @@ class Patrulla(NoJugador):
                     Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
 
             #Si ve al personaje...
-            if not fase.colisionLinea(self.posicion,jugador1.posicion,7,OFFSET):
+            if not fase.colisionLinea(self.posicion,jugador1.posicion,7):
                 if not self.visto:
                     #fase.mostrarMensaje("Ups... te han visto!!!")
                     self.visto=True
@@ -392,7 +394,7 @@ class Patrulla(NoJugador):
             #Calcula la distancia enambos ejes
             #Dibujar el grafo
              #Si ve al personaje...
-            if not fase.colisionLinea(self.posicion,jugador1.posicion,7,OFFSET):
+            if not fase.colisionLinea(self.posicion,jugador1.posicion,7):
                 if not self.visto:
                     fase.mostrarMensaje("Ups... te han visto!!!")
                     self.visto=True
@@ -433,18 +435,19 @@ class Patrulla(NoJugador):
 
 class Guardia(NoJugador):
     "El  guardia que da vueltas por un grafo de nodos y sabe llegar a un destino"
-    def __init__(self,nodos,grafo,nodoinicial):
+    def __init__(self,nodos,grafo,recorrido):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
         NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER)
         self.nodos=nodos
         self.grafo=grafo
-        self.inicio=nodoinicial #la primera del
-        self.destino=11
-        self.posicion=nodos[nodoinicial]
+        self.recorrido=recorrido #la primera del
+        self.destino=self.recorrido[0]
+        self.posicion=nodos[self.recorrido[-1]]
         self.visto=False
-        self.ruta=[self.destino]
-        self.siguiente=nodoinicial
+        self.ruta=list(self.recorrido)
+        self.siguiente=self.recorrido[-1]
         self.estado=PATRULLANDO
+        self.tiempobusqueda=0
         # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
     def mover_cpu(self, jugador1, fase):
@@ -455,9 +458,17 @@ class Guardia(NoJugador):
                     Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
             Debuger.anadirTextoDebug("Ruta : "+ str(self.ruta))
             Debuger.anadirTextoDebug("Estado : " + str(self.estado))
+            Debuger.anadirTextoDebug(("Destino : "+ str(self.destino)))
+            Debuger.anadirTextoDebug(("Siguiente : "+ str(self.siguiente)))
+            Debuger.anadirTextoDebug(("PosSiguiente : "+ str(self.nodos[self.siguiente])))
+            Debuger.anadirTextoDebug(("posicion : "+ str(self.posicion)))
+
+
         # Movemos solo a los enemigos que esten en la pantalla
             #Calcula la distancia enambos ejes
             #Si ve al personaje...
+
+
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
                 if not self.visto:
                     self.visto=True
@@ -477,32 +488,50 @@ class Guardia(NoJugador):
                     for destino in destinos:
                         if(fase.colisionLinea(self.posicion,self.nodos[destino],7)):
                             destinos.remove(destino)
-                    if(self.estado==PATRULLANDO):
+                    if(self.estado==DEAMBULANDO)  :
                         self.siguiente=destinos[randint(0,len(destinos)-1)]
-                    elif(self.estado==LLENDO_A_ALARMA):
+                    elif(self.estado==LLENDO_A_ALARMA or self.estado==PATRULLANDO or self.estado==VOLVIENDO_A_PATRULLA):
                         if self.destino!=self.siguiente:
                             if len(self.ruta)>0 and self.ruta[len(self.ruta)-1]==self.siguiente:
                                     print(self.ruta.pop())
+
                             else:
-                                self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)
-                            if len(self.ruta)==0:
-                                self.estado=PATRULLANDO
-                            else:
-                                self.siguiente=self.ruta[len(self.ruta)-1]
+                                if(self.estado==PATRULLANDO):
+                                    self.ruta=list(self.recorrido)
+                                else:
+                                    self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)
+                            #if len(self.ruta)==0:
+                            #    self.estado=PATRULLANDO
+                            #else:
+                            self.siguiente=self.ruta[-1]
                         else:
-                            self.estado=PATRULLANDO
+                            if(self.estado==LLENDO_A_ALARMA):
+                                self.estado=DEAMBULANDO
+                                self.tiempobusqueda=10000
+                            elif self.estado==VOLVIENDO_A_PATRULLA:
+                                self.estado=PATRULLANDO
+                                self.ruta=list(self.recorrido)
+                                self.siguiente=self.ruta[-1]
+                                self.destino=self.ruta[0]
+                            else:
+                                self.ruta=list(self.recorrido)
+                                self.siguiente=self.ruta[-1]
+                                self.destino=self.ruta[0]
                 #E cualquier caso se desplaza hacia su objeticvo actal
             Debuger.anadirLinea(self.posicion,self.dest)
-            if(abs(self.distancia[0])>abs(self.distancia[1])):
-                if(self.distancia[0]>0):
-                    Personaje.mover(self,self.movimiento,DERECHA)
-                else:
-                    Personaje.mover(self,self.movimiento,IZQUIERDA)
+            if(self.distancia)==(0,0):
+                Personaje.mover(self,self.movimiento,QUIETO)
             else:
-                if(self.distancia[1]>0):
-                    Personaje.mover(self,self.movimiento,ABAJO)
+                if(abs(self.distancia[0])>abs(self.distancia[1])):
+                    if(self.distancia[0]>0):
+                        Personaje.mover(self,self.movimiento,DERECHA)
+                    else:
+                        Personaje.mover(self,self.movimiento,IZQUIERDA)
                 else:
-                    Personaje.mover(self,self.movimiento,ARRIBA)
+                    if(self.distancia[1]>0):
+                        Personaje.mover(self,self.movimiento,ABAJO)
+                    else:
+                        Personaje.mover(self,self.movimiento,ARRIBA)
 
     def estaViendo(self,fase,pos,rango):
          direccion=0
@@ -518,7 +547,7 @@ class Guardia(NoJugador):
          Debuger.anadirRadio(self.posicion,direccion-rango/2,40)
          Debuger.anadirRadio(self.posicion,direccion+rango/2,40)
          if anguloEnRango(angulo,direccion,rango):#Mira si un angulo esta dentro del campo de vision con direccion direccion y rango rango (radianes todo
-             return  not fase.colisionLinea(self.posicion,pos,7,OFFSET)
+             return  not fase.colisionLinea(self.posicion,pos,7)
          return False
 
     def alarma(self,fase,nodo):
@@ -528,3 +557,13 @@ class Guardia(NoJugador):
             self.destino=nodo
             self.siguiente=fase.nodo_visible_mas_cercano(self.posicion)
             self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)
+
+    def update(self,fase,tiempo):
+         if self.estado==DEAMBULANDO:
+             self.tiempobusqueda-=tiempo
+             if(self.tiempobusqueda<0):
+                 self.estado=VOLVIENDO_A_PATRULLA
+                 self.siguiente=fase.nodo_visible_mas_cercano(self.posicion)
+                 self.destino=self.recorrido[-1]
+                 self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)
+         Personaje.update(self,fase,tiempo)

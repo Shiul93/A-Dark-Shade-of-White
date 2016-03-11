@@ -122,13 +122,13 @@ class Fase(Escena):
 
         self.grafo=datos['grafo']
         self.nodos=datos['nodos']
-        enemigo=[]
+        self.enemigo=[]
         patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
         for i in range (0,len(datos['Snipers'])):
-          enemigo.append(Guardia(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
-          self.grupoEnemigos.add(enemigo[i])
-          self.grupoSprites.add(enemigo[i])
+          self.enemigo.append(Guardia(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
+          self.grupoEnemigos.add(self.enemigo[i])
+          self.grupoSprites.add(self.enemigo[i])
         for i in range (0,len(datos['Patrullas'])):
           patrulla.append(Patrulla(datos['nodos'],datos['grafo'],datos['Patrullas'][i]))
           self.grupoEnemigos.add(patrulla[i])
@@ -225,6 +225,7 @@ class Fase(Escena):
     #     Actualizar el scroll implica tener que desplazar todos los sprites por pantalla
     #  Se actualiza la posicion del sol y el color del cielo
     def update(self, tiempo):
+        if tiempo>80: tiempo=80
         if(not self.pausa):
             Debuger.anadirTextoDebug("FPS: "+str(int(1000/tiempo)))
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
@@ -240,7 +241,7 @@ class Fase(Escena):
                 self.director.salirEscena()
 
             # Actualizamos el scroll
-            self.actualizarScroll(self.jugador1)
+            self.actualizarScroll(self.enemigo[1])
   
 
         
@@ -334,11 +335,13 @@ class Fase(Escena):
         visitados=[origen]
         frontera=[origen]
         ruta=[destino]
+        distancia={}
+        distancia[origen]=0
         padre={}
         padre[origen]=None
         while len(frontera)>0:
-            abrir=frontera.pop()#El ultimo por defecto(profundidad?)
-            print("abriendo"+str(self.nodos[abrir]))
+            abrir=frontera.pop(0)# Con un cero es anchura, con un -1 esprofundidad, con una heuristica es hillclimb, con dist+heuristica es A*
+            print("abriendo"+str(abrir) + "  :  " + str(self.nodos[abrir]))
             if abrir==destino:
                 anterior=padre[abrir]
                 while anterior is not None:
@@ -351,6 +354,13 @@ class Fase(Escena):
                         padre[nodo]=abrir
                         visitados.append(nodo)
                         frontera.append(nodo)#Añadimos los adyacentes
+                        distancia[nodo]=distancia[abrir]+dist(self.nodos[abrir],self.nodos[nodo])
+                    else:
+                        newdist=distancia[abrir]+dist(self.nodos[abrir],self.nodos[nodo])
+                        if newdist<distancia[nodo]:
+                            distancia[nodo]=newdist
+                            padre[nodo]=abrir
+                    print("Nodo : " + str(nodo) + "  padre: " + str(padre[nodo]) + "  dist : "+ str(distancia[nodo]) )
         return ruta
 
 
