@@ -1,0 +1,15 @@
+# Numero layer, Nombre, Visible, colisionable, opacidad, nombrearchivo
+W 50
+H 40
+P 32
+0  suelo 1 0 255 0_m1_suelo.png 0
+1  muebles 1 0 255 1_m1_muebles.png 0
+2  vacio 1 1 255 2_m1_vacio.png 0
+3  paredes 1 0 255 3_m1_paredes.png 0
+4  muebles2 1 0 255 4_m1_muebles2.png 0
+5  objetospared 1 0 255 5_m1_objetospared.png 0
+6  objetos 1 0 255 6_m1_objetos.png 1
+7  paredesverticales 1 1 255 7_m1_paredesverticales.png 1
+8  puertas 1 0 255 8_m1_puertas.png 1
+9  sombra 1 0 100 9_m1_sombra.png 1
+10 colisiones 0 1 255 10_m1_colisiones.png 1
