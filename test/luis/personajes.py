@@ -197,7 +197,7 @@ class Jugador(Personaje):
     "Cualquier personaje del juego"
     def __init__(self):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        Personaje.__init__(self,'oak.png','coordoak.txt', VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
+        Personaje.__init__(self,'oak.png','coord_oak.txt', VELOCIDAD_JUGADOR,  RETARDO_ANIMACION_JUGADOR);
 
 
     def mover(self, teclasPulsadas, arriba, abajo, izquierda, derecha,sigilo,correr):

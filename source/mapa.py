@@ -11,7 +11,7 @@ class Mapa:
     def __init__(self,nombre):
         """Constructor de la clase, recibe la ruta del directorio que contiene las capas y ficheros de configuracion"""
         self.path  = 'maps'+os.path.sep+nombre+os.path.sep
-        print self.path
+
         self.nombre = nombre
         self.layers = GestorRecursos.CargarArchivoCapas(path.join(nombre,nombre+".layers"),self)
         self.images = {}
@@ -41,11 +41,14 @@ class Mapa:
         """Utiliza el gestor de recursos para cargar las imagenes correspondientes a las capas del mapa"""
         for layer in self.layers:
             #Carga las imagenes en un diccionario usando como clave el nombre de la capa
-            self.images[layer[1]]= GestorRecursos.CargarImagen(path.join(self.path,layer[5]),-1).convert()
+
+            if layer[0]==0 :
+                self.images[layer[1]]= GestorRecursos.CargarImagen(path.join(self.path,layer[5])).convert()
+            else:
+                self.images[layer[1]]= GestorRecursos.CargarImagen(path.join(self.path,layer[5]),-1).convert()
 
     def update(self, scrollx,scrolly):
         #Cuando cambia el scroll cambiamos la posicion del rectangulo que define el trozo de fondo que se muestra
-        #todo ESTA COPIADO DIRECTAMENTE DEL DE FASE AUN NO SE MANEJA SCROLL
         self.rectSubimagen.left = scrollx
         self.rectSubimagen.top = scrolly
 
@@ -91,6 +94,10 @@ class Mapa:
 
     #Comprueba colision en una posicion. se le pasa el id de la capa de colision y devuelve 0 si no hay nada y 1 si hay algo
     #En principiio para usar solo con la capa de colisiones pero se podria usar con cualquiera
+    def colisionPunto(self,punto):
+        color=self.images["colisiones"].get_at(punto)
+        return color.r>0
+
     def colision(self,rect):
         #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
         #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
@@ -98,11 +105,11 @@ class Mapa:
         #Si vale 0 en las 4 esquinas no hay colision
         #Se podria usar tambien el alfa ( seria mas lógico)
         #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
-        color1=self.images['colisiones'].get_at(rect.topleft)
-        color2=self.images['colisiones'].get_at(rect.topright)
-        color3=self.images['colisiones'].get_at(rect.bottomleft)
-        color4=self.images['colisiones'].get_at(rect.bottomright)
-        return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
+        col1=self.colisionPunto(rect.topleft)
+        col2=self.colisionPunto(rect.topright)
+        col3=self.colisionPunto(rect.bottomleft)
+        col4=self.colisionPunto(rect.bottomright)
+        return col1 or col2 or col3 or col4
 
 
 
