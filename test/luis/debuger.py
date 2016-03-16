@@ -5,6 +5,7 @@ from escena import *
 from fase import *
 from gestorRecursos import *
 from menu import *
+from math import *
 
 class Debuger(object):
     textos=[]
@@ -41,6 +42,11 @@ class Debuger(object):
     @classmethod
     def anadirLinea(cls,(x1,y1),(x2,y2)):
         cls.lineas.append(((x1,y1),(x2,y2)))
+
+    @classmethod
+    def anadirRadio(cls,pos,angulo,longitud):
+        pos2=(pos[0]+longitud*sin(angulo),pos[1]+longitud*cos(angulo))
+        cls.anadirLinea(pos,pos2)
 
     @classmethod
     def anadirLineas(cls,list):
