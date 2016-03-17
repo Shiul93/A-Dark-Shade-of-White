@@ -119,7 +119,7 @@
     "pulsar_boton_salida":["accion","boton_salida"],
     "pulsar_puerta_maquinas":["accion","puerta_maquinas"],
     "pulsar_puerta_oficina":["accion","puerta_oficina"],
-    "pulsar_puerta_salida_almacen":["accion","puerta_oficina"],
+    "pulsar_puerta_salida_almacen":["accion","puerta_salida_almacen"],
     "visto_camara_entrada":["visto_camara","camara_entrada"],
     "visto_camara_maquinas":["visto_camara","camara_maquinas"],
     "visto_camara_almacen":["visto_camara","camara_almacen"],
