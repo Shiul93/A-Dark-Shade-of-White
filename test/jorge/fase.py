@@ -8,7 +8,7 @@ from mapa import *
 from pygame.locals import *
 from objetos import *
 from Eventos import *
-
+from nodo import *
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
 #LA idea es que carge la fase a paretir de un script
@@ -20,13 +20,16 @@ from Eventos import *
 # -------------------------------------------------
 # -------------------------------------------------
 
-# Los bordes de la pantalla para hacer scroll horizontal
-MINIMO_X_JUGADOR = 150
+# Los bordes de la pa15ntalla para hacer scroll horizontal
+MINIMO_X_JUGADOR = 180
 MAXIMO_X_JUGADOR = ANCHO_PANTALLA - MINIMO_X_JUGADOR
+MINIMO_X_BORDES = 40
 
-
-MINIMO_Y_JUGADOR = 150
+MINIMO_Y_JUGADOR = 180
 MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
+MINIMO_Y_BORDES = 40
+
+SEARCH_STEP=12
 # -------------------------------------------------
 # Clase Fase
 
@@ -73,12 +76,14 @@ class Fase(Escena):
         #Cargamos los objetos
         for nombre,boton in datos["Interruptores"].iteritems():
             self.objetos[nombre]=Interruptor(boton[0], pygame.Rect(boton[1][0], boton[1][1], boton[1][2], boton[1][3]))
-            self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
         for nombre,meta in datos["Metas"].iteritems():
             self.objetos[nombre]=Meta(meta[0],pygame.Rect(meta[1][0],meta[1][1],meta[1][2],meta[1][3]))
         for nombre,puerta in datos["Puertas"].iteritems():
             self.objetos[nombre]=Puerta_pequena(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
-            self.grupoSprites.add(self.objetos[nombre]) #(NO SE PORQUE NO)
+            self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
@@ -129,12 +134,7 @@ class Fase(Escena):
           self.enemigo.append(Guardia(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
           self.grupoEnemigos.add(self.enemigo[i])
           self.grupoSprites.add(self.enemigo[i])
-        for i in range (0,len(datos['Patrullas'])):
-          patrulla.append(Patrulla(datos['nodos'],datos['grafo'],datos['Patrullas'][i]))
-          self.grupoEnemigos.add(patrulla[i])
-          self.grupoSprites.add(patrulla[i])
 
-        print self.calcular_ruta_anchura(1,32)
 
 
         
@@ -142,12 +142,12 @@ class Fase(Escena):
     def actualizarScrollOrdenados(self, jugador):
         actualizar=False
         # Si el jugador se encuentra más allá del borde izquierdo
-        if (jugador.rect.left<MINIMO_X_JUGADOR):
-            desplazamiento = MINIMO_X_JUGADOR - jugador.rect.left
+        if (jugador.rect.center[0]<MINIMO_X_JUGADOR):
+            desplazamiento = MINIMO_X_JUGADOR - jugador.rect.center[0]
             if self.scrollx <= 0:
                 self.scrollx = 0
                 # En su lugar, colocamos al jugador que esté más a la izquierda a la izquierda de todo
-                jugador.establecerPosicion((MINIMO_X_JUGADOR, jugador.posicion[1]))
+                #jugador.establecerPosicion((MINIMO_X_JUGADOR, jugador.posicion[1]))
              # Si no, se puede hacer scroll a la izquierda
             else:
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
@@ -157,44 +157,44 @@ class Fase(Escena):
                 actualizar=True; # Se ha actualizado el scroll
 
         # Si el jugador  se encuentra más allá del borde derecho
-        elif (jugador.rect.right>MAXIMO_X_JUGADOR):
+        elif (jugador.rect.center[0]>MAXIMO_X_JUGADOR):
 
             # Se calcula cuantos pixeles esta fuera del borde
-            desplazamiento = jugador.rect.right - MAXIMO_X_JUGADOR
+            desplazamiento = jugador.rect.center[0] - MAXIMO_X_JUGADOR
 
             # Si el escenario ya está a la derecha del todo, no lo movemos mas
             if self.scrollx + ANCHO_PANTALLA >= self.decorado.rect.right:
                 self.scrollx = self.decorado.rect.right - ANCHO_PANTALLA
                 # En su lugar, colocamos al jugador a la derecha de todo
-                jugador.establecerPosicion((self.scrollx+MAXIMO_X_JUGADOR-jugador.rect.width, jugador.posicion[1]))
+                #jugador.establecerPosicion((self.scrollx+MAXIMO_X_JUGADOR, jugador.posicion[1]))
             else:
                  # Calculamos el nivel de scroll actual: el anterior + desplazamiento
                 #  (desplazamos a la derecha)
                 self.scrollx = self.scrollx + desplazamiento;
                 actualizar= True; # Se ha actualizado el scroll
 
-        if (jugador.rect.top<MINIMO_Y_JUGADOR):
-            desplazamiento = MINIMO_Y_JUGADOR - jugador.rect.top
+        if (jugador.rect.center[1]<MINIMO_Y_JUGADOR):
+            desplazamiento = MINIMO_Y_JUGADOR - jugador.rect.center[1]
 
             # Si el escenario ya está arriba del todo, no lo movemos mas
             if self.scrolly <= 0:
                 self.scrolly = 0
                 # En su lugar, colocamos al jugador arriba de todo
-                jugador.establecerPosicion((jugador.posicion[0],MINIMO_Y_JUGADOR+jugador.rect.height))
+                #jugador.establecerPosicion((jugador.posicion[0],MINIMO_Y_JUGADOR))
              # Si no, se puede hacer scroll a la arriba
             else:
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
                 #  (desplazamos ariba)
                 self.scrolly = self.scrolly - desplazamiento;
                 actualizar= True; # Se ha actualizado el scroll
-        elif (jugador.rect.bottom>MAXIMO_Y_JUGADOR):
-            desplazamiento = jugador.rect.bottom - MAXIMO_Y_JUGADOR
+        elif (jugador.rect.center[1]>MAXIMO_Y_JUGADOR):
+            desplazamiento = jugador.rect.center[1] - MAXIMO_Y_JUGADOR
 
             # Si el escenario ya está abajo del todo, no lo movemos mas
             if self.scrolly + ALTO_PANTALLA >= self.decorado.rect.bottom:
                 self.scrolly = self.decorado.rect.bottom-ALTO_PANTALLA
                 # En su lugar, colocamos al jugador abajo de todo
-                jugador.establecerPosicion((jugador.posicion[0],self.scrolly+MAXIMO_Y_JUGADOR))
+                #jugador.establecerPosicion((jugador.posicion[0],self.scrolly+MAXIMO_Y_JUGADOR))
              # Si no, se puede hacer scroll abajo
             else:
                 # Calculamos el nivel de scroll actual: el anterior - desplazamiento
@@ -241,7 +241,7 @@ class Fase(Escena):
                 self.director.salirEscena()
 
             # Actualizamos el scroll
-            self.actualizarScroll(self.enemigo[1])
+            self.actualizarScroll(self.jugador1)
   
 
         
@@ -251,13 +251,8 @@ class Fase(Escena):
         # Luego los Sprites
         self.grupoSprites.draw(pantalla)
         #Luego las capas que tapan a los sprites
+        self.grupoOpacos.draw(pantalla)
         self.decorado.dibujar_post(pantalla)
-
-        Debuger.anadirRectangulo(self.objetos["boton1"].area)
-        Debuger.anadirRectangulo(self.objetos["puerta1"].area)
-        Debuger.anadirRectangulo(self.objetos["meta"].area)
-
-
 
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
@@ -272,7 +267,7 @@ class Fase(Escena):
     def colision(self,rect):
        rectlist=self.listaRectangulosColisionables()
        collidesprite=rect.collidelist(rectlist)
-       return self.decorado.colision(rect) or collidesprite>-1
+       return self.decorado.colision(rect,"colisiones") or collidesprite>-1
 
 
     def listaRectangulosColisionables(self):
@@ -299,7 +294,7 @@ class Fase(Escena):
             punto=(int(origen[0]+offset[0]+dif[0]*i/distancia),int(origen[1]+offset[1]+dif[1]*i/distancia))
             Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
             pointlist.append(punto)
-            if self.decorado.colisionPunto(punto):
+            if self.decorado.colisionPunto(punto,"opacidad"):
                 return True
             else:
                 for rect in rectlist:
@@ -307,6 +302,9 @@ class Fase(Escena):
                         return True
         return False
 
+
+    # estas dos funciones las usa ahora el enemigo para volver a la ruta cuando esta "perdido"
+    #deberian sustituirse por funciones equivalentes usando rutas
     def nodo_mas_cercano(self,pos,nodos):
         mindist=dist(pos,nodos.values()[0])
         minindex=0
@@ -331,6 +329,30 @@ class Fase(Escena):
                 nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
         return 0
 
+    #Funcion que devuelve los nodos adyacentes a un nodo
+    #PAra nodos con clave de coordenadas (para perseguir al personaje y volver a su grafo original)
+
+    def calcular_nodos_adyacentes(self,nodo,step):
+        rectangulo=pygame.Rect(0,0,step*2,step*2) #Usado para calcular las posiciones de los nodos nuevos (top,bottom,left,right)
+        rectangulo.center=nodo.pos
+        rectangulo.top=rectangulo.top
+        rectangulocolision=pygame.Rect(0,0,11,8)
+        nodos = []
+        rectangulocolision.center=rectangulo.midtop
+        if not self.colision(rectangulocolision):
+            nodos.append(Nodo(rectangulo.midtop,nodo,nodo.dist + step))
+        rectangulocolision.center=rectangulo.midbottom
+        if not self.colision(rectangulocolision):
+            nodos.append(Nodo(rectangulo.midbottom,nodo,nodo.dist + step))
+        rectangulocolision.center=rectangulo.midright
+        if not self.colision(rectangulocolision):
+            nodos.append(Nodo(rectangulo.midright,nodo,nodo.dist + step))
+        rectangulocolision.center=rectangulo.midleft
+        if not self.colision(rectangulocolision):
+            nodos.append(Nodo(rectangulo.midleft,nodo,nodo.dist + step))
+        return nodos
+
+
     def calcular_ruta_anchura(self,origen,destino):#La mas sencilla a saco sin distancias ni ostias??
         visitados=[origen]
         frontera=[origen]
@@ -340,8 +362,7 @@ class Fase(Escena):
         padre={}
         padre[origen]=None
         while len(frontera)>0:
-            abrir=frontera.pop(0)# Con un cero es anchura, con un -1 esprofundidad, con una heuristica es hillclimb, con dist+heuristica es A*
-            print("abriendo"+str(abrir) + "  :  " + str(self.nodos[abrir]))
+            abrir=frontera.pop(0)# Con un cero es anchura, con un -1 es profundidad, con una heuristica es hillclimb, con dist+heuristica es A*
             if abrir==destino:
                 anterior=padre[abrir]
                 while anterior is not None:
@@ -360,11 +381,39 @@ class Fase(Escena):
                         if newdist<distancia[nodo]:
                             distancia[nodo]=newdist
                             padre[nodo]=abrir
-                    print("Nodo : " + str(nodo) + "  padre: " + str(padre[nodo]) + "  dist : "+ str(distancia[nodo]) )
-        return ruta
+        return []
+
+    def buscar_nodo_visitado(self,nodo,visitados):
+        for visitado in visitados:
+            if dist(nodo.pos,visitado.pos)<2:
+                return visitado
+        return None
 
 
-
+    def calcular_ruta_local(self,origen,dest):
+        nodo_origen=Nodo(origen,None,0)
+        frontera=[nodo_origen]
+        ruta=[]
+        visitados=[nodo_origen]
+        while len(frontera)>0:
+            siguiente_nodo=Nodo.mejor_nodo(frontera,dest) #FUNCION DE SELECCION DE NODO
+            abrir = frontera.pop(siguiente_nodo)
+            if dist(abrir.pos,dest)<29: #destino encontrado, calcular ruta
+                anterior=abrir.padre
+                while anterior.padre is not None:
+                    ruta.append(anterior)
+                    anterior=anterior.padre
+                return ruta
+            else: #seguir buscando
+                for nodo in self.calcular_nodos_adyacentes(abrir,SEARCH_STEP):
+                    visitado=self.buscar_nodo_visitado(nodo,visitados)
+                    if visitado is not None:
+                        if nodo.dist<visitado.dist:
+                            self.visitado=nodo
+                    else:
+                        frontera.append(nodo)
+                        visitados.append(nodo)
+        return [] #No ha encontrado nada y devuelve una lista vacia
 
     def eventos(self, lista_eventos):
         # Miramos a ver si hay algun evento de salir del programa

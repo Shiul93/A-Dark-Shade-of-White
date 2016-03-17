@@ -12,3 +12,4 @@
 0   detras  1 0 255 museo_1_pre.png 0
 1   delante 1 0 255 museo_1_post.png 1
 2   colisiones 0 1 255 museo_1_coll.png 0
+3   opacidad 0 0 0 museo_1_vis.png 0

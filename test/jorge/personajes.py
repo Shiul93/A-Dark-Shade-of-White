@@ -23,7 +23,7 @@ PATRULLANDO=1
 DEAMBULANDO=2
 LLENDO_A_ALARMA=3
 VOLVIENDO_A_PATRULLA=4
-PERSIGUIENDO=4
+PERSIGUIENDO=5
 
 #Movimiento
 QUIETO=0
@@ -179,7 +179,7 @@ class Personaje(MiSprite):
         #Si colisiona en el eje x ponemos la velocidad x a 0
         #print self.posicion
         newposrect=pygame.Rect(0,0,self.rect.width/3,self.rect.height/6)
-        newposrect.center=(self.posicion[0],self.posicion[1]+self.rect.height/2)
+        newposrect.center=(self.posicion[0],self.posicion[1])
         newposrect.left=newposrect.left+velocidadx*tiempo
         newposrect.bottom=newposrect.bottom+velocidady*tiempo
         self.newposrect=newposrect
@@ -188,7 +188,6 @@ class Personaje(MiSprite):
             self.colision=True
         Debuger.anadirRectangulo(newposrect)
         MiSprite.update(self, tiempo)
-
         # Y llamamos al método de la superclase para que, según la velocidad y el tiempo
         #  calcule la nueva posición del Sprite
 
@@ -234,7 +233,7 @@ class Jugador(Personaje):
 
     def update(self,fase,tiempo):
         "Acciones especificas del jugador(activar objetos etc)"
-
+        Debuger.anadirObjeto("posicion",self.posicion)
         Personaje.update(self,fase,tiempo)
 # -------------------------------------------------
 # Clase NoJugador
@@ -254,183 +253,6 @@ class NoJugador(Personaje):
         #  (se podria programar, por ejemplo, que disparase al jugador por defecto)
         return
 
-# -------------------------------------------------
-# Clase Sniper
-
-class Sniper(NoJugador):
-    "El  guardia que te persigue por un grafo de nodos"
-    def __init__(self,nodos,grafo,nodoinicial):
-        # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
-        self.nodos=nodos
-        self.grafo=grafo
-        self.inicio=nodoinicial #la primera del
-        self.destino=nodoinicial
-        self.posicion=nodos[nodoinicial]
-        self.visto=False
-        # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
-    # La implementacion de la inteligencia segun este personaje particular
-    def mover_cpu(self, jugador1,fase):
-
-        # Movemos solo a los enemigos que esten en la pantalla
-            #Calcula la distancia enambos ejes
-            dest=self.nodos[self.destino]
-            self.distancia=(dest[0]-self.posicion[0],dest[1]-self.posicion[1])
-            #Dibujar el grafo
-            for i in range(0,len(self.grafo)):
-                ldestinos=self.grafo[i]
-                for destino in ldestinos:
-                    Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
-
-            Debuger.anadirLinea(self.posicion,dest)
-            if abs(self.distancia[0]+self.distancia[1])<2 : #Si llega a un destino
-                listaDestinos=list(self.grafo[self.destino])
-                for destino in listaDestinos:
-                     if(fase.colisionLinea(self.posicion,self.nodos[destino],7)):
-                         listaDestinos.remove(destino)
-                mindist=dist(jugador1.posicion,self.nodos[listaDestinos[0]])
-                mindistindex=0
-                for i in range(0,len(listaDestinos)):#De todos los destinos calcula cual esta mas cerca de personaje
-                    newdist=dist(jugador1.posicion,self.nodos[listaDestinos[i]])
-                    if newdist<mindist:
-                        mindist=newdist
-                        mindistindex=i
-                self.destino=listaDestinos[mindistindex]
-            else: #Si aun no llego
-                if(abs(self.distancia[0])>abs(self.distancia[1])):
-                    if(self.distancia[0]>0):
-                        Personaje.mover(self,NORMAL,DERECHA)
-                    else:
-                        Personaje.mover(self,NORMAL,IZQUIERDA)
-                else:
-                    if(self.distancia[1]>0):
-                        Personaje.mover(self,NORMAL,ABAJO)
-                    else:
-                        Personaje.mover(self,NORMAL,ARRIBA)
-
-
-
-class Patrulla(NoJugador):
-    "El  guardia que da vueltas por un grafo de nodos"
-    def __init__(self,nodos,grafo,nodoinicial):
-        # Invocamos al constructor de la clase padre con la configuración de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
-        self.nodos=nodos
-        self.grafo=grafo
-        self.inicio=nodoinicial #la primera del
-        self.destino=nodoinicial
-        self.posicion=nodos[nodoinicial]
-        self.visto=False
-        # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
-    # La implementacion de la inteligencia segun este personaje particular
-    def mover_cpu(self, jugador1,fase):
-            self.movimiento=NORMAL
-        # Movemos solo a los enemigos que esten en la pantalla
-            #Calcula la distancia enambos ejes
-            #Dibujar el grafo
-            for i in range(0,len(self.grafo)):
-                ldestinos=self.grafo[i]
-                for destino in ldestinos:
-                    Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
-
-            #Si ve al personaje...
-            if not fase.colisionLinea(self.posicion,jugador1.posicion,7):
-                if not self.visto:
-                    #fase.mostrarMensaje("Ups... te han visto!!!")
-                    self.visto=True
-                self.movimiento=CARRERA
-                self.dest=jugador1.posicion
-                self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
-
-            else: #te ha perdido de vista
-                if self.visto:
-                    self.visto=False
-                    mindist=dist(self.posicion,self.nodos[0])
-                    minindex=0
-                    for i in range (1,len(self.nodos)):
-                        nodedist=dist(self.posicion,self.nodos[i])
-                        if nodedist<mindist:
-                            mindist=nodedist
-                            minindex=i
-                    self.destino=minindex
-                self.dest=self.nodos[self.destino]
-                self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
-                if abs(self.distancia[0]+self.distancia[1])<2 : #Si llega a un destino
-                    destinos=list(self.grafo[self.destino])
-                    for destino in destinos:
-                        if(fase.colisionLinea(self.posicion,self.nodos[destino],7)):
-                            destinos.remove(destino)
-                    self.destino=destinos[randint(0,len(destinos)-1)]
-
-            Debuger.anadirLinea(self.posicion,self.dest)
-            if(abs(self.distancia[0])>abs(self.distancia[1])):
-                if(self.distancia[0]>0):
-                    Personaje.mover(self,self.movimiento,DERECHA)
-                else:
-                    Personaje.mover(self,self.movimiento,IZQUIERDA)
-            else:
-                if(self.distancia[1]>0):
-                    Personaje.mover(self,self.movimiento,ABAJO)
-                else:
-                    Personaje.mover(self,self.movimiento,ARRIBA)
-
-
-class Patrulla(NoJugador):
-    "El  guardia que da vueltas por un grafo de nodos"
-    def __init__(self,nodos,grafo,nodoinicial):
-        # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER);
-        self.nodos=nodos
-        self.grafo=grafo
-        self.inicio=nodoinicial #la primera del
-        self.destino=nodoinicial
-        self.posicion=nodos[nodoinicial]
-        self.visto=False
-        # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
-    # La implementacion de la inteligencia segun este personaje particular
-    def mover_cpu(self, jugador1,fase):
-            self.movimiento=NORMAL
-        # Movemos solo a los enemigos que esten en la pantalla
-            #Calcula la distancia enambos ejes
-            #Dibujar el grafo
-             #Si ve al personaje...
-            if not fase.colisionLinea(self.posicion,jugador1.posicion,7):
-                if not self.visto:
-                    fase.mostrarMensaje("Ups... te han visto!!!")
-                    self.visto=True
-                self.movimiento=CARRERA
-                self.dest=jugador1.posicion
-                if self.colision:
-                    self.destino=fase.nodo_visible_mas_cercano(self.posicion)
-                    self.dest=self.nodos[self.destino]
-                self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
-
-            else: #te ha perdido de vista
-                if self.visto:
-                    self.visto=False
-                    self.destino=fase.nodo_visible_mas_cercano(self.posicion)
-                #mientras no te vea
-                self.dest=self.nodos[self.destino]
-                self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
-                if abs(self.distancia[0]+self.distancia[1])<2 : #Si llega a un destino
-                    destinos=list(self.grafo[self.destino])
-                    for destino in destinos:
-                        if(fase.colisionLinea(self.posicion,self.nodos[destino],7)):
-                            destinos.remove(destino)
-                    if len(destinos)>0:
-                        self.destino=destinos[randint(0,len(destinos)-1)]
-            #movimiento
-            Debuger.anadirLinea(self.posicion,self.dest)
-            if(abs(self.distancia[0])>abs(self.distancia[1])):
-                if(self.distancia[0]>0):
-                    Personaje.mover(self,self.movimiento,DERECHA)
-                else:
-                    Personaje.mover(self,self.movimiento,IZQUIERDA)
-            else:
-                if(self.distancia[1]>0):
-                    Personaje.mover(self,self.movimiento,ABAJO)
-                else:
-                    Personaje.mover(self,self.movimiento,ARRIBA)
 
 
 class Guardia(NoJugador):
@@ -448,6 +270,10 @@ class Guardia(NoJugador):
         self.siguiente=self.recorrido[-1]
         self.estado=PATRULLANDO
         self.tiempobusqueda=0
+        self.tiempopersecucion=0
+        self.rutalocal=[]
+        self.destinolocal=None
+        self.siguientelocal=None
         # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
     def mover_cpu(self, jugador1, fase):
@@ -456,30 +282,44 @@ class Guardia(NoJugador):
                 ldestinos=self.grafo[i]
                 for destino in ldestinos:
                     Debuger.anadirLinea(self.nodos[i],self.nodos[destino])
-            Debuger.anadirTextoDebug("Ruta : "+ str(self.ruta))
+            '''
+            Debuger.anadirTextoDebug("Ruta : "+ str(self.rutalocal))
             Debuger.anadirTextoDebug("Estado : " + str(self.estado))
-            Debuger.anadirTextoDebug(("Destino : "+ str(self.destino)))
-            Debuger.anadirTextoDebug(("Siguiente : "+ str(self.siguiente)))
-            Debuger.anadirTextoDebug(("PosSiguiente : "+ str(self.nodos[self.siguiente])))
+            Debuger.anadirTextoDebug(("Destino : "+ str(self.destinolocal)))
+            Debuger.anadirTextoDebug(("Siguiente : "+ str(self.siguientelocal)))
             Debuger.anadirTextoDebug(("posicion : "+ str(self.posicion)))
-
-
-        # Movemos solo a los enemigos que esten en la pantalla
-            #Calcula la distancia enambos ejes
-            #Si ve al personaje...
+'''
+             #Si ve al personaje...
 
 
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
                 if not self.visto:
                     self.visto=True
-                self.movimiento=CARRERA
-                self.dest=jugador1.posicion
-                self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
-
+                    self.estado=PERSIGUIENDO
+                    self.rutalocal=fase.calcular_ruta_local(self.posicion,jugador1.posicion)
+                    if len(self.rutalocal)>0:
+                        self.siguientelocal=self.rutalocal[-1]
+                        self.destinolocal=self.rutalocal[0]
             else: #te ha perdido de vista
                 if self.visto:
                     self.visto=False
-                    self.destino=fase.nodo_visible_mas_cercano(self.posicion)
+                    self.tiempopersecucion=5000
+
+            if self.estado==PERSIGUIENDO:
+                self.dest=self.siguientelocal.pos
+                self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
+                if abs(self.distancia[0]+self.distancia[1])<2 : #Si llega a un destino (eligira el siguiente segun lo qu este haciendo)
+                    self.rutalocal=fase.calcular_ruta_local(self.posicion,jugador1.posicion)
+                    if len(self.rutalocal)>0:
+                        self.destinolocal=self.rutalocal[0]
+                        self.siguientelocal=self.rutalocal.pop()
+                        self.dest=self.siguientelocal.pos#asegurarlo
+                        self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
+                    else:
+                        self.dest=jugador1.posicion
+                        self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
+            else:
+
                 self.dest=self.nodos[self.siguiente]
                 self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
 
@@ -503,7 +343,7 @@ class Guardia(NoJugador):
                             #if len(self.ruta)==0:
                             #    self.estado=PATRULLANDO
                             #else:
-                            self.siguiente=self.ruta[-1]
+                            self.siguiente=self.ruta[-1] #FALLA LA OSTIA DE VECES
                         else:
                             if(self.estado==LLENDO_A_ALARMA):
                                 self.estado=DEAMBULANDO
@@ -519,6 +359,7 @@ class Guardia(NoJugador):
                                 self.destino=self.ruta[0]
                 #E cualquier caso se desplaza hacia su objeticvo actal
             Debuger.anadirLinea(self.posicion,self.dest)
+            self.distancia=(self.distancia[0],self.distancia[1])
             if(self.distancia)==(0,0):
                 Personaje.mover(self,self.movimiento,QUIETO)
             else:
@@ -566,4 +407,18 @@ class Guardia(NoJugador):
                  self.siguiente=fase.nodo_visible_mas_cercano(self.posicion)
                  self.destino=self.recorrido[-1]
                  self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)
+         if self.estado==PERSIGUIENDO and not self.visto:
+             self.tiempopersecucion-=tiempo
+             if self.tiempopersecucion<0 :
+                 self.estado=DEAMBULANDO
+                 self.tiempobusqueda=10000
+         if len(self.rutalocal)>1 :
+             hijo=self.rutalocal[1]
+             padre=hijo.padre
+             while padre is not None:
+                 Debuger.anadirLinea(hijo.pos,padre.pos)
+                 hijo=padre
+                 padre=hijo.padre
+         Debuger.anadirTextoDebug("Estado : "+ str(self.estado))
+
          Personaje.update(self,fase,tiempo)
