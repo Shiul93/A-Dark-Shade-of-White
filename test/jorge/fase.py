@@ -9,6 +9,7 @@ from pygame.locals import *
 from objetos import *
 from Eventos import *
 from nodo import *
+from enemigo import *
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
 #LA idea es que carge la fase a paretir de un script
@@ -21,15 +22,15 @@ from nodo import *
 # -------------------------------------------------
 
 # Los bordes de la pa15ntalla para hacer scroll horizontal
-MINIMO_X_JUGADOR = 180
+MINIMO_X_JUGADOR = 350
 MAXIMO_X_JUGADOR = ANCHO_PANTALLA - MINIMO_X_JUGADOR
 MINIMO_X_BORDES = 40
 
-MINIMO_Y_JUGADOR = 180
+MINIMO_Y_JUGADOR = 275
 MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 MINIMO_Y_BORDES = 40
 
-SEARCH_STEP=25
+SEARCH_STEP=20
 # -------------------------------------------------
 # Clase Fase
 
@@ -137,8 +138,8 @@ class Fase(Escena):
         self.enemigo=[]
         patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
-        for i in range (0,len(datos['Snipers'])):
-          self.enemigo.append(Guardia(datos['nodos'],datos['grafo'],datos['Snipers'][i]))
+        for i in range (0,len(datos['Enemigos'])):
+          self.enemigo.append(Enemigo(datos['nodos'],datos['grafo'],datos['Enemigos'][i]))
           self.grupoEnemigos.add(self.enemigo[i])
           self.grupoSprites.add(self.enemigo[i])
 
@@ -248,7 +249,7 @@ class Fase(Escena):
                 self.director.salirEscena()
 
             # Actualizamos el scroll
-            self.actualizarScroll(self.jugador1)
+            self.actualizarScroll(self.enemigo[0])
   
 
         
@@ -267,9 +268,8 @@ class Fase(Escena):
             self.cuadrotexto.draw(pantalla)
 
     def dispararAlarma(self,camara):
-        nodo=self.nodo_visible_mas_cercano(camara.posicion)
         for enemigo in self.grupoEnemigos.sprites():
-              enemigo.alarma(self,nodo)
+              enemigo.alarma(self,self.jugador1.posicion)
 
     def colision(self,rect):
        rectlist=self.listaRectangulosColisionables()
@@ -343,7 +343,7 @@ class Fase(Escena):
         rectangulo=pygame.Rect(0,0,step*2,step*2) #Usado para calcular las posiciones de los nodos nuevos (top,bottom,left,right)
         rectangulo.center=nodo.pos
         rectangulo.top=rectangulo.top
-        rectangulocolision=pygame.Rect(0,0,11,8)
+        rectangulocolision=pygame.Rect(0,0,13,10)
         nodos = []
         rectangulocolision.center=rectangulo.midtop
         if not self.colision(rectangulocolision):
@@ -405,7 +405,7 @@ class Fase(Escena):
         while len(frontera)>0:
             siguiente_nodo=Nodo.mejor_nodo(frontera,dest) #FUNCION DE SELECCION DE NODO
             abrir = frontera.pop(siguiente_nodo)
-            if dist(abrir.pos,dest)<29: #destino encontrado, calcular ruta
+            if dist(abrir.pos,dest)<sqrt(2)*SEARCH_STEP/2: #destino encontrado, calcular ruta
                 anterior=abrir.padre
                 while anterior.padre is not None:
                     ruta.append(anterior)

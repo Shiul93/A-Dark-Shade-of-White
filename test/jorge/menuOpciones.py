@@ -5,7 +5,6 @@ from pygame.locals import *
 from escena import *
 from gestorRecursos import *
 from fase import *
-from menuOpciones import *
 # -------------------------------------------------
 # Clase abstracta ElementoGUI
 ANCHO_PANTALLA =800
@@ -48,25 +47,7 @@ class Boton(ElementoGUI):
     def dibujar(self, pantalla):
         pantalla.blit(self.imagen, self.rect)
 
-class BotonNP(Boton):
-    def __init__(self, pantalla):
-        Boton.__init__(self, pantalla, 'menu/humo.png', (60,200))
-    def accion(self):
-        self.pantalla.menu.ejecutarJuego()
-
-class BotonCP(Boton):
-    def __init__(self, pantalla):
-        Boton.__init__(self, pantalla, 'menu/humo.png', (60,540))
-    def accion(self):
-        self.pantalla.menu.ejecutarJuego()
-
-class BotonOpciones(Boton):
-    def __init__(self, pantalla):
-        Boton.__init__(self, pantalla, 'menu/humo.png', (500,200))
-    def accion(self):
-        self.pantalla.menu.abrirOpciones()
-
-class BotonSalir(Boton):
+class BotonVolver(Boton):
     def __init__(self, pantalla):
         Boton.__init__(self, pantalla, 'menu/humo.png', (500,540))
     def accion(self):
@@ -86,37 +67,13 @@ class TextoGUI(ElementoGUI):
     def dibujar(self, pantalla):
         pantalla.blit(self.imagen, self.rect)
 
-class TextoNP(TextoGUI):
+class TextoVolver(TextoGUI):
     def __init__(self, pantalla):
         # La fuente la debería cargar el estor de recursos
         fuente = pygame.font.SysFont('arial', 26);
-        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Nueva Partida', (100, 160))
+        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Volver', (590, 500))
     def accion(self):
-        self.pantalla.menu.ejecutarJuego()
-
-class TextoCP(TextoGUI):
-    def __init__(self, pantalla):
-        # La fuente la debería cargar el estor de recursos
-        fuente = pygame.font.SysFont('arial', 26);
-        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Cargar Partida', (100, 500))
-    def accion(self):
-        self.pantalla.menu.ejecutarJuego()
-
-class TextoOpciones(TextoGUI):
-    def __init__(self, pantalla):
-        # La fuente la debería cargar el estor de recursos
-        fuente = pygame.font.SysFont('arial', 26);
-        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Opciones', (560, 160))
-    def accion(self):
-        self.pantalla.menu.abrirOpciones()
-
-class TextoSalir(TextoGUI):
-    def __init__(self, pantalla):
-        # La fuente la debería cargar el estor de recursos
-        fuente = pygame.font.SysFont('arial', 26);
-        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Salir', (590, 500))
-    def accion(self):
-        self.pantalla.menu.salirPrograma()
+        self.pantalla.volverMenu()
 
 # -------------------------------------------------
 # Clase PantallaGUI y las distintas pantallas
@@ -155,28 +112,16 @@ class PantallaInicialGUI(PantallaGUI):
     def __init__(self, menu):
         PantallaGUI.__init__(self, menu, 'menu/hacker.jpg')
         # Creamos los botones y los metemos en la lista
-        botonNP = BotonNP(self)
-        botonCP = BotonCP(self)
-        botonOpciones = BotonOpciones(self)
-        botonSalir = BotonSalir(self)
-        self.elementosGUI.append(botonNP)
-        self.elementosGUI.append(botonCP)
-        self.elementosGUI.append(botonOpciones)
-        self.elementosGUI.append(botonSalir)
+        botonVolver = BotonVolver(self)
+        self.elementosGUI.append(botonVolver)
         # Creamos el texto y lo metemos en la lista
-        textoNP = TextoNP(self)
-        textoCP = TextoCP(self)
-        textoOpciones = TextoOpciones(self)
-        textoSalir = TextoSalir(self)
-        self.elementosGUI.append(textoNP)
-        self.elementosGUI.append(textoCP)
-        self.elementosGUI.append(textoOpciones)
-        self.elementosGUI.append(textoSalir)
+        textoVolver = TextoVolver(self)
+        self.elementosGUI.append(textoVolver)
 
 # -------------------------------------------------
 # Clase Menu, la escena en sí
 
-class Menu(Escena):
+class MenuOpciones(Escena):
 
     def __init__(self, director):
         # Llamamos al constructor de la clase padre
@@ -221,10 +166,8 @@ class Menu(Escena):
     def mostrarPantallaInicial(self):
         self.pantallaActual = 0
 
+    def volverMenu(self):
+        fase = Menu(self.director)
+        self.director.apilarEscena(fase)
     # def mostrarPantallaConfiguracion(self):
     #    self.pantallaActual = ...
-
-    def abrirOpciones(self):
-        fase = MenuOpciones(self.director)
-        self.director.apilarEscena(fase)
-

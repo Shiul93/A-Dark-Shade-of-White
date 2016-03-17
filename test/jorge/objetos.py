@@ -195,7 +195,6 @@ class Camara(activable):
         return False
 
     def update(self,tiempo):
-        Debuger.anadirTextoDebug("camara.estado: "+ str (self.estado))
         if self.estado and self.rangoGiro>0:
             if(self.direcciongiro>0):
                 if(self.mirando>self.direccion+self.rangoGiro/2):

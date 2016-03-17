@@ -10,7 +10,7 @@ class Nodo(object):
         self=pos
 
     def __str__(self):
-        return "Nodo de : " + str(self.pos) + " padre: "+ str(self.padre) + " distancia : " + str(self.dist)
+        return "Nodo de : " + str(self.pos) + " distancia : " + str(self.dist)
 
     def actualizar(self,nuevopadre,nuevadistancia):
         self.padre=nuevopadre

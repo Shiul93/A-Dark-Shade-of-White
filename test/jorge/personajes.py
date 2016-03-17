@@ -419,6 +419,5 @@ class Guardia(NoJugador):
                  Debuger.anadirLinea(hijo.pos,padre.pos)
                  hijo=padre
                  padre=hijo.padre
-         Debuger.anadirTextoDebug("Estado : "+ str(self.estado))
 
          Personaje.update(self,fase,tiempo)

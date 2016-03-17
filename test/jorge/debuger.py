@@ -4,7 +4,7 @@ import pygame
 from escena import *
 from fase import *
 from gestorRecursos import *
-from menu import *
+from menuantiguo import *
 from math import *
 
 class Debuger(object):
