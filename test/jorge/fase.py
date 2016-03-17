@@ -29,7 +29,7 @@ MINIMO_Y_JUGADOR = 180
 MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 MINIMO_Y_BORDES = 40
 
-SEARCH_STEP=12
+SEARCH_STEP=25
 # -------------------------------------------------
 # Clase Fase
 
@@ -81,8 +81,15 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
         for nombre,meta in datos["Metas"].iteritems():
             self.objetos[nombre]=Meta(meta[0],pygame.Rect(meta[1][0],meta[1][1],meta[1][2],meta[1][3]))
-        for nombre,puerta in datos["Puertas"].iteritems():
+        for nombre,puerta in datos["Puertas_pequenas"].iteritems():
             self.objetos[nombre]=Puerta_pequena(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
+
+        for nombre,puerta in datos["Puertas_grandes"].iteritems():
+            self.objetos[nombre]=Puerta_grande(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])

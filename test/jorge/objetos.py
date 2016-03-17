@@ -13,7 +13,7 @@ class CuadroTexto(MiSprite):
         self.imagenCuadro=GestorRecursos.CargarImagen("CuadroTexto.png",0)
         self.rect=pygame.Rect(self.imagenCuadro.get_rect())
         self.rect.bottomleft=(100,580)
-        MiSprite.establecerPosicion(self,self.rect.center)
+        MiSprite.establecerPosicion(self,self.rect.midbottom)
         self.texto=""
         self.image=pygame.Surface((600,200))
         #self.imagenTexto=pygame.Surface((600,200))
@@ -140,7 +140,7 @@ class activable(accionable):#Dos estados, animable para pasar de un estado a otr
               self.image=self.hoja.subsurface(self.coordenadas[self.numImagen])
           #MiSprite.establecerPosicion(self,self.pos)
           MiSprite.update(self,tiempo)
-          #Debuger.anadirRectangulo(self.pos_inicial)
+          Debuger.anadirRectangulo(self.area)
           #Debuger.anadirTextoDebug("Estado: " + str(self.estado) + " self.image :"+ str(self.image)  )
 
 
@@ -156,11 +156,23 @@ class Interruptor(activable):
 
 class Puerta_pequena(activable):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,True,1000)
+        activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,False,1000)
+
+class Puerta_grande(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_grande.png","coord_puerta_grande.txt",pos,area,False,1000)
+
 
 class Luz(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"luzprueba.png","coordenadasluz.txt",pos,area,True,200)
+
+    '''
+    def update(self,tiempo):
+
+
+
+        MiSprite.update(self,tiempo)'''
 
 class Camara(activable):
     def __init__(self,pos,area,direccion,rangoGiro,rangoVision,velocidadGiro):
@@ -183,6 +195,7 @@ class Camara(activable):
         return False
 
     def update(self,tiempo):
+        Debuger.anadirTextoDebug("camara.estado: "+ str (self.estado))
         if self.estado and self.rangoGiro>0:
             if(self.direcciongiro>0):
                 if(self.mirando>self.direccion+self.rangoGiro/2):
@@ -206,4 +219,6 @@ class Camara(activable):
 
         MiSprite.update(self,tiempo)
 
+    def cambiarEstado(self):
+        self.estado=not self.estado
 
