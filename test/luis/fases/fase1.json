@@ -1,6 +1,6 @@
 {
   "mapa":"museo_1.layers2",
-  "pos_inicial":[388,735],
+  "pos_inicial":[404,984],
   "nodos":[[0,0],
                      [370,375],
                      [872,375],
@@ -79,52 +79,87 @@
                 [27,32,34],
                 [29,33]
                 ],
-  "Snipers":[[8,9,10,20,19,18],[27,28,29,34,33]],
-  "Patrullas":[],
+  "Enemigos":[[[1060,592],[1324,592],[1324,794], [1060,794] ],[[1066,1106], [1320,1106],[1320,982],[1066,982]],[[494,368],[878,368],[878,719]]],
   "Interruptores":{
-    "boton1":[[187,562],[170,573,66,55]],
-    "boton2":[[556,623],[546,623,66,55]]
+    "boton_puerta_entrada":[[451,876],[439,891,24,17]],
+    "boton_camara_entrada":[[223,558],[206,569,34,23]],
+    "boton_luz":[[662,584],[645,603,29,21]],
+    "boton_ordenador":[[383,269],[352,258,42,32]],
+    "boton_puerta_almacen":[[799,653],[785,674,34,20]],
+    "boton_salida":[[1263,361],[1245,378,34,21]]
   },
-  "Puertas":{
-    "puerta1":[[400,874],[362,890,68,60]],
-    "puerta2":[[626,586],[0,0,1,1]],
-    "puerta3":[[378,456],[330,483,68,60]]
+  "Puertas_pequenas":{
+    "puerta_entrada":[[399,891],[0,0,1,1]],
+    "puerta_maquinas":[[623,603],[590,542,66,82]],
+    "puerta_oficina":[[367,476],[328,399,87,62]],
+    "puerta_almacen":[[879,794],[0,0,1,1]]
+  },
+  "Puertas_grandes":{
+    "puerta_salida_almacen":[[1183,572],[1135,511,98,81]],
+    "puerta_salida":[[1183,379],[0,0,1,1]]
   },
   "Luces":{
-    "luz1":[[576,504],[328,575,497,143]]
+    "luz1":[[576,575],[328,575,497,143]]
   },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
   },
   "Camaras":{
-    "camara1":[[398,680],0,3.1415,0.785375,0.00025]
+    "camara_entrada":[[398,642],0.39,1.57,0.785375,0.00025],
+    "camara_maquinas":[[624,468],0,0,0,78535,0],
+    "camara_almacen":[[942,865],-0.39,4.71,0.7835,0.00025]
   },
   "Causas":{
-    "pulsar_puerta1":["accion","puerta1"],
-    "pulsar_puerta3":["accion","puerta3"],
-    "pulsar_boton1":["accion","boton1"],
-    "pulsar_boton2":["accion","boton2"],
-    "visto_camara1":["visto_camara","camara1"],
+    "pulsar_boton_puerta_entrada":["accion","boton_puerta_entrada"],
+    "pulsar_boton_camara_entrada":["accion","boton_camara_entrada"],
+    "pulsar_boton_luz":["accion","boton_luz"],
+    "pulsar_boton_ordenador":["accion","boton_ordenador"],
+    "pulsar_boton_puerta_almacen":["accion","boton_puerta_almacen"],
+    "pulsar_boton_salida":["accion","boton_salida"],
+    "pulsar_puerta_maquinas":["accion","puerta_maquinas"],
+    "pulsar_puerta_oficina":["accion","puerta_oficina"],
+    "pulsar_puerta_salida_almacen":["accion","puerta_salida_almacen"],
+    "visto_camara_entrada":["visto_camara","camara_entrada"],
+    "visto_camara_maquinas":["visto_camara","camara_maquinas"],
+    "visto_camara_almacen":["visto_camara","camara_almacen"],
     "llegar_a_meta":["area","meta"]
   },
   "Consecuencias":{
-    "cambiar_puerta1":["cambiar","puerta1"],
-    "cambiar_puerta2":["cambiar","puerta2"],
-    "cambiar_puerta3":["cambiar","puerta3"],
+    "cambiar_puerta_entrada":["cambiar","puerta_entrada"],
+    "cambiar_puerta_maquinas":["cambiar","puerta_maquinas"],
+    "cambiar_puerta_oficina":["cambiar","puerta_oficina"],
+    "cambiar_puerta_almacen":["cambiar","puerta_almacen"],
+    "cambiar_puerta_salida_almacen":["cambiar","puerta_salida_almacen"],
+    "cambiar_puerta_salida":["cambiar","puerta_salida"],
+    "cambiar_boton_puerta_entrada":["cambiar","boton_puerta_entrada"],
+    "cambiar_boton_camara_entrada":["cambiar","boton_camara_entrada"],
+    "cambiar_boton_luz":["cambiar","boton_luz"],
+    "cambiar_boton_ordenador":["cambiar","boton_ordenador"],
+    "cambiar_boton_puerta_almacen":["cambiar","boton_puerta_almacen"],
+    "cambiar_boton_salida":["cambiar","boton_salida"],
     "cambiar_luz":["cambiar","luz1"],
-    "mensaje_puerta2":["mensaje","Escuchas una puerta a lo lejos"],
+    "cambiar_camara_entrada":["cambiar","camara_entrada"],
+    "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
     "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
-    "alarma":["alarma","camara1"],
+    "alarma_camara_entrada":["alarma","camara_entrada"],
+    "alarma_camara_maquinas":["alarma","camara_maquinas"],
+    "alarma_camara_almacen":["alarma","camara_almacen"],
     "fin_fase":["fin"]
   },
   "Eventos":{
-    "abrir_puerta_1":[["pulsar_puerta1"],["cambiar_puerta1"]],
-    "abrir_puerta_2":[["pulsar_boton1"],["cambiar_puerta2","mensaje_puerta2"]],
-    "abrir_puerta_3":[["pulsar_puerta3"],["cambiar_puerta3"]],
-    "activar_luz":[["pulsar_boton2"],["mensaje_luz","cambiar_luz"]],
-    "camara_1":[["visto_camara1"],["alarma"]],
+    "abrir_puerta_entrada":[["pulsar_boton_puerta_entrada"],["cambiar_boton_puerta_entrada","cambiar_puerta_entrada","mensaje_puerta"]],
+    "abrir_puerta_maquinas":[["pulsar_puerta_maquinas"],["cambiar_puerta_maquinas"]],
+    "abrir_puerta_oficina":[["pulsar_puerta_oficina"],["cambiar_puerta_oficina"]],
+    "abrir_puerta_almacen":[["pulsar_boton_puerta_almacen"],["cambiar_boton_puerta_almacen","mensaje_puerta","cambiar_puerta_almacen"]],
+    "abrir_puerta_salida_almacen":[["pulsar_puerta_salida_almacen"],["cambiar_puerta_salida_almacen"]],
+    "abrir_puerta_salida":[["pulsar_boton_salida"],["cambiar_boton_salida","cambiar_puerta_salida"]],
+    "encender_luz":[["pulsar_boton_luz"],["cambiar_boton_luz","cambiar_luz","mensaje_luz"]],
+    "activar_camara_entrada":[["pulsar_boton_camara_entrada"],["cambiar_camara_entrada","cambiar_boton_camara_entrada"]],
+    "camara_entrada":[["visto_camara_entrada"],["alarma_camara_entrada"]],
+    "camara_maquinas":[["visto_camara_maquinas"],["alarma_camara_maquinas"]],
+    "camara_almacen":[["visto_camara_almacen"],["alarma_camara_almacen"]],
     "meta":[["llegar_a_meta"],["fin_fase"]]
 
   }

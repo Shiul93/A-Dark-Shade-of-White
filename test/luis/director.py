@@ -13,7 +13,7 @@ class Director():
     def __init__(self):
         # Inicializamos la pantalla y el modo grafico
         self.screen = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
-        pygame.display.set_caption("A-Dark-Shade-In-White version de Jorge")
+        pygame.display.set_caption("A-Dark-Shade-In-White version de Luis")
         # Pila de escenas
         self.pila = []
         # Flag que nos indica cuando quieren salir de la escena

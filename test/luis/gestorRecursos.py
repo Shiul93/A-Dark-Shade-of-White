@@ -127,11 +127,13 @@ class GestorRecursos(object):
             layers = []
             line = '#'
             fullname = os.path.join(cls.application_path,'mapas', nombre)
+            print fullname
             f=open(fullname, 'r+')
 
             while line != '':
                 if not(str.startswith(line,'#')):
                     #Se obtienen el resto de caracteristicas del fichero de configuracion
+                    print line
                     info = line.rstrip().split()
                     info[0]=int(info[0])
                     info[2]=int(info[2])

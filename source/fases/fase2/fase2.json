@@ -1,6 +1,6 @@
 {
   "mapa":"museo2.layers",
-  "pos_inicial":[1732,201],
+  "pos_inicial":[1743,416],
   "nodos":[[0,0],
     [1633,416],
     [1633,480],
@@ -13,14 +13,14 @@
     [1695,863],
     [1695,928],
     [1569,928],
-    [1472,928],
-    [1742,1024],
+    [1406,928],
+    [1406,1024],
     [1280,1024],
     [1280,928],
     [1280,831],
-    [1280,735],
-    [1343,735],
-    [1472,735],
+    [1280,703],
+    [1343,703],
+    [1406,703],
     [1343,416],
     [1088,416],
     [1088,432],
@@ -33,7 +33,7 @@
     [513,1056],
     [513,928],
     [513,831],
-    [573,831],
+    [576,831],
     [704,831],
     [704,703],
     [576,703],
@@ -69,7 +69,7 @@
     [368,992],
     [209,992],
     [209,847],
-    [1472,831],
+    [1406,831],
     [767,831]
   ],
   "grafo":[[],
@@ -143,46 +143,122 @@
     [12,16,19],
     [27,33]
   ],
-  "Snipers":[15,1],
-  "Patrullas":[34,18],
-  "Interruptores":{
-    "boton1":[[187,562],[170,573,66,55]],
-    "boton2":[[556,623],[546,623,66,55]]
+   "Enemigos":[],
+
+   "Interruptores":{
+    "i_1":[[1696,485],[1680,814,35,31]],
+    "i_2":[[335,99],[318,128,36,45]]
+
   },
-  "Puertas":{
-    "puerta1":[[368,898],[362,890,68,60]],
-    "puerta2":[[594,610],[0,0,1,1]]
+  "Puertas_pequenas":{
+    "p_1":[[1648,509],[1621,443,55,105]],
+    "p_2":[[1744,509],[1723,443,55,105]],
+    "p_3":[[1648,830],[1621,752,55,105]],
+    "p_4":[[1744,830],[1723,752,55,105]],
+    "p_14":[[240,830],[224,754,33,111]],
+    "p_15":[[335,830],[320,754,33,111]],
+    "p_16":[[240,509],[233,435,33,111]],
+    "p_17":[[335,509],[320,435,33,111]]
+
   },
+  "Puertas_grandes":{
+    "p_6":[[1409,766],[1376,688,66,111]],
+    "p_7":[[1280,766],[1248,688,66,111]],
+    "p_9":[[991,832],[964,767,61,99]],
+    "p_11":[[704,766],[672,673,66,111]],
+    "p_12":[[576,766],[544,673,66,111]],
+    "p_21":[[992,511],[959,437,68,110]],
+    "p_24":[[992,383],[962,305,64,110]]
+  },
+
+
   "Luces":{
-    "luz1":[[328,575],[328,575,497,143]]
+
   },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
   },
   "Camaras":{
-    "camara1":[[398,670],0,3.1415,0.785375,0.00025]
+    "camara1":[[1343,280],0,3.1415,0.785375,0.00025],
+    "camara2":[[1810,543],0,3.1415,0.785375,0.00025],
+    "camara3":[[753,544],0,3.1415,0.785375,0.00025]
   },
-  "Causas":{
-    "pulsar_puerta1":["accion","puerta1"],
-    "pulsar_boton1":["accion","boton1"],
-    "pulsar_boton2":["accion","boton2"],
-    "visto_camara1":["visto_camara","camara1"],
+ "Causas":{
+    "pulsar_p1":["accion","p_1"],
+    "pulsar_p2":["accion","p_2"],
+    "pulsar_p3":["accion","p_3"],
+    "pulsar_p4":["accion","p_4"],
+    "pulsar_p6":["accion","p_6"],
+    "pulsar_p7":["accion","p_7"],
+    "pulsar_p9":["accion","p_9"],
+    "pulsar_p11":["accion","p_11"],
+    "pulsar_p12":["accion","p_12"],
+    "pulsar_p14":["accion","p_14"],
+    "pulsar_p15":["accion","p_15"],
+    "pulsar_p16":["accion","p_16"],
+    "pulsar_p17":["accion","p_17"],
+    "pulsar_p21":["accion","p_21"],
+    "pulsar_p24":["accion","p_24"],
+
+
+    "visto_camara_1":["visto_camara","camara1"],
+    "visto_camara_2":["visto_camara","camara2"],
+    "visto_camara_3":["visto_camara","camara3"],
     "llegar_a_meta":["area","meta"]
   },
   "Consecuencias":{
-    "cambiar_puerta1":["cambiar","puerta1"],
-    "cambiar_puerta2":["cambiar","puerta2"],
-    "cambiar_luz":["cambiar","luz1"],
-    "mensaje_puerta2":["mensaje","Escuchas una puerta a lo lejos"],
-    "mensaje_luz":["mensaje","Escuchas una puerta a lo lejos"],
+    "cambiar_puerta_1":["cambiar","p_1"],
+    "cambiar_puerta_2":["cambiar","p_2"],
+    "cambiar_puerta_3":["cambiar","p_3"],
+    "cambiar_puerta_4":["cambiar","p_4"],
+    "cambiar_puerta_6":["cambiar","p_6"],
+    "cambiar_puerta_7":["cambiar","p_7"],
+    "cambiar_puerta_9":["cambiar","p_9"],
+    "cambiar_puerta_11":["cambiar","p_11"],
+    "cambiar_puerta_12":["cambiar","p_12"],
+    "cambiar_puerta_14":["cambiar","p_14"],
+    "cambiar_puerta_15":["cambiar","p_15"],
+    "cambiar_puerta_16":["cambiar","p_16"],
+    "cambiar_puerta_17":["cambiar","p_17"],
+    "cambiar_puerta_21":["cambiar","p_21"],
+    "cambiar_puerta_24":["cambiar","p_24"],
+
+
+
+
+
+    "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
+    "alarma_camara_1":["alarma","camara1"],
+    "alarma_camara_2":["alarma","camara2"],
+    "alarma_camara_3":["alarma","camara3"],
     "fin_fase":["fin"]
   },
   "Eventos":{
-    "abrir_puerta_1":[["pulsar_puerta1"],["cambiar_puerta1"]],
-    "abrir_puerta_2":[["pulsar_boton1"],["cambiar_puerta2","mensaje_puerta2"]],
-    "activar_luz":[["pulsar_boton2"],["mensaje_luz","cambiar_luz"]],
+
+    "abrir_puerta_1":[["pulsar_p1"],["cambiar_puerta_1"]],
+    "abrir_puerta_2":[["pulsar_p2"],["cambiar_puerta_2"]],
+    "abrir_puerta_3":[["pulsar_p3"],["cambiar_puerta_3"]],
+    "abrir_puerta_4":[["pulsar_p4"],["cambiar_puerta_4"]],
+    "abrir_puerta_6":[["pulsar_p6"],["cambiar_puerta_6"]],
+    "abrir_puerta_7":[["pulsar_p7"],["cambiar_puerta_7"]],
+    "abrir_puerta_9":[["pulsar_p9"],["cambiar_puerta_9"]],
+    "abrir_puerta_11":[["pulsar_p11"],["cambiar_puerta_11"]],
+    "abrir_puerta_12":[["pulsar_p12"],["cambiar_puerta_12"]],
+    "abrir_puerta_14":[["pulsar_p14"],["cambiar_puerta_14"]],
+    "abrir_puerta_15":[["pulsar_p15"],["cambiar_puerta_15"]],
+    "abrir_puerta_16":[["pulsar_p16"],["cambiar_puerta_16"]],
+    "abrir_puerta_17":[["pulsar_p17"],["cambiar_puerta_17"]],
+    "abrir_puerta_21":[["pulsar_p21"],["cambiar_puerta_21"]],
+    "abrir_puerta_24":[["pulsar_p24"],["cambiar_puerta_24"]],
+
+
+
+    "camara_1":[["visto_camara_1"],["alarma_camara_1"]],
+    "camara_2":[["visto_camara_2"],["alarma_camara_2"]],
+    "camara_3":[["visto_camara_3"],["alarma_camara_3"]],
     "meta":[["llegar_a_meta"],["fin_fase"]]
 
   }
