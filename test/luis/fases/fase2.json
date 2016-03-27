@@ -143,7 +143,10 @@
     [12,16,19],
     [27,33]
   ],
-   "Enemigos":[],
+   "Enemigos":[[[225,433],[225,340],[365,340],[365,443]],
+   [[992,415],[992,864],[897,864],[897,989],[1090,989],[1090,864]],
+   [[639,478],[639,587],[575,587],[575,832],[512,832],[512,1056],[767,1056],[767,832],[705,832],[705,587],[639,587]]
+   ],
 
    "Interruptores":{
     "i_1":[[1696,485],[1680,814,35,31]],
@@ -169,12 +172,12 @@
   "Puertas_verticales_grandes":{
     "p_5":[[1536,958],[1503,897,68,68]],
     "p_8":[[1154,958],[1122,898,63,37]],
-    "p_10":[[961,752],[929,750,49,32]],
-    "p_13":[[1024,752],[1002,750,49,32]],
-    "p_18":[[961,752],[929,750,49,32]],
-    "p_19":[[1024,752],[1002,750,49,32]],
-    "p_20":[[961,752],[929,750,49,32]],
-    "p_25":[[1024,752],[1002,750,49,32]]
+    "p_10":[[832,960],[800,898,63,67]],
+    "p_13":[[447,960],[418,898,67,62]],
+    "p_18":[[383,447],[353,384,67,62]],
+    "p_19":[[832,448],[799,384,67,62]],
+    "p_20":[[1150,448],[1121,384,67,62]],
+    "p_25":[[1603,450],[1569,388,62,69]]
 
   },
   "Puertas_grandes":{
@@ -220,6 +223,13 @@
     "pulsar_p23":["accion","p_23"],
     "pulsar_p24":["accion","p_24"],
 
+    "pulsar_p10":["accion","p_10"],
+    "pulsar_p13":["accion","p_13"],
+    "pulsar_p18":["accion","p_18"],
+    "pulsar_p19":["accion","p_19"],
+    "pulsar_p20":["accion","p_20"],
+    "pulsar_p25":["accion","p_25"],
+
 
     "visto_camara_1":["visto_camara","camara1"],
     "visto_camara_2":["visto_camara","camara2"],
@@ -246,6 +256,13 @@
     "cambiar_puerta_22":["cambiar","p_22"],
     "cambiar_puerta_23":["cambiar","p_23"],
     "cambiar_puerta_24":["cambiar","p_24"],
+
+    "cambiar_puerta_10":["cambiar","p_10"],
+    "cambiar_puerta_13":["cambiar","p_13"],
+    "cambiar_puerta_18":["cambiar","p_18"],
+    "cambiar_puerta_19":["cambiar","p_19"],
+    "cambiar_puerta_20":["cambiar","p_20"],
+    "cambiar_puerta_25":["cambiar","p_25"],
 
 
 
@@ -282,6 +299,13 @@
     "abrir_puerta_23":[["pulsar_p23"],["cambiar_puerta_23"]],
 
     "abrir_puerta_24":[["pulsar_p24"],["cambiar_puerta_24"]],
+
+    "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
+    "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
+    "abrir_puerta_18":[["pulsar_p18"],["cambiar_puerta_18"]],
+    "abrir_puerta_19":[["pulsar_p19"],["cambiar_puerta_19"]],
+    "abrir_puerta_20":[["pulsar_p20"],["cambiar_puerta_20"]],
+    "abrir_puerta_25":[["pulsar_p25"],["cambiar_puerta_25"]],
 
 
 

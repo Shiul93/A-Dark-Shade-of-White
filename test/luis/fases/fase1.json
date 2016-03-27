@@ -94,13 +94,21 @@
     "puerta_oficina":[[367,476],[328,399,87,62]],
     "puerta_almacen":[[879,794],[0,0,1,1]]
   },
+
   "Puertas_grandes":{
     "puerta_salida_almacen":[[1183,572],[1135,511,98,81]],
     "puerta_salida":[[1183,379],[0,0,1,1]]
   },
   "Puertas_verticales":{
-    "puerta_salida_almacen":[[1183,572],[1135,511,98,81]],
-    "puerta_salida":[[1183,379],[0,0,1,1]]
+    "puerta_almacen_vertical":[[256,736],[224,702,67,36]],
+    "puerta_maquinas_vertical":[[544,736],[510,703,65,33]],
+    "puerta_oficina_vertical":[[447,387],[416,349,63,35]],
+    "puerta_pasillo_vertical":[[832,543],[798,511,67,34]],
+    "puerta_escobero_vertical":[[831,736],[800,703,65,33]]
+  },
+  "Puertas_verticales_grandes":{
+
+
   },
   "Luces":{
     "luz1":[[576,575],[328,575,497,143]]
@@ -126,6 +134,14 @@
     "visto_camara_entrada":["visto_camara","camara_entrada"],
     "visto_camara_maquinas":["visto_camara","camara_maquinas"],
     "visto_camara_almacen":["visto_camara","camara_almacen"],
+
+    "pulsar_puerta_almacen_vertical":["accion","puerta_almacen_vertical"],
+    "pulsar_puerta_maquinas_vertical":["accion","puerta_maquinas_vertical"],
+    "pulsar_puerta_oficina_vertical":["accion","puerta_oficina_vertical"],
+    "pulsar_puerta_pasillo_vertical":["accion","puerta_pasillo_vertical"],
+    "pulsar_puerta_escobero_vertical":["accion","puerta_escobero_vertical"],
+
+
     "llegar_a_meta":["area","meta"]
   },
   "Consecuencias":{
@@ -150,6 +166,13 @@
     "alarma_camara_entrada":["alarma","camara_entrada"],
     "alarma_camara_maquinas":["alarma","camara_maquinas"],
     "alarma_camara_almacen":["alarma","camara_almacen"],
+
+    "cambiar_puerta_almacen_vertical":["cambiar","puerta_almacen_vertical"],
+    "cambiar_puerta_maquinas_vertical":["cambiar","puerta_maquinas_vertical"],
+    "cambiar_puerta_oficina_vertical":["cambiar","puerta_oficina_vertical"],
+    "cambiar_puerta_pasillo_vertical":["cambiar","puerta_pasillo_vertical"],
+    "cambiar_puerta_escobero_vertical":["cambiar","puerta_escobero_vertical"],
+
     "fin_fase":["fin"]
   },
   "Eventos":{
@@ -164,6 +187,14 @@
     "camara_entrada":[["visto_camara_entrada"],["alarma_camara_entrada"]],
     "camara_maquinas":[["visto_camara_maquinas"],["alarma_camara_maquinas"]],
     "camara_almacen":[["visto_camara_almacen"],["alarma_camara_almacen"]],
+
+
+    "abrir_puerta_almacen_vertical":[["pulsar_puerta_almacen_vertical"],["cambiar_puerta_almacen_vertical"]],
+    "abrir_puerta_maquinas_vertical":[["pulsar_puerta_maquinas_vertical"],["cambiar_puerta_maquinas_vertical"]],
+    "abrir_puerta_oficina_vertical":[["pulsar_puerta_oficina_vertical"],["cambiar_puerta_oficina_vertical"]],
+    "abrir_puerta_pasillo_vertical":[["pulsar_puerta_pasillo_vertical"],["cambiar_puerta_pasillo_vertical"]],
+    "abrir_puerta_escobero_vertical":[["pulsar_puerta_escobero_vertical"],["cambiar_puerta_escobero_vertical"]],
+
     "meta":[["llegar_a_meta"],["fin_fase"]]
 
   }

@@ -48,7 +48,7 @@ VELOCIDAD_JUGADOR = 0.2 # Pixeles por milisegundo
 RETARDO_ANIMACION_JUGADOR = 5 # updates que durará cada imagen del personaje
                               # debería de ser un valor distinto para cada postura
 
-VELOCIDAD_SNIPER = 0.201 # Pixeles por milisegundo
+VELOCIDAD_SNIPER = 0.10 # Pixeles por milisegundo
 RETARDO_ANIMACION_SNIPER = 5 # updates que durará cada imagen del personaje
                              # debería de ser un valor distinto para cada postura
 # El Sniper camina un poco más lento que el jugador, y salta menos
