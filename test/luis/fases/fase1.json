@@ -98,6 +98,10 @@
     "puerta_salida_almacen":[[1183,572],[1135,511,98,81]],
     "puerta_salida":[[1183,379],[0,0,1,1]]
   },
+  "Puertas_verticales":{
+    "puerta_salida_almacen":[[1183,572],[1135,511,98,81]],
+    "puerta_salida":[[1183,379],[0,0,1,1]]
+  },
   "Luces":{
     "luz1":[[576,575],[328,575,497,143]]
   },

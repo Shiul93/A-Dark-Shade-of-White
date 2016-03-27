@@ -158,6 +158,15 @@ class Puerta_pequena(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,False,1000)
 
+class Puerta_vertical(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_vertical.png","coord_puerta_vertical",pos,area,False,1000)
+
+class Puerta_vertical_grande(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_vertical_grande.png","coord_puerta_vertical_grande",pos,area,False,1000)
+
+
 class Puerta_grande(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"puerta_grande.png","coord_puerta_grande.txt",pos,area,False,1000)
