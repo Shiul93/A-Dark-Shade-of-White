@@ -1,6 +1,6 @@
 {
   "mapa":"museo2.layers",
-  "pos_inicial":[1743,416],
+  "pos_inicial":[1743,200],
   "nodos":[[0,0],
     [1633,416],
     [1633,480],
@@ -149,7 +149,7 @@
    ],
 
    "Interruptores":{
-    "i_1":[[1696,485],[1680,814,35,31]],
+    "i_1":[[1697,488],[1679,514,37,35]],
     "i_2":[[335,99],[318,128,36,45]]
 
   },
@@ -192,7 +192,8 @@
 
 
   "Luces":{
-
+     "luz1":[[1695,826],[1601,515,195,256]],
+     "luz2":[[1824,767],[1759,576,132,192]]
   },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
@@ -230,6 +231,11 @@
     "pulsar_p20":["accion","p_20"],
     "pulsar_p25":["accion","p_25"],
 
+    "pulsar_i1":["accion","i_1"],
+    "pulsar_i2":["accion","i_2"],
+
+
+
 
     "visto_camara_1":["visto_camara","camara1"],
     "visto_camara_2":["visto_camara","camara2"],
@@ -266,11 +272,14 @@
 
 
 
-
+    "cambiar_luz1":["cambiar","luz1"],
+    "cambiar_luz2":["cambiar","luz2"],
 
     "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_puerta_cerrada":["mensaje","La puerta esta cerrada con llave"],
+    "mensaje_puerta_final":["mensaje","La puerta esta cerrada electronicamente"],
     "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
-    "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
+    "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
     "alarma_camara_1":["alarma","camara1"],
     "alarma_camara_2":["alarma","camara2"],
@@ -298,15 +307,18 @@
     "abrir_puerta_22":[["pulsar_p22"],["cambiar_puerta_22"]],
     "abrir_puerta_23":[["pulsar_p23"],["cambiar_puerta_23"]],
 
-    "abrir_puerta_24":[["pulsar_p24"],["cambiar_puerta_24"]],
+    "abrir_puerta_24_mal":[["pulsar_p24"],["mensaje_puerta_final"]],
+    "abrir_puerta_mal":[["pulsar_i2"],["mensaje_puerta_final","cambiar_puerta_24"]],
 
     "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
     "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
     "abrir_puerta_18":[["pulsar_p18"],["cambiar_puerta_18"]],
-    "abrir_puerta_19":[["pulsar_p19"],["cambiar_puerta_19"]],
+    "abrir_puerta_19":[["pulsar_p19"],["mensaje_puerta_cerrada"]],
     "abrir_puerta_20":[["pulsar_p20"],["cambiar_puerta_20"]],
     "abrir_puerta_25":[["pulsar_p25"],["cambiar_puerta_25"]],
 
+
+    "activar_luz":[["pulsar_i1"],["cambiar_luz1","cambiar_luz2"]],
 
 
     "camara_1":[["visto_camara_1"],["alarma_camara_1"]],

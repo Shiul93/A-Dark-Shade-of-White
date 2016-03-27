@@ -289,6 +289,11 @@ class Fase(Escena):
        collidesprite=rect.collidelist(rectlist)
        return self.decorado.colision(rect,"colisiones") or collidesprite>-1
 
+    def colisionOculta(self,rect):
+       rectlist=self.listaRectangulosColisionables()
+       collidesprite=rect.collidelist(rectlist)
+       return self.decorado.colision(rect,"oculto") or collidesprite>-1
+
 
     def listaRectangulosColisionables(self):
        rectlist=[]

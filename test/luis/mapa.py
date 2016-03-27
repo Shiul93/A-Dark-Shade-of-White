@@ -109,3 +109,18 @@ class Mapa:
         col4=self.colisionPunto(rect.bottomright,layer)
         return col1 or col2 or col3 or col4
 
+    def colisionOculta(self,rect,layer):
+        #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
+        #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
+        #En este caso se comprueba que el rojo no valga 0
+        #Si vale 0 en las 4 esquinas no hay colision
+        #Se podria usar tambien el alfa ( seria mas lógico)
+        #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
+
+       # for layer in self.layers:
+        col1=self.colisionPunto(rect.topleft,layer)
+        col2=self.colisionPunto(rect.topright,layer)
+        col3=self.colisionPunto(rect.bottomleft,layer)
+        col4=self.colisionPunto(rect.bottomright,layer)
+        return col1 or col2 or col3 or col4
+

@@ -104,7 +104,7 @@
     "puerta_maquinas_vertical":[[544,736],[510,703,65,33]],
     "puerta_oficina_vertical":[[447,387],[416,349,63,35]],
     "puerta_pasillo_vertical":[[832,543],[798,511,67,34]],
-    "puerta_escobero_vertical":[[831,736],[800,703,65,33]]
+    "puerta_escobero_vertical":[[831,736],[0,0,1,1]]
   },
   "Puertas_verticales_grandes":{
 
@@ -115,6 +115,7 @@
   },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
+
   },
   "Camaras":{
     "camara_entrada":[[398,642],0.39,1.57,0.785375,0.00025],
@@ -159,7 +160,8 @@
     "cambiar_boton_salida":["cambiar","boton_salida"],
     "cambiar_luz":["cambiar","luz1"],
     "cambiar_camara_entrada":["cambiar","camara_entrada"],
-    "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_puerta":["mensaje","Escuchas una\n puerta a lo lejos"],
+    "mensaje_puerta_escobero":["mensaje","¿A quien se le habra ocurrido \n poner ahi el pestillo del escobero?"],
     "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
@@ -193,7 +195,7 @@
     "abrir_puerta_maquinas_vertical":[["pulsar_puerta_maquinas_vertical"],["cambiar_puerta_maquinas_vertical"]],
     "abrir_puerta_oficina_vertical":[["pulsar_puerta_oficina_vertical"],["cambiar_puerta_oficina_vertical"]],
     "abrir_puerta_pasillo_vertical":[["pulsar_puerta_pasillo_vertical"],["cambiar_puerta_pasillo_vertical"]],
-    "abrir_puerta_escobero_vertical":[["pulsar_puerta_escobero_vertical"],["cambiar_puerta_escobero_vertical"]],
+    "abrir_puerta_escobero_vertical":[["pulsar_boton_ordenador"],["cambiar_puerta_escobero_vertical","cambiar_boton_ordenador","mensaje_puerta_escobero"]],
 
     "meta":[["llegar_a_meta"],["fin_fase"]]
 
