@@ -1,5 +1,5 @@
 {
-  "mapa":"museo2.layers",
+  "mapa":"banco_1.layers",
   "pos_inicial":[1743,200],
   "nodos":[[0,0],
     [1633,416],
@@ -143,10 +143,7 @@
     [12,16,19],
     [27,33]
   ],
-   "Enemigos":[[[225,433],[225,340],[365,340],[365,443]],
-   [[992,415],[992,864],[897,864],[897,989],[1090,989],[1090,864]],
-   [[639,478],[639,587],[575,587],[575,832],[512,832],[512,1056],[767,1056],[767,832],[705,832],[705,587],[639,587]]
-   ],
+   "Enemigos":[],
 
    "Interruptores":{
     "i_1":[[1697,488],[1679,514,37,35]],
@@ -165,16 +162,16 @@
     "p_4":[[287,735],[262,703,53,33]],
     "p_6":[[192,511],[169,478,50,39]],
     "p_7":[[192,320],[169,284,50,39]],
-    
-    "p_10":[[1024,768],[1002,750,49,32]],
-    "p_11":[[1024,768],[1002,750,49,32]],
+
+    "p_10":[[287,288],[262,254,58,37]],
+    "p_11":[[60,481],[0,0,1,1]],
 
 
   },
   "Puertas_verticales_grandes":{
-    "p_2":[[1536,958],[1503,897,68,68]],
-    "p_12":[[1154,958],[1122,898,63,37]],
-    "p_13":[[832,960],[800,898,63,67]],
+    "p_2":[[639,703],[615,639,51,68]],
+    "p_12":[[543,384],[519,321,54,69]],
+    "p_13":[[899,126],[876,61,27,71]],
 
   },
   "Puertas_grandes":{
@@ -183,8 +180,7 @@
 
 
   "Luces":{
-     "luz1":[[1695,826],[1601,515,195,256]],
-     "luz2":[[1824,767],[1759,576,132,192]]
+
   },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
@@ -230,12 +226,12 @@
   "Consecuencias":{
     "cambiar_puerta_1":["cambiar","p_1"],
     "cambiar_puerta_2":["cambiar","p_2"],
-    "cambiar_puerta_3":["cambiar","p_3"],
+
     "cambiar_puerta_4":["cambiar","p_4"],
     "cambiar_puerta_5":["cambiar","p_5"],
     "cambiar_puerta_6":["cambiar","p_6"],
     "cambiar_puerta_7":["cambiar","p_7"],
-    "cambiar_puerta_8":["cambiar","p_8"],
+
     "cambiar_puerta_9":["cambiar","p_9"],
     "cambiar_puerta_10":["cambiar","p_10"],
     "cambiar_puerta_11":["cambiar","p_11"],
@@ -262,12 +258,12 @@
 
     "abrir_puerta_1":[["pulsar_p1"],["cambiar_puerta_1"]],
     "abrir_puerta_2":[["pulsar_p2"],["cambiar_puerta_2"]],
-    "abrir_puerta_3":[["pulsar_p3"],["cambiar_puerta_3"]],
+
     "abrir_puerta_4":[["pulsar_p4"],["cambiar_puerta_4"]],
     "abrir_puerta_5":[["pulsar_p5"],["cambiar_puerta_5"]],
     "abrir_puerta_6":[["pulsar_p6"],["cambiar_puerta_6"]],
     "abrir_puerta_7":[["pulsar_p7"],["cambiar_puerta_7"]],
-    "abrir_puerta_8":[["pulsar_p8"],["cambiar_puerta_8"]],
+
     "abrir_puerta_9":[["pulsar_p9"],["cambiar_puerta_9"]],
     "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
     "abrir_puerta_11":[["pulsar_p11"],["cambiar_puerta_11"]],
