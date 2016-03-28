@@ -220,7 +220,7 @@ class Menu(Escena):
         self.director.salirPrograma()
 
     def ejecutarJuego(self):
-        fase = Fase('fase2.json',self.director)
+        fase = Fase('fase1.json',self.director)
         self.director.apilarEscena(fase)
 
     def mostrarPantallaInicial(self):

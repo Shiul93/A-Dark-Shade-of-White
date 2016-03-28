@@ -154,40 +154,31 @@
 
   },
   "Puertas_pequenas":{
-    "p_1":[[1648,509],[1621,443,55,105]],
-    "p_2":[[1744,509],[1723,443,55,105]],
-    "p_3":[[1648,830],[1621,752,55,105]],
-    "p_4":[[1744,830],[1723,752,55,105]],
-    "p_14":[[240,830],[224,754,33,111]],
-    "p_15":[[335,830],[320,754,33,111]],
-    "p_16":[[240,509],[233,435,33,111]],
-    "p_17":[[335,509],[320,435,33,111]]
+    "p_1":[[113,735],[93,143,39,104]],
+    "p_9":[[241,192],[222,111,41,108]],
+    "p_5":[[241,608],[207,606,69,25]],
+
 
   },
   "Puertas_verticales":{
-    "p_22":[[961,768],[929,750,49,32]],
-    "p_23":[[1024,768],[1002,750,49,32]]
+
+    "p_4":[[287,735],[262,703,53,33]],
+    "p_6":[[192,511],[169,478,50,39]],
+    "p_7":[[192,320],[169,284,50,39]],
+    
+    "p_10":[[1024,768],[1002,750,49,32]],
+    "p_11":[[1024,768],[1002,750,49,32]],
+
 
   },
   "Puertas_verticales_grandes":{
-    "p_5":[[1536,958],[1503,897,68,68]],
-    "p_8":[[1154,958],[1122,898,63,37]],
-    "p_10":[[832,960],[800,898,63,67]],
-    "p_13":[[447,960],[418,898,67,62]],
-    "p_18":[[383,447],[353,384,67,62]],
-    "p_19":[[832,448],[799,384,67,62]],
-    "p_20":[[1150,448],[1121,384,67,62]],
-    "p_25":[[1603,450],[1569,388,62,69]]
+    "p_2":[[1536,958],[1503,897,68,68]],
+    "p_12":[[1154,958],[1122,898,63,37]],
+    "p_13":[[832,960],[800,898,63,67]],
 
   },
   "Puertas_grandes":{
-    "p_6":[[1409,766],[1376,688,66,111]],
-    "p_7":[[1280,766],[1248,688,66,111]],
-    "p_9":[[991,832],[964,767,61,99]],
-    "p_11":[[704,766],[672,673,66,111]],
-    "p_12":[[576,766],[544,673,66,111]],
-    "p_21":[[992,511],[959,437,68,110]],
-    "p_24":[[992,383],[962,305,64,110]]
+
   },
 
 
@@ -216,23 +207,14 @@
     "pulsar_p7":["accion","p_7"],
     "pulsar_p8":["accion","p_8"],
     "pulsar_p9":["accion","p_9"],
+    "pulsar_p10":["accion","p_10"],
     "pulsar_p11":["accion","p_11"],
     "pulsar_p12":["accion","p_12"],
-    "pulsar_p14":["accion","p_14"],
-    "pulsar_p15":["accion","p_15"],
-    "pulsar_p16":["accion","p_16"],
-    "pulsar_p17":["accion","p_17"],
-    "pulsar_p21":["accion","p_21"],
-    "pulsar_p22":["accion","p_22"],
-    "pulsar_p23":["accion","p_23"],
-    "pulsar_p24":["accion","p_24"],
-
-    "pulsar_p10":["accion","p_10"],
     "pulsar_p13":["accion","p_13"],
-    "pulsar_p18":["accion","p_18"],
-    "pulsar_p19":["accion","p_19"],
-    "pulsar_p20":["accion","p_20"],
-    "pulsar_p25":["accion","p_25"],
+
+
+
+
 
     "pulsar_i1":["accion","i_1"],
     "pulsar_i2":["accion","i_2"],
@@ -255,23 +237,10 @@
     "cambiar_puerta_7":["cambiar","p_7"],
     "cambiar_puerta_8":["cambiar","p_8"],
     "cambiar_puerta_9":["cambiar","p_9"],
+    "cambiar_puerta_10":["cambiar","p_10"],
     "cambiar_puerta_11":["cambiar","p_11"],
     "cambiar_puerta_12":["cambiar","p_12"],
-    "cambiar_puerta_14":["cambiar","p_14"],
-    "cambiar_puerta_15":["cambiar","p_15"],
-    "cambiar_puerta_16":["cambiar","p_16"],
-    "cambiar_puerta_17":["cambiar","p_17"],
-    "cambiar_puerta_21":["cambiar","p_21"],
-    "cambiar_puerta_22":["cambiar","p_22"],
-    "cambiar_puerta_23":["cambiar","p_23"],
-    "cambiar_puerta_24":["cambiar","p_24"],
-
-    "cambiar_puerta_10":["cambiar","p_10"],
     "cambiar_puerta_13":["cambiar","p_13"],
-    "cambiar_puerta_18":["cambiar","p_18"],
-    "cambiar_puerta_19":["cambiar","p_19"],
-    "cambiar_puerta_20":["cambiar","p_20"],
-    "cambiar_puerta_25":["cambiar","p_25"],
 
 
 
@@ -300,26 +269,10 @@
     "abrir_puerta_7":[["pulsar_p7"],["cambiar_puerta_7"]],
     "abrir_puerta_8":[["pulsar_p8"],["cambiar_puerta_8"]],
     "abrir_puerta_9":[["pulsar_p9"],["cambiar_puerta_9"]],
+    "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
     "abrir_puerta_11":[["pulsar_p11"],["cambiar_puerta_11"]],
     "abrir_puerta_12":[["pulsar_p12"],["cambiar_puerta_12"]],
-    "abrir_puerta_14":[["pulsar_p14"],["cambiar_puerta_14"]],
-    "abrir_puerta_15":[["pulsar_p15"],["cambiar_puerta_15"]],
-    "abrir_puerta_16":[["pulsar_p16"],["cambiar_puerta_16"]],
-    "abrir_puerta_17":[["pulsar_p17"],["cambiar_puerta_17"]],
-    "abrir_puerta_21":[["pulsar_p21"],["cambiar_puerta_21"]],
-    "abrir_puerta_22":[["pulsar_p22"],["cambiar_puerta_22"]],
-    "abrir_puerta_23":[["pulsar_p23"],["cambiar_puerta_23"]],
-
-    "abrir_puerta_24_mal":[["pulsar_p24"],["mensaje_puerta_final"]],
-    "abrir_puerta_mal":[["pulsar_i2"],["mensaje_puerta_final","cambiar_puerta_24"]],
-
-    "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
     "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
-    "abrir_puerta_18":[["pulsar_p18"],["cambiar_puerta_18"]],
-    "abrir_puerta_19":[["pulsar_p19"],["mensaje_puerta_cerrada"]],
-    "abrir_puerta_20":[["pulsar_p20"],["cambiar_puerta_20"]],
-    "abrir_puerta_25":[["pulsar_p25"],["cambiar_puerta_25"]],
-
 
     "activar_luz":[["pulsar_i1"],["cambiar_luz1","cambiar_luz2"]],
 
