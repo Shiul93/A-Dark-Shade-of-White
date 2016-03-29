@@ -80,6 +80,7 @@ class Fase(Escena):
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
         for nombre,meta in datos["Metas"].iteritems():
             self.objetos[nombre]=Meta(meta[0],pygame.Rect(meta[1][0],meta[1][1],meta[1][2],meta[1][3]))
         for nombre,puerta in datos["Puertas_pequenas"].iteritems():
@@ -88,11 +89,13 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
         for nombre,puerta in datos["Puertas_verticales"].iteritems():
             self.objetos[nombre]=Puerta_vertical(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
 
         for nombre,puerta in datos["Puertas_verticales_grandes"].iteritems():
@@ -101,6 +104,7 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
 
         for nombre,cuadro in datos["Cuadros"].iteritems():
             self.objetos[nombre]=Cuadro(cuadro[0], pygame.Rect(cuadro[1][0], cuadro[1][1], cuadro[1][2], cuadro[1][3]))
@@ -108,12 +112,14 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
 
         for nombre,puerta in datos["Puertas_grandes"].iteritems():
             self.objetos[nombre]=Puerta_grande(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
 
         for nombre,luz in datos["Luces"].iteritems():
@@ -126,6 +132,7 @@ class Fase(Escena):
             self.objetos[nombre]=Camara(camara[0],pygame.Rect(0,0,1,1),camara[1],camara[2],camara[3],camara[4])
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
 
         print self.objetos
 
@@ -165,7 +172,7 @@ class Fase(Escena):
 
 
 
-        
+
     # Devuelve True o False según se ha tenido que desplazar el scroll
     def actualizarScrollOrdenados(self, jugador):
         actualizar=False
@@ -270,17 +277,18 @@ class Fase(Escena):
 
             # Actualizamos el scroll
             self.actualizarScroll(self.jugador1)
-  
 
-        
+
+
     def dibujar(self, pantalla):
         #Primero las capas que no tapan a los sprites
         self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
         self.grupoSprites.draw(pantalla)
         #Luego las capas que tapan a los sprites
-        self.grupoOpacos.draw(pantalla)
+
         self.decorado.dibujar_post(pantalla)
+        self.grupoOpacos.draw(pantalla)
 
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))

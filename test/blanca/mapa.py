@@ -13,8 +13,7 @@ class Mapa:
         self.layers = GestorRecursos.CargarArchivoCapas(path)
         self.images = {}
         self.load_layers()
-
-        self.rect = self.images[self.layers.pop()[1]].get_rect() #deberia coger la primera
+        self.rect = self.images[self.layers[0][1]].get_rect() #deberia coger la primera
         self.rectSubimagen = pygame.Rect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA)
         self.rectSubimagen.left = 0 # El scroll horizontal empieza en la posicion 0 por defecto
         self.rectSubimagen.top = 0 # El scroll vertical empieza en la posicion 0 por defecto
@@ -44,8 +43,8 @@ class Mapa:
 
     def update(self, scrollx,scrolly):
         #Cuando cambia el scroll cambiamos la posicion del rectangulo que define el trozo de fondo que se muestra
-        self.rectSubimagen.left = scrollx
-        self.rectSubimagen.top = scrolly
+         self.rectSubimagen.left = scrollx
+         self.rectSubimagen.top = scrolly
 
     def paint_all(self,pantalla):
         """Dibuja secuencialmente todas las capas marcadas como visibles"""
@@ -86,10 +85,16 @@ class Mapa:
 
 
         #pygame.display.flip()
+        Debuger.anadirObjeto("rectsubimage",self.rectSubimagen)
+        Debuger.anadirObjeto("deco rect",self.rect)
 
     #Comprueba colision en una posicion. se le pasa el id de la capa de colision y devuelve 0 si no hay nada y 1 si hay algo
     #En principiio para usar solo con la capa de colisiones pero se podria usar con cualquiera
-    def colision(self,rect):
+    def colisionPunto(self,punto,layer):
+        color=self.images[layer].get_at(punto)
+        return color.r>0
+
+    def colision(self,rect,layer):
         #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
         #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
         #En este caso se comprueba que el rojo no valga 0
@@ -98,9 +103,24 @@ class Mapa:
         #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
 
        # for layer in self.layers:
-        color1=self.images["colisiones"].get_at(rect.topleft)
-        color2=self.images["colisiones"].get_at(rect.topright)
-        color3=self.images["colisiones"].get_at(rect.bottomleft)
-        color4=self.images["colisiones"].get_at(rect.bottomright)
-        return color1.r>0 or color2.r>0 or color3.r>0 or color4.r>0
+        col1=self.colisionPunto(rect.topleft,layer)
+        col2=self.colisionPunto(rect.topright,layer)
+        col3=self.colisionPunto(rect.bottomleft,layer)
+        col4=self.colisionPunto(rect.bottomright,layer)
+        return col1 or col2 or col3 or col4
+
+    def colisionOculta(self,rect,layer):
+        #Comprueba si hay colision en cualquiera de las 4 esquinas del rectángulo recibido
+        #Lo que comprueba es el color del pixel del mapa de colisiones en el punto deseado
+        #En este caso se comprueba que el rojo no valga 0
+        #Si vale 0 en las 4 esquinas no hay colision
+        #Se podria usar tambien el alfa ( seria mas lógico)
+        #pygame.Color.r = rojo .g = verde .b = azul .a = alfa
+
+       # for layer in self.layers:
+        col1=self.colisionPunto(rect.topleft,layer)
+        col2=self.colisionPunto(rect.topright,layer)
+        col3=self.colisionPunto(rect.bottomleft,layer)
+        col4=self.colisionPunto(rect.bottomright,layer)
+        return col1 or col2 or col3 or col4
 
