@@ -160,6 +160,10 @@ class Puerta_pequena(activable):
 class Cuadro(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"cuadro.png","coord_cuadro.txt",pos,area,False,100)
+
+class Diamante(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"diamante.png","coord_diamante.txt",pos,area,False,100)
 class Puerta_vertical(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"puerta_vertical.png","coord_puerta_vertical",pos,area,False,1000)

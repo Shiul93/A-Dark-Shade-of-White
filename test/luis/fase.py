@@ -113,6 +113,12 @@ class Fase(Escena):
             self.grupoColisionables.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
+        for nombre,diamante in datos["Diamantes"].iteritems():
+            self.objetos[nombre]=Diamante(diamante[0], pygame.Rect(diamante[1][0], diamante[1][1], diamante[1][2], diamante[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+
 
         for nombre,puerta in datos["Puertas_grandes"].iteritems():
             self.objetos[nombre]=Puerta_grande(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
