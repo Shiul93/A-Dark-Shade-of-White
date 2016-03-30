@@ -13,7 +13,7 @@ class Director():
     def __init__(self):
         # Inicializamos la pantalla y el modo grafico
         self.screen = pygame.display.set_mode((ANCHO_PANTALLA, ALTO_PANTALLA))
-        pygame.display.set_caption("A-Dark-Shade-In-White version de Luis")
+        pygame.display.set_caption("A-Dark-Shade-Of-White version de Luis")
         # Inicializamos el mixer para el sonido
         pygame.mixer.pre_init(44100, 16, 2, 4096)
         pygame.mixer.init()

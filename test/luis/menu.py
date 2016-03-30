@@ -186,7 +186,7 @@ class Menu(Escena):
         # Creamos las pantallas que vamos a tener
         #   y las metemos en la lista
         self.listaPantallas.append(PantallaInicialGUI(self))
-        #son =GestorRecursos.CargarArchivoSonido('A-Dark-Shade-of-White.ogg')
+        son =GestorRecursos.CargarMusica('A-Dark-Shade-of-White.ogg')
         #chan = son.play()
         #while pygame.mixer.music.get_busy():
         #    pygame.time.Clock().tick(10)

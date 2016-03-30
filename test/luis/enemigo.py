@@ -46,6 +46,9 @@ class Enemigo(NoJugador):
 
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
                 if not self.visto: #EN EL MOMENTO EN EL QUE TE VE
+                    son = GestorRecursos.CargarArchivoSonido("alerta-metal-gear.ogg")
+                    canal = son.play()
+
                     self.visto=True
                     self.estado=PERSIGUIENDO
                     self.movimiento=CARRERA
