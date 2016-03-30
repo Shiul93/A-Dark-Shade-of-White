@@ -1,0 +1,130 @@
+{
+  "mapa":"banco_3.layers",
+  "pos_inicial":[203,209],
+  "nodos":[
+  ],
+  "grafo":[],
+   "Enemigos":[],
+
+   "Interruptores":{
+    "i_1":[[784,619],[769,641,34,38]]
+
+
+  },
+  "Puertas_pequenas":{
+
+    "p_2":[[207,383],[181,301,54,105]],
+    "p_5":[[527,640],[0,0,1,1]]
+
+
+  },
+  "Puertas_verticales":{
+
+    "p_1":[[156,228],[0,0,1,1]],
+    "p_3":[[448,158],[415,127,55,33]],
+    "p_4":[[672,864],[649,831,48,35]],
+    "p_6":[[417,513],[387,479,62,37]],
+    "p_7":[[640,513],[614,479,62,37]],
+    "p_8":[[417,223],[387,190,62,37]],
+    "p_9":[[640,223],[614,190,62,37]]
+
+
+
+
+  },
+  "Puertas_verticales_grandes":{
+
+
+
+  },
+  "Puertas_grandes":{
+
+
+
+  },
+
+
+  "Luces":{
+
+  },
+  "Metas":{
+    "meta":[[0,0],[1111,192,146,128]]
+  },
+  "Cuadros":{
+
+  },
+  "Camaras":{
+  "camara1":[[526,125],0,1.57,0.785375,0.00025]
+  },
+ "Causas":{
+    "pulsar_p1":["accion","p_1"],
+    "pulsar_p2":["accion","p_2"],
+    "pulsar_p3":["accion","p_3"],
+    "pulsar_p4":["accion","p_4"],
+    "pulsar_p5":["accion","p_5"],
+    "pulsar_p6":["accion","p_6"],
+    "pulsar_p7":["accion","p_7"],
+    "pulsar_p8":["accion","p_8"],
+    "pulsar_p9":["accion","p_9"],
+
+
+
+
+
+    "pulsar_i_1":["accion","i_1"],
+
+
+
+    "visto_c1":["visto_camara","camara1"],
+
+    "llegar_a_meta":["area","meta"]
+  },
+  "Consecuencias":{
+    "cambiar_puerta_1":["cambiar","p_1"],
+    "cambiar_puerta_2":["cambiar","p_2"],
+    "cambiar_puerta_3":["cambiar","p_3"],
+    "cambiar_puerta_4":["cambiar","p_4"],
+    "cambiar_puerta_5":["cambiar","p_5"],
+    "cambiar_puerta_6":["cambiar","p_6"],
+    "cambiar_puerta_7":["cambiar","p_7"],
+    "cambiar_puerta_8":["cambiar","p_8"],
+    "cambiar_puerta_9":["cambiar","p_9"],
+
+
+    "cambiar_c1":["cambiar","camara1"],
+    "cambiar_i_1":["cambiar","i_1"],
+
+
+
+
+    "alarma_c1":["alarma","camara1"],
+    "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_puerta_cerrada":["mensaje","La puerta esta cerrada con llave"],
+    "mensaje_puerta_final":["mensaje","La puerta esta cerrada electronicamente"],
+    "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
+    "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
+    "mensaje_camara":["mensaje","Has sido visto por la camara"],
+
+    "fin_fase":["fin"]
+  },
+  "Eventos":{
+
+    "abrir_puerta_1":[["pulsar_p1"],["cambiar_puerta_1"]],
+    "abrir_puerta_2":[["pulsar_p2"],["cambiar_puerta_2"]],
+    "abrir_puerta_3":[["pulsar_p3"],["cambiar_puerta_3"]],
+
+    "abrir_puerta_4":[["pulsar_p4"],["cambiar_puerta_4"]],
+    "abrir_puerta_5":[["pulsar_i_1"],["cambiar_puerta_5"]],
+    "abrir_puerta_6":[["pulsar_p6"],["cambiar_puerta_6"]],
+    "abrir_puerta_7":[["pulsar_p7"],["cambiar_puerta_7"]],
+    "abrir_puerta_8":[["pulsar_p8"],["cambiar_puerta_8"]],
+    "abrir_puerta_9":[["pulsar_p9"],["cambiar_puerta_9"]],
+
+
+
+    "camara1":[["visto_c1"],["alarma_c1"]]
+
+
+
+  }
+}
