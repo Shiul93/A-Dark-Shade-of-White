@@ -5,7 +5,7 @@ from mysprite import *
 from gestorRecursos import *
 from debuger import *
 from fase import *
-
+RAY_STEP=23
 
 class CuadroTexto(MiSprite):
     def __init__(self,):
@@ -156,11 +156,11 @@ class Interruptor(activable):
 
 class Puerta_pequena(activable):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,False,1000)
+        activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,True,1000)
 
 class Puerta_grande(activable):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_grande.png","coord_puerta_grande.txt",pos,area,False,1000)
+        activable.__init__(self,"puerta_grande.png","coord_puerta_grande.txt",pos,area,True,1000)
 
 
 class Luz(activable):
@@ -191,7 +191,7 @@ class Camara(activable):
             Debuger.anadirRadio(self.posicion,self.mirando+self.rangoVision/2,140)
 
             if(anguloEnRango(angulo,self.mirando,self.rangoVision)):
-                return not fase.colisionLinea(self.posicion,pos,7)
+                return not fase.colisionLinea(self.posicion,pos,RAY_STEP,"opacidad")
         return False
 
     def update(self,tiempo):

@@ -89,7 +89,7 @@ class Accion:
         elif self.tipo==SONIDO :
             fase.reproducirSonido(self.sonido)
         elif self.tipo==ALARMA :
-            fase.dispararAlarma(self.objeto)
+            fase.dispararAlarma()
         elif self.tipo==FIN:
             fase.finfase=True
             fase.mostrarMensaje("Fase terminada, enhorabuena")

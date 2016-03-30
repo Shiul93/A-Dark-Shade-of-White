@@ -10,6 +10,7 @@ from objetos import *
 from Eventos import *
 from nodo import *
 from enemigo import *
+from Enemigo2 import *
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
 #LA idea es que carge la fase a paretir de un script
@@ -30,7 +31,8 @@ MINIMO_Y_JUGADOR = 275
 MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 MINIMO_Y_BORDES = 40
 
-SEARCH_STEP=20
+SEARCH_STEP=24
+RAY_STEP=12
 # -------------------------------------------------
 # Clase Fase
 
@@ -136,10 +138,9 @@ class Fase(Escena):
         self.grafo=datos['grafo']
         self.nodos=datos['nodos']
         self.enemigo=[]
-        patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
         for i in range (0,len(datos['Enemigos'])):
-          self.enemigo.append(Enemigo(datos['nodos'],datos['grafo'],datos['Enemigos'][i]))
+          self.enemigo.append(Enemigo2(datos['nodos'],datos['grafo'],datos['Enemigos'][i]))
           self.grupoEnemigos.add(self.enemigo[i])
           self.grupoSprites.add(self.enemigo[i])
 
@@ -249,7 +250,7 @@ class Fase(Escena):
                 self.director.salirEscena()
 
             # Actualizamos el scroll
-            self.actualizarScroll(self.enemigo[0])
+            self.actualizarScroll(self.jugador1)
   
 
         
@@ -267,9 +268,9 @@ class Fase(Escena):
         if(self.haymensaje):
             self.cuadrotexto.draw(pantalla)
 
-    def dispararAlarma(self,camara):
+    def dispararAlarma(self):
         for enemigo in self.grupoEnemigos.sprites():
-              enemigo.alarma(self,self.jugador1.posicion)
+              enemigo.alarma(self,self.nodo_mas_cercano(self.jugador1.posicion,self.nodos))
 
     def colision(self,rect):
        rectlist=self.listaRectangulosColisionables()
@@ -292,16 +293,16 @@ class Fase(Escena):
        return rectlist
 
 
-    def colisionLinea(self,origen,destino,step,offset=(0,0)):
+    def colisionLinea(self,origen,destino,step,capa):
         dif=(destino[0]-origen[0],destino[1]-origen[1])
         distancia=dist(origen,destino)
         rectlist=self.listaRectangulosOpacos()
         pointlist=[]
         for i in range(0,int(distancia),step):
-            punto=(int(origen[0]+offset[0]+dif[0]*i/distancia),int(origen[1]+offset[1]+dif[1]*i/distancia))
+            punto=(int(origen[0]+dif[0]*i/distancia),int(origen[1]+dif[1]*i/distancia))
             Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
             pointlist.append(punto)
-            if self.decorado.colisionPunto(punto,"opacidad"):
+            if self.decorado.colisionPunto(punto,capa):
                 return True
             else:
                 for rect in rectlist:
@@ -313,9 +314,13 @@ class Fase(Escena):
     # estas dos funciones las usa ahora el enemigo para volver a la ruta cuando esta "perdido"
     #deberian sustituirse por funciones equivalentes usando rutas
     def nodo_mas_cercano(self,pos,nodos):
-        mindist=dist(pos,nodos.values()[0])
+
+        diccnodos={}
+        for i in range(0,len(nodos)):
+            diccnodos[i]=nodos[i]
+        mindist=dist(pos,diccnodos.values()[0])
         minindex=0
-        for clave,valor in nodos.iteritems():
+        for clave,valor in diccnodos.iteritems():
             nodedist=dist(pos,valor)
             if nodedist<mindist:
                 mindist=nodedist
@@ -329,7 +334,7 @@ class Fase(Escena):
             nodos[i]=self.nodos[i]
         nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
         while len(nodos)>1:
-            if not self.colisionLinea(pos,nodos[nodo_mas_cercano],7):
+            if not self.colisionLinea(pos,nodos[nodo_mas_cercano],RAY_STEP,"opacidad"):
                 return nodo_mas_cercano
             else:
                 del(nodos[nodo_mas_cercano])
@@ -339,7 +344,7 @@ class Fase(Escena):
     #Funcion que devuelve los nodos adyacentes a un nodo
     #PAra nodos con clave de coordenadas (para perseguir al personaje y volver a su grafo original)
 
-    def calcular_nodos_adyacentes(self,nodo,step):
+    def calcular_nodos_adyacentes2(self,nodo,step):
         rectangulo=pygame.Rect(0,0,step*2,step*2) #Usado para calcular las posiciones de los nodos nuevos (top,bottom,left,right)
         rectangulo.center=nodo.pos
         rectangulo.top=rectangulo.top
@@ -356,6 +361,39 @@ class Fase(Escena):
             nodos.append(Nodo(rectangulo.midright,nodo,nodo.dist + step))
         rectangulocolision.center=rectangulo.midleft
         if not self.colision(rectangulocolision):
+            nodos.append(Nodo(rectangulo.midleft,nodo,nodo.dist + step))
+        return nodos
+
+    def calcular_nodos_adyacentes(self,nodo,step):
+        rectangulo=pygame.Rect(0,0,step*2,step*2) #Usado para calcular las posiciones de los nodos nuevos (top,bottom,left,right)
+        rectangulo.center=nodo.pos
+        rectangulocolision=pygame.Rect(0,0,13,10)
+        rectangulocolision.center=rectangulo.center
+        nodos = []
+        rectangulonuevo=rectangulocolision.copy()
+        rectangulonuevo.center=rectangulo.midtop
+        #Debuger.anadirLinea(rectangulocolision.topleft,rectangulonuevo.topleft)
+        #Debuger.anadirLinea(rectangulocolision.topright,rectangulonuevo.topright)
+        if not self.colisionLinea(rectangulonuevo.topleft,rectangulocolision.topleft,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.topright,rectangulocolision.topright,RAY_STEP,"colisiones"):
+            nodos.append(Nodo(rectangulo.midtop,nodo,nodo.dist + step))
+        rectangulonuevo.center=rectangulo.midbottom
+        #Debuger.anadirLinea(rectangulocolision.bottomleft,rectangulonuevo.bottomleft)
+        #Debuger.anadirLinea(rectangulocolision.bottomright,rectangulonuevo.bottomright)
+        if not self.colisionLinea(rectangulonuevo.bottomleft,rectangulocolision.bottomleft,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.bottomright,rectangulocolision.bottomright,RAY_STEP,"colisiones"):
+            nodos.append(Nodo(rectangulo.midbottom,nodo,nodo.dist + step))
+        rectangulonuevo.center=rectangulo.midright
+        #Debuger.anadirLinea(rectangulocolision.topright,rectangulonuevo.topright)
+        #Debuger.anadirLinea(rectangulocolision.bottomright,rectangulonuevo.bottomright)
+        if not self.colisionLinea(rectangulonuevo.topright,rectangulocolision.topright,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.bottomright,rectangulocolision.bottomright,RAY_STEP,"colisiones"):
+            nodos.append(Nodo(rectangulo.midright,nodo,nodo.dist + step))
+        rectangulonuevo.center=rectangulo.midleft
+        #Debuger.anadirLinea(rectangulocolision.topleft,rectangulonuevo.topleft)
+        #Debuger.anadirLinea(rectangulocolision.bottomleft,rectangulonuevo.bottomleft)
+        if not self.colisionLinea(rectangulonuevo.topleft,rectangulocolision.topleft,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.bottomleft,rectangulocolision.bottomleft,RAY_STEP,"colisiones"):
             nodos.append(Nodo(rectangulo.midleft,nodo,nodo.dist + step))
         return nodos
 
@@ -418,8 +456,11 @@ class Fase(Escena):
                         if nodo.dist<visitado.dist:
                             self.visitado=nodo
                     else:
-                        frontera.append(nodo)
-                        visitados.append(nodo)
+                        if(nodo.dist<DISTANIA_MAXIMA_CALCULO_RUTA):
+                            frontera.append(nodo)
+                            visitados.append(nodo)#DENTRO DEL IF O FUERA?¿?¿
+                        else:
+                            return []
         return [] #No ha encontrado nada y devuelve una lista vacia
 
     def eventos(self, lista_eventos):

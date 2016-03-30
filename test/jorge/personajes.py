@@ -178,7 +178,7 @@ class Personaje(MiSprite):
         #Comprobamos las colisiones primero en el eje x
         #Si colisiona en el eje x ponemos la velocidad x a 0
         #print self.posicion
-        newposrect=pygame.Rect(0,0,self.rect.width/3,self.rect.height/6)
+        newposrect=pygame.Rect(0,0,self.rect.width/6,self.rect.height/12)
         newposrect.center=(self.posicion[0],self.posicion[1])
         newposrect.left=newposrect.left+velocidadx*tiempo
         newposrect.bottom=newposrect.bottom+velocidady*tiempo
@@ -233,7 +233,6 @@ class Jugador(Personaje):
 
     def update(self,fase,tiempo):
         "Acciones especificas del jugador(activar objetos etc)"
-        Debuger.anadirObjeto("posicion",self.posicion)
         Personaje.update(self,fase,tiempo)
 # -------------------------------------------------
 # Clase NoJugador
@@ -326,7 +325,7 @@ class Guardia(NoJugador):
                 if abs(self.distancia[0]+self.distancia[1])<2 : #Si llega a un destino (eligira el siguiente segun lo qu este haciendo)
                     destinos=list(self.grafo[self.siguiente])
                     for destino in destinos:
-                        if(fase.colisionLinea(self.posicion,self.nodos[destino],7)):
+                        if(fase.colisionLinea(self.posicion,self.nodos[destino],RAY_STEP,"colisiones")):
                             destinos.remove(destino)
                     if(self.estado==DEAMBULANDO)  :
                         self.siguiente=destinos[randint(0,len(destinos)-1)]
@@ -388,7 +387,7 @@ class Guardia(NoJugador):
          Debuger.anadirRadio(self.posicion,direccion-rango/2,40)
          Debuger.anadirRadio(self.posicion,direccion+rango/2,40)
          if anguloEnRango(angulo,direccion,rango):#Mira si un angulo esta dentro del campo de vision con direccion direccion y rango rango (radianes todo
-             return  not fase.colisionLinea(self.posicion,pos,7)
+             return  not fase.colisionLinea(self.posicion,pos,RAY_STEP,"opacidad")
          return False
 
     def alarma(self,fase,nodo):

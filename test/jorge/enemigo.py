@@ -13,6 +13,11 @@ PERSIGUIENDO=5
 TIEMPO_CALCULO_RUTA=1000
 TIEMPO_BUSCAR=10000
 TIEMPO_PERSEGUIR=10000
+TIEMPO_GIRAR=1000
+
+DISTANIA_MAXIMA_CALCULO_RUTA=4000
+
+RAY_STEP=23
 
 class Enemigo(NoJugador):
     "El  guardia que da vueltas por un grafo de nodos y sabe llegar a un destino"
@@ -24,14 +29,15 @@ class Enemigo(NoJugador):
         self.tiempocalculoruta=0
         self.tiempobusqueda=0
         self.tiempopersecucion=0
+        self.tiempogirar=0
 
         self.recorrido=recorrido #recorrido de la patrulla (lista de pares)
         self.movimiento=NORMAL
         self.destino=None
         self.siguiente=None
-        self.dest=None
         self.rutapatrulla=list(self.recorrido)
         self.posicion=self.rutapatrulla.pop()
+        self.dest=self.posicion
         self.ruta=[]
         #self.ruta=fase.calcular_ruta_local(self.posicion,self.rutapatrulla.pop() )
         self.distancia=(0,0)
@@ -42,8 +48,6 @@ class Enemigo(NoJugador):
 
 
              #Si ve al personaje...
-
-
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
                 if not self.visto: #EN EL MOMENTO EN EL QUE TE VE
                     self.visto=True
@@ -53,12 +57,14 @@ class Enemigo(NoJugador):
                     if len(self.ruta)>0:
                         self.destino=self.ruta[0]
                         self.siguiente=self.ruta[-1]
+                    fase.dispararAlarma()
             else: #te ha perdido de vista
                 if self.visto:
                     self.visto=False
                     self.tiempopersecucion=TIEMPO_PERSEGUIR
 
             if abs(self.distancia[0]+self.distancia[1])<5 : #Si llega a un nodo (eligira el siguiente segun lo que este haciendo)
+                self.posicion=self.dest
                 if self.siguiente==self.destino: #Si es el final de la ruta
                     if self.estado==PATRULLANDO:
                         if len(self.rutapatrulla)==0:#si le quedan puntos por visitar
@@ -71,6 +77,7 @@ class Enemigo(NoJugador):
                     elif self.estado==LLENDO_A_ALARMA:
                          self.estado=DEAMBULANDO #provisionalisimo
                          self.tiempobusqueda=TIEMPO_BUSCAR
+                         self.movimiento=QUIETO
                     elif self.estado==PERSIGUIENDO:
                          self.ruta=fase.calcular_ruta_local(self.posicion,jugador1.posicion)
                          if len(self.ruta)>0:
@@ -97,8 +104,8 @@ class Enemigo(NoJugador):
 
             #En cualquier cas se mueve hacia el dest
             Debuger.anadirLinea(self.posicion,self.dest)
-            if(self.distancia)==(0,0):
-                Personaje.mover(self,self.movimiento,QUIETO)
+            if  self.estado==DEAMBULANDO:
+                Personaje.mover(self,QUIETO,self.mirando)
             else:
                 if(abs(self.distancia[0])>abs(self.distancia[1])):
                     if(self.distancia[0]>0):
@@ -126,24 +133,32 @@ class Enemigo(NoJugador):
          Debuger.anadirRadio(self.posicion,direccion-rango/2,40)
          Debuger.anadirRadio(self.posicion,direccion+rango/2,40)
          if anguloEnRango(angulo,direccion,rango):#Mira si un angulo esta dentro del campo de vision con direccion direccion y rango rango (radianes todo
-             return  not fase.colisionLinea(self.posicion,pos,7)
+             return  not fase.colisionLinea(self.posicion,pos,RAY_STEP,"opacidad")
          return False
 
     def alarma(self,fase,posicion):
-        if self.estado!=LLENDO_A_ALARMA:
-            self.estado=LLENDO_A_ALARMA
-            if dist(posicion,self.destino.pos)>10:
-                self.ruta=fase.calcular_ruta_local(self.posicion,posicion)
-                if len(self.ruta)>0:
-                    self.destino=self.ruta[0]
-                    self.siguiente=self.ruta[-1]
+        if self.estado!=PERSIGUIENDO and (self.estado!=LLENDO_A_ALARMA or  dist(posicion,self.destino.pos)>200):
+            ruta=fase.calcular_ruta_local(self.posicion,posicion)
+            if len(ruta)>0:
+                self.ruta=ruta
+                self.destino=self.ruta[0]
+                self.siguiente=self.ruta[-1]
+                self.estado=LLENDO_A_ALARMA
+
 
 
     def update(self,fase,tiempo):
          if self.estado==DEAMBULANDO:
+             self.tiempogirar-=tiempo
+             if self.tiempogirar<0:
+                 self.mirando+=1
+                 if(self.mirando>ARRIBA):
+                     self.mirando=ABAJO
+                 self.tiempogirar=TIEMPO_GIRAR
              self.tiempobusqueda-=tiempo
              if(self.tiempobusqueda<0):
                  self.estado=VOLVIENDO_A_PATRULLA
+                 self.movimiento=NORMAL
                  self.ruta=fase.calcular_ruta_local(self.posicion,self.recorrido[-1])
                  if len(self.ruta)>0:
                      self.siguiente=self.ruta[-1]
@@ -160,8 +175,11 @@ class Enemigo(NoJugador):
                 self.tiempopersecucion-=tiempo
                 if self.tiempopersecucion<0 :
                    self.estado=DEAMBULANDO
+                   self.tiempogirar=TIEMPO_GIRAR
                    self.tiempobusqueda=TIEMPO_BUSCAR
-                   self.movimiento=NORMAL
+                   self.movimiento=QUIETO
+
+
          Personaje.update(self,fase,tiempo)
 
          for i in range(1,len(self.ruta)) :
