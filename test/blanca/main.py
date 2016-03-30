@@ -4,7 +4,7 @@
 # Importar modulos
 import director
 from director import *
-from menu import Menu
+from menu import *
 
 if __name__ == '__main__':
 

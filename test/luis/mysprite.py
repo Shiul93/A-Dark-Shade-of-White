@@ -18,13 +18,13 @@ class MiSprite(pygame.sprite.Sprite):
     def establecerPosicion(self, posicion):
         #Establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
         self.posicion = posicion
-        self.rect.center =(self.posicion[0] - self.scroll[0],self.posicion[1] - self.scroll[1])
+        self.rect.midbottom =(self.posicion[0] - self.scroll[0],self.posicion[1] - self.scroll[1])
 
     def establecerPosicionPantalla(self, scrollx,scrolly):
         #Actualiza el scroll y establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll
         self.scroll = (scrollx,scrolly)
         (posx, posy) = self.posicion
-        self.rect.center = (posx - scrollx,posy-scrolly)
+        self.rect.midbottom = (posx - scrollx,posy-scrolly)
 
     def incrementarPosicion(self, incremento):
         (posx, posy) = self.posicion

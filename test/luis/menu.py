@@ -5,9 +5,11 @@ from pygame.locals import *
 from escena import *
 from gestorRecursos import *
 from fase import *
+from menuOpciones import *
 # -------------------------------------------------
 # Clase abstracta ElementoGUI
-
+ANCHO_PANTALLA =800
+ALTO_PANTALLA =720
 class ElementoGUI:
     def __init__(self, pantalla, rectangulo):
         self.pantalla = pantalla
@@ -38,7 +40,7 @@ class Boton(ElementoGUI):
     def __init__(self, pantalla, nombreImagen, posicion):
         # Se carga la imagen del boton
         self.imagen = GestorRecursos.CargarImagen(nombreImagen,-1)
-        self.imagen = pygame.transform.scale(self.imagen, (20, 20))
+        #self.imagen = pygame.transform.scale(self.imagen, (20, 20))
         # Se llama al método de la clase padre con el rectángulo que ocupa el botón
         ElementoGUI.__init__(self, pantalla, self.imagen.get_rect())
         # Se coloca el rectangulo en su posicion
@@ -46,15 +48,27 @@ class Boton(ElementoGUI):
     def dibujar(self, pantalla):
         pantalla.blit(self.imagen, self.rect)
 
-class BotonJugar(Boton):
+class BotonNP(Boton):
     def __init__(self, pantalla):
-        Boton.__init__(self, pantalla, 'boton_verde.png', (580,530))
+        Boton.__init__(self, pantalla, 'menu/humo.png', (60,200))
     def accion(self):
         self.pantalla.menu.ejecutarJuego()
 
+class BotonCP(Boton):
+    def __init__(self, pantalla):
+        Boton.__init__(self, pantalla, 'menu/humo.png', (60,540))
+    def accion(self):
+        self.pantalla.menu.ejecutarJuego()
+
+class BotonOpciones(Boton):
+    def __init__(self, pantalla):
+        Boton.__init__(self, pantalla, 'menu/humo.png', (500,200))
+    def accion(self):
+        self.pantalla.menu.abrirOpciones()
+
 class BotonSalir(Boton):
     def __init__(self, pantalla):
-        Boton.__init__(self, pantalla, 'boton_rojo.png', (580,560))
+        Boton.__init__(self, pantalla, 'menu/humo.png', (500,540))
     def accion(self):
         self.pantalla.menu.salirPrograma()
 
@@ -72,19 +86,35 @@ class TextoGUI(ElementoGUI):
     def dibujar(self, pantalla):
         pantalla.blit(self.imagen, self.rect)
 
-class TextoJugar(TextoGUI):
+class TextoNP(TextoGUI):
     def __init__(self, pantalla):
         # La fuente la debería cargar el estor de recursos
         fuente = pygame.font.SysFont('arial', 26);
-        TextoGUI.__init__(self, pantalla, fuente, (0, 0, 0), 'Jugar', (610, 535))
+        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Nueva Partida', (100, 160))
     def accion(self):
         self.pantalla.menu.ejecutarJuego()
+
+class TextoCP(TextoGUI):
+    def __init__(self, pantalla):
+        # La fuente la debería cargar el estor de recursos
+        fuente = pygame.font.SysFont('arial', 26);
+        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Cargar Partida', (100, 500))
+    def accion(self):
+        self.pantalla.menu.ejecutarJuego()
+
+class TextoOpciones(TextoGUI):
+    def __init__(self, pantalla):
+        # La fuente la debería cargar el estor de recursos
+        fuente = pygame.font.SysFont('arial', 26);
+        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Opciones', (560, 160))
+    def accion(self):
+        self.pantalla.menu.abrirOpciones()
 
 class TextoSalir(TextoGUI):
     def __init__(self, pantalla):
         # La fuente la debería cargar el estor de recursos
         fuente = pygame.font.SysFont('arial', 26);
-        TextoGUI.__init__(self, pantalla, fuente, (0, 0, 0), 'Salir', (610, 565))
+        TextoGUI.__init__(self, pantalla, fuente, (255, 255, 255), 'Salir', (590, 500))
     def accion(self):
         self.pantalla.menu.salirPrograma()
 
@@ -123,16 +153,24 @@ class PantallaGUI:
 
 class PantallaInicialGUI(PantallaGUI):
     def __init__(self, menu):
-        PantallaGUI.__init__(self, menu, 'portada.jpg')
+        PantallaGUI.__init__(self, menu, 'menu/hacker.jpg')
         # Creamos los botones y los metemos en la lista
-        botonJugar = BotonJugar(self)
+        botonNP = BotonNP(self)
+        botonCP = BotonCP(self)
+        botonOpciones = BotonOpciones(self)
         botonSalir = BotonSalir(self)
-        self.elementosGUI.append(botonJugar)
+        self.elementosGUI.append(botonNP)
+        self.elementosGUI.append(botonCP)
+        self.elementosGUI.append(botonOpciones)
         self.elementosGUI.append(botonSalir)
         # Creamos el texto y lo metemos en la lista
-        textoJugar = TextoJugar(self)
+        textoNP = TextoNP(self)
+        textoCP = TextoCP(self)
+        textoOpciones = TextoOpciones(self)
         textoSalir = TextoSalir(self)
-        self.elementosGUI.append(textoJugar)
+        self.elementosGUI.append(textoNP)
+        self.elementosGUI.append(textoCP)
+        self.elementosGUI.append(textoOpciones)
         self.elementosGUI.append(textoSalir)
 
 # -------------------------------------------------
@@ -148,8 +186,13 @@ class Menu(Escena):
         # Creamos las pantallas que vamos a tener
         #   y las metemos en la lista
         self.listaPantallas.append(PantallaInicialGUI(self))
+        son =GestorRecursos.CargarMusica('A-Dark-Shade-of-White.ogg')
+        #chan = son.play()
+        #while pygame.mixer.music.get_busy():
+        #    pygame.time.Clock().tick(10)
         # En que pantalla estamos actualmente
         self.mostrarPantallaInicial()
+
 
     def update(self, *args):
         return
@@ -177,7 +220,7 @@ class Menu(Escena):
         self.director.salirPrograma()
 
     def ejecutarJuego(self):
-        fase = Fase('fase2.json',self.director)
+        fase = Fase('fase1.json',self.director)
         self.director.apilarEscena(fase)
 
     def mostrarPantallaInicial(self):
@@ -185,3 +228,8 @@ class Menu(Escena):
 
     # def mostrarPantallaConfiguracion(self):
     #    self.pantallaActual = ...
+
+    def abrirOpciones(self):
+        fase = MenuOpciones(self.director)
+        self.director.apilarEscena(fase)
+

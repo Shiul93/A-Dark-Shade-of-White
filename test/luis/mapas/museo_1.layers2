@@ -9,6 +9,7 @@
 #7  muebles 1 0 255 1_m1_muebles.png 1
 #8  muebles2 1 1 255 4_m1_muebles2.png 1
 #9  sombra 1 0 100 9_m1_sombra.png 1
-0   detras  1 0 255 museo_1_pre.png 0
+0   detras  1 0 255 m1_pre.png 0
 1   delante 1 0 255 museo_1_post.png 1
 2   colisiones 0 1 255 museo_1_coll.png 0
+3   opacidad 0 0 0 museo_1_vis.png 0

@@ -95,6 +95,9 @@
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
   },
+   "Cuadros":{
+
+  },
   "Causas":{
     "pulsar_puerta1":["accion","puerta1"],
     "pulsar_boton1":["accion","boton1"],

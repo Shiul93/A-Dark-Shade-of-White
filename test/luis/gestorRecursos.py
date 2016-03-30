@@ -67,6 +67,53 @@ class GestorRecursos(object):
             cls.recursos[nombre] = datos
             # Se devuelve
             return datos
+    @classmethod
+    def CargarArchivoSonido(cls, nombre):
+
+
+        # Si el nombre de archivo está entre los recursos ya cargados
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+
+        # Si no ha sido cargado anteriormente
+        else:
+            # Se carga el recurso indicando el nombre de su carpeta
+            fullname = os.path.join(cls.application_path,'music', nombre) #Deberia estar en sup propia carpeta
+            sonido = sonido = pygame.mixer.Sound(fullname)
+            pygame.mixer.music.play()
+            print fullname
+            print("Cargando archivo de sonido"+nombre)
+
+            # Se almacena
+            cls.recursos[nombre] = sonido
+            # Se devuelve
+            return sonido
+
+    @classmethod
+    def CargarMusica(cls, nombre):
+
+
+        # Si el nombre de archivo está entre los recursos ya cargados
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+
+        # Si no ha sido cargado anteriormente
+        else:
+            # Se carga el recurso indicando el nombre de su carpeta
+            fullname = os.path.join(cls.application_path,'music', nombre) #Deberia estar en sup propia carpeta
+            pygame.mixer.music.stop()
+            sonido = pygame.mixer.music.load(fullname)
+            pygame.mixer.music.play()
+            print fullname
+            print("Cargando Musica"+nombre)
+
+            # Se almacena
+            cls.recursos[nombre] = sonido
+            # Se devuelve
+            return sonido
+
 
     @classmethod
     def CargarArchivoFase(cls,nombre):
@@ -127,11 +174,13 @@ class GestorRecursos(object):
             layers = []
             line = '#'
             fullname = os.path.join(cls.application_path,'mapas', nombre)
+            print fullname
             f=open(fullname, 'r+')
 
             while line != '':
                 if not(str.startswith(line,'#')):
                     #Se obtienen el resto de caracteristicas del fichero de configuracion
+                    print line
                     info = line.rstrip().split()
                     info[0]=int(info[0])
                     info[2]=int(info[2])

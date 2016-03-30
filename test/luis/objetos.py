@@ -13,7 +13,7 @@ class CuadroTexto(MiSprite):
         self.imagenCuadro=GestorRecursos.CargarImagen("CuadroTexto.png",0)
         self.rect=pygame.Rect(self.imagenCuadro.get_rect())
         self.rect.bottomleft=(100,580)
-        MiSprite.establecerPosicion(self,self.rect.bottomleft)
+        MiSprite.establecerPosicion(self,self.rect.midbottom)
         self.texto=""
         self.image=pygame.Surface((600,200))
         #self.imagenTexto=pygame.Surface((600,200))
@@ -140,28 +140,58 @@ class activable(accionable):#Dos estados, animable para pasar de un estado a otr
               self.image=self.hoja.subsurface(self.coordenadas[self.numImagen])
           #MiSprite.establecerPosicion(self,self.pos)
           MiSprite.update(self,tiempo)
-          Debuger.anadirRectangulo(self.pos_inicial)
+          Debuger.anadirRectangulo(self.area)
+          #Debuger.anadirTextoDebug("Estado: " + str(self.estado) + " self.image :"+ str(self.image)  )
 
-class Interruptor(accionable):
-    def __init__(self,pos,area):
-        accionable.__init__(self,"boton_verde_pequeno.png",pos,area)
 
 class Meta(accionable):
     def __init__(self,pos,area):
         accionable.__init__(self,"boton_verde_pequeno.png",pos,area) #No deberia verse nada
 
+class Interruptor(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"interruptor.png","coord_interruptor.txt",pos,area,False,100)
+
+
 
 class Puerta_pequena(activable):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_pequeña.png","coord_puerta_pequena",pos,area,False,1000)
+        activable.__init__(self,"puerta_pequena.png","coord_puerta_pequena",pos,area,False,1000)
+class Cuadro(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"cuadro.png","coord_cuadro.txt",pos,area,False,100)
+
+class Diamante(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"diamante.png","coord_diamante.txt",pos,area,False,100)
+class Puerta_vertical(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_vertical.png","coord_puerta_vertical",pos,area,False,1000)
+
+class Puerta_vertical_grande(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_vertical_grande.png","coord_puerta_vertical_grande",pos,area,False,1000)
+
+
+class Puerta_grande(activable):
+    def __init__(self,pos,area):
+        activable.__init__(self,"puerta_grande.png","coord_puerta_grande.txt",pos,area,False,1000)
+
 
 class Luz(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"luzprueba.png","coordenadasluz.txt",pos,area,True,200)
 
+    '''
+    def update(self,tiempo):
+
+
+
+        MiSprite.update(self,tiempo)'''
+
 class Camara(activable):
     def __init__(self,pos,area,direccion,rangoGiro,rangoVision,velocidadGiro):
-        activable.__init__(self,"camara.png","coord_camara.txt",pos,area,True,1)
+        activable.__init__(self,"camara_escalada.png","coord_camara.txt",pos,area,True,1)
         self.rangoGiro=rangoGiro
         self.rangoVision=rangoVision
         self.direccion=direccion
@@ -193,8 +223,6 @@ class Camara(activable):
                     self.mirando=normalizarAngulo(self.mirando-self.velocidadGiro*tiempo)
         numImagen=int(5*(self.mirando+(PI/2))/(PI))
         if numImagen>4 :numImagen=4
-        print "numimagen: " + str(numImagen)
-        print "self.mirando : " + str(self.mirando)
         if not numImagen==self.numImagen :
             self.numImagen=numImagen
             self.image=self.hoja.subsurface(self.coordenadas[self.numImagen])
@@ -205,4 +233,6 @@ class Camara(activable):
 
         MiSprite.update(self,tiempo)
 
+    def cambiarEstado(self):
+        self.estado=not self.estado
 

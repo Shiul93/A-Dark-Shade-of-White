@@ -186,8 +186,13 @@ class Menu(Escena):
         # Creamos las pantallas que vamos a tener
         #   y las metemos en la lista
         self.listaPantallas.append(PantallaInicialGUI(self))
+        #son =GestorRecursos.CargarArchivoSonido('A-Dark-Shade-of-White.ogg')
+        #chan = son.play()
+        #while pygame.mixer.music.get_busy():
+        #    pygame.time.Clock().tick(10)
         # En que pantalla estamos actualmente
         self.mostrarPantallaInicial()
+
 
     def update(self, *args):
         return
@@ -215,7 +220,7 @@ class Menu(Escena):
         self.director.salirPrograma()
 
     def ejecutarJuego(self):
-        fase = Fase('fase1.json',self.director)
+        fase = Fase('fase2.json',self.director)
         self.director.apilarEscena(fase)
 
     def mostrarPantallaInicial(self):
