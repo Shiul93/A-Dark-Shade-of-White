@@ -302,7 +302,7 @@ class Fase(Escena):
             self.cuadrotexto.draw(pantalla)
 
     def dispararAlarma(self,camara):
-        son = GestorRecursos.CargarArchivoSonido("Danger_alarm.ogg")
+        son = GestorRecursos.CargarSonido("Danger_alarm")
         canal = son.play(-1, 5000)
         for enemigo in self.grupoEnemigos.sprites():
               enemigo.alarma(self,self.jugador1.posicion)

@@ -25,7 +25,7 @@ class GestorRecursos(object):
 
     @classmethod
     def CargarImagen(cls, nombre, colorkey=None):
-
+        """FUNCIONA, pero no se usa"""
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -53,7 +53,7 @@ class GestorRecursos(object):
 
     @classmethod
     def CargarImagenSprite(cls, nombre, colorkey=None):
-
+        """FUNCIONA"""
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -81,8 +81,72 @@ class GestorRecursos(object):
             return imagen
 
     @classmethod
-    def CargarArchivoCoordenadas(cls, nombre):
+    def CargarImagenMenu(cls, nombre, colorkey=None):
+        """FUNCIONA"""
+        # Si el nombre de archivo está entre los recursos ya cargados
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+        # Si no ha sido cargado anteriormente
+        else:
+            # Se carga la imagen indicando la carpeta en la que está
+            # Asume que la imagen esta contenida en media, hay que indicar la ruta a partir de alli
+            # todo Igual seria buena idea hacer un cargar iself.magen para cada tipo de recurso, mapa, personajes, etc...
+            fullname = os.path.join(cls.application_path, 'media'+os.path.sep+'menu',nombre)
+            print  fullname
+            try:
+                imagen = pygame.image.load(fullname)
+            except pygame.error, message:
+                print 'Cannot load image:', fullname
+                raise SystemExit, message
+            imagen = imagen.convert()
+            if colorkey is not None:
+                if colorkey is -1:
+                    colorkey = imagen.get_at((0, 0))
+                imagen.set_colorkey(colorkey, RLEACCEL)
+            # Se almacena
+            cls.recursos[nombre] = imagen
+            # Se devuelve
+            return imagen
 
+    @classmethod
+    def CargarImagenMapa(cls, nombre,layer, colorkey=None):
+        """FUNCIONA"""
+        # Si el nombre de archivo está entre los recursos ya cargados
+        key = nombre+layer
+        print 'Intentando cargar '+nombre+' capa '+layer
+        if key in cls.recursos:
+            # Se devuelve ese recurso
+            print 'ya cargada'
+            return cls.recursos[key]
+        # Si no ha sido cargado anteriormente
+        else:
+            # Se carga la imagen indicando la carpeta en la que está
+            # Asume que la imagen esta contenida en media, hay que indicar la ruta a partir de alli
+            # todo Igual seria buena idea hacer un cargar iself.magen para cada tipo de recurso, mapa, personajes, etc...
+            fullname = os.path.join(cls.application_path, 'media'+os.path.sep+'maps',nombre,layer)
+            print  fullname
+            try:
+                imagen = pygame.image.load(fullname)
+                print 'Cargando: '+fullname
+            except pygame.error, message:
+                print 'Cannot load image:', fullname
+                raise SystemExit, message
+            imagen = imagen.convert()
+            if colorkey is not None:
+                if colorkey is -1:
+                    colorkey = imagen.get_at((0, 0))
+                imagen.set_colorkey(colorkey, RLEACCEL)
+            # Se almacena
+            cls.recursos[key] = imagen
+            # Se devuelve
+            return imagen
+
+    @classmethod
+    def CargarArchivoCoordenadas(cls, nombre):
+        """FUNCIONA"""
+        nom_spr = nombre
+        nombre = 'coord_'+nombre
         # Si el nombre de archivo está entre los recursos ya cargados
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -90,7 +154,7 @@ class GestorRecursos(object):
         # Si no ha sido cargado anteriormente
         else:
             # Se carga el recurso indicando el nombre de su carpeta
-            fullname = os.path.join(cls.application_path, 'media'+os.path.sep+'sprites', nombre,'coord_'+nombre+'.txt')
+            fullname = os.path.join(cls.application_path, 'media'+os.path.sep+'sprites', nom_spr,nombre+'.txt')
             print fullname
             pfile = open(fullname, 'r')
             datos = pfile.read()
@@ -102,6 +166,7 @@ class GestorRecursos(object):
 
     @classmethod
     def CargarArchivoFase(cls, nombre):
+        """FUNCIONA, pero no se usa"""
         # todo Hay que decidir donde vamos a colocar los archivos de Fase
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -129,13 +194,13 @@ class GestorRecursos(object):
                             value=int(info[1])
                             datos[key]=value
                 line = f.readline()
-            print("Cargando fase"+nombre)
+            print("Cargando fase "+nombre)
             cls.recursos[nombre]=datos
             return datos
 
     @classmethod
     def CargarArchivoFaseJSON(cls,nombre):
-
+        """FUNCIONA"""
         if nombre in cls.recursos:
             # Se devuelve ese recurso
             return cls.recursos[nombre]
@@ -144,13 +209,14 @@ class GestorRecursos(object):
             fullname = os.path.join(cls.application_path,'source','fases',nombre, nombre+'.json')
             f=open(fullname, 'r')
             datos=json.load(f)
-            print("Cargando fase"+nombre)
+            print("Cargando fase "+nombre)
             cls.recursos[nombre]=datos
             return datos
 
 
     @classmethod
     def CargarArchivoCapas(cls,nombre):
+        """FUNCIONA"""
         """Obtiene los datos a partir del fichero de configuracion de capas"""
         if nombre in cls.recursos:
             # Se devuelve ese recurso
@@ -176,10 +242,52 @@ class GestorRecursos(object):
 
 
                 line = f.readline()
-            print("Cargando mapa"+nombre)
+            print("Cargando mapa "+nombre)
             return layers
 
+    @classmethod
+    def CargarSonido(cls, nombre):
 
-ge = GestorRecursos()
-ge.getPath()
-print ge.CargarArchivoCapas('museo_1')
+
+        # Si el nombre de archivo está entre los recursos ya cargados
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+
+        # Si no ha sido cargado anteriormente
+        else:
+            # Se carga el recurso indicando el nombre de su carpeta
+            fullname = os.path.join(cls.application_path,'media','audio','sounds', nombre+'.ogg') #Deberia estar en sup propia carpeta
+            sonido = sonido = pygame.mixer.Sound(fullname)
+
+            print fullname
+            print("Cargando archivo de sonido"+nombre)
+
+            # Se almacena
+            cls.recursos[nombre] = sonido
+            # Se devuelve
+            return sonido
+
+    @classmethod
+    def CargarMusica(cls, nombre):
+
+
+        # Si el nombre de archivo está entre los recursos ya cargados
+        if nombre in cls.recursos:
+            # Se devuelve ese recurso
+            return cls.recursos[nombre]
+
+        # Si no ha sido cargado anteriormente
+        else:
+            # Se carga el recurso indicando el nombre de su carpeta
+            fullname = os.path.join(cls.application_path,'media','audio','music', nombre+'.ogg') #Deberia estar en sup propia carpeta
+
+            sonido = pygame.mixer.music.load(fullname)
+
+            print fullname
+            print("Cargando Musica"+nombre)
+
+            # Se almacena
+            cls.recursos[nombre] = sonido
+            # Se devuelve
+            return sonido
