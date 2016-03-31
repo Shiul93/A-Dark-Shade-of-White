@@ -18,7 +18,7 @@ class Enemigo(NoJugador):
     "El  guardia que da vueltas por un grafo de nodos y sabe llegar a un destino"
     def __init__(self,nodos,grafo,recorrido):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER)
+        NoJugador.__init__(self,'guardia','guardia',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER)
         self.visto=False
         self.estado=PATRULLANDO
         self.tiempocalculoruta=0
@@ -46,7 +46,7 @@ class Enemigo(NoJugador):
 
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
                 if not self.visto: #EN EL MOMENTO EN EL QUE TE VE
-                    son = GestorRecursos.CargarArchivoSonido("alerta-metal-gear.ogg")
+                    son = GestorRecursos.CargarSonido("alerta-metal-gear")
                     canal = son.play()
 
                     self.visto=True

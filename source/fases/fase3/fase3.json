@@ -1,5 +1,5 @@
 {
-  "mapa":"banco_1.layers",
+  "mapa":"banco_1",
   "pos_inicial":[97,479],
   "nodos":[
   ],
@@ -7,8 +7,8 @@
    "Enemigos":[[[240,528],[240,300],[849,99],[240,99]]],
 
    "Interruptores":{
-    "i_1":[[1697,488],[1679,514,37,35]],
-    "i_2":[[335,99],[318,128,36,45]]
+    "i_1":[[529,584],[510,604,37,30]],
+    "i_2":[[81,584],[71,604,37,30]]
 
   },
   "Puertas_pequenas":{
@@ -43,6 +43,9 @@
   "Luces":{
 
   },
+  "Diamantes":{
+
+  },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
   },
@@ -50,7 +53,7 @@
     "cuadro":[[992,112],[963,131,62,32]]
   },
   "Camaras":{
-
+  "camara1":[[783,172],0,3.1415,0.785375,0.00025]
   },
  "Causas":{
     "pulsar_p1":["accion","p_1"],
@@ -67,7 +70,7 @@
     "pulsar_p12":["accion","p_12"],
     "pulsar_p13":["accion","p_13"],
 
-
+    "visto_c1":["visto_camara","camara1"],
 
 
 
@@ -94,9 +97,10 @@
     "cambiar_puerta_12":["cambiar","p_12"],
     "cambiar_puerta_13":["cambiar","p_13"],
 
+    "alarma_c1":["alarma","camara1"],
 
-
-
+    "cambiar_i_1":["cambiar","i_1"],
+    "cambiar_i_2":["cambiar","i_2"],
 
     "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
     "mensaje_puerta_cerrada":["mensaje","La puerta esta cerrada con llave"],
@@ -112,22 +116,23 @@
     "abrir_puerta_1":[["pulsar_p1"],["cambiar_puerta_1"]],
     "abrir_puerta_2":[["pulsar_p2"],["cambiar_puerta_2"]],
 
-    "abrir_puerta_4":[["pulsar_p4"],["cambiar_puerta_4"]],
-    "abrir_puerta_5":[["pulsar_p5"],["cambiar_puerta_5"]],
+    "abrir_puerta_4":[["pulsar_p4"],["mensaje_puerta_cerrada"]],
+    "abrir_puerta_5":[["pulsar_i1"],["cambiar_puerta_5","cambiar_i_1"]],
     "abrir_puerta_6":[["pulsar_p6"],["cambiar_puerta_6"]],
     "abrir_puerta_7":[["pulsar_p7"],["cambiar_puerta_7"]],
 
-    "abrir_puerta_9":[["pulsar_p9"],["cambiar_puerta_9"]],
+    "abrir_puerta_9":[["pulsar_i2"],["cambiar_puerta_9","cambiar_i_2"]],
     "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
     "abrir_puerta_11":[["pulsar_p11"],["cambiar_puerta_11"]],
     "abrir_puerta_12":[["pulsar_p12"],["cambiar_puerta_12"]],
     "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
 
+    "camara1":[["visto_c1"],["alarma_c1"]],
 
 
 
 
-    "meta":[["llegar_a_meta"],["fin_fase"]]
+    "meta":[["pulsar_p13"],["fin_fase"]]
 
   }
 }

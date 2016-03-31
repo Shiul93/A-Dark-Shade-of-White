@@ -1,5 +1,5 @@
-# Numero layer, Nombre, Visible, colisionable, opacidad, nombrearchivo, orden de dibujado
-0  suelo 1 0 255 0_m1_suelo_nuevo.png 0
-1  paredesobjetos 1 0 255 1_m1_paredesobjetos_nuevo.png 1
-2  colisiones 0 1 255 2_m1_colisiones.png 0
-3  trasobjetois 0 1 255 3_m1_trasobjeto.png 0
+# Numero layer, Nombre, Visible, colisionable, opacidad, nombrearchivo
+0   detras  1 0 255 m1_pre.png 0
+1   delante 1 0 255 museo_1_post.png 1
+2   colisiones 0 1 255 museo_1_coll.png 0
+3   opacidad 0 0 0 museo_1_vis.png 0
