@@ -1,0 +1,139 @@
+{
+  "mapa":"banco_1.layers",
+  "pos_inicial":[97,479],
+  "nodos":[
+  ],
+  "grafo":[],
+   "Enemigos":[[[240,528],[240,300],[849,99],[240,99]]],
+
+   "Interruptores":{
+    "i_1":[[529,584],[510,604,37,30]],
+    "i_2":[[81,584],[71,604,37,30]]
+
+  },
+  "Puertas_pequenas":{
+    "p_1":[[113,225],[93,143,39,104]],
+    "p_9":[[241,192],[222,111,41,108]],
+    "p_5":[[241,608],[207,606,69,25]]
+
+
+  },
+  "Puertas_verticales":{
+
+    "p_4":[[287,735],[262,703,53,33]],
+    "p_6":[[192,511],[169,478,50,39]],
+    "p_7":[[192,320],[169,284,50,39]],
+
+    "p_10":[[287,288],[262,254,58,37]],
+    "p_11":[[60,481],[0,0,1,1]]
+
+
+  },
+  "Puertas_verticales_grandes":{
+    "p_2":[[639,703],[615,639,51,68]],
+    "p_12":[[543,384],[519,321,54,69]],
+    "p_13":[[899,126],[876,61,27,71]]
+
+  },
+  "Puertas_grandes":{
+
+  },
+
+
+  "Luces":{
+
+  },
+  "Diamantes":{
+
+  },
+  "Metas":{
+    "meta":[[0,0],[1111,192,146,128]]
+  },
+  "Cuadros":{
+    "cuadro":[[992,112],[963,131,62,32]]
+  },
+  "Camaras":{
+  "camara1":[[783,172],0,3.1415,0.785375,0.00025]
+  },
+ "Causas":{
+    "pulsar_p1":["accion","p_1"],
+    "pulsar_p2":["accion","p_2"],
+
+    "pulsar_p4":["accion","p_4"],
+    "pulsar_p5":["accion","p_5"],
+    "pulsar_p6":["accion","p_6"],
+    "pulsar_p7":["accion","p_7"],
+
+    "pulsar_p9":["accion","p_9"],
+    "pulsar_p10":["accion","p_10"],
+    "pulsar_p11":["accion","p_11"],
+    "pulsar_p12":["accion","p_12"],
+    "pulsar_p13":["accion","p_13"],
+
+    "visto_c1":["visto_camara","camara1"],
+
+
+
+    "pulsar_i1":["accion","i_1"],
+    "pulsar_i2":["accion","i_2"],
+
+
+
+
+    "llegar_a_meta":["area","meta"]
+  },
+  "Consecuencias":{
+    "cambiar_puerta_1":["cambiar","p_1"],
+    "cambiar_puerta_2":["cambiar","p_2"],
+
+    "cambiar_puerta_4":["cambiar","p_4"],
+    "cambiar_puerta_5":["cambiar","p_5"],
+    "cambiar_puerta_6":["cambiar","p_6"],
+    "cambiar_puerta_7":["cambiar","p_7"],
+
+    "cambiar_puerta_9":["cambiar","p_9"],
+    "cambiar_puerta_10":["cambiar","p_10"],
+    "cambiar_puerta_11":["cambiar","p_11"],
+    "cambiar_puerta_12":["cambiar","p_12"],
+    "cambiar_puerta_13":["cambiar","p_13"],
+
+    "alarma_c1":["alarma","camara1"],
+
+    "cambiar_i_1":["cambiar","i_1"],
+    "cambiar_i_2":["cambiar","i_2"],
+
+    "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
+    "mensaje_puerta_cerrada":["mensaje","La puerta esta cerrada con llave"],
+    "mensaje_puerta_final":["mensaje","La puerta esta cerrada electronicamente"],
+    "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
+    "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
+    "mensaje_camara":["mensaje","Has sido visto por la camara"],
+
+    "fin_fase":["fin"]
+  },
+  "Eventos":{
+
+    "abrir_puerta_1":[["pulsar_p1"],["cambiar_puerta_1"]],
+    "abrir_puerta_2":[["pulsar_p2"],["cambiar_puerta_2"]],
+
+    "abrir_puerta_4":[["pulsar_p4"],["mensaje_puerta_cerrada"]],
+    "abrir_puerta_5":[["pulsar_i1"],["cambiar_puerta_5","cambiar_i_1"]],
+    "abrir_puerta_6":[["pulsar_p6"],["cambiar_puerta_6"]],
+    "abrir_puerta_7":[["pulsar_p7"],["cambiar_puerta_7"]],
+
+    "abrir_puerta_9":[["pulsar_i2"],["cambiar_puerta_9","cambiar_i_2"]],
+    "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
+    "abrir_puerta_11":[["pulsar_p11"],["cambiar_puerta_11"]],
+    "abrir_puerta_12":[["pulsar_p12"],["cambiar_puerta_12"]],
+    "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
+
+    "camara1":[["visto_c1"],["alarma_c1"]],
+
+
+
+
+    "meta":[["pulsar_p13"],["fin_fase"]],
+
+  },
+  "Siguiente":"fase4.json"
+}

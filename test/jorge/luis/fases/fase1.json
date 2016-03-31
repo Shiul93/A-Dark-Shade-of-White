@@ -1,0 +1,211 @@
+{
+  "mapa":"museo_1.layers2",
+  "pos_inicial":[404,984],
+  "nodos":[[0,0],
+                     [370,375],
+                     [872,375],
+
+                     [370,529],
+                     [623,529],
+                     [872,529],
+                     [1191,529],
+
+                     [218,592],
+                     [1066,592],
+                     [1191,592],
+                     [1320,592],
+
+                     [583,641],
+                     [623,641],
+
+                     [218,723],
+                     [404,723],
+                     [583,723],
+                     [778,723],
+                     [872,723],
+
+                     [1066,788],
+                     [1191,788],
+                     [1320,788],
+
+                     [404,912],
+                     [681,912],
+                     [790,912],
+                     [872,912],
+                     [936,912],
+                     [1066,912],
+
+                     [1066,982],
+                     [1191,982],
+                     [1320,982],
+                     [681,1106],
+                     [790,1106],
+                     [936,1106],
+                     [1066,1106],
+                     [1320,1106]],
+  "grafo":[[],
+                [2,3],
+                [1,5],
+                [1,4],
+                [3,5,12],
+                [2,4,17],
+                [9],
+                [13],
+                [9,18],
+                [6,8,10],
+                [9,20],
+                [12,15],
+                [4,11],
+                [7,14],
+                [13,15,21],
+                [11,14],
+                [17],
+                [5,16,24],
+                [8,19,26],
+                [9,18,20,28],
+                [10,19,29],
+                [14],
+                [23,30],
+                [22,24,31],
+                [17,23,25],
+                [24,26,32],
+                [18,27],
+                [26,28,33],
+                [19,27,29],
+                [20,28,34],
+                [22,31],
+                [23,30,32],
+                [25,31,33],
+                [27,32,34],
+                [29,33]
+                ],
+  "Enemigos":[[[1060,592],[1324,592],[1324,794], [1060,794] ],[[1066,1106], [1320,1106],[1320,982],[1066,982]],[[494,368],[878,368],[878,719]]],
+  "Interruptores":{
+    "boton_puerta_entrada":[[451,876],[439,891,24,17]],
+    "boton_camara_entrada":[[223,558],[206,569,34,23]],
+    "boton_luz":[[662,584],[645,603,29,21]],
+    "boton_ordenador":[[383,269],[352,258,42,32]],
+    "boton_puerta_almacen":[[799,653],[785,674,34,20]],
+    "boton_salida":[[1263,361],[1245,378,34,21]]
+  },
+  "Puertas_pequenas":{
+    "puerta_entrada":[[399,891],[0,0,1,1]],
+    "puerta_maquinas":[[623,603],[590,542,66,82]],
+    "puerta_oficina":[[367,476],[328,399,87,62]],
+    "puerta_almacen":[[879,794],[0,0,1,1]]
+  },
+
+  "Puertas_grandes":{
+    "puerta_salida_almacen":[[1183,572],[1135,511,98,81]],
+    "puerta_salida":[[1183,379],[0,0,1,1]]
+  },
+  "Puertas_verticales":{
+    "puerta_almacen_vertical":[[256,736],[224,702,67,36]],
+    "puerta_maquinas_vertical":[[544,736],[510,703,65,33]],
+    "puerta_oficina_vertical":[[447,387],[416,349,63,35]],
+    "puerta_pasillo_vertical":[[832,543],[798,511,67,34]],
+    "puerta_escobero_vertical":[[831,736],[0,0,1,1]]
+  },
+  "Puertas_verticales_grandes":{
+
+
+  },
+  "Diamantes":{
+
+  },
+  "Luces":{
+    "luz1":[[576,575],[328,575,497,143]]
+  },
+  "Metas":{
+    "meta":[[0,0],[1111,192,146,128]]
+
+  },
+   "Cuadros":{
+
+  },
+  "Camaras":{
+    "camara_entrada":[[398,642],0.39,1.57,0.785375,0.00025],
+    "camara_maquinas":[[624,468],0,0,0,78535,0],
+    "camara_almacen":[[942,865],-0.39,4.71,0.7835,0.00025]
+  },
+  "Causas":{
+    "pulsar_boton_puerta_entrada":["accion","boton_puerta_entrada"],
+    "pulsar_boton_camara_entrada":["accion","boton_camara_entrada"],
+    "pulsar_boton_luz":["accion","boton_luz"],
+    "pulsar_boton_ordenador":["accion","boton_ordenador"],
+    "pulsar_boton_puerta_almacen":["accion","boton_puerta_almacen"],
+    "pulsar_boton_salida":["accion","boton_salida"],
+    "pulsar_puerta_maquinas":["accion","puerta_maquinas"],
+    "pulsar_puerta_oficina":["accion","puerta_oficina"],
+    "pulsar_puerta_salida_almacen":["accion","puerta_salida_almacen"],
+    "visto_camara_entrada":["visto_camara","camara_entrada"],
+    "visto_camara_maquinas":["visto_camara","camara_maquinas"],
+    "visto_camara_almacen":["visto_camara","camara_almacen"],
+
+    "pulsar_puerta_almacen_vertical":["accion","puerta_almacen_vertical"],
+    "pulsar_puerta_maquinas_vertical":["accion","puerta_maquinas_vertical"],
+    "pulsar_puerta_oficina_vertical":["accion","puerta_oficina_vertical"],
+    "pulsar_puerta_pasillo_vertical":["accion","puerta_pasillo_vertical"],
+    "pulsar_puerta_escobero_vertical":["accion","puerta_escobero_vertical"],
+
+
+    "llegar_a_meta":["area","meta"]
+  },
+  "Consecuencias":{
+    "cambiar_puerta_entrada":["cambiar","puerta_entrada"],
+    "cambiar_puerta_maquinas":["cambiar","puerta_maquinas"],
+    "cambiar_puerta_oficina":["cambiar","puerta_oficina"],
+    "cambiar_puerta_almacen":["cambiar","puerta_almacen"],
+    "cambiar_puerta_salida_almacen":["cambiar","puerta_salida_almacen"],
+    "cambiar_puerta_salida":["cambiar","puerta_salida"],
+    "cambiar_boton_puerta_entrada":["cambiar","boton_puerta_entrada"],
+    "cambiar_boton_camara_entrada":["cambiar","boton_camara_entrada"],
+    "cambiar_boton_luz":["cambiar","boton_luz"],
+    "cambiar_boton_ordenador":["cambiar","boton_ordenador"],
+    "cambiar_boton_puerta_almacen":["cambiar","boton_puerta_almacen"],
+    "cambiar_boton_salida":["cambiar","boton_salida"],
+    "cambiar_luz":["cambiar","luz1"],
+    "cambiar_camara_entrada":["cambiar","camara_entrada"],
+    "mensaje_puerta":["mensaje","Escuchas una\n puerta a lo lejos"],
+    "mensaje_puerta_escobero":["mensaje","¿A quien se le habra ocurrido \n poner ahi el pestillo del escobero?"],
+    "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
+    "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
+    "mensaje_camara":["mensaje","Has sido visto por la camara"],
+    "alarma_camara_entrada":["alarma","camara_entrada"],
+    "alarma_camara_maquinas":["alarma","camara_maquinas"],
+    "alarma_camara_almacen":["alarma","camara_almacen"],
+
+    "cambiar_puerta_almacen_vertical":["cambiar","puerta_almacen_vertical"],
+    "cambiar_puerta_maquinas_vertical":["cambiar","puerta_maquinas_vertical"],
+    "cambiar_puerta_oficina_vertical":["cambiar","puerta_oficina_vertical"],
+    "cambiar_puerta_pasillo_vertical":["cambiar","puerta_pasillo_vertical"],
+    "cambiar_puerta_escobero_vertical":["cambiar","puerta_escobero_vertical"],
+
+
+    "fin_fase":["fin"]
+  },
+  "Eventos":{
+    "abrir_puerta_entrada":[["pulsar_boton_puerta_entrada"],["cambiar_boton_puerta_entrada","cambiar_puerta_entrada","mensaje_puerta"]],
+    "abrir_puerta_maquinas":[["pulsar_puerta_maquinas"],["cambiar_puerta_maquinas"]],
+    "abrir_puerta_oficina":[["pulsar_puerta_oficina"],["cambiar_puerta_oficina"]],
+    "abrir_puerta_almacen":[["pulsar_boton_puerta_almacen"],["cambiar_boton_puerta_almacen","mensaje_puerta","cambiar_puerta_almacen"]],
+    "abrir_puerta_salida_almacen":[["pulsar_puerta_salida_almacen"],["cambiar_puerta_salida_almacen"]],
+    "abrir_puerta_salida":[["pulsar_boton_salida"],["cambiar_boton_salida","cambiar_puerta_salida"]],
+    "encender_luz":[["pulsar_boton_luz"],["cambiar_boton_luz","cambiar_luz","mensaje_luz"]],
+    "activar_camara_entrada":[["pulsar_boton_camara_entrada"],["cambiar_camara_entrada","cambiar_boton_camara_entrada"]],
+    "camara_entrada":[["visto_camara_entrada"],["alarma_camara_entrada"]],
+    "camara_maquinas":[["visto_camara_maquinas"],["alarma_camara_maquinas"]],
+    "camara_almacen":[["visto_camara_almacen"],["alarma_camara_almacen"]],
+
+
+    "abrir_puerta_almacen_vertical":[["pulsar_puerta_almacen_vertical"],["cambiar_puerta_almacen_vertical"]],
+    "abrir_puerta_maquinas_vertical":[["pulsar_puerta_maquinas_vertical"],["cambiar_puerta_maquinas_vertical"]],
+    "abrir_puerta_oficina_vertical":[["pulsar_puerta_oficina_vertical"],["cambiar_puerta_oficina_vertical"]],
+    "abrir_puerta_pasillo_vertical":[["pulsar_puerta_pasillo_vertical"],["cambiar_puerta_pasillo_vertical"]],
+    "abrir_puerta_escobero_vertical":[["pulsar_boton_ordenador"],["cambiar_puerta_escobero_vertical","cambiar_boton_ordenador","mensaje_puerta_escobero"]],
+
+    "meta":[["llegar_a_meta"],["fin_fase"]]
+
+  },
+  "Siguiente":"fase2.json"
+}

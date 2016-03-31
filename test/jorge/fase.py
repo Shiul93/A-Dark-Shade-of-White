@@ -90,9 +90,22 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
+        for nombre,puerta in datos["Puertas_verticales"].iteritems():
+            self.objetos[nombre]=Puerta_vertical(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
 
         for nombre,puerta in datos["Puertas_grandes"].iteritems():
             self.objetos[nombre]=Puerta_grande(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
+
+        for nombre,puerta in datos["Puertas_verticales_grandes"].iteritems():
+            self.objetos[nombre]=Puerta_vertical_grande(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoColisionables.add(self.objetos[nombre])
@@ -108,6 +121,20 @@ class Fase(Escena):
             self.objetos[nombre]=Camara(camara[0],pygame.Rect(0,0,1,1),camara[1],camara[2],camara[3],camara[4])
             self.grupoSprites.add(self.objetos[nombre])
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
+
+        for nombre,cuadro in datos["Cuadros"].iteritems():
+            self.objetos[nombre]=Cuadro(cuadro[0], pygame.Rect(cuadro[1][0], cuadro[1][1], cuadro[1][2], cuadro[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
+            self.grupoOpacos.add(self.objetos[nombre])
+
+        for nombre,diamante in datos["Diamantes"].iteritems():
+            self.objetos[nombre]=Diamante(diamante[0], pygame.Rect(diamante[1][0], diamante[1][1], diamante[1][2], diamante[1][3]))
+            self.grupoSprites.add(self.objetos[nombre])
+            self.grupoSpritesDinamicos.add(self.objetos[nombre])
+            self.grupoColisionables.add(self.objetos[nombre])
 
         print self.objetos
 
@@ -143,7 +170,7 @@ class Fase(Escena):
           self.enemigo.append(Enemigo2(datos['nodos'],datos['grafo'],datos['Enemigos'][i]))
           self.grupoEnemigos.add(self.enemigo[i])
           self.grupoSprites.add(self.enemigo[i])
-
+        self.siguientefase=datos['Siguiente']
 
 
         
@@ -491,8 +518,12 @@ class Fase(Escena):
                 self.haymensaje=False
                 self.actiondropped=False
                 if(self.finfase):
-                    nuevafase = Fase('fase2.json',self.director)
-                    self.director.apilarEscena(nuevafase)
+                    if self.siguientefase == "FIN":
+                        self.mostrarMensaje("Enhorabuena, has terminado el juego")
+                        self.director.salirPrograma
+                    else:
+                        nuevafase = Fase(self.siguientefase,self.director)
+                        self.director.cambiarEscena(nuevafase)
 
 
         #AQUI SE DEBERIAN COMROBAR LOS EVENTOS DEL JUEGO
