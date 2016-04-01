@@ -35,6 +35,7 @@ MINIMO_Y_BORDES = 40
 SEARCH_STEP=20
 RAY_STEP=10
 MAX_SEARCH_DIST=1500
+TIEMPO_SONIDO_ALARMA=5000
 # -------------------------------------------------
 # Clase Fase
 
@@ -61,14 +62,16 @@ class Fase(Escena):
         self.cuadrotexto=CuadroTexto()
         self.finfase=False
         self.pillado=False
+        self.finjuego=False
         self.nodos=[]
         self.grafo=[]
+        self.tiemposonidoalarma=0
 
         Escena.__init__(self, director)
 
         #CARGA EL ARCHIVO DE FASE
         datos = GestorRecursos.CargarArchivoFaseJSON(archivoFase)
-        print(datos)
+        #print(datos)
 
         # Creamos el decorado
         self.decorado = Mapa(datos['mapa'])
@@ -146,7 +149,7 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
 
-        print self.objetos
+        #print self.objetos
 
         for nombre,causa in datos["Causas"].iteritems():
             self.causas[nombre]=Causa(DiccCausas[causa[0]],self.objetos[causa[1]])
@@ -159,6 +162,8 @@ class Fase(Escena):
                self.consecuencias[nombre]=Accion(MENSAJE,None,consecuencia[1],None)
             elif tipo==FIN:
                self.consecuencias[nombre]=Accion(FIN,None,None,None)
+            elif tipo==PILLADO:
+               self.consecuencias[nombre]=Accion(PILLADO,None,None,None)
             elif tipo==ALARMA:
                self.consecuencias[nombre]=Accion(ALARMA,self.objetos[consecuencia[1]],None,None)
             elif tipo==SONIDO:
@@ -260,6 +265,7 @@ class Fase(Escena):
     def update(self, tiempo):
         if tiempo>80: tiempo=80
         if(not self.pausa):
+            self.tiemposonidoalarma-=tiempo
             Debuger.anadirTextoDebug("FPS: "+str(int(1000/tiempo)))
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
             for enemigo in iter(self.grupoEnemigos):
@@ -298,9 +304,25 @@ class Fase(Escena):
         if(self.haymensaje):
             self.cuadrotexto.draw(pantalla)
 
+
+
+
+
+
+
+
+
+
+
+
+
     def dispararAlarma(self):
         for enemigo in self.grupoEnemigos.sprites():
               enemigo.alarma(self,self.nodo_mas_cercano(self.jugador1.posicion,self.nodos))
+        if self.tiemposonidoalarma<0:
+            son=GestorRecursos.CargarArchivoSonido("Danger_Alarm.ogg")
+            son.play()
+            self.tiemposonidoalarma=TIEMPO_SONIDO_ALARMA
 
     def colision(self,rect):
        rectlist=self.listaRectangulosColisionables()
@@ -336,7 +358,7 @@ class Fase(Escena):
         pointlist=[]
         for i in range(0,int(distancia),step):
             punto=(int(origen[0]+dif[0]*i/distancia),int(origen[1]+dif[1]*i/distancia))
-            Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
+            #Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
             pointlist.append(punto)
             if self.decorado.colisionPunto(punto,capa):
                 return True
@@ -397,7 +419,7 @@ class Fase(Escena):
     def calcular_ruta_anchura(self,origen,destino):#La mas sencilla a saco sin distancias ni ostias??
         visitados=[origen]
         frontera=[origen]
-        ruta=[destino]
+        ruta=[]
         distancia={}
         distancia[origen]=0
         padre={}
@@ -407,13 +429,18 @@ class Fase(Escena):
             abrir=frontera.pop(0)# Con un cero es anchura, con un -1 es profundidad, con una heuristica es hillclimb, con dist+heuristica es A*
             if abrir==destino:
                 anterior=padre[abrir]
+                ruta.append(abrir)
                 while anterior is not None:
                     ruta.append(anterior)
                     anterior=padre[anterior]
-                print "Tiempo de busqueda: "+str(time()-antes)
+                #print "Tiempo de busqueda: "+str(time()-antes)
                 return ruta
             else:
-                for nodo in self.grafo[abrir]:
+                destinos=list(self.grafo[abrir])
+                for dest in destinos:
+                    if(self.colisionLinea(self.nodos[abrir],self.nodos[dest],RAY_STEP,"colisiones")):
+                        destinos.remove(dest)
+                for nodo in destinos:
                     if not visitados.__contains__(nodo):
                         padre[nodo]=abrir
                         visitados.append(nodo)
@@ -462,7 +489,7 @@ class Fase(Escena):
                     while anterior is not None and anterior.padre is not None:
                         ruta.append(anterior)
                         anterior=anterior.padre
-                    print "Tiempo de busqueda local multiple : " + str(1000*(time()-antes)) + " ms"
+                    #print "Tiempo de busqueda local multiple : " + str(1000*(time()-antes)) + " ms"
                     return (nodo_destino,ruta)
             else: #seguir buscando
                 if abrir.dist > MAX_SEARCH_DIST:
@@ -475,7 +502,7 @@ class Fase(Escena):
                     else:
                         frontera.append(nodo)
                         visitados.append(nodo)
-        print "Tiempo de busqueda local multiple (sin resultado) : " + str(1000*(time()-antes)) + " ms"
+        #print "Tiempo de busqueda local multiple (sin resultado) : " + str(1000*(time()-antes)) + " ms"
         return (0,[]) #No ha encontrado nada y devuelve una lista vacia
 
 
@@ -494,7 +521,7 @@ class Fase(Escena):
                 while anterior is not None and anterior.padre is not None:
                     ruta.append(anterior)
                     anterior=anterior.padre
-                print "Tiempo de busqueda local : " + str(1000*(time()-antes)) + " ms"
+                #print "Tiempo de busqueda local : " + str(1000*(time()-antes)) + " ms"
                 return ruta
             else: #seguir buscando
                 if abrir.dist > MAX_SEARCH_DIST:
@@ -507,7 +534,7 @@ class Fase(Escena):
                     else:
                         frontera.append(nodo)
                         visitados.append(nodo)
-        print "Tiempo de busqueda local (sin resultado) : " + str(1000*(time()-antes)) + " ms"
+        #print "Tiempo de busqueda local (sin resultado) : " + str(1000*(time()-antes)) + " ms"
         return [] #No ha encontrado nada y devuelve una lista vacia
 
     def eventos(self, lista_eventos):
@@ -526,7 +553,10 @@ class Fase(Escena):
              if  not teclasPulsadas[K_RETURN]:
                 self.actiondropped=True
              elif self.actiondropped:
-                action=True
+                if not self.hay_persecucion():
+                    action=True
+                else:
+                    self.mostrarMensaje("Está atascado!!")
                 self.actiondropped=False
              for evento in self.listaeventos.itervalues():
                  if evento.comprobar(self.jugador1,self,action):
@@ -541,7 +571,8 @@ class Fase(Escena):
                 if(self.finfase):
                     if self.siguientefase == "FIN":
                         self.mostrarMensaje("Enhorabuena, has terminado el juego")
-                        self.director.salirPrograma
+                        self.finjuego=True
+                        self.finfase=False
                     else:
                         nuevafase = Fase(self.siguientefase,self.director)
                         self.director.cambiarEscena(nuevafase)
@@ -549,7 +580,8 @@ class Fase(Escena):
                     fase=Fase(self.escena,self.director)
                     self.mostrarMensaje("¡¡Te han pillado!!")
                     self.director.cambiarEscena(fase)
-
+                elif(self.finjuego):
+                    self.director.salirEscena()
 
         #AQUI SE DEBERIAN COMROBAR LOS EVENTOS DEL JUEGO
 
@@ -558,6 +590,12 @@ class Fase(Escena):
         self.pausa=True
         self.haymensaje=True
         self.actiondropped=False
+
+    def hay_persecucion(self):
+        for enemigo in self.enemigo:
+            if enemigo.estado==PERSIGUIENDO :
+                return True
+        return False
 
     def reproducirSonido(self,sonido):#SONIDO ES UN STRING CON EL NOMBRE DEL SONIDO QUE SE DEBERA CARGAR ANTES
         return False

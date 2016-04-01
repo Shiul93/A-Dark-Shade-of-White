@@ -23,7 +23,7 @@ class Enemigo(NoJugador):
     "El  guardia que da vueltas por un grafo de nodos y sabe llegar a un destino"
     def __init__(self,nodos,grafo,recorrido):
         # Invocamos al constructor de la clase padre con la configuracion de este personaje concreto
-        NoJugador.__init__(self,'Guardias.png','coordguardia.txt',  VELOCIDAD_SNIPER,  RETARDO_ANIMACION_SNIPER)
+        NoJugador.__init__(self,'Guardias.png','coordguardia.txt', VELOCIDAD_ENEMIGO, RETARDO_ANIMACION_ENEMIGO)
         self.visto=False
         self.estado=PATRULLANDO
         self.tiempocalculoruta=0

@@ -1,8 +1,8 @@
 {
   "mapa":"museo_1.layers2",
   "pos_inicial":[404,984],
-  "nodos":[[0,0],
-                     [370,375],
+  "nodos":[          [370,375],
+                     [500,375],
                      [872,375],
 
                      [370,529],
@@ -43,10 +43,10 @@
                      [936,1106],
                      [1066,1106],
                      [1320,1106]],
-  "grafo":[[],
-                [2,3],
+  "grafo":[     [1,3],
+                [0,2],
                 [1,5],
-                [1,4],
+                [0,4],
                 [3,5,12],
                 [2,4,17],
                 [9],
@@ -80,12 +80,12 @@
                 [29,33]
                 ],
   "Enemigos":[],
-  "Enemigos2":[[27,26,25,32,33]],
+  "Enemigos2":[[29,34,33,27],[17,16,17,5,2,1,2,5],[8,10,20,18]],
   "Interruptores":{
     "boton_puerta_entrada":[[451,876],[439,891,24,17]],
     "boton_camara_entrada":[[223,558],[206,569,34,23]],
     "boton_luz":[[662,584],[645,603,29,21]],
-    "boton_ordenador":[[383,269],[352,258,42,32]],
+    "boton_ordenador":[[383,269],[352,278,42,32]],
     "boton_puerta_almacen":[[799,653],[785,674,34,20]],
     "boton_salida":[[1263,361],[1245,378,34,21]]
   },
@@ -126,7 +126,7 @@
   },
   "Camaras":{
     "camara_entrada":[[398,642],0.39,1.57,0.785375,0.00025],
-    "camara_maquinas":[[624,468],0,0,0,78535,0],
+    "camara_maquinas":[[624,468],0,0,0.78535,0],
     "camara_almacen":[[942,865],-0.39,4.71,0.7835,0.00025]
   },
   "Causas":{
@@ -167,9 +167,9 @@
     "cambiar_boton_salida":["cambiar","boton_salida"],
     "cambiar_luz":["cambiar","luz1"],
     "cambiar_camara_entrada":["cambiar","camara_entrada"],
-    "mensaje_puerta":["mensaje","Escuchas una\n puerta a lo lejos"],
-    "mensaje_puerta_escobero":["mensaje","¿A quien se le habra ocurrido \n poner ahi el pestillo del escobero?"],
-    "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
+    "mensaje_puerta":["mensaje","Escuchas una puerta"],
+    "mensaje_puerta_escobero":["mensaje","Oyes un ruido lejano"],
+    "mensaje_luz":["mensaje","Escuchas el zumbido de la luz"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 1"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
     "alarma_camara_entrada":["alarma","camara_entrada"],
