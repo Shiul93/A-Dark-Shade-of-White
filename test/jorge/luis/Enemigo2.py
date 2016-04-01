@@ -12,12 +12,13 @@ VOLVIENDO_A_UN_NODO=6
 
 TIEMPO_CALCULO_RUTA=1000
 TIEMPO_BUSCAR=10000
-TIEMPO_PERSEGUIR=10000
+TIEMPO_PERSEGUIR=2000
 TIEMPO_GIRAR=1000
-TIEMPO_COLISIONANDO=3000
+TIEMPO_COLISIONANDO=1200
 
 
-RAY_STEP=10
+
+RAY_STEP=5
 
 
 
@@ -84,15 +85,17 @@ class Enemigo2(NoJugador):
             if self.estado==PERSIGUIENDO or self.estado==VOLVIENDO_A_UN_NODO:
                 if self.siguientelocal is not None : #apaño provisional
                      self.dest=self.siguientelocal.pos
-                 #    self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
+                     self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
                 else:
-                    print "sin ruta local distancia = "+ str(self.distancia)
-                    #self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
+                    if self.estado==PERSIGUIENDO  :#self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
+                        self.dest=fase.jugador1.posicion
+                    elif self.estado==VOLVIENDO_A_UN_NODO:
+                        self.dest=self.nodos[self.nododestino]
                 if abs(self.distancia[0])+abs(self.distancia[1])<5 : #Si llega a un destino (eligira el siguiente segun lo qu este haciendo)
                     if self.siguientelocal==self.destinolocal: #Si es el final de la ruta
                         if self.estado==PERSIGUIENDO : #Si esta persiguiendo recalcula y si hay nodos sigue y si no ataca directamente
                             if self.visto:
-                                #self.rutalocal=fase.calcular_ruta_local(self.posicion,jugador1.posicion)
+                                self.rutalocal=fase.calcular_ruta_local(self.posicion,jugador1.posicion)
                                 if len(self.rutalocal)>0:
                                     self.destinolocal=self.rutalocal[0]
                                     self.siguientelocal=self.rutalocal.pop()
@@ -100,21 +103,21 @@ class Enemigo2(NoJugador):
                                 else:
                                     self.dest=jugador1.posicion
                                     self.siguientelocal=None
-
-                        elif self.estado==VOLVIENDO_A_UN_NODO : #SI ESTA VOLVIENDOA UN NODO (pasa a deambular)
-                            #self.rutalocal=fase.calcular_ruta_local(self.posicion,self.nodos[self.nododestino])
-                            if len(self.rutalocal)>0:
-                                self.destinolocal=self.rutalocal[0]
-                                self.siguientelocal=self.rutalocal.pop()
-                                self.dest=self.siguientelocal.pos#asegurarlo
                             else:
-                                self.dest=self.nodos[self.nododestino]
-                                self.siguientelocal=None
-                                if dist(self.posicion,self.nodos[self.nododestino]) < 3:
-                                     self.estado=DEAMBULANDO
-                                     self.tiempobusqueda=TIEMPO_BUSCAR
-                                     self.ruta=[]
-                                     print "llego al nodo y ya esta lo bastante cerca del objetivo"
+                                 (self.nododestino,self.rutalocal)=fase.buscar_nodo_mas_cercano(self.posicion,self.nodos)
+                                 if len(self.rutalocal)>0:
+                                    self.siguientelocal=self.rutalocal[-1]
+                                    self.destinolocal=self.rutalocal[0]
+                                 else:
+                                    print "quiere volver a un nodo pero no hay ruta (?)"
+                            self.estado=VOLVIENDO_A_UN_NODO
+                        elif self.estado==VOLVIENDO_A_UN_NODO : #SI ESTA VOLVIENDOA UN NODO (pasa a deambular)
+                             self.ruta=[]
+                             print "llego al nodo y ya esta lo bastante cerca del objetivo"
+                             self.tiempobusqueda=TIEMPO_BUSCAR
+                             self.siguiente=self.nododestino
+                             self.estado=DEAMBULANDO
+
                             #self.dest=self.nodos[fase.nodo_mas_cercano(self.posicion,self.nodos)]
                             #self.distancia=(self.dest[0]-self.posicion[0],self.dest[1]-self.posicion[1])
 
@@ -216,12 +219,14 @@ class Enemigo2(NoJugador):
 
             '''
             Debuger.anadirTextoDebug(("Destino : "+ str(self.destino)))
-            Debuger.anadirTextoDebug(("Siguiente : "+ str(self.siguiente)))
             Debuger.anadirTextoDebug(("posicion : "+ str(self.posicion)))
             Debuger.anadirTextoDebug(("dest : "+ str(self.dest)))
             Debuger.anadirTextoDebug(("dist : "+ str(self.distancia)))
-            Debuger.anadirTextoDebug(("nododestino : "+ str(self.nododestino)))
             '''
+            Debuger.anadirTextoDebug(("Siguiente : "+ str(self.siguiente)))
+            Debuger.anadirTextoDebug(("nododestino : "+ str(self.nododestino)))
+            Debuger.anadirTextoDebug(("ruta : "+ str(self.ruta)))
+
 
 
     def estaViendo(self,fase,pos,rango):
@@ -258,15 +263,15 @@ class Enemigo2(NoJugador):
          if self.estado==DEAMBULANDO:
              self.tiempobusqueda-=tiempo
              if(self.tiempobusqueda<0):
-                 self.estado=VOLVIENDO_A_PATRULLA
                  self.siguiente=fase.nodo_mas_cercano(self.posicion,self.nodos)
                  self.destino=self.recorrido[-1]
                  self.ruta=fase.calcular_ruta_anchura(self.siguiente,self.destino)
+                 self.estado=VOLVIENDO_A_PATRULLA
          if self.estado==PERSIGUIENDO:
              if self.visto:
                  self.tiempocalculoruta-=tiempo
                  if self.tiempocalculoruta<0:
-                     #self.rutalocal=fase.calcular_ruta_local(self.posicion,fase.jugador1.posicion)
+                     self.rutalocal=fase.calcular_ruta_local(self.posicion,fase.jugador1.posicion)
                      self.tiempocalculoruta=TIEMPO_CALCULO_RUTA
                      if len(self.rutalocal)>0:
                          self.siguientelocal=self.rutalocal[-1]
@@ -274,14 +279,21 @@ class Enemigo2(NoJugador):
              else :
                  self.tiempopersecucion-=tiempo
                  if self.tiempopersecucion<0 :
-                     self.estado=VOLVIENDO_A_UN_NODO
-                     (self.nododestino,self.rutalocal)=fase.buscar_nodo_mas_cercano(self.posicion,self.nodos)
-                     #self.rutalocal=fase.calcular_ruta_local(self.posicion,self.nodos[self.nododestino])
+                     self.rutalocal=fase.calcular_ruta_local(self.posicion,fase.jugador1.posicion)
                      if len(self.rutalocal)>0:
                             self.siguientelocal=self.rutalocal[-1]
                             self.destinolocal=self.rutalocal[0]
                      else:
-                         print "quiere volvera un nodo pero no encuentra la ruta"
+                         print "quiere seguir al personaje que ha perdido de vista pero no encuentra el camino"
+                         (self.nododestino,self.rutalocal)=fase.buscar_nodo_mas_cercano(self.posicion,self.nodos)
+                         if len(self.rutalocal)>0:
+                            self.siguientelocal=self.rutalocal[-1]
+                            self.destinolocal=self.rutalocal[0]
+                         else:
+                            print "quiere volver a un nodo pero no hay ruta (?)"
+                         self.estado=VOLVIENDO_A_UN_NODO
+                     #self.rutalocal=fase.calcular_ruta_local(self.posicion,self.nodos[self.nododestino])
+
 
          if self.colision:
              self.tiempocolisionando-=tiempo
@@ -294,8 +306,7 @@ class Enemigo2(NoJugador):
                  if len(self.rutalocal)>0:
                         self.siguientelocal=self.rutalocal[-1]
                         self.destinolocal=self.rutalocal[0]
-                 else:
-                     print "quiere volvera un nodo pero no encuentra la ruta"
+
          else:
              self.tiempocolisionando=TIEMPO_COLISIONANDO
 

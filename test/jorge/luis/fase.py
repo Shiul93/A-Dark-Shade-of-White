@@ -439,6 +439,13 @@ class Fase(Escena):
                 return visitado
         return None
 
+    #Comprueba si un noodo local esta lo bastante cerca de alguno de los waypoints del grafo
+    def comprobar_llegada_nodos(self,pos,nodos):
+        for nodo,dest in nodos.items():
+            if dist(pos,dest)<SEARCH_STEP: #destino encontrado, calcular ruta (PROBAR NUMEROS)
+                return nodo
+        return -1
+
     def buscar_nodo_mas_cercano(self,origen,nodos):
         nodo_origen=Nodo(origen,None,0)
         frontera=[nodo_origen]
@@ -448,14 +455,15 @@ class Fase(Escena):
         while len(frontera)>0:
             siguiente_nodo=0#ANCHURA Nodo.mejor_nodo(frontera,dest) #FUNCION DE SELECCION DE NODO
             abrir = frontera.pop(siguiente_nodo)
-            for nodo,dest in nodos.items():
-                if dist(abrir.pos,dest)<SEARCH_STEP: #destino encontrado, calcular ruta (PROBAR NUMEROS)
+            nodo_destino=self.comprobar_llegada_nodos(abrir.pos,nodos)
+            if nodo_destino>-1 : #destino encontrado, calcular ruta (PROBAR NUMEROS)
                     anterior=abrir.padre
+                    ruta.append(abrir)
                     while anterior is not None and anterior.padre is not None:
                         ruta.append(anterior)
                         anterior=anterior.padre
                     print "Tiempo de busqueda local multiple : " + str(1000*(time()-antes)) + " ms"
-                    return (nodo,ruta)
+                    return (nodo_destino,ruta)
             else: #seguir buscando
                 if abrir.dist > MAX_SEARCH_DIST:
                     break
@@ -482,6 +490,7 @@ class Fase(Escena):
             abrir = frontera.pop(siguiente_nodo)
             if dist(abrir.pos,dest)<SEARCH_STEP: #destino encontrado, calcular ruta (PROBAR NUMEROS)
                 anterior=abrir.padre
+                ruta.append(abrir)
                 while anterior is not None and anterior.padre is not None:
                     ruta.append(anterior)
                     anterior=anterior.padre
