@@ -5,6 +5,7 @@
   ],
   "grafo":[],
    "Enemigos":[[[240,528],[240,300],[849,99],[240,99]]],
+   "Enemigos2":[],
 
    "Interruptores":{
     "i_1":[[529,584],[510,604,37,30]],
@@ -132,7 +133,7 @@
 
 
 
-    "meta":[["pulsar_p13"],["fin_fase"]],
+    "meta":[["pulsar_p13"],["fin_fase"]]
 
   },
   "Siguiente":"fase4.json"

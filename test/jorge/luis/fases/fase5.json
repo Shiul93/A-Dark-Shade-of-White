@@ -5,6 +5,7 @@
   ],
   "grafo":[],
    "Enemigos":[[[207,431],[207,847],[624,847]]],
+   "Enemigos2":[],
 
    "Interruptores":{
     "i_1":[[784,619],[769,641,34,38]]
@@ -125,7 +126,7 @@
 
 
 
-    "camara1":[["visto_c1"],["alarma_c1"]],
+    "camara1":[["visto_c1"],["alarma_c1"]]
 
 
   },
