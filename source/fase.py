@@ -10,6 +10,8 @@ from objetos import *
 from Eventos import *
 from nodo import *
 from enemigo import *
+from Enemigo2 import *
+from time import *
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
 #LA idea es que carge la fase a paretir de un script
@@ -31,6 +33,9 @@ MAXIMO_Y_JUGADOR = ALTO_PANTALLA - MINIMO_Y_JUGADOR
 MINIMO_Y_BORDES = 40
 
 SEARCH_STEP=20
+RAY_STEP=10
+MAX_SEARCH_DIST=1500
+TIEMPO_SONIDO_ALARMA=5000
 # -------------------------------------------------
 # Clase Fase
 
@@ -38,6 +43,7 @@ SEARCH_STEP=20
 class Fase(Escena):
     def __init__(self,archivoFase, director):
         #VARIABLES LOCALES DE LA FASE
+        self.escena=archivoFase
         self.scrollx = 0
         self.scrolly = 0
         self.pausa=False
@@ -55,14 +61,17 @@ class Fase(Escena):
         self.listaeventos={}
         self.cuadrotexto=CuadroTexto()
         self.finfase=False
+        self.pillado=False
+        self.finjuego=False
         self.nodos=[]
         self.grafo=[]
+        self.tiemposonidoalarma=0
 
         Escena.__init__(self, director)
 
         #CARGA EL ARCHIVO DE FASE
         datos = GestorRecursos.CargarArchivoFaseJSON(archivoFase)
-        print(datos)
+        #print(datos)
 
         # Creamos el decorado
         self.decorado = Mapa(datos['mapa'])
@@ -140,7 +149,7 @@ class Fase(Escena):
             self.grupoSpritesDinamicos.add(self.objetos[nombre])
             self.grupoOpacos.add(self.objetos[nombre])
 
-        print self.objetos
+        #print self.objetos
 
         for nombre,causa in datos["Causas"].iteritems():
             self.causas[nombre]=Causa(DiccCausas[causa[0]],self.objetos[causa[1]])
@@ -153,6 +162,8 @@ class Fase(Escena):
                self.consecuencias[nombre]=Accion(MENSAJE,None,consecuencia[1],None)
             elif tipo==FIN:
                self.consecuencias[nombre]=Accion(FIN,None,None,None)
+            elif tipo==PILLADO:
+               self.consecuencias[nombre]=Accion(PILLADO,None,None,None)
             elif tipo==ALARMA:
                self.consecuencias[nombre]=Accion(ALARMA,self.objetos[consecuencia[1]],None,None)
             elif tipo==SONIDO:
@@ -167,15 +178,33 @@ class Fase(Escena):
             self.listaeventos[nombre]=Evento(causas,consecuencias)
 
         self.grafo=datos['grafo']
-        self.nodos=datos['nodos']
+        nodos=datos['nodos']
+        self.nodos={}
+        for i in range(0,len(nodos)):
+            self.nodos[i]=nodos[i]
+
+
         self.enemigo=[]
         patrulla=[]
         self.grupoEnemigos=pygame.sprite.Group()
         for i in range (0,len(datos['Enemigos'])):
-          self.enemigo.append(Enemigo(datos['nodos'],datos['grafo'],datos['Enemigos'][i]))
+          self.enemigo.append(Enemigo(self.nodos,datos['grafo'],datos['Enemigos'][i]))
           self.grupoEnemigos.add(self.enemigo[i])
           self.grupoSprites.add(self.enemigo[i])
+        for i in range (0,len(datos['Enemigos2'])):
+          self.enemigo.append(Enemigo2(self.nodos,datos['grafo'],datos['Enemigos2'][i]))
+          self.grupoEnemigos.add(self.enemigo[i])
+          self.grupoSprites.add(self.enemigo[i])
+        self.siguientefase=datos['Siguiente']
 
+        for sprite in iter(self.grupoSprites):
+            sprite.establecerPosicionPantalla(self.scrollx, self.scrolly)
+        # Ademas, actualizamos el decorado para que se muestre una parte distinta
+            self.decorado.update(self.scrollx,self.scrolly)
+
+
+
+        self.actualizarScroll(self.jugador1)
 
 
 
@@ -185,64 +214,32 @@ class Fase(Escena):
         # Si el jugador se encuentra más allá del borde izquierdo
         if (jugador.rect.center[0]<MINIMO_X_JUGADOR):
             desplazamiento = MINIMO_X_JUGADOR - jugador.rect.center[0]
-            if self.scrollx <= 0:
-                self.scrollx = 0
-                # En su lugar, colocamos al jugador que esté más a la izquierda a la izquierda de todo
-                #jugador.establecerPosicion((MINIMO_X_JUGADOR, jugador.posicion[1]))
-             # Si no, se puede hacer scroll a la izquierda
-            else:
-                # Calculamos el nivel de scroll actual: el anterior - desplazamiento
-                #  (desplazamos a la izquierda)
-                self.scrollx = self.scrollx - desplazamiento;
-
-                actualizar=True; # Se ha actualizado el scroll
-
-        # Si el jugador  se encuentra más allá del borde derecho
+            self.scrollx = self.scrollx - desplazamiento;
+            actualizar=True; # Se ha actualizado el scroll
         elif (jugador.rect.center[0]>MAXIMO_X_JUGADOR):
-
-            # Se calcula cuantos pixeles esta fuera del borde
             desplazamiento = jugador.rect.center[0] - MAXIMO_X_JUGADOR
-
-            # Si el escenario ya está a la derecha del todo, no lo movemos mas
-            if self.scrollx + ANCHO_PANTALLA >= self.decorado.rect.right:
-                self.scrollx = self.decorado.rect.right - ANCHO_PANTALLA
-                # En su lugar, colocamos al jugador a la derecha de todo
-                #jugador.establecerPosicion((self.scrollx+MAXIMO_X_JUGADOR, jugador.posicion[1]))
-            else:
-                 # Calculamos el nivel de scroll actual: el anterior + desplazamiento
-                #  (desplazamos a la derecha)
-                self.scrollx = self.scrollx + desplazamiento;
-                actualizar= True; # Se ha actualizado el scroll
-
+            self.scrollx = self.scrollx + desplazamiento;
+            actualizar= True; # Se ha actualizado el scroll
         if (jugador.rect.center[1]<MINIMO_Y_JUGADOR):
             desplazamiento = MINIMO_Y_JUGADOR - jugador.rect.center[1]
-
-            # Si el escenario ya está arriba del todo, no lo movemos mas
-            if self.scrolly <= 0:
-                self.scrolly = 0
-                # En su lugar, colocamos al jugador arriba de todo
-                #jugador.establecerPosicion((jugador.posicion[0],MINIMO_Y_JUGADOR))
-             # Si no, se puede hacer scroll a la arriba
-            else:
-                # Calculamos el nivel de scroll actual: el anterior - desplazamiento
-                #  (desplazamos ariba)
-                self.scrolly = self.scrolly - desplazamiento;
-                actualizar= True; # Se ha actualizado el scroll
+            self.scrolly = self.scrolly - desplazamiento;
+            actualizar= True; # Se ha actualizado el scroll
         elif (jugador.rect.center[1]>MAXIMO_Y_JUGADOR):
             desplazamiento = jugador.rect.center[1] - MAXIMO_Y_JUGADOR
+            self.scrolly = self.scrolly + desplazamiento;
+            actualizar= True; # Se ha actualizado el scroll
 
-            # Si el escenario ya está abajo del todo, no lo movemos mas
-            if self.scrolly + ALTO_PANTALLA >= self.decorado.rect.bottom:
+
+
+
+        if self.scrollx <= 0:
+                self.scrollx = 0
+        elif self.scrollx + ANCHO_PANTALLA >= self.decorado.rect.right:
+                self.scrollx = self.decorado.rect.right - ANCHO_PANTALLA
+        if self.scrolly + ALTO_PANTALLA >= self.decorado.rect.bottom:
                 self.scrolly = self.decorado.rect.bottom-ALTO_PANTALLA
-                # En su lugar, colocamos al jugador abajo de todo
-                #jugador.establecerPosicion((jugador.posicion[0],self.scrolly+MAXIMO_Y_JUGADOR))
-             # Si no, se puede hacer scroll abajo
-            else:
-                # Calculamos el nivel de scroll actual: el anterior - desplazamiento
-                #  (desplazamos aabajo)
-                self.scrolly = self.scrolly + desplazamiento;
-                actualizar=True # Se ha actualizado el scroll
-        # Si el jugador están entre los dos límites de la pantalla, no se hace nada
+        elif self.scrolly <= 0:
+                self.scrolly = 0
         return actualizar
 
 
@@ -268,6 +265,7 @@ class Fase(Escena):
     def update(self, tiempo):
         if tiempo>80: tiempo=80
         if(not self.pausa):
+            self.tiemposonidoalarma-=tiempo
             Debuger.anadirTextoDebug("FPS: "+str(int(1000/tiempo)))
         # Primero, se indican las acciones que van a hacer los enemigos segun como esten los jugadores
             for enemigo in iter(self.grupoEnemigos):
@@ -279,7 +277,8 @@ class Fase(Escena):
                 enemigo.update(self,tiempo)
             self.grupoSpritesDinamicos.update(tiempo)
             if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
-                self.director.salirEscena()
+                self.pillado=True
+                self.mostrarMensaje("¡¡Te han pillado!!")
 
             # Actualizamos el scroll
             self.actualizarScroll(self.jugador1)
@@ -290,22 +289,40 @@ class Fase(Escena):
         #Primero las capas que no tapan a los sprites
         self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
+
         self.grupoSprites.draw(pantalla)
         #Luego las capas que tapan a los sprites
+        self.grupoJugadores.draw(pantalla)
+        self.grupoEnemigos.draw(pantalla)
+
+#        self.grupoOpacos.draw(pantalla)
 
         self.decorado.dibujar_post(pantalla)
-        self.grupoOpacos.draw(pantalla)
 
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
         if(self.haymensaje):
             self.cuadrotexto.draw(pantalla)
 
-    def dispararAlarma(self,camara):
-        son = GestorRecursos.CargarSonido("Danger_alarm")
-        canal = son.play(-1, 5000)
+
+
+
+
+
+
+
+
+
+
+
+
+    def dispararAlarma(self):
         for enemigo in self.grupoEnemigos.sprites():
-              enemigo.alarma(self,self.jugador1.posicion)
+              enemigo.alarma(self,self.nodo_mas_cercano(self.jugador1.posicion,self.nodos))
+        if self.tiemposonidoalarma<0:
+            son=GestorRecursos.CargarSonido("Danger_Alarm")
+            son.play()
+            self.tiemposonidoalarma=TIEMPO_SONIDO_ALARMA
 
     def colision(self,rect):
        rectlist=self.listaRectangulosColisionables()
@@ -313,7 +330,7 @@ class Fase(Escena):
        return self.decorado.colision(rect,"colisiones") or collidesprite>-1
 
     def colisionOculta(self,rect):
-       rectlist=self.listaRectangulosColisionables()
+       rectlist=self.listaRectangulosOpacos()
        collidesprite=rect.collidelist(rectlist)
        return self.decorado.colision(rect,"oculto") or collidesprite>-1
 
@@ -333,16 +350,17 @@ class Fase(Escena):
        return rectlist
 
 
-    def colisionLinea(self,origen,destino,step,offset=(0,0)):
+
+    def colisionLinea(self,origen,destino,step,capa):
         dif=(destino[0]-origen[0],destino[1]-origen[1])
         distancia=dist(origen,destino)
         rectlist=self.listaRectangulosOpacos()
         pointlist=[]
         for i in range(0,int(distancia),step):
-            punto=(int(origen[0]+offset[0]+dif[0]*i/distancia),int(origen[1]+offset[1]+dif[1]*i/distancia))
-            Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
+            punto=(int(origen[0]+dif[0]*i/distancia),int(origen[1]+dif[1]*i/distancia))
+            #Debuger.anadirLinea(punto,(punto[0],punto[1]+2))
             pointlist.append(punto)
-            if self.decorado.colisionPunto(punto,"opacidad"):
+            if self.decorado.colisionPunto(punto,capa):
                 return True
             else:
                 for rect in rectlist:
@@ -354,6 +372,7 @@ class Fase(Escena):
     # estas dos funciones las usa ahora el enemigo para volver a la ruta cuando esta "perdido"
     #deberian sustituirse por funciones equivalentes usando rutas
     def nodo_mas_cercano(self,pos,nodos):
+
         mindist=dist(pos,nodos.values()[0])
         minindex=0
         for clave,valor in nodos.iteritems():
@@ -363,40 +382,36 @@ class Fase(Escena):
                 minindex=clave
         return minindex
 
-
-    def nodo_visible_mas_cercano(self,pos):
-        nodos={}
-        for i in range(0,len(self.nodos)):
-            nodos[i]=self.nodos[i]
-        nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
-        while len(nodos)>1:
-            if not self.colisionLinea(pos,nodos[nodo_mas_cercano],7):
-                return nodo_mas_cercano
-            else:
-                del(nodos[nodo_mas_cercano])
-                nodo_mas_cercano=self.nodo_mas_cercano(pos,nodos)
-        return 0
-
-    #Funcion que devuelve los nodos adyacentes a un nodo
-    #PAra nodos con clave de coordenadas (para perseguir al personaje y volver a su grafo original)
-
     def calcular_nodos_adyacentes(self,nodo,step):
         rectangulo=pygame.Rect(0,0,step*2,step*2) #Usado para calcular las posiciones de los nodos nuevos (top,bottom,left,right)
         rectangulo.center=nodo.pos
-        rectangulo.top=rectangulo.top
         rectangulocolision=pygame.Rect(0,0,13,10)
+        rectangulocolision.center=rectangulo.center
         nodos = []
-        rectangulocolision.center=rectangulo.midtop
-        if not self.colision(rectangulocolision):
+        rectangulonuevo=rectangulocolision.copy()
+        rectangulonuevo.center=rectangulo.midtop
+        #Debuger.anadirLinea(rectangulocolision.topleft,rectangulonuevo.topleft)
+        #Debuger.anadirLinea(rectangulocolision.topright,rectangulonuevo.topright)
+        if not self.colisionLinea(rectangulonuevo.topleft,rectangulocolision.topleft,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.topright,rectangulocolision.topright,RAY_STEP,"colisiones"):
             nodos.append(Nodo(rectangulo.midtop,nodo,nodo.dist + step))
-        rectangulocolision.center=rectangulo.midbottom
-        if not self.colision(rectangulocolision):
+        rectangulonuevo.center=rectangulo.midbottom
+        #Debuger.anadirLinea(rectangulocolision.bottomleft,rectangulonuevo.bottomleft)
+        #Debuger.anadirLinea(rectangulocolision.bottomright,rectangulonuevo.bottomright)
+        if not self.colisionLinea(rectangulonuevo.bottomleft,rectangulocolision.bottomleft,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.bottomright,rectangulocolision.bottomright,RAY_STEP,"colisiones"):
             nodos.append(Nodo(rectangulo.midbottom,nodo,nodo.dist + step))
-        rectangulocolision.center=rectangulo.midright
-        if not self.colision(rectangulocolision):
+        rectangulonuevo.center=rectangulo.midright
+        #Debuger.anadirLinea(rectangulocolision.topright,rectangulonuevo.topright)
+        #Debuger.anadirLinea(rectangulocolision.bottomright,rectangulonuevo.bottomright)
+        if not self.colisionLinea(rectangulonuevo.topright,rectangulocolision.topright,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.bottomright,rectangulocolision.bottomright,RAY_STEP,"colisiones"):
             nodos.append(Nodo(rectangulo.midright,nodo,nodo.dist + step))
-        rectangulocolision.center=rectangulo.midleft
-        if not self.colision(rectangulocolision):
+        rectangulonuevo.center=rectangulo.midleft
+        #Debuger.anadirLinea(rectangulocolision.topleft,rectangulonuevo.topleft)
+        #Debuger.anadirLinea(rectangulocolision.bottomleft,rectangulonuevo.bottomleft)
+        if not self.colisionLinea(rectangulonuevo.topleft,rectangulocolision.topleft,RAY_STEP,"colisiones") \
+            and not self.colisionLinea(rectangulonuevo.bottomleft,rectangulocolision.bottomleft,RAY_STEP,"colisiones"):
             nodos.append(Nodo(rectangulo.midleft,nodo,nodo.dist + step))
         return nodos
 
@@ -404,21 +419,28 @@ class Fase(Escena):
     def calcular_ruta_anchura(self,origen,destino):#La mas sencilla a saco sin distancias ni ostias??
         visitados=[origen]
         frontera=[origen]
-        ruta=[destino]
+        ruta=[]
         distancia={}
         distancia[origen]=0
         padre={}
         padre[origen]=None
+        antes=time()
         while len(frontera)>0:
             abrir=frontera.pop(0)# Con un cero es anchura, con un -1 es profundidad, con una heuristica es hillclimb, con dist+heuristica es A*
             if abrir==destino:
                 anterior=padre[abrir]
+                ruta.append(abrir)
                 while anterior is not None:
                     ruta.append(anterior)
                     anterior=padre[anterior]
+                #print "Tiempo de busqueda: "+str(time()-antes)
                 return ruta
             else:
-                for nodo in self.grafo[abrir]:
+                destinos=list(self.grafo[abrir])
+                for dest in destinos:
+                    if(self.colisionLinea(self.nodos[abrir],self.nodos[dest],RAY_STEP,"colisiones")):
+                        destinos.remove(dest)
+                for nodo in destinos:
                     if not visitados.__contains__(nodo):
                         padre[nodo]=abrir
                         visitados.append(nodo)
@@ -431,28 +453,47 @@ class Fase(Escena):
                             padre[nodo]=abrir
         return []
 
-    def buscar_nodo_visitado(self,nodo,visitados):
+#borrrar
+    def buscar_nodo_visitado2(self,nodo,visitados):
         for visitado in visitados:
             if dist(nodo.pos,visitado.pos)<2:
                 return visitado
         return None
 
+    def buscar_nodo_visitado(self,nodo,visitados):
+        for visitado in visitados:
+            if nodo.pos==visitado.pos:
+                return visitado
+        return None
 
-    def calcular_ruta_local(self,origen,dest):
+    #Comprueba si un noodo local esta lo bastante cerca de alguno de los waypoints del grafo
+    def comprobar_llegada_nodos(self,pos,nodos):
+        for nodo,dest in nodos.items():
+            if dist(pos,dest)<SEARCH_STEP: #destino encontrado, calcular ruta (PROBAR NUMEROS)
+                return nodo
+        return -1
+
+    def buscar_nodo_mas_cercano(self,origen,nodos):
         nodo_origen=Nodo(origen,None,0)
         frontera=[nodo_origen]
         ruta=[]
         visitados=[nodo_origen]
+        antes=time()
         while len(frontera)>0:
-            siguiente_nodo=Nodo.mejor_nodo(frontera,dest) #FUNCION DE SELECCION DE NODO
+            siguiente_nodo=0#ANCHURA Nodo.mejor_nodo(frontera,dest) #FUNCION DE SELECCION DE NODO
             abrir = frontera.pop(siguiente_nodo)
-            if dist(abrir.pos,dest)<sqrt(2)*SEARCH_STEP/2: #destino encontrado, calcular ruta
-                anterior=abrir.padre
-                while anterior.padre is not None:
-                    ruta.append(anterior)
-                    anterior=anterior.padre
-                return ruta
+            nodo_destino=self.comprobar_llegada_nodos(abrir.pos,nodos)
+            if nodo_destino>-1 : #destino encontrado, calcular ruta (PROBAR NUMEROS)
+                    anterior=abrir.padre
+                    ruta.append(abrir)
+                    while anterior is not None and anterior.padre is not None:
+                        ruta.append(anterior)
+                        anterior=anterior.padre
+                    #print "Tiempo de busqueda local multiple : " + str(1000*(time()-antes)) + " ms"
+                    return (nodo_destino,ruta)
             else: #seguir buscando
+                if abrir.dist > MAX_SEARCH_DIST:
+                    break
                 for nodo in self.calcular_nodos_adyacentes(abrir,SEARCH_STEP):
                     visitado=self.buscar_nodo_visitado(nodo,visitados)
                     if visitado is not None:
@@ -461,6 +502,39 @@ class Fase(Escena):
                     else:
                         frontera.append(nodo)
                         visitados.append(nodo)
+        #print "Tiempo de busqueda local multiple (sin resultado) : " + str(1000*(time()-antes)) + " ms"
+        return (0,[]) #No ha encontrado nada y devuelve una lista vacia
+
+
+    def calcular_ruta_local(self,origen,dest):
+        nodo_origen=Nodo(origen,None,0)
+        frontera=[nodo_origen]
+        ruta=[]
+        visitados=[nodo_origen]
+        antes=time()
+        while len(frontera)>0:
+            siguiente_nodo=Nodo.mejor_nodo(frontera,dest) #FUNCION DE SELECCION DE NODO
+            abrir = frontera.pop(siguiente_nodo)
+            if dist(abrir.pos,dest)<SEARCH_STEP: #destino encontrado, calcular ruta (PROBAR NUMEROS)
+                anterior=abrir.padre
+                ruta.append(abrir)
+                while anterior is not None and anterior.padre is not None:
+                    ruta.append(anterior)
+                    anterior=anterior.padre
+                #print "Tiempo de busqueda local : " + str(1000*(time()-antes)) + " ms"
+                return ruta
+            else: #seguir buscando
+                if abrir.dist > MAX_SEARCH_DIST:
+                    break
+                for nodo in self.calcular_nodos_adyacentes(abrir,SEARCH_STEP):
+                    visitado=self.buscar_nodo_visitado(nodo,visitados)
+                    if visitado is not None:
+                        if nodo.dist<visitado.dist:
+                            self.visitado=nodo
+                    else:
+                        frontera.append(nodo)
+                        visitados.append(nodo)
+        #print "Tiempo de busqueda local (sin resultado) : " + str(1000*(time()-antes)) + " ms"
         return [] #No ha encontrado nada y devuelve una lista vacia
 
     def eventos(self, lista_eventos):
@@ -479,7 +553,11 @@ class Fase(Escena):
              if  not teclasPulsadas[K_RETURN]:
                 self.actiondropped=True
              elif self.actiondropped:
-                action=True
+                if not self.hay_persecucion():
+                    action=True
+                else:
+                    self.mostrarMensaje("Está atascado!!")
+                self.actiondropped=False
              for evento in self.listaeventos.itervalues():
                  if evento.comprobar(self.jugador1,self,action):
                      evento.lanzar(self)
@@ -491,9 +569,19 @@ class Fase(Escena):
                 self.haymensaje=False
                 self.actiondropped=False
                 if(self.finfase):
-                    nuevafase = Fase('fase2.json',self.director)
-                    self.director.apilarEscena(nuevafase)
-
+                    if self.siguientefase == "FIN":
+                        self.mostrarMensaje("Enhorabuena, has terminado el juego")
+                        self.finjuego=True
+                        self.finfase=False
+                    else:
+                        nuevafase = Fase(self.siguientefase,self.director)
+                        self.director.cambiarEscena(nuevafase)
+                elif(self.pillado):
+                    fase=Fase(self.escena,self.director)
+                    self.mostrarMensaje("¡¡Te han pillado!!")
+                    self.director.cambiarEscena(fase)
+                elif(self.finjuego):
+                    self.director.salirEscena()
 
         #AQUI SE DEBERIAN COMROBAR LOS EVENTOS DEL JUEGO
 
@@ -502,6 +590,12 @@ class Fase(Escena):
         self.pausa=True
         self.haymensaje=True
         self.actiondropped=False
+
+    def hay_persecucion(self):
+        for enemigo in self.enemigo:
+            if enemigo.estado==PERSIGUIENDO :
+                return True
+        return False
 
     def reproducirSonido(self,sonido):#SONIDO ES UN STRING CON EL NOMBRE DEL SONIDO QUE SE DEBERA CARGAR ANTES
         return False

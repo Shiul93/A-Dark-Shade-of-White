@@ -3,12 +3,12 @@
   "pos_inicial":[1743,200],
   "nodos":[[0,0],
     [1633,416],
-    [1633,440],
-    [1743,440],
+    [1633,480],
+    [1743,480],
     [1743,578],
     [1616,578],
-    [1616,747],
-    [1743,747],
+    [1616,767],
+    [1743,767],
     [1743,863],
     [1695,863],
     [1695,928],
@@ -18,9 +18,9 @@
     [1280,1024],
     [1280,928],
     [1280,831],
-    [1280,690],
-    [1343,690],
-    [1406,690],
+    [1280,703],
+    [1343,703],
+    [1406,703],
     [1343,416],
     [1088,416],
     [1088,432],
@@ -50,12 +50,12 @@
     [480,416],
     [480,480],
     [353,416],
-    [353,332],
-    [225,332],
-    [225,432],
-    [241,432],
-    [337,432],
-    [353,432],
+    [353,350],
+    [225,350],
+    [225,480],
+    [241,480],
+    [337,480],
+    [353,480],
     [241,578],
     [337,578],
     [353,578],
@@ -143,8 +143,10 @@
     [12,16,19],
     [27,33]
   ],
-   "Enemigos":[],
-   "Enemigos2":[[50,51,54,49],[16,17,18,20,18,17,16,15,14,13,12,68],[32,35,34,38,39,40,44,45,47,39,38,36,35,32,31,29,28,69,33]],
+   "Enemigos":[[[225,433],[225,340],[365,340],[365,443]],
+   [[992,415],[992,864],[897,864],[897,989],[1090,989],[1090,864]],
+   [[639,478],[639,587],[575,587],[575,832],[512,832],[512,1056],[767,1056],[767,832],[705,832],[705,587],[639,587]]
+   ],
 
    "Interruptores":{
     "i_1":[[1697,488],[1679,514,37,35]],
@@ -193,7 +195,9 @@
      "luz1":[[1695,826],[1601,515,195,256]],
      "luz2":[[1824,767],[1759,576,132,192]]
   },
-  "Metas":{},
+  "Metas":{
+    "meta":[[0,0],[1111,192,146,128]]
+  },
   "Cuadros":{
     "cuadro":[[992,112],[963,131,62,32]]
   },
@@ -242,7 +246,7 @@
     "visto_camara_1":["visto_camara","camara1"],
     "visto_camara_2":["visto_camara","camara2"],
     "visto_camara_3":["visto_camara","camara3"],
-    "llegar_a_meta":["area","cuadro"]
+    "llegar_a_meta":["area","meta"]
   },
   "Consecuencias":{
     "cambiar_puerta_1":["cambiar","p_1"],
@@ -280,7 +284,6 @@
     "mensaje_puerta":["mensaje","Escuchas una puerta a lo lejos"],
     "mensaje_puerta_cerrada":["mensaje","La puerta esta cerrada con llave"],
     "mensaje_puerta_final":["mensaje","La puerta esta cerrada electronicamente"],
-    "mensaje_apertura_puerta":["mensaje","Cierre electronico desactivado"],
     "mensaje_luz":["mensaje","Escuchas el zumbido de una luz a lo lejos"],
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
@@ -311,7 +314,7 @@
     "abrir_puerta_23":[["pulsar_p23"],["cambiar_puerta_23"]],
 
     "abrir_puerta_24_mal":[["pulsar_p24"],["mensaje_puerta_final"]],
-    "abrir_puerta_mal":[["pulsar_i2"],["mensaje_apertura_puerta","cambiar_puerta_24"]],
+    "abrir_puerta_mal":[["pulsar_i2"],["mensaje_puerta_final","cambiar_puerta_24"]],
 
     "abrir_puerta_10":[["pulsar_p10"],["cambiar_puerta_10"]],
     "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
@@ -327,8 +330,7 @@
     "camara_1":[["visto_camara_1"],["alarma_camara_1"]],
     "camara_2":[["visto_camara_2"],["alarma_camara_2"]],
     "camara_3":[["visto_camara_3"],["alarma_camara_3"]],
-    "meta":[["llegar_a_meta"],["mensaje_fin","fin_fase"]]
+    "meta":[["llegar_a_meta"],["fin_fase"]]
 
-  },
-  "Siguiente":"fase3"
+  }
 }
