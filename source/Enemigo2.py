@@ -47,6 +47,7 @@ class Enemigo2(NoJugador):
         self.alarmapendiente=False
         self.nodoalarmapendiente=0
         self.estadoanterior=QUIETO
+        self.soundflag = True
         # Aqui vendria la implementacion de la IA segun las posiciones de los jugadores
     # La implementacion de la inteligencia segun este personaje particular
     def mover_cpu(self, jugador1, fase):
@@ -62,6 +63,13 @@ class Enemigo2(NoJugador):
 
             #ENCUENTRA AL PERSONAJE:
             if self.estaViendo(fase,jugador1.posicion,PI*3/4):
+
+                if self.soundflag:
+                    son = GestorRecursos.CargarSonido('alerta-metal-gear')
+                    canal = son.play(1)
+                    print canal
+                    self.soundflag= False
+
                 if not self.visto:
                     self.visto=True
                     self.estado=PERSIGUIENDO
@@ -72,6 +80,7 @@ class Enemigo2(NoJugador):
                         self.destinolocal=self.rutalocal[0]
 
             else: #te ha perdido de vista
+                self.soundflag = True
                 if self.visto:
                     self.visto=False
                     self.tiempopersecucion=5000
