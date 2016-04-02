@@ -1,7 +1,7 @@
 {
   "mapa":"banco_3",
   "pos_inicial":[203,209],
-  "nodos":[[],
+"nodos":[[0,0],
     [207,209],
     [207,432],
     [207,689],
@@ -45,7 +45,8 @@
     [16,18,20],
     [10,19]
   ],
-   "Enemigos":[[[207,431],[207,847],[624,847]]],
+   "Enemigos":[],
+   "Enemigos2":[[1,2,3,4,8,4,3,2]],
 
    "Interruptores":{
     "i_1":[[784,619],[769,641,34,38]]
@@ -89,7 +90,7 @@
 
   },
   "Diamantes":{
-    "diamante":[[528,188],[0,0,1,1]]
+    "diamante":[[528,188],[403,190,250,150]]
   },
   "Metas":{
     "meta":[[0,0],[1111,192,146,128]]
@@ -110,7 +111,7 @@
     "pulsar_p7":["accion","p_7"],
     "pulsar_p8":["accion","p_8"],
     "pulsar_p9":["accion","p_9"],
-
+    "pulsar_diamante":["accion","diamante"],
 
 
 
@@ -149,7 +150,8 @@
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
 
-    "fin_fase":["fin"]
+    "fin_fase":["fin"],
+    "pillado":["pillado"]
   },
   "Eventos":{
 
@@ -166,9 +168,10 @@
 
 
 
-    "camara1":[["visto_c1"],["alarma_c1"]]
+    "camara1":[["visto_c1"],["pillado"]],
+    "meta":[["pulsar_diamante"],["fin_fase"]]
 
 
-
-  }
+  },
+  "Siguiente":"FIN"
 }

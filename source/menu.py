@@ -218,7 +218,7 @@ class Menu(Escena):
         self.director.salirPrograma()
 
     def ejecutarJuego(self):
-        fase = Fase('fase2',self.director)
+        fase = Fase('fase3',self.director)
         self.director.apilarEscena(fase)
 
     def mostrarPantallaInicial(self):

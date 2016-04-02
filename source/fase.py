@@ -12,6 +12,7 @@ from nodo import *
 from enemigo import *
 from Enemigo2 import *
 from time import *
+import random
 
 #Carga la fase, controla el scroll y las colisiones con el decorado
 #LA idea es que carge la fase a paretir de un script
@@ -290,7 +291,7 @@ class Fase(Escena):
         self.decorado.dibujar_pre(pantalla)
         # Luego los Sprites
 
-        self.grupoSprites.draw(pantalla)
+
         #Luego las capas que tapan a los sprites
         self.grupoJugadores.draw(pantalla)
         self.grupoEnemigos.draw(pantalla)
@@ -298,6 +299,7 @@ class Fase(Escena):
 #        self.grupoOpacos.draw(pantalla)
 
         self.decorado.dibujar_post(pantalla)
+        self.grupoSprites.draw(pantalla)
 
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
@@ -556,7 +558,10 @@ class Fase(Escena):
                 if not self.hay_persecucion():
                     action=True
                 else:
-                    self.mostrarMensaje("Está atascado!!")
+                    if (random.randint(0,100)<75):
+                        self.mostrarMensaje("Está atascado!!")
+                    else:
+                        action = True
                 self.actiondropped=False
              for evento in self.listaeventos.itervalues():
                  if evento.comprobar(self.jugador1,self,action):
