@@ -38,6 +38,7 @@ SEARCH_STEP=20
 RAY_STEP=10
 MAX_SEARCH_DIST=1500
 TIEMPO_SONIDO_ALARMA=5000
+DISTANCIA_COLISION=24
 # -------------------------------------------------
 # Clase Fase
 
@@ -270,7 +271,7 @@ class Fase(Escena):
 			for enemigo in self.grupoEnemigos.sprites():
 				enemigo.update(self,tiempo)
 			self.grupoSpritesDinamicos.update(tiempo)
-			if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False)!={}:
+			if pygame.sprite.groupcollide(self.grupoJugadores, self.grupoEnemigos, False, False,self.colisionPersonajes)!={}:
 				self.pillado=True
 				self.mostrarMensaje("¡¡Te han pillado!!")
 
@@ -303,7 +304,8 @@ class Fase(Escena):
 
 
 
-
+	def colisionPersonajes(self,sprite1,sprite2):
+		return dist(sprite1.rect.center,sprite2.rect.center)<DISTANCIA_COLISION
 
 
 
