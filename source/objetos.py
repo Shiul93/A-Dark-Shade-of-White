@@ -50,7 +50,9 @@ class accionable(MiSprite):
         self.image=self.image.transform.rotate(angulo)
     '''
     def objetoEnArea(self,rect_objeto):
-        return self.area.contains(rect_objeto)
+        return self.area.colliderect(rect_objeto)
+
+        #return self.area.contains(rect_objeto)
 
     def estaViendo(self,fase,pos):
         return False
@@ -140,7 +142,7 @@ class activable(accionable):#Dos estados, animable para pasar de un estado a otr
               self.image=self.hoja.subsurface(self.coordenadas[self.numImagen])
           #MiSprite.establecerPosicion(self,self.pos)
           MiSprite.update(self,tiempo)
-          Debuger.anadirRectangulo(self.area)
+          #Debuger.anadirRectangulo(self.area)
           #Debuger.anadirTextoDebug("Estado: " + str(self.estado) + " self.image :"+ str(self.image)  )
 
 
