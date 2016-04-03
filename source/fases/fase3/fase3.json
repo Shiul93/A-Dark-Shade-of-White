@@ -24,7 +24,8 @@
     [7],
     [1]
   ],
-   "Enemigos":[[[240,528],[240,300],[849,99],[240,99]]],
+   "Enemigos":[],
+   "Enemigos2":[[5,3,1,3,5,7,8,7]],
 
    "Interruptores":{
     "i_1":[[529,584],[510,604,37,30]],
@@ -129,7 +130,8 @@
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
 
-    "fin_fase":["fin"]
+    "fin_fase":["fin"],
+    "pillado":["pillado"]
   },
   "Eventos":{
 
@@ -147,12 +149,13 @@
     "abrir_puerta_12":[["pulsar_p12"],["cambiar_puerta_12"]],
     "abrir_puerta_13":[["pulsar_p13"],["cambiar_puerta_13"]],
 
-    "camara1":[["visto_c1"],["alarma_c1"]],
+    "camara1":[["visto_c1"],["pillado"]],
 
 
 
 
     "meta":[["pulsar_p13"],["fin_fase"]]
 
-  }
+  },
+  "Siguiente":"fase4"
 }

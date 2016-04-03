@@ -30,11 +30,14 @@ SONIDO=4
 #Termina la escena
 ALARMA=5
 FIN=6
+PILLADO=7
 DiccConsecuencias={
     "cambiar":2,
     "mensaje":3,
+    "sonido":4,
     "alarma":5,
-    "fin":6
+    "fin":6,
+    "pillado":7
 }
 
 class Evento:
@@ -87,11 +90,15 @@ class Accion:
         elif self.tipo==MENSAJE :
             fase.mostrarMensaje(self.mensaje)
         elif self.tipo==SONIDO :
-            fase.reproducirSonido(self.sonido)
+            son = GestorRecursos.CargarArchivoSonido(self.sonido)
+            son.play()
         elif self.tipo==ALARMA :
-            fase.dispararAlarma(self.objeto)
+            fase.dispararAlarma()
         elif self.tipo==FIN:
             fase.finfase=True
             fase.mostrarMensaje("Fase terminada, enhorabuena")
+        elif self.tipo==PILLADO:
+            fase.pillado=True
+            fase.mostrarMensaje("Te han pillado...")
 
 

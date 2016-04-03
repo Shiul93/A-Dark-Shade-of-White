@@ -76,7 +76,7 @@ class activable(accionable):#Dos estados, animable para pasar de un estado a otr
         self.coordenadas=[]
         for i in range(0,len(datos)/4):
                 rect=pygame.Rect(int(datos[i*4]),int(datos[i*4+1]),int(datos[i*4+2]),int(datos[i*4+3]))
-                print(rect)
+                #print(rect)
                 self.coordenadas.append(rect)
         self.rect=pygame.Rect(self.coordenadas[0])
         self.pos=pos
@@ -152,42 +152,87 @@ class Interruptor(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"interruptor","interruptor",pos,area,False,100)
 
+class puerta(activable):
+    def __init__(self,imagen,coord,pos,area,activado,tiempo):
+        activable.__init__(self,imagen,coord,pos,area,activado,tiempo) #TRUE PROVISIONAL PARA PUERTAS ABUEIRTAS
 
-
-class Puerta_pequena(activable):
+    def cambiarEstado(self):
+        activable.cambiarEstado(self)
+        son = GestorRecursos.CargarSonido("puerta2")
+        son.play()
+class Puerta_pequena(puerta):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_pequena","puerta_pequena",pos,area,False,1000)
+        puerta.__init__(self,"puerta_pequena","puerta_pequena",pos,area,False,200)
 class Cuadro(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"cuadro","cuadro",pos,area,False,100)
 
 class Diamante(activable):
     def __init__(self,pos,area):
-        activable.__init__(self,"diamante.png","diamante",pos,area,False,100)
-class Puerta_vertical(activable):
+        activable.__init__(self,"diamante","diamante",pos,area,False,100)
+class Puerta_vertical(puerta):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_vertical","puerta_vertical",pos,area,False,1000)
+        puerta.__init__(self,"puerta_vertical","puerta_vertical",pos,area,False,200)
 
-class Puerta_vertical_grande(activable):
+class Puerta_vertical_grande( puerta):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_vertical_grande","puerta_vertical_grande",pos,area,False,1000)
+         puerta.__init__(self,"puerta_vertical_grande","puerta_vertical_grande",pos,area,False,350)
 
 
-class Puerta_grande(activable):
+class Puerta_grande( puerta):
     def __init__(self,pos,area):
-        activable.__init__(self,"puerta_grande","puerta_grande",pos,area,False,1000)
+         puerta.__init__(self,"puerta_grande","puerta_grande",pos,area,False,350)
 
 
-class Luz(activable):
+class LuzVieja(activable):
     def __init__(self,pos,area):
         activable.__init__(self,"luz","luz",pos,area,True,200)
 
-    '''
+class Luz(activable):
+
+    def __init__(self,pos,area):
+        MiSprite.__init__(self)
+        self.area=area
+        self.areaPos=pygame.Rect(0,0,area.width,area.height)
+        self.rect=pygame.Rect(area)
+        self.pos=area.midbottom
+        MiSprite.establecerPosicion(self,area.midbottom)
+        self.pos_inicial=self.rect.copy()
+        self.estado=True #en principio es boolean pero se podria cambiar facilmente
+        self.tiempoCambio=200
+        self.area=area
+        self.encendiendo=False
+        self.apagando=False
+        self.numImagen=0
+        self.image=pygame.Surface((self.area.width,self.area.height))
+        self.image.fill((0,0,0))
+
+        self.instanteAnimacion=0
+        if(self.estado):
+            self.instanteAnimacion=self.tiempoCambio-1
+        else:
+            self.instanteAnimacion=0
+
     def update(self,tiempo):
+          if(self.apagando):
+              self.instanteAnimacion-=tiempo
+              if(self.instanteAnimacion<=0):
+                  self.instanteAnimacion=0
+                  self.estado=False
+                  self.apagando=False
+          elif self.encendiendo:
+              self.instanteAnimacion+=tiempo
+              if(self.instanteAnimacion>=self.tiempoCambio-1):
+                  self.instanteAnimacion=self.tiempoCambio-1
+                  self.estado=True
+                  self.encendiendo=False
+          alfa=140-int(140*self.instanteAnimacion/self.tiempoCambio)
+          self.image.set_alpha(alfa)
+          #MiSprite.establecerPosicion(self,self.pos)
+          MiSprite.update(self,tiempo)
+          #Debuger.anadirRectangulo(self.area)
+          #Debuger.anadirTextoDebug("Estado: " + str(self.estado) + " self.image :"+ str(self.image)  )
 
-
-
-        MiSprite.update(self,tiempo)'''
 
 class Camara(activable):
     def __init__(self,pos,area,direccion,rangoGiro,rangoVision,velocidadGiro):
@@ -198,6 +243,7 @@ class Camara(activable):
         self.mirando=self.direccion
         self.direcciongiro=1
         self.velocidadGiro=velocidadGiro
+        self.tiempoalarma=0
 
     def estaViendo(self,fase,pos):    #Habria que ver si es mas eficiente mirando primero la colision o el angulo
         if(self.estado):
@@ -206,7 +252,7 @@ class Camara(activable):
             Debuger.anadirRadio(self.posicion,self.mirando+self.rangoVision/2,140)
 
             if(anguloEnRango(angulo,self.mirando,self.rangoVision)):
-                return not fase.colisionLinea(self.posicion,pos,7)
+                return not fase.colisionLinea(self.posicion,pos,7,"opacidad")
         return False
 
     def update(self,tiempo):
@@ -226,8 +272,8 @@ class Camara(activable):
         if not numImagen==self.numImagen :
             self.numImagen=numImagen
             self.image=self.hoja.subsurface(self.coordenadas[self.numImagen])
-        Debuger.anadirRadio(self.posicion,self.mirando-self.rangoVision/2,100)
-        Debuger.anadirRadio(self.posicion,self.mirando+self.rangoVision/2,100)
+        #Debuger.anadirRadio(self.posicion,self.mirando-self.rangoVision/2,100)
+        #Debuger.anadirRadio(self.posicion,self.mirando+self.rangoVision/2,100)
 
 
 

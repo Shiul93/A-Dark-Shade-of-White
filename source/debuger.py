@@ -18,7 +18,7 @@ class Debuger(object):
     imagenLineas.set_colorkey((0,0,0))
 
 
-    debugcolor=(255,255,64)
+    debugcolor=(255,64,0)
 
     @classmethod
     def anadirTextoDebug(cls,texto):

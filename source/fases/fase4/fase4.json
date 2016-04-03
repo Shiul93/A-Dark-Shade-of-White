@@ -1,7 +1,7 @@
 {
   "mapa":"banco_2",
   "pos_inicial":[177,683],
-  "nodos":[[0,0],
+   "nodos":[[0,0],
     [224,559],
     [370,559],
     [224,336],
@@ -23,7 +23,8 @@
     [7,9],
     [8]
   ],
-   "Enemigos":[[[368,335],[815,335],[815,656]]],
+   "Enemigos":[],
+   "Enemigos2":[[4,7,8,9,8,7]],
 
    "Interruptores":{
     "i_1":[[642,591],[632,586,29,48]],
@@ -122,7 +123,8 @@
     "mensaje_fin":["mensaje","Enhorabuena, has superado la fase 2"],
     "mensaje_camara":["mensaje","Has sido visto por la camara"],
 
-    "fin_fase":["fin"]
+    "fin_fase":["fin"],
+    "pillado":["pillado"]
   },
   "Eventos":{
 
@@ -137,9 +139,10 @@
 
     "activar_camara":[["pulsar_i_2"],["cambiar_c1","cambiar_i_2"]],
 
-    "camara1":[["visto_c1"],["alarma_c1"]]
+    "camara1":[["visto_c1"],["pillado"]]
 
 
 
-  }
+  },
+  "Siguiente":"fase5"
 }
