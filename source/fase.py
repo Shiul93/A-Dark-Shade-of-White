@@ -548,7 +548,7 @@ class Fase(Escena):
         teclasPulsadas = pygame.key.get_pressed()
 
         if(not self.pausa):
-             self.jugador1.mover(teclasPulsadas, K_UP, K_DOWN, K_LEFT, K_RIGHT,K_RCTRL,K_RSHIFT)
+             self.jugador1.mover(teclasPulsadas, K_w, K_s, K_a, K_d,K_RCTRL,K_RSHIFT)
              action=False
              if  not teclasPulsadas[K_RETURN]:
                 self.actiondropped=True
