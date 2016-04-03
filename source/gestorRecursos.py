@@ -258,7 +258,7 @@ class GestorRecursos(object):
         else:
             # Se carga el recurso indicando el nombre de su carpeta
             fullname = os.path.join(cls.application_path,'media','audio','sounds', nombre+'.ogg') #Deberia estar en sup propia carpeta
-            sonido = sonido = pygame.mixer.Sound(fullname)
+            sonido = pygame.mixer.Sound(fullname)
 
             print fullname
             print("Cargando archivo de sonido"+nombre)
