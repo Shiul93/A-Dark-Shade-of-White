@@ -9,7 +9,7 @@ from menu import *
 # -------------------------------------------------
 # Clase abstracta ElementoGUI
 ANCHO_PANTALLA =800
-ALTO_PANTALLA =720
+ALTO_PANTALLA_MENU =720
 class ElementoGUI:
 	def __init__(self, pantalla, rectangulo):
 		self.pantalla = pantalla
@@ -217,7 +217,7 @@ class PantallaGUI:
 		# Se carga la imagen de fondo
 		GestorRecursos.getPath() #ESTA LLAMADA SE REALIZA ANTES DE CARGAR NINGUN ARCHIVO PARA QUE CALCULE EL PATH PORQUE ME DABA PROBLEMAS
 		self.imagen = GestorRecursos.CargarImagenMenu(nombreImagen)
-		self.imagen = pygame.transform.scale(self.imagen, (ANCHO_PANTALLA, ALTO_PANTALLA))
+		self.imagen = pygame.transform.scale(self.imagen, (ANCHO_PANTALLA, ALTO_PANTALLA_MENU))
 		# Se tiene una lista de elementos GUI
 		self.elementosGUI = []
 

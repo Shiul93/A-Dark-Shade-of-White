@@ -48,6 +48,7 @@ class Mapa:
          self.rectSubimagen.left = scrollx
          self.rectSubimagen.top = scrolly
 
+
     def paint_all(self,pantalla):
         """Dibuja secuencialmente todas las capas marcadas como visibles"""
         #todo Cambiar nombre del metodo
