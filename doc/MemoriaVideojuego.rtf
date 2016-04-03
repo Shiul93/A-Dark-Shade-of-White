@@ -1,8 +1,8 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww16240\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\paperw11900\paperh16840\margl1440\margr1440\vieww25400\viewh16000\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 Archivos:\
 	auxiliares.py: Funciones auxiliares para calcular \'e1ngulos y estancias\
@@ -207,7 +207,7 @@ buscar_nodo_visitado(nodo,visitados)\
 				Esta funci\'f3n es similar a calcular_ruta_local solo que comprueba la llegada a su destino con la funci\'f3n comprobar_llegada_nodos que comprueba si una posici\'f3n a la que s sha llegado esta muy cerca de cada uno de los waypoints y si coincide con uno devuelve cual es; esto permite buscar la ruta sin saber el destino, el primer waypoint que encuentre sera el elegido. devuelve el numero del waypoint y la ruta.\
 			\
 			comprobar_llegada_nodos(pos,nodos)\
-				Funcion auxiliar de bsucar_nodo_mas_cercano que compara una posici\'f3nn alcanzada con todos los wayponts y si esta muy cerca de alguno devuelve el numero del waypoint\
+				Funcion auxiliar de buscar_nodo_mas_cercano que compara una posici\'f3n alcanzada con todos los waypoints y si esta muy cerca de alguno devuelve el numero del waypoint\
 \
 \
 			eventos(lista_eventos):\
@@ -229,7 +229,7 @@ buscar_nodo_visitado(nodo,visitados)\
 		El enemigo tiene 6 estados:\
 			1-Patrullando: Cada enemigo se iniciativa con un recorrido que es una lista de waypoints.Mientras este en estado patrullando recorre esa lista de waypoints y cuando la termina vuelve a empezar por el primero.\
 			2-Deambulando: El enemigo camina aleatoriamente por los waypoints y al llegar a uno elige aleatoriamente entre los adyacentes\
-			3-Llendo a la alarma: El enemigo calcula una ruta desde su proximo waypoint al waypoint de la alarma y sigue esa ruta\
+			3-Yendo a la alarma: El enemigo calcula una ruta desde su proximo waypoint al waypoint de la alarma y sigue esa ruta\
 			4-Volviendo a la patrulla: El enemigo calcula una ruta desde su waypoint hasta el comienzo de su recorrido y sigue esa ruta\
 			5-Persiguiendo: El enemigo se sale de los waypoints y calcula una ruta local para perseguirte por el mapa y te persigue comprobando la ruta cada TIEMPO_CALCULO_RUTA\
 			6-Volviendo a un nodo: El enemigo calcula el waypoint accesible mas cercano y la ruta local a el por el mapa y sigue esa ruta\
@@ -240,23 +240,23 @@ buscar_nodo_visitado(nodo,visitados)\
 				-Si te ve pasa a 5-Persiguiendo y calcula la ruta local hacia ti (si ya te esta persiguiendo simplemente recalcula la ruta)\
 				-Si colisiona durante TIEMPO_COLISION pasa a 6-volviendo al nodo y busca el camino por el mapa al waypoint mas cercano\
 			1-PAtrullando\
-				-Si suena la alarma pasa a 3-llendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
+				-Si suena la alarma pasa a 3-yendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
 			2-Deambulando\
 				-Si pasa TIEMPO_BUSCAR pasa a 4-Volviendo a la patrulla y calcula a ruta al principio de su recorrido\
 					-si no puede volver sigue deambulando\
-				-Si suena la alarma pasa a 3-llendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
-			3-Llendo a la alarma	\
+				-Si suena la alarma pasa a 3-yendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
+			3-Yendo a la alarma	\
 				-Si suena la alarma en otro sitio recalcula la ruta\
 				-Si llega a su destino pasa a 2-Deambulando\
 			4-Volviendo a patrulla\
-				-Si suena la alarma pasa a 3-llendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
+				-Si suena la alarma pasa a 3-yendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
 			5-Persiguiendo\
 				-Si te pierde de vista TIEMPO_PERSEGUIR pasa a 6-Volviendo al nodo\
 			6-Volviendo al nodo\
 				\
-			Si suena la alarma y el guardo ano la puede atender(porque esta en 5-Persigiendo o 6-Volviendo al nodo) almacenara el waypoint de la alarma y cuando vuelve a estar en  un waypoint acudir\'e1 a ella\
+			Si suena la alarma y el guardo ano la puede atender(porque esta en 5-Persiguiendo o 6-Volviendo al nodo) almacenara el waypoint de la alarma y cuando vuelve a estar en  un waypoint acudir\'e1 a ella\
 \
-			Si el enemigo esta en 3-llendo a la alarma  5-persiguiendo ira corriendo y si no ira andando\
+			Si el enemigo esta en 3-yendo a la alarma  5-persiguiendo ira corriendo y si no ira andando\
 				\
 \
 \
