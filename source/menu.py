@@ -109,8 +109,8 @@ class BotonVolver(Boton):
 	def __init__(self, pantalla):
 		Boton.__init__(self, pantalla, 'humo.png', (500,540))
 	def accion(self):
-		self.pantalla.menu.salirPrograma()
-		
+		self.pantalla.menu.mostrarPantallaInicial()
+
 # -------------------------------------------------
 # Clase TextoGUI y los distintos textos
 
