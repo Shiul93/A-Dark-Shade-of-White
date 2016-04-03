@@ -319,7 +319,7 @@ class Menu(Escena):
 		self.listaPantallas.append(PantallaFasesGUI(self))
 		self.listaPantallas.append(PantallaOpcionesGUI(self))
 		GestorRecursos.CargarMusica('A-Dark-Shade-of-White')
-		pygame.mixer.music.play()
+		pygame.mixer.music.play(-1)
 		# En que pantalla estamos actualmente
 		self.mostrarPantallaInicial()
 
