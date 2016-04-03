@@ -1575,6 +1575,7 @@ source.fase.GL_STEREO	source.fase-module.html#GL_STEREO
 source.fase.K_COMMA	source.fase-module.html#K_COMMA
 source.fase.BLEND_RGBA_MAX	source.fase-module.html#BLEND_RGBA_MAX
 source.fase.KMOD_RALT	source.fase-module.html#KMOD_RALT
+source.fase.DISTANCIA_COLISION	source.fase-module.html#DISTANCIA_COLISION
 source.fase.VOLVIENDO_A_PATRULLA	source.fase-module.html#VOLVIENDO_A_PATRULLA
 source.fase.KMOD_NONE	source.fase-module.html#KMOD_NONE
 source.fase.KMOD_LCTRL	source.fase-module.html#KMOD_LCTRL
@@ -1708,6 +1709,7 @@ source.fase.K_DELETE	source.fase-module.html#K_DELETE
 source.fase.KMOD_SHIFT	source.fase-module.html#KMOD_SHIFT
 source.fase.TIEMPO_COLISIONANDO	source.fase-module.html#TIEMPO_COLISIONANDO
 source.fase.GL_MULTISAMPLEBUFFERS	source.fase-module.html#GL_MULTISAMPLEBUFFERS
+source.fase.ALTO_PANTALLA_MENU	source.fase-module.html#ALTO_PANTALLA_MENU
 source.fase.K_MODE	source.fase-module.html#K_MODE
 source.fase.PREALLOC	source.fase-module.html#PREALLOC
 source.fase.NOEVENT	source.fase-module.html#NOEVENT
@@ -2135,6 +2137,7 @@ source.main.AUDIO_S16SYS	source.main-module.html#AUDIO_S16SYS
 source.main.K_KP8	source.main-module.html#K_KP8
 source.main.K_KP9	source.main-module.html#K_KP9
 source.main.K_KP4	source.main-module.html#K_KP4
+source.main.K_KP5	source.main-module.html#K_KP5
 source.main.K_KP6	source.main-module.html#K_KP6
 source.main.K_KP7	source.main-module.html#K_KP7
 source.main.K_KP0	source.main-module.html#K_KP0
@@ -2276,6 +2279,7 @@ source.main.K_DELETE	source.main-module.html#K_DELETE
 source.main.KMOD_SHIFT	source.main-module.html#KMOD_SHIFT
 source.main.TIEMPO_COLISIONANDO	source.main-module.html#TIEMPO_COLISIONANDO
 source.main.GL_MULTISAMPLEBUFFERS	source.main-module.html#GL_MULTISAMPLEBUFFERS
+source.main.ALTO_PANTALLA_MENU	source.main-module.html#ALTO_PANTALLA_MENU
 source.main.K_MODE	source.main-module.html#K_MODE
 source.main.PREALLOC	source.main-module.html#PREALLOC
 source.main.NOEVENT	source.main-module.html#NOEVENT
@@ -2293,7 +2297,6 @@ source.main.AUDIO_U16MSB	source.main-module.html#AUDIO_U16MSB
 source.main.K_BREAK	source.main-module.html#K_BREAK
 source.main.K_POWER	source.main-module.html#K_POWER
 source.main.DiccConsecuencias	source.main-module.html#DiccConsecuencias
-source.main.K_KP5	source.main-module.html#K_KP5
 source.main.K_UNKNOWN	source.main-module.html#K_UNKNOWN
 source.main.e	source.main-module.html#e
 source.main.K_QUOTE	source.main-module.html#K_QUOTE
@@ -2872,6 +2875,7 @@ source.menu.K_DELETE	source.menu-module.html#K_DELETE
 source.menu.KMOD_SHIFT	source.menu-module.html#KMOD_SHIFT
 source.menu.TIEMPO_COLISIONANDO	source.menu-module.html#TIEMPO_COLISIONANDO
 source.menu.GL_MULTISAMPLEBUFFERS	source.menu-module.html#GL_MULTISAMPLEBUFFERS
+source.menu.ALTO_PANTALLA_MENU	source.menu-module.html#ALTO_PANTALLA_MENU
 source.menu.K_MODE	source.menu-module.html#K_MODE
 source.menu.PREALLOC	source.menu-module.html#PREALLOC
 source.menu.NOEVENT	source.menu-module.html#NOEVENT
@@ -3059,6 +3063,7 @@ source.menuOpciones.GL_STEREO	source.menuOpciones-module.html#GL_STEREO
 source.menuOpciones.K_COMMA	source.menuOpciones-module.html#K_COMMA
 source.menuOpciones.BLEND_RGBA_MAX	source.menuOpciones-module.html#BLEND_RGBA_MAX
 source.menuOpciones.KMOD_RALT	source.menuOpciones-module.html#KMOD_RALT
+source.menuOpciones.DISTANCIA_COLISION	source.menuOpciones-module.html#DISTANCIA_COLISION
 source.menuOpciones.VOLVIENDO_A_PATRULLA	source.menuOpciones-module.html#VOLVIENDO_A_PATRULLA
 source.menuOpciones.KMOD_NONE	source.menuOpciones-module.html#KMOD_NONE
 source.menuOpciones.KMOD_LCTRL	source.menuOpciones-module.html#KMOD_LCTRL
@@ -3192,6 +3197,7 @@ source.menuOpciones.K_DELETE	source.menuOpciones-module.html#K_DELETE
 source.menuOpciones.KMOD_SHIFT	source.menuOpciones-module.html#KMOD_SHIFT
 source.menuOpciones.TIEMPO_COLISIONANDO	source.menuOpciones-module.html#TIEMPO_COLISIONANDO
 source.menuOpciones.GL_MULTISAMPLEBUFFERS	source.menuOpciones-module.html#GL_MULTISAMPLEBUFFERS
+source.menuOpciones.ALTO_PANTALLA_MENU	source.menuOpciones-module.html#ALTO_PANTALLA_MENU
 source.menuOpciones.K_MODE	source.menuOpciones-module.html#K_MODE
 source.menuOpciones.PREALLOC	source.menuOpciones-module.html#PREALLOC
 source.menuOpciones.NOEVENT	source.menuOpciones-module.html#NOEVENT
@@ -3378,6 +3384,7 @@ source.menuPartidas.GL_STEREO	source.menuPartidas-module.html#GL_STEREO
 source.menuPartidas.K_COMMA	source.menuPartidas-module.html#K_COMMA
 source.menuPartidas.BLEND_RGBA_MAX	source.menuPartidas-module.html#BLEND_RGBA_MAX
 source.menuPartidas.KMOD_RALT	source.menuPartidas-module.html#KMOD_RALT
+source.menuPartidas.DISTANCIA_COLISION	source.menuPartidas-module.html#DISTANCIA_COLISION
 source.menuPartidas.VOLVIENDO_A_PATRULLA	source.menuPartidas-module.html#VOLVIENDO_A_PATRULLA
 source.menuPartidas.KMOD_NONE	source.menuPartidas-module.html#KMOD_NONE
 source.menuPartidas.KMOD_LCTRL	source.menuPartidas-module.html#KMOD_LCTRL
@@ -3511,6 +3518,7 @@ source.menuPartidas.K_DELETE	source.menuPartidas-module.html#K_DELETE
 source.menuPartidas.KMOD_SHIFT	source.menuPartidas-module.html#KMOD_SHIFT
 source.menuPartidas.TIEMPO_COLISIONANDO	source.menuPartidas-module.html#TIEMPO_COLISIONANDO
 source.menuPartidas.GL_MULTISAMPLEBUFFERS	source.menuPartidas-module.html#GL_MULTISAMPLEBUFFERS
+source.menuPartidas.ALTO_PANTALLA_MENU	source.menuPartidas-module.html#ALTO_PANTALLA_MENU
 source.menuPartidas.K_MODE	source.menuPartidas-module.html#K_MODE
 source.menuPartidas.PREALLOC	source.menuPartidas-module.html#PREALLOC
 source.menuPartidas.NOEVENT	source.menuPartidas-module.html#NOEVENT
@@ -3822,6 +3830,7 @@ source.menuPausa.K_DELETE	source.menuPausa-module.html#K_DELETE
 source.menuPausa.KMOD_SHIFT	source.menuPausa-module.html#KMOD_SHIFT
 source.menuPausa.TIEMPO_COLISIONANDO	source.menuPausa-module.html#TIEMPO_COLISIONANDO
 source.menuPausa.GL_MULTISAMPLEBUFFERS	source.menuPausa-module.html#GL_MULTISAMPLEBUFFERS
+source.menuPausa.ALTO_PANTALLA_MENU	source.menuPausa-module.html#ALTO_PANTALLA_MENU
 source.menuPausa.K_MODE	source.menuPausa-module.html#K_MODE
 source.menuPausa.PREALLOC	source.menuPausa-module.html#PREALLOC
 source.menuPausa.NOEVENT	source.menuPausa-module.html#NOEVENT
@@ -4009,6 +4018,7 @@ source.menuantiguo.GL_STEREO	source.menuantiguo-module.html#GL_STEREO
 source.menuantiguo.K_COMMA	source.menuantiguo-module.html#K_COMMA
 source.menuantiguo.BLEND_RGBA_MAX	source.menuantiguo-module.html#BLEND_RGBA_MAX
 source.menuantiguo.KMOD_RALT	source.menuantiguo-module.html#KMOD_RALT
+source.menuantiguo.DISTANCIA_COLISION	source.menuantiguo-module.html#DISTANCIA_COLISION
 source.menuantiguo.VOLVIENDO_A_PATRULLA	source.menuantiguo-module.html#VOLVIENDO_A_PATRULLA
 source.menuantiguo.KMOD_NONE	source.menuantiguo-module.html#KMOD_NONE
 source.menuantiguo.KMOD_LCTRL	source.menuantiguo-module.html#KMOD_LCTRL
@@ -4142,6 +4152,7 @@ source.menuantiguo.K_DELETE	source.menuantiguo-module.html#K_DELETE
 source.menuantiguo.KMOD_SHIFT	source.menuantiguo-module.html#KMOD_SHIFT
 source.menuantiguo.TIEMPO_COLISIONANDO	source.menuantiguo-module.html#TIEMPO_COLISIONANDO
 source.menuantiguo.GL_MULTISAMPLEBUFFERS	source.menuantiguo-module.html#GL_MULTISAMPLEBUFFERS
+source.menuantiguo.ALTO_PANTALLA_MENU	source.menuantiguo-module.html#ALTO_PANTALLA_MENU
 source.menuantiguo.K_MODE	source.menuantiguo-module.html#K_MODE
 source.menuantiguo.PREALLOC	source.menuantiguo-module.html#PREALLOC
 source.menuantiguo.NOEVENT	source.menuantiguo-module.html#NOEVENT
@@ -4809,7 +4820,7 @@ source.escena.Escena.__init__	source.escena.Escena-class.html#__init__
 source.fase.Fase	source.fase.Fase-class.html
 source.fase.Fase.actualizarScrollOrdenados	source.fase.Fase-class.html#actualizarScrollOrdenados
 source.fase.Fase.colision	source.fase.Fase-class.html#colision
-source.fase.Fase.buscar_nodo_visitado2	source.fase.Fase-class.html#buscar_nodo_visitado2
+source.fase.Fase.buscar_nodo_mas_cercano	source.fase.Fase-class.html#buscar_nodo_mas_cercano
 source.fase.Fase.nodo_mas_cercano	source.fase.Fase-class.html#nodo_mas_cercano
 source.fase.Fase.actualizarScroll	source.fase.Fase-class.html#actualizarScroll
 source.fase.Fase.hay_persecucion	source.fase.Fase-class.html#hay_persecucion
@@ -4826,9 +4837,10 @@ source.fase.Fase.colisionOculta	source.fase.Fase-class.html#colisionOculta
 source.fase.Fase.buscar_nodo_visitado	source.fase.Fase-class.html#buscar_nodo_visitado
 source.fase.Fase.update	source.fase.Fase-class.html#update
 source.fase.Fase.comprobar_llegada_nodos	source.fase.Fase-class.html#comprobar_llegada_nodos
+source.fase.Fase.colisionPersonajes	source.fase.Fase-class.html#colisionPersonajes
 source.fase.Fase.dispararAlarma	source.fase.Fase-class.html#dispararAlarma
 source.fase.Fase.colisionLinea	source.fase.Fase-class.html#colisionLinea
-source.fase.Fase.buscar_nodo_mas_cercano	source.fase.Fase-class.html#buscar_nodo_mas_cercano
+source.fase.Fase.buscar_nodo_visitado2	source.fase.Fase-class.html#buscar_nodo_visitado2
 source.fase.Fase.listaRectangulosColisionables	source.fase.Fase-class.html#listaRectangulosColisionables
 source.gestorRecursos.GestorRecursos	source.gestorRecursos.GestorRecursos-class.html
 source.gestorRecursos.GestorRecursos.CargarArchivoFase	source.gestorRecursos.GestorRecursos-class.html#CargarArchivoFase
@@ -5275,12 +5287,9 @@ source.objetos.Cuadro.__init__	source.objetos.Cuadro-class.html#__init__
 source.mysprite.MiSprite.incrementarPosicion	source.mysprite.MiSprite-class.html#incrementarPosicion
 source.objetos.accionable.areaPos	source.objetos.accionable-class.html#areaPos
 source.objetos.accionable.estaViendo	source.objetos.accionable-class.html#estaViendo
-source.objetos.activable.update	source.objetos.activable-class.html#update
-source.objetos.activable.desactivar	source.objetos.activable-class.html#desactivar
+source.mysprite.MiSprite.update	source.mysprite.MiSprite-class.html#update
 source.objetos.accionable.establecerPosicionPantalla	source.objetos.accionable-class.html#establecerPosicionPantalla
-source.objetos.activable.cambiarEstado	source.objetos.activable-class.html#cambiarEstado
 source.objetos.accionable.objetoEnArea	source.objetos.accionable-class.html#objetoEnArea
-source.objetos.activable.activar	source.objetos.activable-class.html#activar
 source.objetos.CuadroTexto	source.objetos.CuadroTexto-class.html
 source.mysprite.MiSprite.establecerPosicion	source.mysprite.MiSprite-class.html#establecerPosicion
 source.objetos.CuadroTexto.__init__	source.objetos.CuadroTexto-class.html#__init__
@@ -5295,12 +5304,9 @@ source.objetos.Diamante.__init__	source.objetos.Diamante-class.html#__init__
 source.mysprite.MiSprite.incrementarPosicion	source.mysprite.MiSprite-class.html#incrementarPosicion
 source.objetos.accionable.areaPos	source.objetos.accionable-class.html#areaPos
 source.objetos.accionable.estaViendo	source.objetos.accionable-class.html#estaViendo
-source.objetos.activable.update	source.objetos.activable-class.html#update
-source.objetos.activable.desactivar	source.objetos.activable-class.html#desactivar
+source.mysprite.MiSprite.update	source.mysprite.MiSprite-class.html#update
 source.objetos.accionable.establecerPosicionPantalla	source.objetos.accionable-class.html#establecerPosicionPantalla
-source.objetos.activable.cambiarEstado	source.objetos.activable-class.html#cambiarEstado
 source.objetos.accionable.objetoEnArea	source.objetos.accionable-class.html#objetoEnArea
-source.objetos.activable.activar	source.objetos.activable-class.html#activar
 source.objetos.Interruptor	source.objetos.Interruptor-class.html
 source.mysprite.MiSprite.establecerPosicion	source.mysprite.MiSprite-class.html#establecerPosicion
 source.objetos.Interruptor.__init__	source.objetos.Interruptor-class.html#__init__
