@@ -229,7 +229,7 @@ buscar_nodo_visitado(nodo,visitados)\
 		El enemigo tiene 6 estados:\
 			1-Patrullando: Cada enemigo se iniciativa con un recorrido que es una lista de waypoints.Mientras este en estado patrullando recorre esa lista de waypoints y cuando la termina vuelve a empezar por el primero.\
 			2-Deambulando: El enemigo camina aleatoriamente por los waypoints y al llegar a uno elige aleatoriamente entre los adyacentes\
-			3-Yendo a la alarma: El enemigo calcula una ruta desde su proximo waypoint al waypoint de la alarma y sigue esa ruta\
+			3-Llendo a la alarma: El enemigo calcula una ruta desde su proximo waypoint al waypoint de la alarma y sigue esa ruta\
 			4-Volviendo a la patrulla: El enemigo calcula una ruta desde su waypoint hasta el comienzo de su recorrido y sigue esa ruta\
 			5-Persiguiendo: El enemigo se sale de los waypoints y calcula una ruta local para perseguirte por el mapa y te persigue comprobando la ruta cada TIEMPO_CALCULO_RUTA\
 			6-Volviendo a un nodo: El enemigo calcula el waypoint accesible mas cercano y la ruta local a el por el mapa y sigue esa ruta\

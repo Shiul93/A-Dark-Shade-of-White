@@ -1,0 +1,7 @@
+La memoria se encuentra en /doc/MEMORIA.pdf
+
+En /doc/html/ se encuentra la documentación en formato html
+
+En /doc/diagrama_de_clases.png se encuentra un diagrama uml general de source
+
+Para ejecutar el juego se utilizará el comando python /source/main.py
