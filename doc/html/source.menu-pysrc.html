@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>source.menu</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="source-module.html">Package&nbsp;source</a> ::
+        Module&nbsp;menu
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="source.menu-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="source.menu-module.html">Module source.menu</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- encoding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygame</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">locals</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module source.escena=source.escena-module.html"><a title="source.escena" class="py-name" href="#" onclick="return doclink('link-0', 'escena', 'link-0');">escena</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module source.gestorRecursos=source.gestorRecursos-module.html"><a title="source.gestorRecursos" class="py-name" href="#" onclick="return doclink('link-1', 'gestorRecursos', 'link-1');">gestorRecursos</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module source.fase=source.fase-module.html"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-2', 'fase', 'link-2');">fase</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module source.menuOpciones=source.menuOpciones-module.html"><a title="source.menuOpciones" class="py-name" href="#" onclick="return doclink('link-3', 'menuOpciones', 'link-3');">menuOpciones</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment"># Clase abstracta ElementoGUI</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable source.Enemigo2.ANCHO_PANTALLA=source.Enemigo2-module.html#ANCHO_PANTALLA,Variable source.Eventos.ANCHO_PANTALLA=source.Eventos-module.html#ANCHO_PANTALLA,Variable source.debuger.ANCHO_PANTALLA=source.debuger-module.html#ANCHO_PANTALLA,Variable source.director.ANCHO_PANTALLA=source.director-module.html#ANCHO_PANTALLA,Variable source.enemigo.ANCHO_PANTALLA=source.enemigo-module.html#ANCHO_PANTALLA,Variable source.escena.ANCHO_PANTALLA=source.escena-module.html#ANCHO_PANTALLA,Variable source.fase.ANCHO_PANTALLA=source.fase-module.html#ANCHO_PANTALLA,Variable source.main.ANCHO_PANTALLA=source.main-module.html#ANCHO_PANTALLA,Variable source.mapa.ANCHO_PANTALLA=source.mapa-module.html#ANCHO_PANTALLA,Variable source.menu.ANCHO_PANTALLA=source.menu-module.html#ANCHO_PANTALLA,Variable source.menuOpciones.ANCHO_PANTALLA=source.menuOpciones-module.html#ANCHO_PANTALLA,Variable source.menuPartidas.ANCHO_PANTALLA=source.menuPartidas-module.html#ANCHO_PANTALLA,Variable source.menuantiguo.ANCHO_PANTALLA=source.menuantiguo-module.html#ANCHO_PANTALLA,Variable source.objetos.ANCHO_PANTALLA=source.objetos-module.html#ANCHO_PANTALLA,Variable source.personajes.ANCHO_PANTALLA=source.personajes-module.html#ANCHO_PANTALLA"><a title="source.Enemigo2.ANCHO_PANTALLA
+source.Eventos.ANCHO_PANTALLA
+source.debuger.ANCHO_PANTALLA
+source.director.ANCHO_PANTALLA
+source.enemigo.ANCHO_PANTALLA
+source.escena.ANCHO_PANTALLA
+source.fase.ANCHO_PANTALLA
+source.main.ANCHO_PANTALLA
+source.mapa.ANCHO_PANTALLA
+source.menu.ANCHO_PANTALLA
+source.menuOpciones.ANCHO_PANTALLA
+source.menuPartidas.ANCHO_PANTALLA
+source.menuantiguo.ANCHO_PANTALLA
+source.objetos.ANCHO_PANTALLA
+source.personajes.ANCHO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-4', 'ANCHO_PANTALLA', 'link-4');">ANCHO_PANTALLA</a></tt> <tt class="py-op">=</tt><tt class="py-number">800</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable source.Enemigo2.ALTO_PANTALLA=source.Enemigo2-module.html#ALTO_PANTALLA,Variable source.Eventos.ALTO_PANTALLA=source.Eventos-module.html#ALTO_PANTALLA,Variable source.debuger.ALTO_PANTALLA=source.debuger-module.html#ALTO_PANTALLA,Variable source.director.ALTO_PANTALLA=source.director-module.html#ALTO_PANTALLA,Variable source.enemigo.ALTO_PANTALLA=source.enemigo-module.html#ALTO_PANTALLA,Variable source.escena.ALTO_PANTALLA=source.escena-module.html#ALTO_PANTALLA,Variable source.fase.ALTO_PANTALLA=source.fase-module.html#ALTO_PANTALLA,Variable source.main.ALTO_PANTALLA=source.main-module.html#ALTO_PANTALLA,Variable source.mapa.ALTO_PANTALLA=source.mapa-module.html#ALTO_PANTALLA,Variable source.menu.ALTO_PANTALLA=source.menu-module.html#ALTO_PANTALLA,Variable source.menuOpciones.ALTO_PANTALLA=source.menuOpciones-module.html#ALTO_PANTALLA,Variable source.menuPartidas.ALTO_PANTALLA=source.menuPartidas-module.html#ALTO_PANTALLA,Variable source.menuantiguo.ALTO_PANTALLA=source.menuantiguo-module.html#ALTO_PANTALLA,Variable source.objetos.ALTO_PANTALLA=source.objetos-module.html#ALTO_PANTALLA,Variable source.personajes.ALTO_PANTALLA=source.personajes-module.html#ALTO_PANTALLA"><a title="source.Enemigo2.ALTO_PANTALLA
+source.Eventos.ALTO_PANTALLA
+source.debuger.ALTO_PANTALLA
+source.director.ALTO_PANTALLA
+source.enemigo.ALTO_PANTALLA
+source.escena.ALTO_PANTALLA
+source.fase.ALTO_PANTALLA
+source.main.ALTO_PANTALLA
+source.mapa.ALTO_PANTALLA
+source.menu.ALTO_PANTALLA
+source.menuOpciones.ALTO_PANTALLA
+source.menuPartidas.ALTO_PANTALLA
+source.menuantiguo.ALTO_PANTALLA
+source.objetos.ALTO_PANTALLA
+source.personajes.ALTO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-5', 'ALTO_PANTALLA', 'link-5');">ALTO_PANTALLA</a></tt> <tt class="py-op">=</tt><tt class="py-number">720</tt> </tt>
+<a name="ElementoGUI"></a><div id="ElementoGUI-def"><a name="L13"></a><tt class="py-lineno"> 13</tt> <a class="py-toggle" href="#" id="ElementoGUI-toggle" onclick="return toggle('ElementoGUI');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.ElementoGUI-class.html">ElementoGUI</a><tt class="py-op">:</tt> </tt>
+</div><div id="ElementoGUI-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ElementoGUI-expanded"><a name="ElementoGUI.__init__"></a><div id="ElementoGUI.__init__-def"><a name="L14"></a><tt class="py-lineno"> 14</tt> <a class="py-toggle" href="#" id="ElementoGUI.__init__-toggle" onclick="return toggle('ElementoGUI.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.ElementoGUI-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">,</tt> <tt class="py-param">rectangulo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ElementoGUI.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ElementoGUI.__init__-expanded"><a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt> <tt class="py-op">=</tt> <tt class="py-name">pantalla</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt> <tt class="py-op">=</tt> <tt class="py-name">rectangulo</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="ElementoGUI.establecerPosicion"></a><div id="ElementoGUI.establecerPosicion-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="ElementoGUI.establecerPosicion-toggle" onclick="return toggle('ElementoGUI.establecerPosicion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.ElementoGUI-class.html#establecerPosicion">establecerPosicion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">posicion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ElementoGUI.establecerPosicion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ElementoGUI.establecerPosicion-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">posicionx</tt><tt class="py-op">,</tt> <tt class="py-name">posiciony</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">posicion</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">left</tt> <tt class="py-op">=</tt> <tt class="py-name">posicionx</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottom</tt> <tt class="py-op">=</tt> <tt class="py-name">posiciony</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="ElementoGUI.posicionEnElemento"></a><div id="ElementoGUI.posicionEnElemento-def"><a name="L23"></a><tt class="py-lineno"> 23</tt> <a class="py-toggle" href="#" id="ElementoGUI.posicionEnElemento-toggle" onclick="return toggle('ElementoGUI.posicionEnElemento');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.ElementoGUI-class.html#posicionEnElemento">posicionEnElemento</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">posicion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ElementoGUI.posicionEnElemento-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ElementoGUI.posicionEnElemento-expanded"><a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">posicionx</tt><tt class="py-op">,</tt> <tt class="py-name">posiciony</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">posicion</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">posicionx</tt><tt class="py-op">&gt;=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">left</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">posicionx</tt><tt class="py-op">&lt;=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">right</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">posiciony</tt><tt class="py-op">&gt;=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">top</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">posiciony</tt><tt class="py-op">&lt;=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottom</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="ElementoGUI.dibujar"></a><div id="ElementoGUI.dibujar-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="ElementoGUI.dibujar-toggle" onclick="return toggle('ElementoGUI.dibujar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.ElementoGUI-class.html#dibujar">dibujar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ElementoGUI.dibujar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ElementoGUI.dibujar-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplemented</tt><tt class="py-op">(</tt><tt class="py-string">"Tiene que implementar el metodo dibujar."</tt><tt class="py-op">)</tt> </tt>
+</div><a name="ElementoGUI.accion"></a><div id="ElementoGUI.accion-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="ElementoGUI.accion-toggle" onclick="return toggle('ElementoGUI.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.ElementoGUI-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ElementoGUI.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ElementoGUI.accion-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">NotImplemented</tt><tt class="py-op">(</tt><tt class="py-string">"Tiene que implementar el metodo accion."</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-comment"># Clase Boton y los distintos botones</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="Boton"></a><div id="Boton-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="Boton-toggle" onclick="return toggle('Boton');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.Boton-class.html">Boton</a><tt class="py-op">(</tt><tt class="py-base-class">ElementoGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Boton-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Boton-expanded"><a name="Boton.__init__"></a><div id="Boton.__init__-def"><a name="L40"></a><tt class="py-lineno"> 40</tt> <a class="py-toggle" href="#" id="Boton.__init__-toggle" onclick="return toggle('Boton.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Boton-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">,</tt> <tt class="py-param">nombreImagen</tt><tt class="py-op">,</tt> <tt class="py-param">posicion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Boton.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Boton.__init__-expanded"><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-comment"># Se carga la imagen del boton</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name" targets="Class source.gestorRecursos.GestorRecursos=source.gestorRecursos.GestorRecursos-class.html"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-6', 'GestorRecursos', 'link-6');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Class Method source.gestorRecursos.GestorRecursos.CargarImagenMenu()=source.gestorRecursos.GestorRecursos-class.html#CargarImagenMenu"><a title="source.gestorRecursos.GestorRecursos.CargarImagenMenu" class="py-name" href="#" onclick="return doclink('link-7', 'CargarImagenMenu', 'link-7');">CargarImagenMenu</a></tt><tt class="py-op">(</tt><tt class="py-name">nombreImagen</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-comment">#self.imagen = pygame.transform.scale(self.imagen, (20, 20))</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-comment"># Se llama al m&#233;todo de la clase padre con el rect&#225;ngulo que ocupa el bot&#243;n</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt id="link-8" class="py-name" targets="Class source.menu.ElementoGUI=source.menu.ElementoGUI-class.html,Class source.menuOpciones.ElementoGUI=source.menuOpciones.ElementoGUI-class.html,Class source.menuPartidas.ElementoGUI=source.menuPartidas.ElementoGUI-class.html,Class source.menuantiguo.ElementoGUI=source.menuantiguo.ElementoGUI-class.html"><a title="source.menu.ElementoGUI
+source.menuOpciones.ElementoGUI
+source.menuPartidas.ElementoGUI
+source.menuantiguo.ElementoGUI" class="py-name" href="#" onclick="return doclink('link-8', 'ElementoGUI', 'link-8');">ElementoGUI</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method source.Enemigo2.Enemigo2.__init__()=source.Enemigo2.Enemigo2-class.html#__init__,Method source.Eventos.Accion.__init__()=source.Eventos.Accion-class.html#__init__,Method source.Eventos.Causa.__init__()=source.Eventos.Causa-class.html#__init__,Method source.Eventos.Evento.__init__()=source.Eventos.Evento-class.html#__init__,Method source.director.Director.__init__()=source.director.Director-class.html#__init__,Method source.enemigo.Enemigo.__init__()=source.enemigo.Enemigo-class.html#__init__,Method source.escena.Escena.__init__()=source.escena.Escena-class.html#__init__,Method source.fase.Fase.__init__()=source.fase.Fase-class.html#__init__,Method source.mapa.Mapa.__init__()=source.mapa.Mapa-class.html#__init__,Method source.menu.Boton.__init__()=source.menu.Boton-class.html#__init__,Method source.menu.BotonCP.__init__()=source.menu.BotonCP-class.html#__init__,Method source.menu.BotonNP.__init__()=source.menu.BotonNP-class.html#__init__,Method source.menu.BotonOpciones.__init__()=source.menu.BotonOpciones-class.html#__init__,Method source.menu.BotonSalir.__init__()=source.menu.BotonSalir-class.html#__init__,Method source.menu.ElementoGUI.__init__()=source.menu.ElementoGUI-class.html#__init__,Method source.menu.Menu.__init__()=source.menu.Menu-class.html#__init__,Method source.menu.PantallaGUI.__init__()=source.menu.PantallaGUI-class.html#__init__,Method source.menu.PantallaInicialGUI.__init__()=source.menu.PantallaInicialGUI-class.html#__init__,Method source.menu.TextoCP.__init__()=source.menu.TextoCP-class.html#__init__,Method source.menu.TextoGUI.__init__()=source.menu.TextoGUI-class.html#__init__,Method source.menu.TextoNP.__init__()=source.menu.TextoNP-class.html#__init__,Method source.menu.TextoOpciones.__init__()=source.menu.TextoOpciones-class.html#__init__,Method source.menu.TextoSalir.__init__()=source.menu.TextoSalir-class.html#__init__,Method source.menuOpciones.Boton.__init__()=source.menuOpciones.Boton-class.html#__init__,Method source.menuOpciones.BotonVolver.__init__()=source.menuOpciones.BotonVolver-class.html#__init__,Method source.menuOpciones.ElementoGUI.__init__()=source.menuOpciones.ElementoGUI-class.html#__init__,Method source.menuOpciones.MenuOpciones.__init__()=source.menuOpciones.MenuOpciones-class.html#__init__,Method source.menuOpciones.PantallaGUI.__init__()=source.menuOpciones.PantallaGUI-class.html#__init__,Method source.menuOpciones.PantallaInicialGUI.__init__()=source.menuOpciones.PantallaInicialGUI-class.html#__init__,Method source.menuOpciones.TextoGUI.__init__()=source.menuOpciones.TextoGUI-class.html#__init__,Method source.menuOpciones.TextoVolver.__init__()=source.menuOpciones.TextoVolver-class.html#__init__,Method source.menuPartidas.Boton.__init__()=source.menuPartidas.Boton-class.html#__init__,Method source.menuPartidas.BotonVolver.__init__()=source.menuPartidas.BotonVolver-class.html#__init__,Method source.menuPartidas.ElementoGUI.__init__()=source.menuPartidas.ElementoGUI-class.html#__init__,Method source.menuPartidas.Menu.__init__()=source.menuPartidas.Menu-class.html#__init__,Method source.menuPartidas.PantallaGUI.__init__()=source.menuPartidas.PantallaGUI-class.html#__init__,Method source.menuPartidas.PantallaInicialGUI.__init__()=source.menuPartidas.PantallaInicialGUI-class.html#__init__,Method source.menuPartidas.TextoGUI.__init__()=source.menuPartidas.TextoGUI-class.html#__init__,Method source.menuPartidas.TextoVolver.__init__()=source.menuPartidas.TextoVolver-class.html#__init__,Method source.menuantiguo.Boton.__init__()=source.menuantiguo.Boton-class.html#__init__,Method source.menuantiguo.BotonJugar.__init__()=source.menuantiguo.BotonJugar-class.html#__init__,Method source.menuantiguo.BotonSalir.__init__()=source.menuantiguo.BotonSalir-class.html#__init__,Method source.menuantiguo.ElementoGUI.__init__()=source.menuantiguo.ElementoGUI-class.html#__init__,Method source.menuantiguo.Menu.__init__()=source.menuantiguo.Menu-class.html#__init__,Method source.menuantiguo.PantallaGUI.__init__()=source.menuantiguo.PantallaGUI-class.html#__init__,Method source.menuantiguo.PantallaInicialGUI.__init__()=source.menuantiguo.PantallaInicialGUI-class.html#__init__,Method source.menuantiguo.TextoGUI.__init__()=source.menuantiguo.TextoGUI-class.html#__init__,Method source.menuantiguo.TextoJugar.__init__()=source.menuantiguo.TextoJugar-class.html#__init__,Method source.menuantiguo.TextoSalir.__init__()=source.menuantiguo.TextoSalir-class.html#__init__,Method source.mysprite.MiSprite.__init__()=source.mysprite.MiSprite-class.html#__init__,Method source.nodo.Nodo.__init__()=source.nodo.Nodo-class.html#__init__,Method source.objetos.Camara.__init__()=source.objetos.Camara-class.html#__init__,Method source.objetos.Cuadro.__init__()=source.objetos.Cuadro-class.html#__init__,Method source.objetos.CuadroTexto.__init__()=source.objetos.CuadroTexto-class.html#__init__,Method source.objetos.Diamante.__init__()=source.objetos.Diamante-class.html#__init__,Method source.objetos.Interruptor.__init__()=source.objetos.Interruptor-class.html#__init__,Method source.objetos.Luz.__init__()=source.objetos.Luz-class.html#__init__,Method source.objetos.LuzVieja.__init__()=source.objetos.LuzVieja-class.html#__init__,Method source.objetos.Meta.__init__()=source.objetos.Meta-class.html#__init__,Method source.objetos.Puerta_grande.__init__()=source.objetos.Puerta_grande-class.html#__init__,Method source.objetos.Puerta_pequena.__init__()=source.objetos.Puerta_pequena-class.html#__init__,Method source.objetos.Puerta_vertical.__init__()=source.objetos.Puerta_vertical-class.html#__init__,Method source.objetos.Puerta_vertical_grande.__init__()=source.objetos.Puerta_vertical_grande-class.html#__init__,Method source.objetos.accionable.__init__()=source.objetos.accionable-class.html#__init__,Method source.objetos.activable.__init__()=source.objetos.activable-class.html#__init__,Method source.objetos.puerta.__init__()=source.objetos.puerta-class.html#__init__,Method source.personajes.Jugador.__init__()=source.personajes.Jugador-class.html#__init__,Method source.personajes.NoJugador.__init__()=source.personajes.NoJugador-class.html#__init__,Method source.personajes.Personaje.__init__()=source.personajes.Personaje-class.html#__init__"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-9', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">.</tt><tt class="py-name">get_rect</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-comment"># Se coloca el rectangulo en su posicion</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method source.menu.ElementoGUI.establecerPosicion()=source.menu.ElementoGUI-class.html#establecerPosicion,Method source.menuOpciones.ElementoGUI.establecerPosicion()=source.menuOpciones.ElementoGUI-class.html#establecerPosicion,Method source.menuPartidas.ElementoGUI.establecerPosicion()=source.menuPartidas.ElementoGUI-class.html#establecerPosicion,Method source.menuantiguo.ElementoGUI.establecerPosicion()=source.menuantiguo.ElementoGUI-class.html#establecerPosicion,Method source.mysprite.MiSprite.establecerPosicion()=source.mysprite.MiSprite-class.html#establecerPosicion"><a title="source.menu.ElementoGUI.establecerPosicion
+source.menuOpciones.ElementoGUI.establecerPosicion
+source.menuPartidas.ElementoGUI.establecerPosicion
+source.menuantiguo.ElementoGUI.establecerPosicion
+source.mysprite.MiSprite.establecerPosicion" class="py-name" href="#" onclick="return doclink('link-10', 'establecerPosicion', 'link-10');">establecerPosicion</a></tt><tt class="py-op">(</tt><tt class="py-name">posicion</tt><tt class="py-op">)</tt> </tt>
+</div><a name="Boton.dibujar"></a><div id="Boton.dibujar-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="Boton.dibujar-toggle" onclick="return toggle('Boton.dibujar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Boton-class.html#dibujar">dibujar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Boton.dibujar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Boton.dibujar-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt class="py-name">blit</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="BotonNP"></a><div id="BotonNP-def"><a name="L51"></a><tt class="py-lineno"> 51</tt> <a class="py-toggle" href="#" id="BotonNP-toggle" onclick="return toggle('BotonNP');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.BotonNP-class.html">BotonNP</a><tt class="py-op">(</tt><tt class="py-base-class">Boton</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonNP-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="BotonNP-expanded"><a name="BotonNP.__init__"></a><div id="BotonNP.__init__-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="BotonNP.__init__-toggle" onclick="return toggle('BotonNP.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonNP-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonNP.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonNP.__init__-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt id="link-11" class="py-name" targets="Class source.menu.Boton=source.menu.Boton-class.html,Class source.menuOpciones.Boton=source.menuOpciones.Boton-class.html,Class source.menuPartidas.Boton=source.menuPartidas.Boton-class.html,Class source.menuantiguo.Boton=source.menuantiguo.Boton-class.html"><a title="source.menu.Boton
+source.menuOpciones.Boton
+source.menuPartidas.Boton
+source.menuantiguo.Boton" class="py-name" href="#" onclick="return doclink('link-11', 'Boton', 'link-11');">Boton</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-12', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-string">'humo.png'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">60</tt><tt class="py-op">,</tt><tt class="py-number">200</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="BotonNP.accion"></a><div id="BotonNP.accion-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="BotonNP.accion-toggle" onclick="return toggle('BotonNP.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonNP-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonNP.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonNP.accion-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module source.menu=source.menu-module.html"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-13', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method source.menu.Menu.ejecutarJuego()=source.menu.Menu-class.html#ejecutarJuego,Method source.menuOpciones.MenuOpciones.ejecutarJuego()=source.menuOpciones.MenuOpciones-class.html#ejecutarJuego,Method source.menuPartidas.Menu.ejecutarJuego()=source.menuPartidas.Menu-class.html#ejecutarJuego,Method source.menuantiguo.Menu.ejecutarJuego()=source.menuantiguo.Menu-class.html#ejecutarJuego"><a title="source.menu.Menu.ejecutarJuego
+source.menuOpciones.MenuOpciones.ejecutarJuego
+source.menuPartidas.Menu.ejecutarJuego
+source.menuantiguo.Menu.ejecutarJuego" class="py-name" href="#" onclick="return doclink('link-14', 'ejecutarJuego', 'link-14');">ejecutarJuego</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="BotonCP"></a><div id="BotonCP-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="BotonCP-toggle" onclick="return toggle('BotonCP');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.BotonCP-class.html">BotonCP</a><tt class="py-op">(</tt><tt class="py-base-class">Boton</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonCP-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="BotonCP-expanded"><a name="BotonCP.__init__"></a><div id="BotonCP.__init__-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="BotonCP.__init__-toggle" onclick="return toggle('BotonCP.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonCP-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonCP.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonCP.__init__-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt id="link-15" class="py-name"><a title="source.menu.Boton
+source.menuOpciones.Boton
+source.menuPartidas.Boton
+source.menuantiguo.Boton" class="py-name" href="#" onclick="return doclink('link-15', 'Boton', 'link-11');">Boton</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-16', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-string">'humo.png'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">60</tt><tt class="py-op">,</tt><tt class="py-number">540</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="BotonCP.accion"></a><div id="BotonCP.accion-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="BotonCP.accion-toggle" onclick="return toggle('BotonCP.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonCP-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonCP.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonCP.accion-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-17', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="source.menu.Menu.ejecutarJuego
+source.menuOpciones.MenuOpciones.ejecutarJuego
+source.menuPartidas.Menu.ejecutarJuego
+source.menuantiguo.Menu.ejecutarJuego" class="py-name" href="#" onclick="return doclink('link-18', 'ejecutarJuego', 'link-14');">ejecutarJuego</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="BotonOpciones"></a><div id="BotonOpciones-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="BotonOpciones-toggle" onclick="return toggle('BotonOpciones');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.BotonOpciones-class.html">BotonOpciones</a><tt class="py-op">(</tt><tt class="py-base-class">Boton</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonOpciones-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="BotonOpciones-expanded"><a name="BotonOpciones.__init__"></a><div id="BotonOpciones.__init__-def"><a name="L64"></a><tt class="py-lineno"> 64</tt> <a class="py-toggle" href="#" id="BotonOpciones.__init__-toggle" onclick="return toggle('BotonOpciones.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonOpciones-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonOpciones.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonOpciones.__init__-expanded"><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="source.menu.Boton
+source.menuOpciones.Boton
+source.menuPartidas.Boton
+source.menuantiguo.Boton" class="py-name" href="#" onclick="return doclink('link-19', 'Boton', 'link-11');">Boton</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-20', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-string">'humo.png'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">500</tt><tt class="py-op">,</tt><tt class="py-number">200</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="BotonOpciones.accion"></a><div id="BotonOpciones.accion-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="BotonOpciones.accion-toggle" onclick="return toggle('BotonOpciones.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonOpciones-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonOpciones.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonOpciones.accion-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-21', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method source.menu.Menu.abrirOpciones()=source.menu.Menu-class.html#abrirOpciones"><a title="source.menu.Menu.abrirOpciones" class="py-name" href="#" onclick="return doclink('link-22', 'abrirOpciones', 'link-22');">abrirOpciones</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="BotonSalir"></a><div id="BotonSalir-def"><a name="L69"></a><tt class="py-lineno"> 69</tt> <a class="py-toggle" href="#" id="BotonSalir-toggle" onclick="return toggle('BotonSalir');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.BotonSalir-class.html">BotonSalir</a><tt class="py-op">(</tt><tt class="py-base-class">Boton</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonSalir-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="BotonSalir-expanded"><a name="BotonSalir.__init__"></a><div id="BotonSalir.__init__-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="BotonSalir.__init__-toggle" onclick="return toggle('BotonSalir.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonSalir-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonSalir.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonSalir.__init__-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt id="link-23" class="py-name"><a title="source.menu.Boton
+source.menuOpciones.Boton
+source.menuPartidas.Boton
+source.menuantiguo.Boton" class="py-name" href="#" onclick="return doclink('link-23', 'Boton', 'link-11');">Boton</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-24', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-string">'humo.png'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">500</tt><tt class="py-op">,</tt><tt class="py-number">540</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="BotonSalir.accion"></a><div id="BotonSalir.accion-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="BotonSalir.accion-toggle" onclick="return toggle('BotonSalir.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.BotonSalir-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BotonSalir.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="BotonSalir.accion-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-25', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method source.director.Director.salirPrograma()=source.director.Director-class.html#salirPrograma,Method source.menu.Menu.salirPrograma()=source.menu.Menu-class.html#salirPrograma,Method source.menuOpciones.MenuOpciones.salirPrograma()=source.menuOpciones.MenuOpciones-class.html#salirPrograma,Method source.menuPartidas.Menu.salirPrograma()=source.menuPartidas.Menu-class.html#salirPrograma,Method source.menuantiguo.Menu.salirPrograma()=source.menuantiguo.Menu-class.html#salirPrograma"><a title="source.director.Director.salirPrograma
+source.menu.Menu.salirPrograma
+source.menuOpciones.MenuOpciones.salirPrograma
+source.menuPartidas.Menu.salirPrograma
+source.menuantiguo.Menu.salirPrograma" class="py-name" href="#" onclick="return doclink('link-26', 'salirPrograma', 'link-26');">salirPrograma</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-comment"># Clase TextoGUI y los distintos textos</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="TextoGUI"></a><div id="TextoGUI-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="TextoGUI-toggle" onclick="return toggle('TextoGUI');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.TextoGUI-class.html">TextoGUI</a><tt class="py-op">(</tt><tt class="py-base-class">ElementoGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoGUI-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TextoGUI-expanded"><a name="TextoGUI.__init__"></a><div id="TextoGUI.__init__-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="TextoGUI.__init__-toggle" onclick="return toggle('TextoGUI.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoGUI-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">,</tt> <tt class="py-param">fuente</tt><tt class="py-op">,</tt> <tt class="py-param">color</tt><tt class="py-op">,</tt> <tt class="py-param">texto</tt><tt class="py-op">,</tt> <tt class="py-param">posicion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoGUI.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoGUI.__init__-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-comment"># Se crea la imagen del texto</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt> <tt class="py-op">=</tt> <tt class="py-name">fuente</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">texto</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">color</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-comment"># Se llama al m&#233;todo de la clase padre con el rect&#225;ngulo que ocupa el texto</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt id="link-27" class="py-name"><a title="source.menu.ElementoGUI
+source.menuOpciones.ElementoGUI
+source.menuPartidas.ElementoGUI
+source.menuantiguo.ElementoGUI" class="py-name" href="#" onclick="return doclink('link-27', 'ElementoGUI', 'link-8');">ElementoGUI</a></tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-28', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">.</tt><tt class="py-name">get_rect</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-comment"># Se coloca el rectangulo en su posicion</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="source.menu.ElementoGUI.establecerPosicion
+source.menuOpciones.ElementoGUI.establecerPosicion
+source.menuPartidas.ElementoGUI.establecerPosicion
+source.menuantiguo.ElementoGUI.establecerPosicion
+source.mysprite.MiSprite.establecerPosicion" class="py-name" href="#" onclick="return doclink('link-29', 'establecerPosicion', 'link-10');">establecerPosicion</a></tt><tt class="py-op">(</tt><tt class="py-name">posicion</tt><tt class="py-op">)</tt> </tt>
+</div><a name="TextoGUI.dibujar"></a><div id="TextoGUI.dibujar-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="TextoGUI.dibujar-toggle" onclick="return toggle('TextoGUI.dibujar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoGUI-class.html#dibujar">dibujar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoGUI.dibujar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoGUI.dibujar-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt class="py-name">blit</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="TextoNP"></a><div id="TextoNP-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="TextoNP-toggle" onclick="return toggle('TextoNP');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.TextoNP-class.html">TextoNP</a><tt class="py-op">(</tt><tt class="py-base-class">TextoGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoNP-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TextoNP-expanded"><a name="TextoNP.__init__"></a><div id="TextoNP.__init__-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="TextoNP.__init__-toggle" onclick="return toggle('TextoNP.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoNP-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoNP.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoNP.__init__-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-comment"># La fuente la deber&#237;a cargar el estor de recursos</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">fuente</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">font</tt><tt class="py-op">.</tt><tt class="py-name">SysFont</tt><tt class="py-op">(</tt><tt class="py-string">'arial'</tt><tt class="py-op">,</tt> <tt class="py-number">26</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt id="link-30" class="py-name" targets="Class source.menu.TextoGUI=source.menu.TextoGUI-class.html,Class source.menuOpciones.TextoGUI=source.menuOpciones.TextoGUI-class.html,Class source.menuPartidas.TextoGUI=source.menuPartidas.TextoGUI-class.html,Class source.menuantiguo.TextoGUI=source.menuantiguo.TextoGUI-class.html"><a title="source.menu.TextoGUI
+source.menuOpciones.TextoGUI
+source.menuPartidas.TextoGUI
+source.menuantiguo.TextoGUI" class="py-name" href="#" onclick="return doclink('link-30', 'TextoGUI', 'link-30');">TextoGUI</a></tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-31', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-name">fuente</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Nueva Partida'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-number">160</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="TextoNP.accion"></a><div id="TextoNP.accion-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="TextoNP.accion-toggle" onclick="return toggle('TextoNP.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoNP-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoNP.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoNP.accion-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-32', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="source.menu.Menu.ejecutarJuego
+source.menuOpciones.MenuOpciones.ejecutarJuego
+source.menuPartidas.Menu.ejecutarJuego
+source.menuantiguo.Menu.ejecutarJuego" class="py-name" href="#" onclick="return doclink('link-33', 'ejecutarJuego', 'link-14');">ejecutarJuego</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
+<a name="TextoCP"></a><div id="TextoCP-def"><a name="L97"></a><tt class="py-lineno"> 97</tt> <a class="py-toggle" href="#" id="TextoCP-toggle" onclick="return toggle('TextoCP');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.TextoCP-class.html">TextoCP</a><tt class="py-op">(</tt><tt class="py-base-class">TextoGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoCP-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TextoCP-expanded"><a name="TextoCP.__init__"></a><div id="TextoCP.__init__-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="TextoCP.__init__-toggle" onclick="return toggle('TextoCP.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoCP-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoCP.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoCP.__init__-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-comment"># La fuente la deber&#237;a cargar el estor de recursos</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">fuente</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">font</tt><tt class="py-op">.</tt><tt class="py-name">SysFont</tt><tt class="py-op">(</tt><tt class="py-string">'arial'</tt><tt class="py-op">,</tt> <tt class="py-number">26</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt id="link-34" class="py-name"><a title="source.menu.TextoGUI
+source.menuOpciones.TextoGUI
+source.menuPartidas.TextoGUI
+source.menuantiguo.TextoGUI" class="py-name" href="#" onclick="return doclink('link-34', 'TextoGUI', 'link-30');">TextoGUI</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-35', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-name">fuente</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Cargar Partida'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">100</tt><tt class="py-op">,</tt> <tt class="py-number">500</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="TextoCP.accion"></a><div id="TextoCP.accion-def"><a name="L102"></a><tt class="py-lineno">102</tt> <a class="py-toggle" href="#" id="TextoCP.accion-toggle" onclick="return toggle('TextoCP.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoCP-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoCP.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoCP.accion-expanded"><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-36', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="source.menu.Menu.ejecutarJuego
+source.menuOpciones.MenuOpciones.ejecutarJuego
+source.menuPartidas.Menu.ejecutarJuego
+source.menuantiguo.Menu.ejecutarJuego" class="py-name" href="#" onclick="return doclink('link-37', 'ejecutarJuego', 'link-14');">ejecutarJuego</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="TextoOpciones"></a><div id="TextoOpciones-def"><a name="L105"></a><tt class="py-lineno">105</tt> <a class="py-toggle" href="#" id="TextoOpciones-toggle" onclick="return toggle('TextoOpciones');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.TextoOpciones-class.html">TextoOpciones</a><tt class="py-op">(</tt><tt class="py-base-class">TextoGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoOpciones-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TextoOpciones-expanded"><a name="TextoOpciones.__init__"></a><div id="TextoOpciones.__init__-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="TextoOpciones.__init__-toggle" onclick="return toggle('TextoOpciones.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoOpciones-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoOpciones.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoOpciones.__init__-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-comment"># La fuente la deber&#237;a cargar el estor de recursos</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">fuente</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">font</tt><tt class="py-op">.</tt><tt class="py-name">SysFont</tt><tt class="py-op">(</tt><tt class="py-string">'arial'</tt><tt class="py-op">,</tt> <tt class="py-number">26</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt id="link-38" class="py-name"><a title="source.menu.TextoGUI
+source.menuOpciones.TextoGUI
+source.menuPartidas.TextoGUI
+source.menuantiguo.TextoGUI" class="py-name" href="#" onclick="return doclink('link-38', 'TextoGUI', 'link-30');">TextoGUI</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-39', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-name">fuente</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Opciones'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">560</tt><tt class="py-op">,</tt> <tt class="py-number">160</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="TextoOpciones.accion"></a><div id="TextoOpciones.accion-def"><a name="L110"></a><tt class="py-lineno">110</tt> <a class="py-toggle" href="#" id="TextoOpciones.accion-toggle" onclick="return toggle('TextoOpciones.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoOpciones-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoOpciones.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoOpciones.accion-expanded"><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-40', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="source.menu.Menu.abrirOpciones" class="py-name" href="#" onclick="return doclink('link-41', 'abrirOpciones', 'link-22');">abrirOpciones</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="TextoSalir"></a><div id="TextoSalir-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="TextoSalir-toggle" onclick="return toggle('TextoSalir');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.TextoSalir-class.html">TextoSalir</a><tt class="py-op">(</tt><tt class="py-base-class">TextoGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoSalir-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TextoSalir-expanded"><a name="TextoSalir.__init__"></a><div id="TextoSalir.__init__-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="TextoSalir.__init__-toggle" onclick="return toggle('TextoSalir.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoSalir-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoSalir.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoSalir.__init__-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-comment"># La fuente la deber&#237;a cargar el estor de recursos</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">fuente</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">font</tt><tt class="py-op">.</tt><tt class="py-name">SysFont</tt><tt class="py-op">(</tt><tt class="py-string">'arial'</tt><tt class="py-op">,</tt> <tt class="py-number">26</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt id="link-42" class="py-name"><a title="source.menu.TextoGUI
+source.menuOpciones.TextoGUI
+source.menuPartidas.TextoGUI
+source.menuantiguo.TextoGUI" class="py-name" href="#" onclick="return doclink('link-42', 'TextoGUI', 'link-30');">TextoGUI</a></tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-43', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">pantalla</tt><tt class="py-op">,</tt> <tt class="py-name">fuente</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">,</tt> <tt class="py-number">255</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'Salir'</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-number">590</tt><tt class="py-op">,</tt> <tt class="py-number">500</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="TextoSalir.accion"></a><div id="TextoSalir.accion-def"><a name="L118"></a><tt class="py-lineno">118</tt> <a class="py-toggle" href="#" id="TextoSalir.accion-toggle" onclick="return toggle('TextoSalir.accion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.TextoSalir-class.html#accion">accion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TextoSalir.accion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TextoSalir.accion-expanded"><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-44', 'menu', 'link-13');">menu</a></tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="source.director.Director.salirPrograma
+source.menu.Menu.salirPrograma
+source.menuOpciones.MenuOpciones.salirPrograma
+source.menuPartidas.Menu.salirPrograma
+source.menuantiguo.Menu.salirPrograma" class="py-name" href="#" onclick="return doclink('link-45', 'salirPrograma', 'link-26');">salirPrograma</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-comment"># Clase PantallaGUI y las distintas pantallas</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="PantallaGUI"></a><div id="PantallaGUI-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="PantallaGUI-toggle" onclick="return toggle('PantallaGUI');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.PantallaGUI-class.html">PantallaGUI</a><tt class="py-op">:</tt> </tt>
+</div><div id="PantallaGUI-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PantallaGUI-expanded"><a name="PantallaGUI.__init__"></a><div id="PantallaGUI.__init__-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="PantallaGUI.__init__-toggle" onclick="return toggle('PantallaGUI.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.PantallaGUI-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">menu</tt><tt class="py-op">,</tt> <tt class="py-param">nombreImagen</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PantallaGUI.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PantallaGUI.__init__-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-46', 'menu', 'link-13');">menu</a></tt> <tt class="py-op">=</tt> <tt id="link-47" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-47', 'menu', 'link-13');">menu</a></tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-comment"># Se carga la imagen de fondo</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt id="link-48" class="py-name"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-48', 'GestorRecursos', 'link-6');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt id="link-49" class="py-name" targets="Class Method source.gestorRecursos.GestorRecursos.getPath()=source.gestorRecursos.GestorRecursos-class.html#getPath"><a title="source.gestorRecursos.GestorRecursos.getPath" class="py-name" href="#" onclick="return doclink('link-49', 'getPath', 'link-49');">getPath</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-comment">#ESTA LLAMADA SE REALIZA ANTES DE CARGAR NINGUN ARCHIVO PARA QUE CALCULE EL PATH PORQUE ME DABA PROBLEMAS</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt> <tt class="py-op">=</tt> <tt id="link-50" class="py-name"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-50', 'GestorRecursos', 'link-6');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="source.gestorRecursos.GestorRecursos.CargarImagenMenu" class="py-name" href="#" onclick="return doclink('link-51', 'CargarImagenMenu', 'link-7');">CargarImagenMenu</a></tt><tt class="py-op">(</tt><tt class="py-name">nombreImagen</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">transform</tt><tt class="py-op">.</tt><tt class="py-name">scale</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt id="link-52" class="py-name"><a title="source.Enemigo2.ANCHO_PANTALLA
+source.Eventos.ANCHO_PANTALLA
+source.debuger.ANCHO_PANTALLA
+source.director.ANCHO_PANTALLA
+source.enemigo.ANCHO_PANTALLA
+source.escena.ANCHO_PANTALLA
+source.fase.ANCHO_PANTALLA
+source.main.ANCHO_PANTALLA
+source.mapa.ANCHO_PANTALLA
+source.menu.ANCHO_PANTALLA
+source.menuOpciones.ANCHO_PANTALLA
+source.menuPartidas.ANCHO_PANTALLA
+source.menuantiguo.ANCHO_PANTALLA
+source.objetos.ANCHO_PANTALLA
+source.personajes.ANCHO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-52', 'ANCHO_PANTALLA', 'link-4');">ANCHO_PANTALLA</a></tt><tt class="py-op">,</tt> <tt id="link-53" class="py-name"><a title="source.Enemigo2.ALTO_PANTALLA
+source.Eventos.ALTO_PANTALLA
+source.debuger.ALTO_PANTALLA
+source.director.ALTO_PANTALLA
+source.enemigo.ALTO_PANTALLA
+source.escena.ALTO_PANTALLA
+source.fase.ALTO_PANTALLA
+source.main.ALTO_PANTALLA
+source.mapa.ALTO_PANTALLA
+source.menu.ALTO_PANTALLA
+source.menuOpciones.ALTO_PANTALLA
+source.menuPartidas.ALTO_PANTALLA
+source.menuantiguo.ALTO_PANTALLA
+source.objetos.ALTO_PANTALLA
+source.personajes.ALTO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-53', 'ALTO_PANTALLA', 'link-5');">ALTO_PANTALLA</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-comment"># Se tiene una lista de elementos GUI</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"> </tt>
+<a name="PantallaGUI.eventos"></a><div id="PantallaGUI.eventos-def"><a name="L134"></a><tt class="py-lineno">134</tt> <a class="py-toggle" href="#" id="PantallaGUI.eventos-toggle" onclick="return toggle('PantallaGUI.eventos');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.PantallaGUI-class.html#eventos">eventos</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lista_eventos</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PantallaGUI.eventos-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PantallaGUI.eventos-expanded"><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">evento</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lista_eventos</tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">==</tt> <tt id="link-54" class="py-name" targets="Variable source.Enemigo2.MOUSEBUTTONDOWN=source.Enemigo2-module.html#MOUSEBUTTONDOWN,Variable source.Eventos.MOUSEBUTTONDOWN=source.Eventos-module.html#MOUSEBUTTONDOWN,Variable source.debuger.MOUSEBUTTONDOWN=source.debuger-module.html#MOUSEBUTTONDOWN,Variable source.director.MOUSEBUTTONDOWN=source.director-module.html#MOUSEBUTTONDOWN,Variable source.enemigo.MOUSEBUTTONDOWN=source.enemigo-module.html#MOUSEBUTTONDOWN,Variable source.fase.MOUSEBUTTONDOWN=source.fase-module.html#MOUSEBUTTONDOWN,Variable source.gestorRecursos.MOUSEBUTTONDOWN=source.gestorRecursos-module.html#MOUSEBUTTONDOWN,Variable source.main.MOUSEBUTTONDOWN=source.main-module.html#MOUSEBUTTONDOWN,Variable source.mapa.MOUSEBUTTONDOWN=source.mapa-module.html#MOUSEBUTTONDOWN,Variable source.menu.MOUSEBUTTONDOWN=source.menu-module.html#MOUSEBUTTONDOWN,Variable source.menuOpciones.MOUSEBUTTONDOWN=source.menuOpciones-module.html#MOUSEBUTTONDOWN,Variable source.menuPartidas.MOUSEBUTTONDOWN=source.menuPartidas-module.html#MOUSEBUTTONDOWN,Variable source.menuantiguo.MOUSEBUTTONDOWN=source.menuantiguo-module.html#MOUSEBUTTONDOWN,Variable source.objetos.MOUSEBUTTONDOWN=source.objetos-module.html#MOUSEBUTTONDOWN,Variable source.personajes.MOUSEBUTTONDOWN=source.personajes-module.html#MOUSEBUTTONDOWN"><a title="source.Enemigo2.MOUSEBUTTONDOWN
+source.Eventos.MOUSEBUTTONDOWN
+source.debuger.MOUSEBUTTONDOWN
+source.director.MOUSEBUTTONDOWN
+source.enemigo.MOUSEBUTTONDOWN
+source.fase.MOUSEBUTTONDOWN
+source.gestorRecursos.MOUSEBUTTONDOWN
+source.main.MOUSEBUTTONDOWN
+source.mapa.MOUSEBUTTONDOWN
+source.menu.MOUSEBUTTONDOWN
+source.menuOpciones.MOUSEBUTTONDOWN
+source.menuPartidas.MOUSEBUTTONDOWN
+source.menuantiguo.MOUSEBUTTONDOWN
+source.objetos.MOUSEBUTTONDOWN
+source.personajes.MOUSEBUTTONDOWN" class="py-name" href="#" onclick="return doclink('link-54', 'MOUSEBUTTONDOWN', 'link-54');">MOUSEBUTTONDOWN</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementoClic</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">elemento</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">elemento</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Method source.menu.ElementoGUI.posicionEnElemento()=source.menu.ElementoGUI-class.html#posicionEnElemento,Method source.menuOpciones.ElementoGUI.posicionEnElemento()=source.menuOpciones.ElementoGUI-class.html#posicionEnElemento,Method source.menuPartidas.ElementoGUI.posicionEnElemento()=source.menuPartidas.ElementoGUI-class.html#posicionEnElemento,Method source.menuantiguo.ElementoGUI.posicionEnElemento()=source.menuantiguo.ElementoGUI-class.html#posicionEnElemento"><a title="source.menu.ElementoGUI.posicionEnElemento
+source.menuOpciones.ElementoGUI.posicionEnElemento
+source.menuPartidas.ElementoGUI.posicionEnElemento
+source.menuantiguo.ElementoGUI.posicionEnElemento" class="py-name" href="#" onclick="return doclink('link-55', 'posicionEnElemento', 'link-55');">posicionEnElemento</a></tt><tt class="py-op">(</tt><tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">pos</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementoClic</tt> <tt class="py-op">=</tt> <tt class="py-name">elemento</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">==</tt> <tt id="link-56" class="py-name" targets="Variable source.Enemigo2.MOUSEBUTTONUP=source.Enemigo2-module.html#MOUSEBUTTONUP,Variable source.Eventos.MOUSEBUTTONUP=source.Eventos-module.html#MOUSEBUTTONUP,Variable source.debuger.MOUSEBUTTONUP=source.debuger-module.html#MOUSEBUTTONUP,Variable source.director.MOUSEBUTTONUP=source.director-module.html#MOUSEBUTTONUP,Variable source.enemigo.MOUSEBUTTONUP=source.enemigo-module.html#MOUSEBUTTONUP,Variable source.fase.MOUSEBUTTONUP=source.fase-module.html#MOUSEBUTTONUP,Variable source.gestorRecursos.MOUSEBUTTONUP=source.gestorRecursos-module.html#MOUSEBUTTONUP,Variable source.main.MOUSEBUTTONUP=source.main-module.html#MOUSEBUTTONUP,Variable source.mapa.MOUSEBUTTONUP=source.mapa-module.html#MOUSEBUTTONUP,Variable source.menu.MOUSEBUTTONUP=source.menu-module.html#MOUSEBUTTONUP,Variable source.menuOpciones.MOUSEBUTTONUP=source.menuOpciones-module.html#MOUSEBUTTONUP,Variable source.menuPartidas.MOUSEBUTTONUP=source.menuPartidas-module.html#MOUSEBUTTONUP,Variable source.menuantiguo.MOUSEBUTTONUP=source.menuantiguo-module.html#MOUSEBUTTONUP,Variable source.objetos.MOUSEBUTTONUP=source.objetos-module.html#MOUSEBUTTONUP,Variable source.personajes.MOUSEBUTTONUP=source.personajes-module.html#MOUSEBUTTONUP"><a title="source.Enemigo2.MOUSEBUTTONUP
+source.Eventos.MOUSEBUTTONUP
+source.debuger.MOUSEBUTTONUP
+source.director.MOUSEBUTTONUP
+source.enemigo.MOUSEBUTTONUP
+source.fase.MOUSEBUTTONUP
+source.gestorRecursos.MOUSEBUTTONUP
+source.main.MOUSEBUTTONUP
+source.mapa.MOUSEBUTTONUP
+source.menu.MOUSEBUTTONUP
+source.menuOpciones.MOUSEBUTTONUP
+source.menuPartidas.MOUSEBUTTONUP
+source.menuantiguo.MOUSEBUTTONUP
+source.objetos.MOUSEBUTTONUP
+source.personajes.MOUSEBUTTONUP" class="py-name" href="#" onclick="return doclink('link-56', 'MOUSEBUTTONUP', 'link-56');">MOUSEBUTTONUP</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">elemento</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">elemento</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="source.menu.ElementoGUI.posicionEnElemento
+source.menuOpciones.ElementoGUI.posicionEnElemento
+source.menuPartidas.ElementoGUI.posicionEnElemento
+source.menuantiguo.ElementoGUI.posicionEnElemento" class="py-name" href="#" onclick="return doclink('link-57', 'posicionEnElemento', 'link-55');">posicionEnElemento</a></tt><tt class="py-op">(</tt><tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">pos</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">elemento</tt> <tt class="py-op">==</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementoClic</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                            <tt class="py-name">elemento</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Method source.menu.BotonCP.accion()=source.menu.BotonCP-class.html#accion,Method source.menu.BotonNP.accion()=source.menu.BotonNP-class.html#accion,Method source.menu.BotonOpciones.accion()=source.menu.BotonOpciones-class.html#accion,Method source.menu.BotonSalir.accion()=source.menu.BotonSalir-class.html#accion,Method source.menu.ElementoGUI.accion()=source.menu.ElementoGUI-class.html#accion,Method source.menu.TextoCP.accion()=source.menu.TextoCP-class.html#accion,Method source.menu.TextoNP.accion()=source.menu.TextoNP-class.html#accion,Method source.menu.TextoOpciones.accion()=source.menu.TextoOpciones-class.html#accion,Method source.menu.TextoSalir.accion()=source.menu.TextoSalir-class.html#accion,Method source.menuOpciones.BotonVolver.accion()=source.menuOpciones.BotonVolver-class.html#accion,Method source.menuOpciones.ElementoGUI.accion()=source.menuOpciones.ElementoGUI-class.html#accion,Method source.menuOpciones.TextoVolver.accion()=source.menuOpciones.TextoVolver-class.html#accion,Method source.menuPartidas.BotonVolver.accion()=source.menuPartidas.BotonVolver-class.html#accion,Method source.menuPartidas.ElementoGUI.accion()=source.menuPartidas.ElementoGUI-class.html#accion,Method source.menuPartidas.TextoVolver.accion()=source.menuPartidas.TextoVolver-class.html#accion,Method source.menuantiguo.BotonJugar.accion()=source.menuantiguo.BotonJugar-class.html#accion,Method source.menuantiguo.BotonSalir.accion()=source.menuantiguo.BotonSalir-class.html#accion,Method source.menuantiguo.ElementoGUI.accion()=source.menuantiguo.ElementoGUI-class.html#accion,Method source.menuantiguo.TextoJugar.accion()=source.menuantiguo.TextoJugar-class.html#accion,Method source.menuantiguo.TextoSalir.accion()=source.menuantiguo.TextoSalir-class.html#accion"><a title="source.menu.BotonCP.accion
+source.menu.BotonNP.accion
+source.menu.BotonOpciones.accion
+source.menu.BotonSalir.accion
+source.menu.ElementoGUI.accion
+source.menu.TextoCP.accion
+source.menu.TextoNP.accion
+source.menu.TextoOpciones.accion
+source.menu.TextoSalir.accion
+source.menuOpciones.BotonVolver.accion
+source.menuOpciones.ElementoGUI.accion
+source.menuOpciones.TextoVolver.accion
+source.menuPartidas.BotonVolver.accion
+source.menuPartidas.ElementoGUI.accion
+source.menuPartidas.TextoVolver.accion
+source.menuantiguo.BotonJugar.accion
+source.menuantiguo.BotonSalir.accion
+source.menuantiguo.ElementoGUI.accion
+source.menuantiguo.TextoJugar.accion
+source.menuantiguo.TextoSalir.accion" class="py-name" href="#" onclick="return doclink('link-58', 'accion', 'link-58');">accion</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="PantallaGUI.dibujar"></a><div id="PantallaGUI.dibujar-def"><a name="L147"></a><tt class="py-lineno">147</tt> <a class="py-toggle" href="#" id="PantallaGUI.dibujar-toggle" onclick="return toggle('PantallaGUI.dibujar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.PantallaGUI-class.html#dibujar">dibujar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PantallaGUI.dibujar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PantallaGUI.dibujar-expanded"><a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-comment"># Dibujamos primero la imagen de fondo</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt class="py-name">blit</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">imagen</tt><tt class="py-op">.</tt><tt class="py-name">get_rect</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-comment"># Despu&#233;s los botones</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">elemento</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-name">elemento</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name" targets="Method source.escena.Escena.dibujar()=source.escena.Escena-class.html#dibujar,Method source.fase.Fase.dibujar()=source.fase.Fase-class.html#dibujar,Method source.menu.Boton.dibujar()=source.menu.Boton-class.html#dibujar,Method source.menu.ElementoGUI.dibujar()=source.menu.ElementoGUI-class.html#dibujar,Method source.menu.Menu.dibujar()=source.menu.Menu-class.html#dibujar,Method source.menu.PantallaGUI.dibujar()=source.menu.PantallaGUI-class.html#dibujar,Method source.menu.TextoGUI.dibujar()=source.menu.TextoGUI-class.html#dibujar,Method source.menuOpciones.Boton.dibujar()=source.menuOpciones.Boton-class.html#dibujar,Method source.menuOpciones.ElementoGUI.dibujar()=source.menuOpciones.ElementoGUI-class.html#dibujar,Method source.menuOpciones.MenuOpciones.dibujar()=source.menuOpciones.MenuOpciones-class.html#dibujar,Method source.menuOpciones.PantallaGUI.dibujar()=source.menuOpciones.PantallaGUI-class.html#dibujar,Method source.menuOpciones.TextoGUI.dibujar()=source.menuOpciones.TextoGUI-class.html#dibujar,Method source.menuPartidas.Boton.dibujar()=source.menuPartidas.Boton-class.html#dibujar,Method source.menuPartidas.ElementoGUI.dibujar()=source.menuPartidas.ElementoGUI-class.html#dibujar,Method source.menuPartidas.Menu.dibujar()=source.menuPartidas.Menu-class.html#dibujar,Method source.menuPartidas.PantallaGUI.dibujar()=source.menuPartidas.PantallaGUI-class.html#dibujar,Method source.menuPartidas.TextoGUI.dibujar()=source.menuPartidas.TextoGUI-class.html#dibujar,Method source.menuantiguo.Boton.dibujar()=source.menuantiguo.Boton-class.html#dibujar,Method source.menuantiguo.ElementoGUI.dibujar()=source.menuantiguo.ElementoGUI-class.html#dibujar,Method source.menuantiguo.Menu.dibujar()=source.menuantiguo.Menu-class.html#dibujar,Method source.menuantiguo.PantallaGUI.dibujar()=source.menuantiguo.PantallaGUI-class.html#dibujar,Method source.menuantiguo.TextoGUI.dibujar()=source.menuantiguo.TextoGUI-class.html#dibujar"><a title="source.escena.Escena.dibujar
+source.fase.Fase.dibujar
+source.menu.Boton.dibujar
+source.menu.ElementoGUI.dibujar
+source.menu.Menu.dibujar
+source.menu.PantallaGUI.dibujar
+source.menu.TextoGUI.dibujar
+source.menuOpciones.Boton.dibujar
+source.menuOpciones.ElementoGUI.dibujar
+source.menuOpciones.MenuOpciones.dibujar
+source.menuOpciones.PantallaGUI.dibujar
+source.menuOpciones.TextoGUI.dibujar
+source.menuPartidas.Boton.dibujar
+source.menuPartidas.ElementoGUI.dibujar
+source.menuPartidas.Menu.dibujar
+source.menuPartidas.PantallaGUI.dibujar
+source.menuPartidas.TextoGUI.dibujar
+source.menuantiguo.Boton.dibujar
+source.menuantiguo.ElementoGUI.dibujar
+source.menuantiguo.Menu.dibujar
+source.menuantiguo.PantallaGUI.dibujar
+source.menuantiguo.TextoGUI.dibujar" class="py-name" href="#" onclick="return doclink('link-59', 'dibujar', 'link-59');">dibujar</a></tt><tt class="py-op">(</tt><tt class="py-name">pantalla</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="PantallaInicialGUI"></a><div id="PantallaInicialGUI-def"><a name="L154"></a><tt class="py-lineno">154</tt> <a class="py-toggle" href="#" id="PantallaInicialGUI-toggle" onclick="return toggle('PantallaInicialGUI');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.PantallaInicialGUI-class.html">PantallaInicialGUI</a><tt class="py-op">(</tt><tt class="py-base-class">PantallaGUI</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PantallaInicialGUI-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PantallaInicialGUI-expanded"><a name="PantallaInicialGUI.__init__"></a><div id="PantallaInicialGUI.__init__-def"><a name="L155"></a><tt class="py-lineno">155</tt> <a class="py-toggle" href="#" id="PantallaInicialGUI.__init__-toggle" onclick="return toggle('PantallaInicialGUI.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.PantallaInicialGUI-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">menu</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PantallaInicialGUI.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PantallaInicialGUI.__init__-expanded"><a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt id="link-60" class="py-name" targets="Class source.menu.PantallaGUI=source.menu.PantallaGUI-class.html,Class source.menuOpciones.PantallaGUI=source.menuOpciones.PantallaGUI-class.html,Class source.menuPartidas.PantallaGUI=source.menuPartidas.PantallaGUI-class.html,Class source.menuantiguo.PantallaGUI=source.menuantiguo.PantallaGUI-class.html"><a title="source.menu.PantallaGUI
+source.menuOpciones.PantallaGUI
+source.menuPartidas.PantallaGUI
+source.menuantiguo.PantallaGUI" class="py-name" href="#" onclick="return doclink('link-60', 'PantallaGUI', 'link-60');">PantallaGUI</a></tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-61', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-62" class="py-name"><a title="source.menu" class="py-name" href="#" onclick="return doclink('link-62', 'menu', 'link-13');">menu</a></tt><tt class="py-op">,</tt> <tt class="py-string">'hacker.jpg'</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos los botones y los metemos en la lista</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-name">botonNP</tt> <tt class="py-op">=</tt> <tt id="link-63" class="py-name" targets="Class source.menu.BotonNP=source.menu.BotonNP-class.html"><a title="source.menu.BotonNP" class="py-name" href="#" onclick="return doclink('link-63', 'BotonNP', 'link-63');">BotonNP</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">        <tt class="py-name">botonCP</tt> <tt class="py-op">=</tt> <tt id="link-64" class="py-name" targets="Class source.menu.BotonCP=source.menu.BotonCP-class.html"><a title="source.menu.BotonCP" class="py-name" href="#" onclick="return doclink('link-64', 'BotonCP', 'link-64');">BotonCP</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-name">botonOpciones</tt> <tt class="py-op">=</tt> <tt id="link-65" class="py-name" targets="Class source.menu.BotonOpciones=source.menu.BotonOpciones-class.html"><a title="source.menu.BotonOpciones" class="py-name" href="#" onclick="return doclink('link-65', 'BotonOpciones', 'link-65');">BotonOpciones</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-name">botonSalir</tt> <tt class="py-op">=</tt> <tt id="link-66" class="py-name" targets="Class source.menu.BotonSalir=source.menu.BotonSalir-class.html,Class source.menuantiguo.BotonSalir=source.menuantiguo.BotonSalir-class.html"><a title="source.menu.BotonSalir
+source.menuantiguo.BotonSalir" class="py-name" href="#" onclick="return doclink('link-66', 'BotonSalir', 'link-66');">BotonSalir</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">botonNP</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">botonCP</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">botonOpciones</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">botonSalir</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos el texto y lo metemos en la lista</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-name">textoNP</tt> <tt class="py-op">=</tt> <tt id="link-67" class="py-name" targets="Class source.menu.TextoNP=source.menu.TextoNP-class.html"><a title="source.menu.TextoNP" class="py-name" href="#" onclick="return doclink('link-67', 'TextoNP', 'link-67');">TextoNP</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-name">textoCP</tt> <tt class="py-op">=</tt> <tt id="link-68" class="py-name" targets="Class source.menu.TextoCP=source.menu.TextoCP-class.html"><a title="source.menu.TextoCP" class="py-name" href="#" onclick="return doclink('link-68', 'TextoCP', 'link-68');">TextoCP</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-name">textoOpciones</tt> <tt class="py-op">=</tt> <tt id="link-69" class="py-name" targets="Class source.menu.TextoOpciones=source.menu.TextoOpciones-class.html"><a title="source.menu.TextoOpciones" class="py-name" href="#" onclick="return doclink('link-69', 'TextoOpciones', 'link-69');">TextoOpciones</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-name">textoSalir</tt> <tt class="py-op">=</tt> <tt id="link-70" class="py-name" targets="Class source.menu.TextoSalir=source.menu.TextoSalir-class.html,Class source.menuantiguo.TextoSalir=source.menuantiguo.TextoSalir-class.html"><a title="source.menu.TextoSalir
+source.menuantiguo.TextoSalir" class="py-name" href="#" onclick="return doclink('link-70', 'TextoSalir', 'link-70');">TextoSalir</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">textoNP</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">textoCP</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">textoOpciones</tt><tt class="py-op">)</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">elementosGUI</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">textoSalir</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-comment"># Clase Menu, la escena en s&#237;</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="Menu"></a><div id="Menu-def"><a name="L179"></a><tt class="py-lineno">179</tt> <a class="py-toggle" href="#" id="Menu-toggle" onclick="return toggle('Menu');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.menu.Menu-class.html">Menu</a><tt class="py-op">(</tt><tt class="py-base-class">Escena</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Menu-expanded"><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="Menu.__init__"></a><div id="Menu.__init__-def"><a name="L181"></a><tt class="py-lineno">181</tt> <a class="py-toggle" href="#" id="Menu.__init__-toggle" onclick="return toggle('Menu.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">director</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.__init__-expanded"><a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-comment"># Llamamos al constructor de la clase padre</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt id="link-71" class="py-name" targets="Class source.escena.Escena=source.escena.Escena-class.html"><a title="source.escena.Escena" class="py-name" href="#" onclick="return doclink('link-71', 'Escena', 'link-71');">Escena</a></tt><tt class="py-op">.</tt><tt id="link-72" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-72', '__init__', 'link-9');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-73" class="py-name" targets="Module source.director=source.director-module.html"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-73', 'director', 'link-73');">director</a></tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos la lista de pantallas</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">listaPantallas</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-comment"># Creamos las pantallas que vamos a tener</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-comment">#   y las metemos en la lista</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">listaPantallas</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-74" class="py-name" targets="Class source.menu.PantallaInicialGUI=source.menu.PantallaInicialGUI-class.html,Class source.menuOpciones.PantallaInicialGUI=source.menuOpciones.PantallaInicialGUI-class.html,Class source.menuPartidas.PantallaInicialGUI=source.menuPartidas.PantallaInicialGUI-class.html,Class source.menuantiguo.PantallaInicialGUI=source.menuantiguo.PantallaInicialGUI-class.html"><a title="source.menu.PantallaInicialGUI
+source.menuOpciones.PantallaInicialGUI
+source.menuPartidas.PantallaInicialGUI
+source.menuantiguo.PantallaInicialGUI" class="py-name" href="#" onclick="return doclink('link-74', 'PantallaInicialGUI', 'link-74');">PantallaInicialGUI</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt id="link-75" class="py-name"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-75', 'GestorRecursos', 'link-6');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt id="link-76" class="py-name" targets="Class Method source.gestorRecursos.GestorRecursos.CargarMusica()=source.gestorRecursos.GestorRecursos-class.html#CargarMusica"><a title="source.gestorRecursos.GestorRecursos.CargarMusica" class="py-name" href="#" onclick="return doclink('link-76', 'CargarMusica', 'link-76');">CargarMusica</a></tt><tt class="py-op">(</tt><tt class="py-string">'A-Dark-Shade-of-White'</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">mixer</tt><tt class="py-op">.</tt><tt class="py-name">music</tt><tt class="py-op">.</tt><tt class="py-name">play</tt><tt class="py-op">(</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-comment"># En que pantalla estamos actualmente</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-77" class="py-name" targets="Method source.menu.Menu.mostrarPantallaInicial()=source.menu.Menu-class.html#mostrarPantallaInicial,Method source.menuOpciones.MenuOpciones.mostrarPantallaInicial()=source.menuOpciones.MenuOpciones-class.html#mostrarPantallaInicial,Method source.menuPartidas.Menu.mostrarPantallaInicial()=source.menuPartidas.Menu-class.html#mostrarPantallaInicial,Method source.menuantiguo.Menu.mostrarPantallaInicial()=source.menuantiguo.Menu-class.html#mostrarPantallaInicial"><a title="source.menu.Menu.mostrarPantallaInicial
+source.menuOpciones.MenuOpciones.mostrarPantallaInicial
+source.menuPartidas.Menu.mostrarPantallaInicial
+source.menuantiguo.Menu.mostrarPantallaInicial" class="py-name" href="#" onclick="return doclink('link-77', 'mostrarPantallaInicial', 'link-77');">mostrarPantallaInicial</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"> </tt>
+<a name="Menu.update"></a><div id="Menu.update-def"><a name="L195"></a><tt class="py-lineno">195</tt> <a class="py-toggle" href="#" id="Menu.update-toggle" onclick="return toggle('Menu.update');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#update">update</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.update-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.update-expanded"><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+</div><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="Menu.eventos"></a><div id="Menu.eventos-def"><a name="L198"></a><tt class="py-lineno">198</tt> <a class="py-toggle" href="#" id="Menu.eventos-toggle" onclick="return toggle('Menu.eventos');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#eventos">eventos</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">lista_eventos</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.eventos-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.eventos-expanded"><a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-comment"># Se mira si se quiere salir de esta escena</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">evento</tt> <tt class="py-keyword">in</tt> <tt class="py-name">lista_eventos</tt><tt class="py-op">:</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">            <tt class="py-comment"># Si se quiere salir, se le indica al director</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">==</tt> <tt id="link-78" class="py-name" targets="Variable source.Enemigo2.KEYDOWN=source.Enemigo2-module.html#KEYDOWN,Variable source.Eventos.KEYDOWN=source.Eventos-module.html#KEYDOWN,Variable source.debuger.KEYDOWN=source.debuger-module.html#KEYDOWN,Variable source.director.KEYDOWN=source.director-module.html#KEYDOWN,Variable source.enemigo.KEYDOWN=source.enemigo-module.html#KEYDOWN,Variable source.fase.KEYDOWN=source.fase-module.html#KEYDOWN,Variable source.gestorRecursos.KEYDOWN=source.gestorRecursos-module.html#KEYDOWN,Variable source.main.KEYDOWN=source.main-module.html#KEYDOWN,Variable source.mapa.KEYDOWN=source.mapa-module.html#KEYDOWN,Variable source.menu.KEYDOWN=source.menu-module.html#KEYDOWN,Variable source.menuOpciones.KEYDOWN=source.menuOpciones-module.html#KEYDOWN,Variable source.menuPartidas.KEYDOWN=source.menuPartidas-module.html#KEYDOWN,Variable source.menuantiguo.KEYDOWN=source.menuantiguo-module.html#KEYDOWN,Variable source.objetos.KEYDOWN=source.objetos-module.html#KEYDOWN,Variable source.personajes.KEYDOWN=source.personajes-module.html#KEYDOWN"><a title="source.Enemigo2.KEYDOWN
+source.Eventos.KEYDOWN
+source.debuger.KEYDOWN
+source.director.KEYDOWN
+source.enemigo.KEYDOWN
+source.fase.KEYDOWN
+source.gestorRecursos.KEYDOWN
+source.main.KEYDOWN
+source.mapa.KEYDOWN
+source.menu.KEYDOWN
+source.menuOpciones.KEYDOWN
+source.menuPartidas.KEYDOWN
+source.menuantiguo.KEYDOWN
+source.objetos.KEYDOWN
+source.personajes.KEYDOWN" class="py-name" href="#" onclick="return doclink('link-78', 'KEYDOWN', 'link-78');">KEYDOWN</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">key</tt> <tt class="py-op">==</tt> <tt id="link-79" class="py-name" targets="Variable source.Enemigo2.K_ESCAPE=source.Enemigo2-module.html#K_ESCAPE,Variable source.Eventos.K_ESCAPE=source.Eventos-module.html#K_ESCAPE,Variable source.debuger.K_ESCAPE=source.debuger-module.html#K_ESCAPE,Variable source.director.K_ESCAPE=source.director-module.html#K_ESCAPE,Variable source.enemigo.K_ESCAPE=source.enemigo-module.html#K_ESCAPE,Variable source.fase.K_ESCAPE=source.fase-module.html#K_ESCAPE,Variable source.gestorRecursos.K_ESCAPE=source.gestorRecursos-module.html#K_ESCAPE,Variable source.main.K_ESCAPE=source.main-module.html#K_ESCAPE,Variable source.mapa.K_ESCAPE=source.mapa-module.html#K_ESCAPE,Variable source.menu.K_ESCAPE=source.menu-module.html#K_ESCAPE,Variable source.menuOpciones.K_ESCAPE=source.menuOpciones-module.html#K_ESCAPE,Variable source.menuPartidas.K_ESCAPE=source.menuPartidas-module.html#K_ESCAPE,Variable source.menuantiguo.K_ESCAPE=source.menuantiguo-module.html#K_ESCAPE,Variable source.objetos.K_ESCAPE=source.objetos-module.html#K_ESCAPE,Variable source.personajes.K_ESCAPE=source.personajes-module.html#K_ESCAPE"><a title="source.Enemigo2.K_ESCAPE
+source.Eventos.K_ESCAPE
+source.debuger.K_ESCAPE
+source.director.K_ESCAPE
+source.enemigo.K_ESCAPE
+source.fase.K_ESCAPE
+source.gestorRecursos.K_ESCAPE
+source.main.K_ESCAPE
+source.mapa.K_ESCAPE
+source.menu.K_ESCAPE
+source.menuOpciones.K_ESCAPE
+source.menuPartidas.K_ESCAPE
+source.menuantiguo.K_ESCAPE
+source.objetos.K_ESCAPE
+source.personajes.K_ESCAPE" class="py-name" href="#" onclick="return doclink('link-79', 'K_ESCAPE', 'link-79');">K_ESCAPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-80" class="py-name"><a title="source.director.Director.salirPrograma
+source.menu.Menu.salirPrograma
+source.menuOpciones.MenuOpciones.salirPrograma
+source.menuPartidas.Menu.salirPrograma
+source.menuantiguo.Menu.salirPrograma" class="py-name" href="#" onclick="return doclink('link-80', 'salirPrograma', 'link-26');">salirPrograma</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">evento</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">==</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt id="link-81" class="py-name" targets="Variable source.Enemigo2.QUIT=source.Enemigo2-module.html#QUIT,Variable source.Eventos.QUIT=source.Eventos-module.html#QUIT,Variable source.debuger.QUIT=source.debuger-module.html#QUIT,Variable source.director.QUIT=source.director-module.html#QUIT,Variable source.enemigo.QUIT=source.enemigo-module.html#QUIT,Variable source.fase.QUIT=source.fase-module.html#QUIT,Variable source.gestorRecursos.QUIT=source.gestorRecursos-module.html#QUIT,Variable source.main.QUIT=source.main-module.html#QUIT,Variable source.mapa.QUIT=source.mapa-module.html#QUIT,Variable source.menu.QUIT=source.menu-module.html#QUIT,Variable source.menuOpciones.QUIT=source.menuOpciones-module.html#QUIT,Variable source.menuPartidas.QUIT=source.menuPartidas-module.html#QUIT,Variable source.menuantiguo.QUIT=source.menuantiguo-module.html#QUIT,Variable source.objetos.QUIT=source.objetos-module.html#QUIT,Variable source.personajes.QUIT=source.personajes-module.html#QUIT"><a title="source.Enemigo2.QUIT
+source.Eventos.QUIT
+source.debuger.QUIT
+source.director.QUIT
+source.enemigo.QUIT
+source.fase.QUIT
+source.gestorRecursos.QUIT
+source.main.QUIT
+source.mapa.QUIT
+source.menu.QUIT
+source.menuOpciones.QUIT
+source.menuPartidas.QUIT
+source.menuantiguo.QUIT
+source.objetos.QUIT
+source.personajes.QUIT" class="py-name" href="#" onclick="return doclink('link-81', 'QUIT', 'link-81');">QUIT</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-82" class="py-name"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-82', 'director', 'link-73');">director</a></tt><tt class="py-op">.</tt><tt id="link-83" class="py-name"><a title="source.director.Director.salirPrograma
+source.menu.Menu.salirPrograma
+source.menuOpciones.MenuOpciones.salirPrograma
+source.menuPartidas.Menu.salirPrograma
+source.menuantiguo.Menu.salirPrograma" class="py-name" href="#" onclick="return doclink('link-83', 'salirPrograma', 'link-26');">salirPrograma</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">        <tt class="py-comment"># Se pasa la lista de eventos a la pantalla actual</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">listaPantallas</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantallaActual</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-84" class="py-name" targets="Method source.escena.Escena.eventos()=source.escena.Escena-class.html#eventos,Method source.fase.Fase.eventos()=source.fase.Fase-class.html#eventos,Method source.menu.Menu.eventos()=source.menu.Menu-class.html#eventos,Method source.menu.PantallaGUI.eventos()=source.menu.PantallaGUI-class.html#eventos,Method source.menuOpciones.MenuOpciones.eventos()=source.menuOpciones.MenuOpciones-class.html#eventos,Method source.menuOpciones.PantallaGUI.eventos()=source.menuOpciones.PantallaGUI-class.html#eventos,Method source.menuPartidas.Menu.eventos()=source.menuPartidas.Menu-class.html#eventos,Method source.menuPartidas.PantallaGUI.eventos()=source.menuPartidas.PantallaGUI-class.html#eventos,Method source.menuantiguo.Menu.eventos()=source.menuantiguo.Menu-class.html#eventos,Method source.menuantiguo.PantallaGUI.eventos()=source.menuantiguo.PantallaGUI-class.html#eventos"><a title="source.escena.Escena.eventos
+source.fase.Fase.eventos
+source.menu.Menu.eventos
+source.menu.PantallaGUI.eventos
+source.menuOpciones.MenuOpciones.eventos
+source.menuOpciones.PantallaGUI.eventos
+source.menuPartidas.Menu.eventos
+source.menuPartidas.PantallaGUI.eventos
+source.menuantiguo.Menu.eventos
+source.menuantiguo.PantallaGUI.eventos" class="py-name" href="#" onclick="return doclink('link-84', 'eventos', 'link-84');">eventos</a></tt><tt class="py-op">(</tt><tt class="py-name">lista_eventos</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"> </tt>
+<a name="Menu.dibujar"></a><div id="Menu.dibujar-def"><a name="L211"></a><tt class="py-lineno">211</tt> <a class="py-toggle" href="#" id="Menu.dibujar-toggle" onclick="return toggle('Menu.dibujar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#dibujar">dibujar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.dibujar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.dibujar-expanded"><a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">listaPantallas</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantallaActual</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-85" class="py-name"><a title="source.escena.Escena.dibujar
+source.fase.Fase.dibujar
+source.menu.Boton.dibujar
+source.menu.ElementoGUI.dibujar
+source.menu.Menu.dibujar
+source.menu.PantallaGUI.dibujar
+source.menu.TextoGUI.dibujar
+source.menuOpciones.Boton.dibujar
+source.menuOpciones.ElementoGUI.dibujar
+source.menuOpciones.MenuOpciones.dibujar
+source.menuOpciones.PantallaGUI.dibujar
+source.menuOpciones.TextoGUI.dibujar
+source.menuPartidas.Boton.dibujar
+source.menuPartidas.ElementoGUI.dibujar
+source.menuPartidas.Menu.dibujar
+source.menuPartidas.PantallaGUI.dibujar
+source.menuPartidas.TextoGUI.dibujar
+source.menuantiguo.Boton.dibujar
+source.menuantiguo.ElementoGUI.dibujar
+source.menuantiguo.Menu.dibujar
+source.menuantiguo.PantallaGUI.dibujar
+source.menuantiguo.TextoGUI.dibujar" class="py-name" href="#" onclick="return doclink('link-85', 'dibujar', 'link-59');">dibujar</a></tt><tt class="py-op">(</tt><tt class="py-name">pantalla</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">    <tt class="py-comment">#--------------------------------------</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">    <tt class="py-comment"># Metodos propios del menu</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="Menu.salirPrograma"></a><div id="Menu.salirPrograma-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="Menu.salirPrograma-toggle" onclick="return toggle('Menu.salirPrograma');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#salirPrograma">salirPrograma</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.salirPrograma-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.salirPrograma-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-86" class="py-name"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-86', 'director', 'link-73');">director</a></tt><tt class="py-op">.</tt><tt id="link-87" class="py-name"><a title="source.director.Director.salirPrograma
+source.menu.Menu.salirPrograma
+source.menuOpciones.MenuOpciones.salirPrograma
+source.menuPartidas.Menu.salirPrograma
+source.menuantiguo.Menu.salirPrograma" class="py-name" href="#" onclick="return doclink('link-87', 'salirPrograma', 'link-26');">salirPrograma</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"> </tt>
+<a name="Menu.ejecutarJuego"></a><div id="Menu.ejecutarJuego-def"><a name="L220"></a><tt class="py-lineno">220</tt> <a class="py-toggle" href="#" id="Menu.ejecutarJuego-toggle" onclick="return toggle('Menu.ejecutarJuego');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#ejecutarJuego">ejecutarJuego</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.ejecutarJuego-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.ejecutarJuego-expanded"><a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">        <tt id="link-88" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-88', 'fase', 'link-2');">fase</a></tt> <tt class="py-op">=</tt> <tt id="link-89" class="py-name" targets="Class source.fase.Fase=source.fase.Fase-class.html"><a title="source.fase.Fase" class="py-name" href="#" onclick="return doclink('link-89', 'Fase', 'link-89');">Fase</a></tt><tt class="py-op">(</tt><tt class="py-string">'fase1'</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-90" class="py-name"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-90', 'director', 'link-73');">director</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-91" class="py-name"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-91', 'director', 'link-73');">director</a></tt><tt class="py-op">.</tt><tt id="link-92" class="py-name" targets="Method source.director.Director.apilarEscena()=source.director.Director-class.html#apilarEscena"><a title="source.director.Director.apilarEscena" class="py-name" href="#" onclick="return doclink('link-92', 'apilarEscena', 'link-92');">apilarEscena</a></tt><tt class="py-op">(</tt><tt id="link-93" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-93', 'fase', 'link-2');">fase</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"> </tt>
+<a name="Menu.mostrarPantallaInicial"></a><div id="Menu.mostrarPantallaInicial-def"><a name="L224"></a><tt class="py-lineno">224</tt> <a class="py-toggle" href="#" id="Menu.mostrarPantallaInicial-toggle" onclick="return toggle('Menu.mostrarPantallaInicial');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#mostrarPantallaInicial">mostrarPantallaInicial</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.mostrarPantallaInicial-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.mostrarPantallaInicial-expanded"><a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">pantallaActual</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line"> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">    <tt class="py-comment"># def mostrarPantallaConfiguracion(self):</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">    <tt class="py-comment">#    self.pantallaActual = ...</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line"> </tt>
+<a name="Menu.abrirOpciones"></a><div id="Menu.abrirOpciones-def"><a name="L230"></a><tt class="py-lineno">230</tt> <a class="py-toggle" href="#" id="Menu.abrirOpciones-toggle" onclick="return toggle('Menu.abrirOpciones');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.menu.Menu-class.html#abrirOpciones">abrirOpciones</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Menu.abrirOpciones-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Menu.abrirOpciones-expanded"><a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt id="link-94" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-94', 'fase', 'link-2');">fase</a></tt> <tt class="py-op">=</tt> <tt id="link-95" class="py-name" targets="Class source.menuOpciones.MenuOpciones=source.menuOpciones.MenuOpciones-class.html"><a title="source.menuOpciones.MenuOpciones" class="py-name" href="#" onclick="return doclink('link-95', 'MenuOpciones', 'link-95');">MenuOpciones</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-96" class="py-name"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-96', 'director', 'link-73');">director</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-97" class="py-name"><a title="source.director" class="py-name" href="#" onclick="return doclink('link-97', 'director', 'link-73');">director</a></tt><tt class="py-op">.</tt><tt id="link-98" class="py-name"><a title="source.director.Director.apilarEscena" class="py-name" href="#" onclick="return doclink('link-98', 'apilarEscena', 'link-92');">apilarEscena</a></tt><tt class="py-op">(</tt><tt id="link-99" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-99', 'fase', 'link-2');">fase</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr  3 16:22:12 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
