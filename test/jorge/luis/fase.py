@@ -354,7 +354,6 @@ class Fase(Escena):
     def colisionLinea(self,origen,destino,step,capa):
         dif=(destino[0]-origen[0],destino[1]-origen[1])
         distancia=dist(origen,destino)
-        if
         rectlist=self.listaRectangulosOpacos()
         pointlist=[]
         for i in range(0,int(distancia),step):
@@ -454,7 +453,12 @@ class Fase(Escena):
                             padre[nodo]=abrir
         return []
 
-
+#borrrar
+    def buscar_nodo_visitado2(self,nodo,visitados):
+        for visitado in visitados:
+            if dist(nodo.pos,visitado.pos)<2:
+                return visitado
+        return None
 
     def buscar_nodo_visitado(self,nodo,visitados):
         for visitado in visitados:
