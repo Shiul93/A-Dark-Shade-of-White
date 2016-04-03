@@ -226,7 +226,7 @@ class Luz(activable):
                   self.instanteAnimacion=self.tiempoCambio-1
                   self.estado=True
                   self.encendiendo=False
-          alfa=140-int(140*self.instanteAnimacion/self.tiempoCambio)
+          alfa=210-int(200*self.instanteAnimacion/self.tiempoCambio)
           self.image.set_alpha(alfa)
           #MiSprite.establecerPosicion(self,self.pos)
           MiSprite.update(self,tiempo)

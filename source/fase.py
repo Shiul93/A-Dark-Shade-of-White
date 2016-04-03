@@ -293,13 +293,11 @@ class Fase(Escena):
 
 
         #Luego las capas que tapan a los sprites
+        self.grupoSprites.draw(pantalla)
         self.grupoJugadores.draw(pantalla)
         self.grupoEnemigos.draw(pantalla)
-
-#        self.grupoOpacos.draw(pantalla)
-
         self.decorado.dibujar_post(pantalla)
-        self.grupoSprites.draw(pantalla)
+
 
         Debuger.dibujarTexto(pantalla)
         Debuger.dibujarLineas(pantalla,(self.scrollx,self.scrolly))
@@ -558,7 +556,7 @@ class Fase(Escena):
                 if not self.hay_persecucion():
                     action=True
                 else:
-                    if (random.randint(0,100)<75):
+                    if (random.randint(0,100)<95):
                         self.mostrarMensaje("Está atascado!!")
                     else:
                         action = True

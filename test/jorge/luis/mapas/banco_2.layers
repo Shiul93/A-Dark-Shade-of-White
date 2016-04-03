@@ -1,8 +1,5 @@
 # Numero layer, Nombre, Visible, colisionable, opacidad, nombrearchivo
-#0  suelo 1 0 255 0_b2_suelo.png 0
-#1  paredesobjetos 1 0 255 1_b2_paredesobjetos.png 1
 0  suelo 1 0 255 b2_pre.png 0
 1  paredesobjetos 1 0 255 b2_post.png 1
 2  colisiones 0 1 255 2_b2_colisiones.png 0
 3  opacidad 0 1 255 b2_vis.png 0
-4  oculto 0 0 255 3_b2_oculto.png 0

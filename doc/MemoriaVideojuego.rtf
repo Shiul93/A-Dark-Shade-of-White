@@ -1,0 +1,275 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16240\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Archivos:\
+	auxiliares.py: Funciones auxiliares para calcular \'e1ngulos y estancias\
+	debuger.py:Clase est\'e1tica, para mostrar en la pantalla texto y lineas para las pruebas\
+	director.py: Director, control el bucle de juego y cambia las escenas\
+	enemigo.py:Enemigo antiguo que hac\'eda todas las b\'fasquedas generando nodos y que se desecart\'f3 porque realentizaba el juego\
+	Enemigo2.py: Enemigo definitivo h\'edbrido que combina b\'fasqueda en un grado de waypoints pregenerado con b\'fasqueda local con nodos generados\
+	Escena.py:Interfaz de las escenas que interactuan con el director\
+	Eventos.py:Sistema de comprobaci\'f3n y disparo de eventos\
+	Fase.py: Escena principal del juego, se carga desde un archivo .json\
+	gestorRecursos.py:Clase est\'e1tica, carga los recursos  los guarda en memoria por si se vuelven a necesitar\
+	main.py: Ejecutable, carga la escena y inicia el director\
+	mapa.py: Escenario, con varias casa visibles y con capas de colisi\'f3n f\'edsica y visual\
+	menu.py: Menu del juego\
+	mysprite.py:Clase mysprite, dervada de pygame.sprite y base de todos los sprites del juego\
+	nodo.py: Nodos para la b\'fasqueda local\
+	objetos.py: Los objetos interactivos del juego (botones, luces, c\'e1maras, puertas\'85)\
+	Personajes.py: Personajes del juego y controlador de jugador humano\
+\
+Clases:\
+	MiSprite:\
+		Deriva de pygame.sprite\
+		Contiene m\'e9todos para establecer posici\'f3n , actualizar el scroll y update\
+		Update siempre ser\'e1 el m\'e9todo que llamamos en el update y que reciba el tiempo transcurrido para hacer c\'e1lculos din\'e1micos (movimiento, esperas\'85) , en este caso increment ala posici\'f3n seg\'fan la velocidad y el tiempo transcurrido\
+		\
+	CuadroTexto:\
+		Deriva de MiSprite\
+		Contiene m\'e9todos para establecer texto y dibujar (draw)\
+		Es un cuadro est\'e1tico en el que se reenderiza el texto deseado\
+\
+	Personaje:\
+		Deriva de MiSprite\
+		Representa todos los personajes del juego.\
+		Contiene m\'e9todos para: mover, actualizar postura, update\
+		Actualizar postura controla el cambio de frame de la animaci\'f3n\
+		update control el movimiento y comprueba las colisiones. mover cambia la direcci\'f3n y velocidad en que se est\'e1 moviendo\
+\
+	Jugador\
+		Deriva de Personaje\
+		Representa al personaje controlado por el jugador\
+		Sobreescribe el metodo mover para que se controle con el teclado\
+\
+	No_Jugador\
+		Deriva de Personaje\
+		Representa una interfaz par laos personajes controlados por la cpu\
+		define la funci\'f3n mover_cpu que es la que llamara la fase para actualizar su movimiento\
+\
+	Enemigo\
+		Deriva de No_Jugador\
+		Contiene: Estado(int),recorrido (lista de waypoints), ruta(lista de waypoints), rutalocal (lsta de nodos)\
+		, destino (waypoint), destinolocal (nodo), siguiente(waypoint), siguientelocal (nodo), tiempobusqueda, tiempopersecucion, tiempocalculoruta (floats), nodos (pares de enteros que representan las posiciones de los waypoints),grado (lista de listas de waypoints adyacentes formando un grafo de waypoints)\
+		Sobreescribe mover_cpu para que vaya siguiendo los waypoints y actualizando su estado\
+		Implementa: estaViendo (fase,pos,rango) que para una posici\'f3n objetivo comprueba si es visible para el personaje suponiendo un \'e1ngulo de vision (rango),comprobando si en \'e1ngulo del vector que apunta al objetivo est\'e1 dentro del rango y comprobando si ese vector colisiona con el mapa de opacidad\
+		alarma(fase,nodo) determina el comportamiento del enemigo cuando suena la alarma recibiendo un waypoint (que es el mas cercano a donde se activo la alarma), para que act\'fae seg\'fan su estado\
+		sobreescribe update para comprobar los cambios de estado producidos por paso de tiempo (tiempobusqueda, tiempopersecucion,\'85)\
+\
+	Accionable\
+		Deriva de MiSprite\
+		Contiene area (pygame.Rect)\
+		Representa a todos los objetos que pueden desencadenar eventos, tanto por que el personaje simplemente se encuentre en su area de activaci\'f3n como porque se encuentre en el area y ademas pulse acci\'f3n\
+		Implementa la funci\'f3n objetoEnArea(Rect_objeto) que comprueba si un rect\'e1ngulo se encuentra dentro del area de activaci\'f3n\
+\
+	Meta, Cuadro y Diamante (Derivadas de Accionable) son Clases auxiliares para simplificar la definici\'f3n de objetos. simplemente inicializan accionable con una imagen en particular, no implementan ninguna funcion ni variable\
+\
+	Acivable:	\
+		Deriva de accionable\
+		Contiene estado, tiempocambio\
+		Representa a todos los objetos que pueden cambiar de estado entre dos estados (Activao/desactivado), ademas si tienen una animaci\'f3n esta animar\'e1 el cambio de estado\
+		Interruptor es una clase auxiliar derivada de activable que la iniciativa con la imagen de un interruptor\
+\
+	Luz:\
+		Deriva de activable\
+		Sobreescribe init y update para que en lugar de mostrara una animaci\'f3n muestre un rect\'e1ngulo negro y le vaya cambiando la transparencia\
+\
+	Camara:\
+		Deriva de activable\
+		Contiene:direcci\'f3n,direcciongiro,rangogiro,rangovision\
+		Sobreescribe update para que la c\'e1mara gire su direcci\'f3n a medida que cambia su animaci\'f3n, y se pare si su estado cambia a desactivada\
+		Sobreescribe cambiarEstado para que el cambio sea instant\'e1neo\
+		implementa estaViendo similar a enemigo\
+\
+	Puerta:\
+		Deriva de activable\
+		Hace de interfaz para las dem\'e1s puertas aunque no es abstracta\
+		Sobreescribe cambiarEstado para que reproduzca el sonido de la puerta\
+\
+	Puerta_pequena, Puertavertical, Puerta_vertical_grande y Puerta_grande son clases auxiliares derivadas de puerta que facilitan la creaci\'f3n de objetos inicializando la puerta con una imagen concreta y valores iniciales\
+\
+	Evento:\
+		Representa un suceso del juego. Cada evento es un conjunto de 1 a n Causas y otro de 1 a n acciones. Implementa comprobar, que comprueba todas las causas y devuelve true si se cumplen todas, y lanzar que ejecuta todas las acciones. La idea es que fase comprueba cada evento y si se cumple lo lanza\
+	Contiene:listaCausas, listaAcciones\
+	\
+	Causa:\
+		Representa el desencadenante de un suceso. \
+		Cada causa esta asociada  a un objeto accionable\
+		Contiene:tipo,objeto\
+			tipo es el tipo de desencadenante. puede ser: Area (el personaje esta en el area reo objeto) ,acci\'f3n (El personaje esta en el area del objeto y pulsa acci\'f3n), o visto_camara (el personaje ha sido visto por la c\'e1mara objeto)\
+		Implementa: Comprobar (personaje,fase,action)\
+			Seg\'fan el tipo desencadenante, comprueba que el objeto asociado est\'e9 cumpliendo las condiciones para desencadenarlo\
+\
+	Acci\'f3n:\
+		Representa la acci\'f3n que se desencadena por un suceso\
+		La acci\'f3n puede estar asociada a un objeto activable			Contiene:tipo, objeto, mensaje,sonido\
+			El tipo puede ser: Cambiar (cambia el estado del objeto asociado)\
+			Mensaje (Muestra un mensaje de texto con mensaje)\
+			Sonido(reproduce el sonido sonido)\
+			Alarma(Activa la alarma )\
+			Fin(Terminas la fase y carga la siguiente)\
+			Pillado(Te han pillado y vuelves a empezar la fase)\
+		Implementa lanzar(fase) que seg\'fan el tipo de acci\'f3n realizar\'e1 sus efectos\
+\
+	Mapa:\
+		Representa el escenario del juego. Se carga desde un archivo layers, que contiene informaci\'f3n sobre las capas. Contiene las capas que se dibujan antes y despu\'e9s del personaje y las capas invisibles con los mapas de colisiones f\'edsica y visual.\
+	Impementa:\
+		Load_layers: Carga todas las im\'e1genes de las capas a traves del gestor de recursos\
+		Update(scroll): actualiza el scroll\
+		paint_all(pantalla) Dibuja todas las capas visibles\
+		dibujar_pre(pantalla):Dibuja las capas marcadas para dibujar antes del personaje\
+		dibujar_post(pantalla): Dibuja las capas marcadas para dibujar despu\'e9s del personaje\
+		colisionPunto(punto,layer): Comprueba en la capa determinada por layer si el color del punto contiene rojo (colisi\'f3n)\
+		colision(rect,layer): Comprueba en una capa si alg\'fan de las esquinas de rect tiene rojo en su color (rojo significa colisi\'f3n)\
+\
+	Nodo:\
+		Representa los nodos de la b\'fasqueda local del enemigo.\
+		Contiene su poci\'f3n, su padre, la distancia del camino hasta el y si est\'e1 pistado\
+		Contiene el metido actualizar para cambiar el padre y la distancia de un nodo existente\
+		Contiene un metido d clase mejor_nodo (frontera,dest) que calcula la heur\'edstica A* para elegir el mejor nodo en la b\'fasqueda\
+\
+	GestorRecursos\
+		Es una clase est\'e1tica\
+		Carga archivos desde el disco, los devuelve  a quien los solicit\'f3 y los almacena en memoria por si se le vuelven a pedir no cargarlos otra vez\
+		Implementa una funci\'f3n getPath que comprueba que sean correctos los paths este el programa compilado o no\
+		Implementa: CargarImagen (nombre,colorkey=None),CargarArchivoCoordnadas(nombre),CargarArchivoSonido(nombre),cargarMusica(nombre),CargarArchivoFaseJSON(nombre),cargarArchivoCapas(nombre)\
+		Todos comprueban si el archivo esta en memoria y lo devuelven, o si no  cargan el archivo , lo almacenan y lo devuelven\
+		\
+	Director\
+		Es el encargado de manejar el bucle del juego y los cambios de escena\
+		Contiene: pila (pila de escenas)\
+		Implementa:\
+			Bucle(escena): Es el bucle de juego, por cada repetici\'f3n de l bucle llama a escena 3 veces para: comprobar eventos, actualizar seg\'fan el tiempo transcurrido y dibujar, luego hace flip al display\
+			Ejecutar: Tambi\'e9n es un bucle, comprueba si quedan escenas en la pila y si es as\'ed inicia el bucle de la ultima\
+			salirEscena: Sale de la escena y la quita d ela pila\
+			salirPrograma: vacia la pila y sale de la escena\
+			cambiarEscena(escena): Sale de la escena, la quita d ella pila y mete la nueva\
+			apilarEscena(escena):sale de la escena y coloca la escena nueva por encima (pasa a la escena nueva pero deja l antigua debajo)\
+\
+\
+	Escena: Es la interfaz de las escenas que controlar\'e1 el director.\
+		Define: update (actualizar seg\'fan el tiempo transcurrido) , eventos (comprobaci\'f3n de eventos y teclas), dibujar (dibujar)\
+		\
+	Menu: Es el menu del juego. Contiene el bot\'f3n de empezar y el de salir\
+\
+	Fase:\
+		Es la escena principal del juego.\
+		Contiene:\
+			Diccionarios con:\
+				Objetos(todos los objetos (puertas,c\'e1maras,luces,interruptores,metas,cuadro,diamante)\
+				Causas, consecuencias y eventos\
+			-Lista de waypoints (pares de enteros con las coordenadas)\
+			-Grafo de los waypoints (lista de waypoints adyacentes a cada uno)\
+			-Jugador\
+			-Grupos de sprites agrupados seg\'fan sus cualidades:\
+				-GrupoSprites contiene todos los sprites que se deben dibujar\
+				-GrupoSpritesDinamcos contienen todos los sprites que se deben actualizar con el tiempo (update)\
+				-GrupoColisionables contiene todos los sprites con los que se puede comisionar f\'edsicamente (puertas)\
+				-GrupoJugadores contiene al jugador\
+				-GrupoEnemigos coniene a los enemigos\
+				-GrupoOpacos contiene a los sprites que comisionan con las lineas de detecci\'f3n visual (puertas, luces)\
+				-decorado (Mapa)\
+			Este conjunto de objetos, eventos, enemigos, waypoints y mapa constituye cada fase y se carga todo desde un archivo .json que es un diccionario cuyas entradas corresponden a la informaci\'f3n para cada tipo de elementos; si no hubiera elementos habr\'eda una lista vac\'eda.\
+\
+		Funciones de la fase:\
+			ActualizarScroll(jugador):Comprueba la posici\'f3n del personaje y la posici\'f3n del scroll, si el personaje se sale del borde y puede mover el scroll lo mueve y si el scroll llega al borde d ella fase se queda ahi\
+			update(tiempo):Comprueba si esta pausado y si no llama a mover_cpu de los enemigos, a update para todos los psirtes din\'e1micos, enemigos y jugador, comprueba si colisiones con el enemigo y llama a ActualizarScroll\
+			dibujar(pantalla):dibuja la parte previa del decorado, luego laos sprites y luego pa parte posterior, y si hubiera un mensaje dibuja tambi\'e9n el cuadro de texto\
+\
+	\
+			dispararAlarma():llama a alarma(waypoint) para todos los enemigos con waypoint el waypoint mas cercano al jugador\
+			colision(rect):Comprueba que las cuatro esquinas de rect no colisiones, para eso comprueba colisi\'f3n con la capa de colisiones f\'edsicas del mapa y tambi\'e9n con todos los sprites del grupo SpritesColisionables\
+			listaRectangulosColisonables()es una funci\'f3n auxiliar para colisi\'f3n que le pasa la lista d ellos rect\'e1ngulos de los sprites colisionables\
+			\
+			colisionLinea(origen,destino,step,capa)\
+				Comprueba si se produce colisi\'f3n en una linea entre los puntos origen y destino , para hacerlo calcula puntos intermedios de la linea con distancia entre ellos step y lo comprueba en la lista de sprites opacos y en la capa pasada como par\'e1metro.Esta funci\'f3n es muy importante porque determina cuando los enemigos y las camaras te ven, la usa la funci\'f3n estaViendo\
+\
+			nodo_mas_cercano(pos,nodos)\
+				devuelve el waypoint mas cercano a la posici\'f3n\
+\
+			calcular_ruta_Anchura(origen,destino)\
+				calcula una ruta (lista de n\'fameros de waypoints) entre el waypoint origen y el waypoint destino. Es un algoritmo de b\'fasqueda en anchura.Comprueba si existe ruta entre el waypoint origenen y el destino y si existe la devuelve y si no devuelve un alista vac\'eda. Tiene en cuenta las puertas cerradas. Lo usa el enemigo para acudir a la alarma y para volver a su patrulla\
+\
+			calcular_ruta_local(origen,dest)\
+				calcula una ruta local entre dos puntos origen y dest (coordenadas). Utiliza la clase nodo y la funci\'f3n calcular_nodos_adyacentes para generar nodos que representan puntos en el mapa. Es un algoritmo de b\'fasqueda A*. El enemigo usa esta b\'fasqueda para perseguir al jugador pa lo largo del mapa\
+\
+buscar_nodo_visitado(nodo,visitados)\
+				busca un nodo en la lista de los visitados y en caso de encontrarlo devuelve el nodo antiguo para actualizarlo (funci\'f3n auxiliar de calcular_ruta_local)\
+\
+\
+			calcular_nodos_adyacentes(modo,step):\
+				funci\'f3n auxiliar de calcular_ruta_local que calcula los nodos adyacentes a un nodo. para eso utiliza la funci\'f3n colisionLinea para comprobar que no haya obst\'e1culos en la ruta del rect\'e1ngulo de colisi\'f3n del enemigo entre el nodo origen y el nodo nuevo, y si comisiona no genera el nodo, intenta generar 4 nodos uno encima uno debajo uno a la izquierda y uno a la derecha. La distancia entre nodos la define la constante SEARCH_STEP mientras que es step de las lineas que comprueban la colisi\'f3n la define RAY_STEP. un SEARCH_STEP demasiado grande no pasa por puertas o lugares estrechos y uno demasiado peque\'f1o genera demasiados nodos, mientras que un RAY_STEP demasiado grande atravesar\'eda las paredes (el grosor m\'ednimo de las paredes es 14 pixeles)	\
+	\
+			buscar_nodo_mas_cercano(origen,nodos):\
+				Esta funci\'f3n es similar a calcular_ruta_local solo que comprueba la llegada a su destino con la funci\'f3n comprobar_llegada_nodos que comprueba si una posici\'f3n a la que s sha llegado esta muy cerca de cada uno de los waypoints y si coincide con uno devuelve cual es; esto permite buscar la ruta sin saber el destino, el primer waypoint que encuentre sera el elegido. devuelve el numero del waypoint y la ruta.\
+			\
+			comprobar_llegada_nodos(pos,nodos)\
+				Funcion auxiliar de bsucar_nodo_mas_cercano que compara una posici\'f3nn alcanzada con todos los wayponts y si esta muy cerca de alguno devuelve el numero del waypoint\
+\
+\
+			eventos(lista_eventos):\
+				Comprueba los eventos:\
+					-Comprueba las teclas\
+					-mueve al jugador\
+					-Comprueba todos los eventos de la fase\
+\
+			mostrarMensaje(texto)\
+				-Muestra un cuadro de texto y pausa hasta que pulses intro\
+\
+			hay_persecucion()\
+				-Comprueba si alguno de los enemigos esta persiguiendo y si es as\'ed te pones nervioso y se te atascan las puertas\
+\
+\
+			La AI del enemigo:\
+		\
+				La AI del enemigo es bastante compleja porque combina dos sistemas distintos de calculo de rutas y tiene muchos estados distintos y transiciones. Como utilizando waypoints el enemigo no podia perseguirte por la fase porque chocaba , y utilizando nodos el juego se quedaba parado 3 segundos calculando rutas, hicimos un sistema h\'edbrido que utiliza los waypoints para las patrullas, acudir a las alarmas y volver a las patrullas, y utiliza los nodos calculados en el momento para perseguir al jugador y para volver a los waypoints\
+		El enemigo tiene 6 estados:\
+			1-Patrullando: Cada enemigo se iniciativa con un recorrido que es una lista de waypoints.Mientras este en estado patrullando recorre esa lista de waypoints y cuando la termina vuelve a empezar por el primero.\
+			2-Deambulando: El enemigo camina aleatoriamente por los waypoints y al llegar a uno elige aleatoriamente entre los adyacentes\
+			3-Llendo a la alarma: El enemigo calcula una ruta desde su proximo waypoint al waypoint de la alarma y sigue esa ruta\
+			4-Volviendo a la patrulla: El enemigo calcula una ruta desde su waypoint hasta el comienzo de su recorrido y sigue esa ruta\
+			5-Persiguiendo: El enemigo se sale de los waypoints y calcula una ruta local para perseguirte por el mapa y te persigue comprobando la ruta cada TIEMPO_CALCULO_RUTA\
+			6-Volviendo a un nodo: El enemigo calcula el waypoint accesible mas cercano y la ruta local a el por el mapa y sigue esa ruta\
+\
+		El enemigo comienza en estado Patrullando, y permanecer\'e1 en el hasta que suene la alarma o te vea.\
+		Las transiciones ser\'e1n por tanto:\
+			SIEMPRE\
+				-Si te ve pasa a 5-Persiguiendo y calcula la ruta local hacia ti (si ya te esta persiguiendo simplemente recalcula la ruta)\
+				-Si colisiona durante TIEMPO_COLISION pasa a 6-volviendo al nodo y busca el camino por el mapa al waypoint mas cercano\
+			1-PAtrullando\
+				-Si suena la alarma pasa a 3-llendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
+			2-Deambulando\
+				-Si pasa TIEMPO_BUSCAR pasa a 4-Volviendo a la patrulla y calcula a ruta al principio de su recorrido\
+					-si no puede volver sigue deambulando\
+				-Si suena la alarma pasa a 3-llendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
+			3-Llendo a la alarma	\
+				-Si suena la alarma en otro sitio recalcula la ruta\
+				-Si llega a su destino pasa a 2-Deambulando\
+			4-Volviendo a patrulla\
+				-Si suena la alarma pasa a 3-llendo a la alarma y calcula la ruta waypoint mas cercano a la alarma\
+			5-Persiguiendo\
+				-Si te pierde de vista TIEMPO_PERSEGUIR pasa a 6-Volviendo al nodo\
+			6-Volviendo al nodo\
+				\
+			Si suena la alarma y el guardo ano la puede atender(porque esta en 5-Persigiendo o 6-Volviendo al nodo) almacenara el waypoint de la alarma y cuando vuelve a estar en  un waypoint acudir\'e1 a ella\
+\
+			Si el enemigo esta en 3-llendo a la alarma  5-persiguiendo ira corriendo y si no ira andando\
+				\
+\
+\
+	Patrones de dise\'f1o:\
+		-Factoria (gestod e recursos)\
+		-Builder (objects (puerta grande, diamante,\'85.)\
+		\
+			\
+				\
+\
+\
+					\
+		\
+	\
+\
+}

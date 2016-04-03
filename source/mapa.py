@@ -86,10 +86,7 @@ class Mapa:
                 pantalla.blit(self.images[layer[1]],self.rect,self.rectSubimagen)
 
 
-        #pygame.display.flip()
-        Debuger.anadirObjeto("rectsubimage",self.rectSubimagen)
-        Debuger.anadirObjeto("deco rect",self.rect)
-
+       
     #Comprueba colision en una posicion. se le pasa el id de la capa de colision y devuelve 0 si no hay nada y 1 si hay algo
     #En principiio para usar solo con la capa de colisiones pero se podria usar con cualquiera
     def colisionPunto(self,punto,layer):
