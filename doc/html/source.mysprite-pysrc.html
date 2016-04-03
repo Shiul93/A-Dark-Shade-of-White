@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>source.mysprite</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="source-module.html">Package&nbsp;source</a> ::
+        Module&nbsp;mysprite
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="source.mysprite-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="source.mysprite-module.html">Module source.mysprite</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygame</tt><tt class="py-op">,</tt> <tt class="py-name">sys</tt><tt class="py-op">,</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># Clase MiSprite</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># Clase base de la que derivaran las demas clases de sprite</tt> </tt>
+<a name="MiSprite"></a><div id="MiSprite-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="MiSprite-toggle" onclick="return toggle('MiSprite');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.mysprite.MiSprite-class.html">MiSprite</a><tt class="py-op">(</tt><tt class="py-base-class">pygame</tt><tt class="py-op">.</tt><tt class="py-base-class">sprite</tt><tt class="py-op">.</tt><tt class="py-base-class">Sprite</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MiSprite-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="MiSprite-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-docstring">"Los Sprites que tendra este juego"</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="MiSprite.__init__"></a><div id="MiSprite.__init__-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="MiSprite.__init__-toggle" onclick="return toggle('MiSprite.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.mysprite.MiSprite-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MiSprite.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MiSprite.__init__-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">sprite</tt><tt class="py-op">.</tt><tt class="py-name">Sprite</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method source.Enemigo2.Enemigo2.__init__()=source.Enemigo2.Enemigo2-class.html#__init__,Method source.Eventos.Accion.__init__()=source.Eventos.Accion-class.html#__init__,Method source.Eventos.Causa.__init__()=source.Eventos.Causa-class.html#__init__,Method source.Eventos.Evento.__init__()=source.Eventos.Evento-class.html#__init__,Method source.director.Director.__init__()=source.director.Director-class.html#__init__,Method source.enemigo.Enemigo.__init__()=source.enemigo.Enemigo-class.html#__init__,Method source.escena.Escena.__init__()=source.escena.Escena-class.html#__init__,Method source.fase.Fase.__init__()=source.fase.Fase-class.html#__init__,Method source.mapa.Mapa.__init__()=source.mapa.Mapa-class.html#__init__,Method source.menu.Boton.__init__()=source.menu.Boton-class.html#__init__,Method source.menu.BotonCP.__init__()=source.menu.BotonCP-class.html#__init__,Method source.menu.BotonNP.__init__()=source.menu.BotonNP-class.html#__init__,Method source.menu.BotonOpciones.__init__()=source.menu.BotonOpciones-class.html#__init__,Method source.menu.BotonSalir.__init__()=source.menu.BotonSalir-class.html#__init__,Method source.menu.ElementoGUI.__init__()=source.menu.ElementoGUI-class.html#__init__,Method source.menu.Menu.__init__()=source.menu.Menu-class.html#__init__,Method source.menu.PantallaGUI.__init__()=source.menu.PantallaGUI-class.html#__init__,Method source.menu.PantallaInicialGUI.__init__()=source.menu.PantallaInicialGUI-class.html#__init__,Method source.menu.TextoCP.__init__()=source.menu.TextoCP-class.html#__init__,Method source.menu.TextoGUI.__init__()=source.menu.TextoGUI-class.html#__init__,Method source.menu.TextoNP.__init__()=source.menu.TextoNP-class.html#__init__,Method source.menu.TextoOpciones.__init__()=source.menu.TextoOpciones-class.html#__init__,Method source.menu.TextoSalir.__init__()=source.menu.TextoSalir-class.html#__init__,Method source.menuOpciones.Boton.__init__()=source.menuOpciones.Boton-class.html#__init__,Method source.menuOpciones.BotonVolver.__init__()=source.menuOpciones.BotonVolver-class.html#__init__,Method source.menuOpciones.ElementoGUI.__init__()=source.menuOpciones.ElementoGUI-class.html#__init__,Method source.menuOpciones.MenuOpciones.__init__()=source.menuOpciones.MenuOpciones-class.html#__init__,Method source.menuOpciones.PantallaGUI.__init__()=source.menuOpciones.PantallaGUI-class.html#__init__,Method source.menuOpciones.PantallaInicialGUI.__init__()=source.menuOpciones.PantallaInicialGUI-class.html#__init__,Method source.menuOpciones.TextoGUI.__init__()=source.menuOpciones.TextoGUI-class.html#__init__,Method source.menuOpciones.TextoVolver.__init__()=source.menuOpciones.TextoVolver-class.html#__init__,Method source.menuPartidas.Boton.__init__()=source.menuPartidas.Boton-class.html#__init__,Method source.menuPartidas.BotonVolver.__init__()=source.menuPartidas.BotonVolver-class.html#__init__,Method source.menuPartidas.ElementoGUI.__init__()=source.menuPartidas.ElementoGUI-class.html#__init__,Method source.menuPartidas.Menu.__init__()=source.menuPartidas.Menu-class.html#__init__,Method source.menuPartidas.PantallaGUI.__init__()=source.menuPartidas.PantallaGUI-class.html#__init__,Method source.menuPartidas.PantallaInicialGUI.__init__()=source.menuPartidas.PantallaInicialGUI-class.html#__init__,Method source.menuPartidas.TextoGUI.__init__()=source.menuPartidas.TextoGUI-class.html#__init__,Method source.menuPartidas.TextoVolver.__init__()=source.menuPartidas.TextoVolver-class.html#__init__,Method source.menuantiguo.Boton.__init__()=source.menuantiguo.Boton-class.html#__init__,Method source.menuantiguo.BotonJugar.__init__()=source.menuantiguo.BotonJugar-class.html#__init__,Method source.menuantiguo.BotonSalir.__init__()=source.menuantiguo.BotonSalir-class.html#__init__,Method source.menuantiguo.ElementoGUI.__init__()=source.menuantiguo.ElementoGUI-class.html#__init__,Method source.menuantiguo.Menu.__init__()=source.menuantiguo.Menu-class.html#__init__,Method source.menuantiguo.PantallaGUI.__init__()=source.menuantiguo.PantallaGUI-class.html#__init__,Method source.menuantiguo.PantallaInicialGUI.__init__()=source.menuantiguo.PantallaInicialGUI-class.html#__init__,Method source.menuantiguo.TextoGUI.__init__()=source.menuantiguo.TextoGUI-class.html#__init__,Method source.menuantiguo.TextoJugar.__init__()=source.menuantiguo.TextoJugar-class.html#__init__,Method source.menuantiguo.TextoSalir.__init__()=source.menuantiguo.TextoSalir-class.html#__init__,Method source.mysprite.MiSprite.__init__()=source.mysprite.MiSprite-class.html#__init__,Method source.nodo.Nodo.__init__()=source.nodo.Nodo-class.html#__init__,Method source.objetos.Camara.__init__()=source.objetos.Camara-class.html#__init__,Method source.objetos.Cuadro.__init__()=source.objetos.Cuadro-class.html#__init__,Method source.objetos.CuadroTexto.__init__()=source.objetos.CuadroTexto-class.html#__init__,Method source.objetos.Diamante.__init__()=source.objetos.Diamante-class.html#__init__,Method source.objetos.Interruptor.__init__()=source.objetos.Interruptor-class.html#__init__,Method source.objetos.Luz.__init__()=source.objetos.Luz-class.html#__init__,Method source.objetos.LuzVieja.__init__()=source.objetos.LuzVieja-class.html#__init__,Method source.objetos.Meta.__init__()=source.objetos.Meta-class.html#__init__,Method source.objetos.Puerta_grande.__init__()=source.objetos.Puerta_grande-class.html#__init__,Method source.objetos.Puerta_pequena.__init__()=source.objetos.Puerta_pequena-class.html#__init__,Method source.objetos.Puerta_vertical.__init__()=source.objetos.Puerta_vertical-class.html#__init__,Method source.objetos.Puerta_vertical_grande.__init__()=source.objetos.Puerta_vertical_grande-class.html#__init__,Method source.objetos.accionable.__init__()=source.objetos.accionable-class.html#__init__,Method source.objetos.activable.__init__()=source.objetos.activable-class.html#__init__,Method source.objetos.puerta.__init__()=source.objetos.puerta-class.html#__init__,Method source.personajes.Jugador.__init__()=source.personajes.Jugador-class.html#__init__,Method source.personajes.NoJugador.__init__()=source.personajes.NoJugador-class.html#__init__,Method source.personajes.Personaje.__init__()=source.personajes.Personaje-class.html#__init__"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-0', '__init__', 'link-0');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidad</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">scroll</tt>   <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="MiSprite.establecerPosicion"></a><div id="MiSprite.establecerPosicion-def"><a name="L18"></a><tt class="py-lineno">18</tt> <a class="py-toggle" href="#" id="MiSprite.establecerPosicion-toggle" onclick="return toggle('MiSprite.establecerPosicion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.mysprite.MiSprite-class.html#establecerPosicion">establecerPosicion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">posicion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MiSprite.establecerPosicion-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MiSprite.establecerPosicion-expanded"><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-comment">#Establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt> <tt class="py-op">=</tt> <tt class="py-name">posicion</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">midbottom</tt> <tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">scroll</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">scroll</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="MiSprite.establecerPosicionPantalla"></a><div id="MiSprite.establecerPosicionPantalla-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="MiSprite.establecerPosicionPantalla-toggle" onclick="return toggle('MiSprite.establecerPosicionPantalla');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.mysprite.MiSprite-class.html#establecerPosicionPantalla">establecerPosicionPantalla</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">scrollx</tt><tt class="py-op">,</tt><tt class="py-param">scrolly</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MiSprite.establecerPosicionPantalla-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MiSprite.establecerPosicionPantalla-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-comment">#Actualiza el scroll y establece la posicion y coloca el sprite en su posicion en pantalla restandole el scroll</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">scroll</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">scrollx</tt><tt class="py-op">,</tt><tt class="py-name">scrolly</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">posx</tt><tt class="py-op">,</tt> <tt class="py-name">posy</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">midbottom</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">posx</tt> <tt class="py-op">-</tt> <tt class="py-name">scrollx</tt><tt class="py-op">,</tt><tt class="py-name">posy</tt><tt class="py-op">-</tt><tt class="py-name">scrolly</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="MiSprite.incrementarPosicion"></a><div id="MiSprite.incrementarPosicion-def"><a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="MiSprite.incrementarPosicion-toggle" onclick="return toggle('MiSprite.incrementarPosicion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.mysprite.MiSprite-class.html#incrementarPosicion">incrementarPosicion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">incremento</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MiSprite.incrementarPosicion-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MiSprite.incrementarPosicion-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">posx</tt><tt class="py-op">,</tt> <tt class="py-name">posy</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-name">incrementox</tt><tt class="py-op">,</tt> <tt class="py-name">incrementoy</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt class="py-name">incremento</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method source.menu.ElementoGUI.establecerPosicion()=source.menu.ElementoGUI-class.html#establecerPosicion,Method source.menuOpciones.ElementoGUI.establecerPosicion()=source.menuOpciones.ElementoGUI-class.html#establecerPosicion,Method source.menuPartidas.ElementoGUI.establecerPosicion()=source.menuPartidas.ElementoGUI-class.html#establecerPosicion,Method source.menuantiguo.ElementoGUI.establecerPosicion()=source.menuantiguo.ElementoGUI-class.html#establecerPosicion,Method source.mysprite.MiSprite.establecerPosicion()=source.mysprite.MiSprite-class.html#establecerPosicion"><a title="source.menu.ElementoGUI.establecerPosicion
+source.menuOpciones.ElementoGUI.establecerPosicion
+source.menuPartidas.ElementoGUI.establecerPosicion
+source.menuantiguo.ElementoGUI.establecerPosicion
+source.mysprite.MiSprite.establecerPosicion" class="py-name" href="#" onclick="return doclink('link-1', 'establecerPosicion', 'link-1');">establecerPosicion</a></tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">posx</tt><tt class="py-op">+</tt><tt class="py-name">incrementox</tt><tt class="py-op">,</tt> <tt class="py-name">posy</tt><tt class="py-op">+</tt><tt class="py-name">incrementoy</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="MiSprite.update"></a><div id="MiSprite.update-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="MiSprite.update-toggle" onclick="return toggle('MiSprite.update');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.mysprite.MiSprite-class.html#update">update</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">tiempo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MiSprite.update-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="MiSprite.update-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-comment">#Actualiza la posicion segun la velocidad y el tiempo</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">incrementox</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidad</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">*</tt><tt class="py-name">tiempo</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-name">incrementoy</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidad</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">*</tt><tt class="py-name">tiempo</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method source.mysprite.MiSprite.incrementarPosicion()=source.mysprite.MiSprite-class.html#incrementarPosicion"><a title="source.mysprite.MiSprite.incrementarPosicion" class="py-name" href="#" onclick="return doclink('link-2', 'incrementarPosicion', 'link-2');">incrementarPosicion</a></tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">incrementox</tt><tt class="py-op">,</tt> <tt class="py-name">incrementoy</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr  3 16:22:12 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

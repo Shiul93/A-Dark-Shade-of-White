@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>source.personajes</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="source-module.html">Package&nbsp;source</a> ::
+        Module&nbsp;personajes
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="source.personajes-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="source.personajes-module.html">Module source.personajes</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygame</tt><tt class="py-op">,</tt> <tt class="py-name">sys</tt><tt class="py-op">,</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">locals</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module source.escena=source.escena-module.html"><a title="source.escena" class="py-name" href="#" onclick="return doclink('link-0', 'escena', 'link-0');">escena</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module source.gestorRecursos=source.gestorRecursos-module.html"><a title="source.gestorRecursos" class="py-name" href="#" onclick="return doclink('link-1', 'gestorRecursos', 'link-1');">gestorRecursos</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module source.debuger=source.debuger-module.html"><a title="source.debuger" class="py-name" href="#" onclick="return doclink('link-2', 'debuger', 'link-2');">debuger</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module source.mysprite=source.mysprite-module.html"><a title="source.mysprite" class="py-name" href="#" onclick="return doclink('link-3', 'mysprite', 'link-3');">mysprite</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Function source.enemigo.random()=source.enemigo-module.html#random"><a title="source.enemigo.random" class="py-name" href="#" onclick="return doclink('link-4', 'random', 'link-4');">random</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">math</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name" targets="Module source.auxiliares=source.auxiliares-module.html"><a title="source.auxiliares" class="py-name" href="#" onclick="return doclink('link-5', 'auxiliares', 'link-5');">auxiliares</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># Constantes</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable source.Enemigo2.OFFSET=source.Enemigo2-module.html#OFFSET,Variable source.Eventos.OFFSET=source.Eventos-module.html#OFFSET,Variable source.enemigo.OFFSET=source.enemigo-module.html#OFFSET,Variable source.fase.OFFSET=source.fase-module.html#OFFSET,Variable source.main.OFFSET=source.main-module.html#OFFSET,Variable source.mapa.OFFSET=source.mapa-module.html#OFFSET,Variable source.menu.OFFSET=source.menu-module.html#OFFSET,Variable source.menuOpciones.OFFSET=source.menuOpciones-module.html#OFFSET,Variable source.menuPartidas.OFFSET=source.menuPartidas-module.html#OFFSET,Variable source.menuantiguo.OFFSET=source.menuantiguo-module.html#OFFSET,Variable source.objetos.OFFSET=source.objetos-module.html#OFFSET,Variable source.personajes.OFFSET=source.personajes-module.html#OFFSET"><a title="source.Enemigo2.OFFSET
+source.Eventos.OFFSET
+source.enemigo.OFFSET
+source.fase.OFFSET
+source.main.OFFSET
+source.mapa.OFFSET
+source.menu.OFFSET
+source.menuOpciones.OFFSET
+source.menuPartidas.OFFSET
+source.menuantiguo.OFFSET
+source.objetos.OFFSET
+source.personajes.OFFSET" class="py-name" href="#" onclick="return doclink('link-6', 'OFFSET', 'link-6');">OFFSET</a></tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-number">16</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">24</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable source.Enemigo2.PI=source.Enemigo2-module.html#PI,Variable source.Eventos.PI=source.Eventos-module.html#PI,Variable source.auxiliares.PI=source.auxiliares-module.html#PI,Variable source.enemigo.PI=source.enemigo-module.html#PI,Variable source.fase.PI=source.fase-module.html#PI,Variable source.main.PI=source.main-module.html#PI,Variable source.mapa.PI=source.mapa-module.html#PI,Variable source.menu.PI=source.menu-module.html#PI,Variable source.menuOpciones.PI=source.menuOpciones-module.html#PI,Variable source.menuPartidas.PI=source.menuPartidas-module.html#PI,Variable source.menuantiguo.PI=source.menuantiguo-module.html#PI,Variable source.nodo.PI=source.nodo-module.html#PI,Variable source.objetos.PI=source.objetos-module.html#PI,Variable source.personajes.PI=source.personajes-module.html#PI"><a title="source.Enemigo2.PI
+source.Eventos.PI
+source.auxiliares.PI
+source.enemigo.PI
+source.fase.PI
+source.main.PI
+source.mapa.PI
+source.menu.PI
+source.menuOpciones.PI
+source.menuPartidas.PI
+source.menuantiguo.PI
+source.nodo.PI
+source.objetos.PI
+source.personajes.PI" class="py-name" href="#" onclick="return doclink('link-7', 'PI', 'link-7');">PI</a></tt><tt class="py-op">=</tt><tt class="py-name">math</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Variable source.Enemigo2.pi=source.Enemigo2-module.html#pi,Variable source.Eventos.pi=source.Eventos-module.html#pi,Variable source.debuger.pi=source.debuger-module.html#pi,Variable source.enemigo.pi=source.enemigo-module.html#pi,Variable source.fase.pi=source.fase-module.html#pi,Variable source.main.pi=source.main-module.html#pi,Variable source.mapa.pi=source.mapa-module.html#pi,Variable source.menu.pi=source.menu-module.html#pi,Variable source.menuOpciones.pi=source.menuOpciones-module.html#pi,Variable source.menuPartidas.pi=source.menuPartidas-module.html#pi,Variable source.menuantiguo.pi=source.menuantiguo-module.html#pi,Variable source.objetos.pi=source.objetos-module.html#pi,Variable source.personajes.pi=source.personajes-module.html#pi"><a title="source.Enemigo2.pi
+source.Eventos.pi
+source.debuger.pi
+source.enemigo.pi
+source.fase.pi
+source.main.pi
+source.mapa.pi
+source.menu.pi
+source.menuOpciones.pi
+source.menuPartidas.pi
+source.menuantiguo.pi
+source.objetos.pi
+source.personajes.pi" class="py-name" href="#" onclick="return doclink('link-8', 'pi', 'link-8');">pi</a></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment">#Estados de la IA</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable source.Enemigo2.QUIETO=source.Enemigo2-module.html#QUIETO,Variable source.Eventos.QUIETO=source.Eventos-module.html#QUIETO,Variable source.enemigo.QUIETO=source.enemigo-module.html#QUIETO,Variable source.fase.QUIETO=source.fase-module.html#QUIETO,Variable source.main.QUIETO=source.main-module.html#QUIETO,Variable source.mapa.QUIETO=source.mapa-module.html#QUIETO,Variable source.menu.QUIETO=source.menu-module.html#QUIETO,Variable source.menuOpciones.QUIETO=source.menuOpciones-module.html#QUIETO,Variable source.menuPartidas.QUIETO=source.menuPartidas-module.html#QUIETO,Variable source.menuantiguo.QUIETO=source.menuantiguo-module.html#QUIETO,Variable source.objetos.QUIETO=source.objetos-module.html#QUIETO,Variable source.personajes.QUIETO=source.personajes-module.html#QUIETO"><a title="source.Enemigo2.QUIETO
+source.Eventos.QUIETO
+source.enemigo.QUIETO
+source.fase.QUIETO
+source.main.QUIETO
+source.mapa.QUIETO
+source.menu.QUIETO
+source.menuOpciones.QUIETO
+source.menuPartidas.QUIETO
+source.menuantiguo.QUIETO
+source.objetos.QUIETO
+source.personajes.QUIETO" class="py-name" href="#" onclick="return doclink('link-9', 'QUIETO', 'link-9');">QUIETO</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable source.Enemigo2.PATRULLANDO=source.Enemigo2-module.html#PATRULLANDO,Variable source.Eventos.PATRULLANDO=source.Eventos-module.html#PATRULLANDO,Variable source.enemigo.PATRULLANDO=source.enemigo-module.html#PATRULLANDO,Variable source.fase.PATRULLANDO=source.fase-module.html#PATRULLANDO,Variable source.main.PATRULLANDO=source.main-module.html#PATRULLANDO,Variable source.mapa.PATRULLANDO=source.mapa-module.html#PATRULLANDO,Variable source.menu.PATRULLANDO=source.menu-module.html#PATRULLANDO,Variable source.menuOpciones.PATRULLANDO=source.menuOpciones-module.html#PATRULLANDO,Variable source.menuPartidas.PATRULLANDO=source.menuPartidas-module.html#PATRULLANDO,Variable source.menuantiguo.PATRULLANDO=source.menuantiguo-module.html#PATRULLANDO,Variable source.objetos.PATRULLANDO=source.objetos-module.html#PATRULLANDO,Variable source.personajes.PATRULLANDO=source.personajes-module.html#PATRULLANDO"><a title="source.Enemigo2.PATRULLANDO
+source.Eventos.PATRULLANDO
+source.enemigo.PATRULLANDO
+source.fase.PATRULLANDO
+source.main.PATRULLANDO
+source.mapa.PATRULLANDO
+source.menu.PATRULLANDO
+source.menuOpciones.PATRULLANDO
+source.menuPartidas.PATRULLANDO
+source.menuantiguo.PATRULLANDO
+source.objetos.PATRULLANDO
+source.personajes.PATRULLANDO" class="py-name" href="#" onclick="return doclink('link-10', 'PATRULLANDO', 'link-10');">PATRULLANDO</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable source.Enemigo2.DEAMBULANDO=source.Enemigo2-module.html#DEAMBULANDO,Variable source.Eventos.DEAMBULANDO=source.Eventos-module.html#DEAMBULANDO,Variable source.enemigo.DEAMBULANDO=source.enemigo-module.html#DEAMBULANDO,Variable source.fase.DEAMBULANDO=source.fase-module.html#DEAMBULANDO,Variable source.main.DEAMBULANDO=source.main-module.html#DEAMBULANDO,Variable source.mapa.DEAMBULANDO=source.mapa-module.html#DEAMBULANDO,Variable source.menu.DEAMBULANDO=source.menu-module.html#DEAMBULANDO,Variable source.menuOpciones.DEAMBULANDO=source.menuOpciones-module.html#DEAMBULANDO,Variable source.menuPartidas.DEAMBULANDO=source.menuPartidas-module.html#DEAMBULANDO,Variable source.menuantiguo.DEAMBULANDO=source.menuantiguo-module.html#DEAMBULANDO,Variable source.objetos.DEAMBULANDO=source.objetos-module.html#DEAMBULANDO,Variable source.personajes.DEAMBULANDO=source.personajes-module.html#DEAMBULANDO"><a title="source.Enemigo2.DEAMBULANDO
+source.Eventos.DEAMBULANDO
+source.enemigo.DEAMBULANDO
+source.fase.DEAMBULANDO
+source.main.DEAMBULANDO
+source.mapa.DEAMBULANDO
+source.menu.DEAMBULANDO
+source.menuOpciones.DEAMBULANDO
+source.menuPartidas.DEAMBULANDO
+source.menuantiguo.DEAMBULANDO
+source.objetos.DEAMBULANDO
+source.personajes.DEAMBULANDO" class="py-name" href="#" onclick="return doclink('link-11', 'DEAMBULANDO', 'link-11');">DEAMBULANDO</a></tt><tt class="py-op">=</tt><tt class="py-number">2</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable source.Enemigo2.LLENDO_A_ALARMA=source.Enemigo2-module.html#LLENDO_A_ALARMA,Variable source.Eventos.LLENDO_A_ALARMA=source.Eventos-module.html#LLENDO_A_ALARMA,Variable source.enemigo.LLENDO_A_ALARMA=source.enemigo-module.html#LLENDO_A_ALARMA,Variable source.fase.LLENDO_A_ALARMA=source.fase-module.html#LLENDO_A_ALARMA,Variable source.main.LLENDO_A_ALARMA=source.main-module.html#LLENDO_A_ALARMA,Variable source.mapa.LLENDO_A_ALARMA=source.mapa-module.html#LLENDO_A_ALARMA,Variable source.menu.LLENDO_A_ALARMA=source.menu-module.html#LLENDO_A_ALARMA,Variable source.menuOpciones.LLENDO_A_ALARMA=source.menuOpciones-module.html#LLENDO_A_ALARMA,Variable source.menuPartidas.LLENDO_A_ALARMA=source.menuPartidas-module.html#LLENDO_A_ALARMA,Variable source.menuantiguo.LLENDO_A_ALARMA=source.menuantiguo-module.html#LLENDO_A_ALARMA,Variable source.objetos.LLENDO_A_ALARMA=source.objetos-module.html#LLENDO_A_ALARMA,Variable source.personajes.LLENDO_A_ALARMA=source.personajes-module.html#LLENDO_A_ALARMA"><a title="source.Enemigo2.LLENDO_A_ALARMA
+source.Eventos.LLENDO_A_ALARMA
+source.enemigo.LLENDO_A_ALARMA
+source.fase.LLENDO_A_ALARMA
+source.main.LLENDO_A_ALARMA
+source.mapa.LLENDO_A_ALARMA
+source.menu.LLENDO_A_ALARMA
+source.menuOpciones.LLENDO_A_ALARMA
+source.menuPartidas.LLENDO_A_ALARMA
+source.menuantiguo.LLENDO_A_ALARMA
+source.objetos.LLENDO_A_ALARMA
+source.personajes.LLENDO_A_ALARMA" class="py-name" href="#" onclick="return doclink('link-12', 'LLENDO_A_ALARMA', 'link-12');">LLENDO_A_ALARMA</a></tt><tt class="py-op">=</tt><tt class="py-number">3</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable source.Enemigo2.VOLVIENDO_A_PATRULLA=source.Enemigo2-module.html#VOLVIENDO_A_PATRULLA,Variable source.Eventos.VOLVIENDO_A_PATRULLA=source.Eventos-module.html#VOLVIENDO_A_PATRULLA,Variable source.enemigo.VOLVIENDO_A_PATRULLA=source.enemigo-module.html#VOLVIENDO_A_PATRULLA,Variable source.fase.VOLVIENDO_A_PATRULLA=source.fase-module.html#VOLVIENDO_A_PATRULLA,Variable source.main.VOLVIENDO_A_PATRULLA=source.main-module.html#VOLVIENDO_A_PATRULLA,Variable source.mapa.VOLVIENDO_A_PATRULLA=source.mapa-module.html#VOLVIENDO_A_PATRULLA,Variable source.menu.VOLVIENDO_A_PATRULLA=source.menu-module.html#VOLVIENDO_A_PATRULLA,Variable source.menuOpciones.VOLVIENDO_A_PATRULLA=source.menuOpciones-module.html#VOLVIENDO_A_PATRULLA,Variable source.menuPartidas.VOLVIENDO_A_PATRULLA=source.menuPartidas-module.html#VOLVIENDO_A_PATRULLA,Variable source.menuantiguo.VOLVIENDO_A_PATRULLA=source.menuantiguo-module.html#VOLVIENDO_A_PATRULLA,Variable source.objetos.VOLVIENDO_A_PATRULLA=source.objetos-module.html#VOLVIENDO_A_PATRULLA,Variable source.personajes.VOLVIENDO_A_PATRULLA=source.personajes-module.html#VOLVIENDO_A_PATRULLA"><a title="source.Enemigo2.VOLVIENDO_A_PATRULLA
+source.Eventos.VOLVIENDO_A_PATRULLA
+source.enemigo.VOLVIENDO_A_PATRULLA
+source.fase.VOLVIENDO_A_PATRULLA
+source.main.VOLVIENDO_A_PATRULLA
+source.mapa.VOLVIENDO_A_PATRULLA
+source.menu.VOLVIENDO_A_PATRULLA
+source.menuOpciones.VOLVIENDO_A_PATRULLA
+source.menuPartidas.VOLVIENDO_A_PATRULLA
+source.menuantiguo.VOLVIENDO_A_PATRULLA
+source.objetos.VOLVIENDO_A_PATRULLA
+source.personajes.VOLVIENDO_A_PATRULLA" class="py-name" href="#" onclick="return doclink('link-13', 'VOLVIENDO_A_PATRULLA', 'link-13');">VOLVIENDO_A_PATRULLA</a></tt><tt class="py-op">=</tt><tt class="py-number">4</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable source.Enemigo2.PERSIGUIENDO=source.Enemigo2-module.html#PERSIGUIENDO,Variable source.Eventos.PERSIGUIENDO=source.Eventos-module.html#PERSIGUIENDO,Variable source.enemigo.PERSIGUIENDO=source.enemigo-module.html#PERSIGUIENDO,Variable source.fase.PERSIGUIENDO=source.fase-module.html#PERSIGUIENDO,Variable source.main.PERSIGUIENDO=source.main-module.html#PERSIGUIENDO,Variable source.mapa.PERSIGUIENDO=source.mapa-module.html#PERSIGUIENDO,Variable source.menu.PERSIGUIENDO=source.menu-module.html#PERSIGUIENDO,Variable source.menuOpciones.PERSIGUIENDO=source.menuOpciones-module.html#PERSIGUIENDO,Variable source.menuPartidas.PERSIGUIENDO=source.menuPartidas-module.html#PERSIGUIENDO,Variable source.menuantiguo.PERSIGUIENDO=source.menuantiguo-module.html#PERSIGUIENDO,Variable source.objetos.PERSIGUIENDO=source.objetos-module.html#PERSIGUIENDO,Variable source.personajes.PERSIGUIENDO=source.personajes-module.html#PERSIGUIENDO"><a title="source.Enemigo2.PERSIGUIENDO
+source.Eventos.PERSIGUIENDO
+source.enemigo.PERSIGUIENDO
+source.fase.PERSIGUIENDO
+source.main.PERSIGUIENDO
+source.mapa.PERSIGUIENDO
+source.menu.PERSIGUIENDO
+source.menuOpciones.PERSIGUIENDO
+source.menuPartidas.PERSIGUIENDO
+source.menuantiguo.PERSIGUIENDO
+source.objetos.PERSIGUIENDO
+source.personajes.PERSIGUIENDO" class="py-name" href="#" onclick="return doclink('link-14', 'PERSIGUIENDO', 'link-14');">PERSIGUIENDO</a></tt><tt class="py-op">=</tt><tt class="py-number">5</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment">#Movimiento</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt id="link-15" class="py-name"><a title="source.Enemigo2.QUIETO
+source.Eventos.QUIETO
+source.enemigo.QUIETO
+source.fase.QUIETO
+source.main.QUIETO
+source.mapa.QUIETO
+source.menu.QUIETO
+source.menuOpciones.QUIETO
+source.menuPartidas.QUIETO
+source.menuantiguo.QUIETO
+source.objetos.QUIETO
+source.personajes.QUIETO" class="py-name" href="#" onclick="return doclink('link-15', 'QUIETO', 'link-9');">QUIETO</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable source.Enemigo2.SIGILO=source.Enemigo2-module.html#SIGILO,Variable source.Eventos.SIGILO=source.Eventos-module.html#SIGILO,Variable source.enemigo.SIGILO=source.enemigo-module.html#SIGILO,Variable source.fase.SIGILO=source.fase-module.html#SIGILO,Variable source.main.SIGILO=source.main-module.html#SIGILO,Variable source.mapa.SIGILO=source.mapa-module.html#SIGILO,Variable source.menu.SIGILO=source.menu-module.html#SIGILO,Variable source.menuOpciones.SIGILO=source.menuOpciones-module.html#SIGILO,Variable source.menuPartidas.SIGILO=source.menuPartidas-module.html#SIGILO,Variable source.menuantiguo.SIGILO=source.menuantiguo-module.html#SIGILO,Variable source.objetos.SIGILO=source.objetos-module.html#SIGILO,Variable source.personajes.SIGILO=source.personajes-module.html#SIGILO"><a title="source.Enemigo2.SIGILO
+source.Eventos.SIGILO
+source.enemigo.SIGILO
+source.fase.SIGILO
+source.main.SIGILO
+source.mapa.SIGILO
+source.menu.SIGILO
+source.menuOpciones.SIGILO
+source.menuPartidas.SIGILO
+source.menuantiguo.SIGILO
+source.objetos.SIGILO
+source.personajes.SIGILO" class="py-name" href="#" onclick="return doclink('link-16', 'SIGILO', 'link-16');">SIGILO</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt id="link-17" class="py-name" targets="Variable source.Enemigo2.NORMAL=source.Enemigo2-module.html#NORMAL,Variable source.Eventos.NORMAL=source.Eventos-module.html#NORMAL,Variable source.enemigo.NORMAL=source.enemigo-module.html#NORMAL,Variable source.fase.NORMAL=source.fase-module.html#NORMAL,Variable source.main.NORMAL=source.main-module.html#NORMAL,Variable source.mapa.NORMAL=source.mapa-module.html#NORMAL,Variable source.menu.NORMAL=source.menu-module.html#NORMAL,Variable source.menuOpciones.NORMAL=source.menuOpciones-module.html#NORMAL,Variable source.menuPartidas.NORMAL=source.menuPartidas-module.html#NORMAL,Variable source.menuantiguo.NORMAL=source.menuantiguo-module.html#NORMAL,Variable source.objetos.NORMAL=source.objetos-module.html#NORMAL,Variable source.personajes.NORMAL=source.personajes-module.html#NORMAL"><a title="source.Enemigo2.NORMAL
+source.Eventos.NORMAL
+source.enemigo.NORMAL
+source.fase.NORMAL
+source.main.NORMAL
+source.mapa.NORMAL
+source.menu.NORMAL
+source.menuOpciones.NORMAL
+source.menuPartidas.NORMAL
+source.menuantiguo.NORMAL
+source.objetos.NORMAL
+source.personajes.NORMAL" class="py-name" href="#" onclick="return doclink('link-17', 'NORMAL', 'link-17');">NORMAL</a></tt><tt class="py-op">=</tt><tt class="py-number">2</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-18" class="py-name" targets="Variable source.Enemigo2.CARRERA=source.Enemigo2-module.html#CARRERA,Variable source.Eventos.CARRERA=source.Eventos-module.html#CARRERA,Variable source.enemigo.CARRERA=source.enemigo-module.html#CARRERA,Variable source.fase.CARRERA=source.fase-module.html#CARRERA,Variable source.main.CARRERA=source.main-module.html#CARRERA,Variable source.mapa.CARRERA=source.mapa-module.html#CARRERA,Variable source.menu.CARRERA=source.menu-module.html#CARRERA,Variable source.menuOpciones.CARRERA=source.menuOpciones-module.html#CARRERA,Variable source.menuPartidas.CARRERA=source.menuPartidas-module.html#CARRERA,Variable source.menuantiguo.CARRERA=source.menuantiguo-module.html#CARRERA,Variable source.objetos.CARRERA=source.objetos-module.html#CARRERA,Variable source.personajes.CARRERA=source.personajes-module.html#CARRERA"><a title="source.Enemigo2.CARRERA
+source.Eventos.CARRERA
+source.enemigo.CARRERA
+source.fase.CARRERA
+source.main.CARRERA
+source.mapa.CARRERA
+source.menu.CARRERA
+source.menuOpciones.CARRERA
+source.menuPartidas.CARRERA
+source.menuantiguo.CARRERA
+source.objetos.CARRERA
+source.personajes.CARRERA" class="py-name" href="#" onclick="return doclink('link-18', 'CARRERA', 'link-18');">CARRERA</a></tt><tt class="py-op">=</tt><tt class="py-number">3</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-comment"># Direccion</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt id="link-19" class="py-name" targets="Variable source.Enemigo2.ABAJO=source.Enemigo2-module.html#ABAJO,Variable source.Eventos.ABAJO=source.Eventos-module.html#ABAJO,Variable source.enemigo.ABAJO=source.enemigo-module.html#ABAJO,Variable source.fase.ABAJO=source.fase-module.html#ABAJO,Variable source.main.ABAJO=source.main-module.html#ABAJO,Variable source.mapa.ABAJO=source.mapa-module.html#ABAJO,Variable source.menu.ABAJO=source.menu-module.html#ABAJO,Variable source.menuOpciones.ABAJO=source.menuOpciones-module.html#ABAJO,Variable source.menuPartidas.ABAJO=source.menuPartidas-module.html#ABAJO,Variable source.menuantiguo.ABAJO=source.menuantiguo-module.html#ABAJO,Variable source.objetos.ABAJO=source.objetos-module.html#ABAJO,Variable source.personajes.ABAJO=source.personajes-module.html#ABAJO"><a title="source.Enemigo2.ABAJO
+source.Eventos.ABAJO
+source.enemigo.ABAJO
+source.fase.ABAJO
+source.main.ABAJO
+source.mapa.ABAJO
+source.menu.ABAJO
+source.menuOpciones.ABAJO
+source.menuPartidas.ABAJO
+source.menuantiguo.ABAJO
+source.objetos.ABAJO
+source.personajes.ABAJO" class="py-name" href="#" onclick="return doclink('link-19', 'ABAJO', 'link-19');">ABAJO</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt id="link-20" class="py-name" targets="Variable source.Enemigo2.IZQUIERDA=source.Enemigo2-module.html#IZQUIERDA,Variable source.Eventos.IZQUIERDA=source.Eventos-module.html#IZQUIERDA,Variable source.enemigo.IZQUIERDA=source.enemigo-module.html#IZQUIERDA,Variable source.fase.IZQUIERDA=source.fase-module.html#IZQUIERDA,Variable source.main.IZQUIERDA=source.main-module.html#IZQUIERDA,Variable source.mapa.IZQUIERDA=source.mapa-module.html#IZQUIERDA,Variable source.menu.IZQUIERDA=source.menu-module.html#IZQUIERDA,Variable source.menuOpciones.IZQUIERDA=source.menuOpciones-module.html#IZQUIERDA,Variable source.menuPartidas.IZQUIERDA=source.menuPartidas-module.html#IZQUIERDA,Variable source.menuantiguo.IZQUIERDA=source.menuantiguo-module.html#IZQUIERDA,Variable source.objetos.IZQUIERDA=source.objetos-module.html#IZQUIERDA,Variable source.personajes.IZQUIERDA=source.personajes-module.html#IZQUIERDA"><a title="source.Enemigo2.IZQUIERDA
+source.Eventos.IZQUIERDA
+source.enemigo.IZQUIERDA
+source.fase.IZQUIERDA
+source.main.IZQUIERDA
+source.mapa.IZQUIERDA
+source.menu.IZQUIERDA
+source.menuOpciones.IZQUIERDA
+source.menuPartidas.IZQUIERDA
+source.menuantiguo.IZQUIERDA
+source.objetos.IZQUIERDA
+source.personajes.IZQUIERDA" class="py-name" href="#" onclick="return doclink('link-20', 'IZQUIERDA', 'link-20');">IZQUIERDA</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-21" class="py-name" targets="Variable source.Enemigo2.DERECHA=source.Enemigo2-module.html#DERECHA,Variable source.Eventos.DERECHA=source.Eventos-module.html#DERECHA,Variable source.enemigo.DERECHA=source.enemigo-module.html#DERECHA,Variable source.fase.DERECHA=source.fase-module.html#DERECHA,Variable source.main.DERECHA=source.main-module.html#DERECHA,Variable source.mapa.DERECHA=source.mapa-module.html#DERECHA,Variable source.menu.DERECHA=source.menu-module.html#DERECHA,Variable source.menuOpciones.DERECHA=source.menuOpciones-module.html#DERECHA,Variable source.menuPartidas.DERECHA=source.menuPartidas-module.html#DERECHA,Variable source.menuantiguo.DERECHA=source.menuantiguo-module.html#DERECHA,Variable source.objetos.DERECHA=source.objetos-module.html#DERECHA,Variable source.personajes.DERECHA=source.personajes-module.html#DERECHA"><a title="source.Enemigo2.DERECHA
+source.Eventos.DERECHA
+source.enemigo.DERECHA
+source.fase.DERECHA
+source.main.DERECHA
+source.mapa.DERECHA
+source.menu.DERECHA
+source.menuOpciones.DERECHA
+source.menuPartidas.DERECHA
+source.menuantiguo.DERECHA
+source.objetos.DERECHA
+source.personajes.DERECHA" class="py-name" href="#" onclick="return doclink('link-21', 'DERECHA', 'link-21');">DERECHA</a></tt><tt class="py-op">=</tt><tt class="py-number">2</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable source.Enemigo2.ARRIBA=source.Enemigo2-module.html#ARRIBA,Variable source.Eventos.ARRIBA=source.Eventos-module.html#ARRIBA,Variable source.enemigo.ARRIBA=source.enemigo-module.html#ARRIBA,Variable source.fase.ARRIBA=source.fase-module.html#ARRIBA,Variable source.main.ARRIBA=source.main-module.html#ARRIBA,Variable source.mapa.ARRIBA=source.mapa-module.html#ARRIBA,Variable source.menu.ARRIBA=source.menu-module.html#ARRIBA,Variable source.menuOpciones.ARRIBA=source.menuOpciones-module.html#ARRIBA,Variable source.menuPartidas.ARRIBA=source.menuPartidas-module.html#ARRIBA,Variable source.menuantiguo.ARRIBA=source.menuantiguo-module.html#ARRIBA,Variable source.objetos.ARRIBA=source.objetos-module.html#ARRIBA,Variable source.personajes.ARRIBA=source.personajes-module.html#ARRIBA"><a title="source.Enemigo2.ARRIBA
+source.Eventos.ARRIBA
+source.enemigo.ARRIBA
+source.fase.ARRIBA
+source.main.ARRIBA
+source.mapa.ARRIBA
+source.menu.ARRIBA
+source.menuOpciones.ARRIBA
+source.menuPartidas.ARRIBA
+source.menuantiguo.ARRIBA
+source.objetos.ARRIBA
+source.personajes.ARRIBA" class="py-name" href="#" onclick="return doclink('link-22', 'ARRIBA', 'link-22');">ARRIBA</a></tt><tt class="py-op">=</tt><tt class="py-number">3</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment">#Posturas</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt id="link-23" class="py-name" targets="Variable source.Enemigo2.SPRITE_QUIETO=source.Enemigo2-module.html#SPRITE_QUIETO,Variable source.Eventos.SPRITE_QUIETO=source.Eventos-module.html#SPRITE_QUIETO,Variable source.enemigo.SPRITE_QUIETO=source.enemigo-module.html#SPRITE_QUIETO,Variable source.fase.SPRITE_QUIETO=source.fase-module.html#SPRITE_QUIETO,Variable source.main.SPRITE_QUIETO=source.main-module.html#SPRITE_QUIETO,Variable source.mapa.SPRITE_QUIETO=source.mapa-module.html#SPRITE_QUIETO,Variable source.menu.SPRITE_QUIETO=source.menu-module.html#SPRITE_QUIETO,Variable source.menuOpciones.SPRITE_QUIETO=source.menuOpciones-module.html#SPRITE_QUIETO,Variable source.menuPartidas.SPRITE_QUIETO=source.menuPartidas-module.html#SPRITE_QUIETO,Variable source.menuantiguo.SPRITE_QUIETO=source.menuantiguo-module.html#SPRITE_QUIETO,Variable source.objetos.SPRITE_QUIETO=source.objetos-module.html#SPRITE_QUIETO,Variable source.personajes.SPRITE_QUIETO=source.personajes-module.html#SPRITE_QUIETO"><a title="source.Enemigo2.SPRITE_QUIETO
+source.Eventos.SPRITE_QUIETO
+source.enemigo.SPRITE_QUIETO
+source.fase.SPRITE_QUIETO
+source.main.SPRITE_QUIETO
+source.mapa.SPRITE_QUIETO
+source.menu.SPRITE_QUIETO
+source.menuOpciones.SPRITE_QUIETO
+source.menuPartidas.SPRITE_QUIETO
+source.menuantiguo.SPRITE_QUIETO
+source.objetos.SPRITE_QUIETO
+source.personajes.SPRITE_QUIETO" class="py-name" href="#" onclick="return doclink('link-23', 'SPRITE_QUIETO', 'link-23');">SPRITE_QUIETO</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt id="link-24" class="py-name" targets="Variable source.Enemigo2.SPRITE_ANDANDO=source.Enemigo2-module.html#SPRITE_ANDANDO,Variable source.Eventos.SPRITE_ANDANDO=source.Eventos-module.html#SPRITE_ANDANDO,Variable source.enemigo.SPRITE_ANDANDO=source.enemigo-module.html#SPRITE_ANDANDO,Variable source.fase.SPRITE_ANDANDO=source.fase-module.html#SPRITE_ANDANDO,Variable source.main.SPRITE_ANDANDO=source.main-module.html#SPRITE_ANDANDO,Variable source.mapa.SPRITE_ANDANDO=source.mapa-module.html#SPRITE_ANDANDO,Variable source.menu.SPRITE_ANDANDO=source.menu-module.html#SPRITE_ANDANDO,Variable source.menuOpciones.SPRITE_ANDANDO=source.menuOpciones-module.html#SPRITE_ANDANDO,Variable source.menuPartidas.SPRITE_ANDANDO=source.menuPartidas-module.html#SPRITE_ANDANDO,Variable source.menuantiguo.SPRITE_ANDANDO=source.menuantiguo-module.html#SPRITE_ANDANDO,Variable source.objetos.SPRITE_ANDANDO=source.objetos-module.html#SPRITE_ANDANDO,Variable source.personajes.SPRITE_ANDANDO=source.personajes-module.html#SPRITE_ANDANDO"><a title="source.Enemigo2.SPRITE_ANDANDO
+source.Eventos.SPRITE_ANDANDO
+source.enemigo.SPRITE_ANDANDO
+source.fase.SPRITE_ANDANDO
+source.main.SPRITE_ANDANDO
+source.mapa.SPRITE_ANDANDO
+source.menu.SPRITE_ANDANDO
+source.menuOpciones.SPRITE_ANDANDO
+source.menuPartidas.SPRITE_ANDANDO
+source.menuantiguo.SPRITE_ANDANDO
+source.objetos.SPRITE_ANDANDO
+source.personajes.SPRITE_ANDANDO" class="py-name" href="#" onclick="return doclink('link-24', 'SPRITE_ANDANDO', 'link-24');">SPRITE_ANDANDO</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-comment"># Velocidades de los distintos personajes</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt id="link-25" class="py-name" targets="Variable source.Enemigo2.VELOCIDAD_JUGADOR=source.Enemigo2-module.html#VELOCIDAD_JUGADOR,Variable source.Eventos.VELOCIDAD_JUGADOR=source.Eventos-module.html#VELOCIDAD_JUGADOR,Variable source.enemigo.VELOCIDAD_JUGADOR=source.enemigo-module.html#VELOCIDAD_JUGADOR,Variable source.fase.VELOCIDAD_JUGADOR=source.fase-module.html#VELOCIDAD_JUGADOR,Variable source.main.VELOCIDAD_JUGADOR=source.main-module.html#VELOCIDAD_JUGADOR,Variable source.mapa.VELOCIDAD_JUGADOR=source.mapa-module.html#VELOCIDAD_JUGADOR,Variable source.menu.VELOCIDAD_JUGADOR=source.menu-module.html#VELOCIDAD_JUGADOR,Variable source.menuOpciones.VELOCIDAD_JUGADOR=source.menuOpciones-module.html#VELOCIDAD_JUGADOR,Variable source.menuPartidas.VELOCIDAD_JUGADOR=source.menuPartidas-module.html#VELOCIDAD_JUGADOR,Variable source.menuantiguo.VELOCIDAD_JUGADOR=source.menuantiguo-module.html#VELOCIDAD_JUGADOR,Variable source.objetos.VELOCIDAD_JUGADOR=source.objetos-module.html#VELOCIDAD_JUGADOR,Variable source.personajes.VELOCIDAD_JUGADOR=source.personajes-module.html#VELOCIDAD_JUGADOR"><a title="source.Enemigo2.VELOCIDAD_JUGADOR
+source.Eventos.VELOCIDAD_JUGADOR
+source.enemigo.VELOCIDAD_JUGADOR
+source.fase.VELOCIDAD_JUGADOR
+source.main.VELOCIDAD_JUGADOR
+source.mapa.VELOCIDAD_JUGADOR
+source.menu.VELOCIDAD_JUGADOR
+source.menuOpciones.VELOCIDAD_JUGADOR
+source.menuPartidas.VELOCIDAD_JUGADOR
+source.menuantiguo.VELOCIDAD_JUGADOR
+source.objetos.VELOCIDAD_JUGADOR
+source.personajes.VELOCIDAD_JUGADOR" class="py-name" href="#" onclick="return doclink('link-25', 'VELOCIDAD_JUGADOR', 'link-25');">VELOCIDAD_JUGADOR</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0.18</tt> <tt class="py-comment"># Pixeles por milisegundo</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt id="link-26" class="py-name" targets="Variable source.Enemigo2.RETARDO_ANIMACION_JUGADOR=source.Enemigo2-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.Eventos.RETARDO_ANIMACION_JUGADOR=source.Eventos-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.enemigo.RETARDO_ANIMACION_JUGADOR=source.enemigo-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.fase.RETARDO_ANIMACION_JUGADOR=source.fase-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.main.RETARDO_ANIMACION_JUGADOR=source.main-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.mapa.RETARDO_ANIMACION_JUGADOR=source.mapa-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.menu.RETARDO_ANIMACION_JUGADOR=source.menu-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.menuOpciones.RETARDO_ANIMACION_JUGADOR=source.menuOpciones-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.menuPartidas.RETARDO_ANIMACION_JUGADOR=source.menuPartidas-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.menuantiguo.RETARDO_ANIMACION_JUGADOR=source.menuantiguo-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.objetos.RETARDO_ANIMACION_JUGADOR=source.objetos-module.html#RETARDO_ANIMACION_JUGADOR,Variable source.personajes.RETARDO_ANIMACION_JUGADOR=source.personajes-module.html#RETARDO_ANIMACION_JUGADOR"><a title="source.Enemigo2.RETARDO_ANIMACION_JUGADOR
+source.Eventos.RETARDO_ANIMACION_JUGADOR
+source.enemigo.RETARDO_ANIMACION_JUGADOR
+source.fase.RETARDO_ANIMACION_JUGADOR
+source.main.RETARDO_ANIMACION_JUGADOR
+source.mapa.RETARDO_ANIMACION_JUGADOR
+source.menu.RETARDO_ANIMACION_JUGADOR
+source.menuOpciones.RETARDO_ANIMACION_JUGADOR
+source.menuPartidas.RETARDO_ANIMACION_JUGADOR
+source.menuantiguo.RETARDO_ANIMACION_JUGADOR
+source.objetos.RETARDO_ANIMACION_JUGADOR
+source.personajes.RETARDO_ANIMACION_JUGADOR" class="py-name" href="#" onclick="return doclink('link-26', 'RETARDO_ANIMACION_JUGADOR', 'link-26');">RETARDO_ANIMACION_JUGADOR</a></tt> <tt class="py-op">=</tt> <tt class="py-number">5</tt> <tt class="py-comment"># updates que durar&#225; cada imagen del personaje</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">                              <tt class="py-comment"># deber&#237;a de ser un valor distinto para cada postura</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt id="link-27" class="py-name" targets="Variable source.Enemigo2.VELOCIDAD_ENEMIGO=source.Enemigo2-module.html#VELOCIDAD_ENEMIGO,Variable source.Eventos.VELOCIDAD_ENEMIGO=source.Eventos-module.html#VELOCIDAD_ENEMIGO,Variable source.enemigo.VELOCIDAD_ENEMIGO=source.enemigo-module.html#VELOCIDAD_ENEMIGO,Variable source.fase.VELOCIDAD_ENEMIGO=source.fase-module.html#VELOCIDAD_ENEMIGO,Variable source.main.VELOCIDAD_ENEMIGO=source.main-module.html#VELOCIDAD_ENEMIGO,Variable source.mapa.VELOCIDAD_ENEMIGO=source.mapa-module.html#VELOCIDAD_ENEMIGO,Variable source.menu.VELOCIDAD_ENEMIGO=source.menu-module.html#VELOCIDAD_ENEMIGO,Variable source.menuOpciones.VELOCIDAD_ENEMIGO=source.menuOpciones-module.html#VELOCIDAD_ENEMIGO,Variable source.menuPartidas.VELOCIDAD_ENEMIGO=source.menuPartidas-module.html#VELOCIDAD_ENEMIGO,Variable source.menuantiguo.VELOCIDAD_ENEMIGO=source.menuantiguo-module.html#VELOCIDAD_ENEMIGO,Variable source.objetos.VELOCIDAD_ENEMIGO=source.objetos-module.html#VELOCIDAD_ENEMIGO,Variable source.personajes.VELOCIDAD_ENEMIGO=source.personajes-module.html#VELOCIDAD_ENEMIGO"><a title="source.Enemigo2.VELOCIDAD_ENEMIGO
+source.Eventos.VELOCIDAD_ENEMIGO
+source.enemigo.VELOCIDAD_ENEMIGO
+source.fase.VELOCIDAD_ENEMIGO
+source.main.VELOCIDAD_ENEMIGO
+source.mapa.VELOCIDAD_ENEMIGO
+source.menu.VELOCIDAD_ENEMIGO
+source.menuOpciones.VELOCIDAD_ENEMIGO
+source.menuPartidas.VELOCIDAD_ENEMIGO
+source.menuantiguo.VELOCIDAD_ENEMIGO
+source.objetos.VELOCIDAD_ENEMIGO
+source.personajes.VELOCIDAD_ENEMIGO" class="py-name" href="#" onclick="return doclink('link-27', 'VELOCIDAD_ENEMIGO', 'link-27');">VELOCIDAD_ENEMIGO</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0.14</tt> <tt class="py-comment"># Pixeles por milisegundo</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt id="link-28" class="py-name" targets="Variable source.Enemigo2.RETARDO_ANIMACION_ENEMIGO=source.Enemigo2-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.Eventos.RETARDO_ANIMACION_ENEMIGO=source.Eventos-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.enemigo.RETARDO_ANIMACION_ENEMIGO=source.enemigo-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.fase.RETARDO_ANIMACION_ENEMIGO=source.fase-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.main.RETARDO_ANIMACION_ENEMIGO=source.main-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.mapa.RETARDO_ANIMACION_ENEMIGO=source.mapa-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.menu.RETARDO_ANIMACION_ENEMIGO=source.menu-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.menuOpciones.RETARDO_ANIMACION_ENEMIGO=source.menuOpciones-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.menuPartidas.RETARDO_ANIMACION_ENEMIGO=source.menuPartidas-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.menuantiguo.RETARDO_ANIMACION_ENEMIGO=source.menuantiguo-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.objetos.RETARDO_ANIMACION_ENEMIGO=source.objetos-module.html#RETARDO_ANIMACION_ENEMIGO,Variable source.personajes.RETARDO_ANIMACION_ENEMIGO=source.personajes-module.html#RETARDO_ANIMACION_ENEMIGO"><a title="source.Enemigo2.RETARDO_ANIMACION_ENEMIGO
+source.Eventos.RETARDO_ANIMACION_ENEMIGO
+source.enemigo.RETARDO_ANIMACION_ENEMIGO
+source.fase.RETARDO_ANIMACION_ENEMIGO
+source.main.RETARDO_ANIMACION_ENEMIGO
+source.mapa.RETARDO_ANIMACION_ENEMIGO
+source.menu.RETARDO_ANIMACION_ENEMIGO
+source.menuOpciones.RETARDO_ANIMACION_ENEMIGO
+source.menuPartidas.RETARDO_ANIMACION_ENEMIGO
+source.menuantiguo.RETARDO_ANIMACION_ENEMIGO
+source.objetos.RETARDO_ANIMACION_ENEMIGO
+source.personajes.RETARDO_ANIMACION_ENEMIGO" class="py-name" href="#" onclick="return doclink('link-28', 'RETARDO_ANIMACION_ENEMIGO', 'link-28');">RETARDO_ANIMACION_ENEMIGO</a></tt> <tt class="py-op">=</tt> <tt class="py-number">5</tt> <tt class="py-comment"># updates que durar&#225; cada imagen del personaje</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">                             <tt class="py-comment"># deber&#237;a de ser un valor distinto para cada postura</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-comment"># El Sniper camina un poco m&#225;s lento que el jugador, y salta menos</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-comment"># Clases de los objetos del juego</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-comment"># Clases Personaje</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-comment">#class Personaje(pygame.sprite.Sprite):</tt> </tt>
+<a name="Personaje"></a><div id="Personaje-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="Personaje-toggle" onclick="return toggle('Personaje');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.personajes.Personaje-class.html">Personaje</a><tt class="py-op">(</tt><tt class="py-base-class">MiSprite</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Personaje-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Personaje-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-docstring">"Cualquier personaje del juego"</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">    <tt class="py-comment"># Parametros pasados al constructor de esta clase:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-comment">#  Archivo con la hoja de Sprites</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-comment">#  Archivo con las coordenadoas dentro de la hoja</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-comment">#  Numero de imagenes en cada postura</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">    <tt class="py-comment">#  Velocidad de caminar y de salto</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-comment">#  Retardo para mostrar la animacion del personaje</tt> </tt>
+<a name="Personaje.__init__"></a><div id="Personaje.__init__-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="Personaje.__init__-toggle" onclick="return toggle('Personaje.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Personaje-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">archivoImagen</tt><tt class="py-op">,</tt> <tt class="py-param">archivoCoordenadas</tt><tt class="py-op">,</tt> <tt class="py-param">velocidadCarrera</tt><tt class="py-op">,</tt> <tt class="py-param">retardoAnimacion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Personaje.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Personaje.__init__-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-comment"># Primero invocamos al constructor de la clase padre</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt id="link-29" class="py-name" targets="Class source.mysprite.MiSprite=source.mysprite.MiSprite-class.html"><a title="source.mysprite.MiSprite" class="py-name" href="#" onclick="return doclink('link-29', 'MiSprite', 'link-29');">MiSprite</a></tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method source.Enemigo2.Enemigo2.__init__()=source.Enemigo2.Enemigo2-class.html#__init__,Method source.Eventos.Accion.__init__()=source.Eventos.Accion-class.html#__init__,Method source.Eventos.Causa.__init__()=source.Eventos.Causa-class.html#__init__,Method source.Eventos.Evento.__init__()=source.Eventos.Evento-class.html#__init__,Method source.director.Director.__init__()=source.director.Director-class.html#__init__,Method source.enemigo.Enemigo.__init__()=source.enemigo.Enemigo-class.html#__init__,Method source.escena.Escena.__init__()=source.escena.Escena-class.html#__init__,Method source.fase.Fase.__init__()=source.fase.Fase-class.html#__init__,Method source.mapa.Mapa.__init__()=source.mapa.Mapa-class.html#__init__,Method source.menu.Boton.__init__()=source.menu.Boton-class.html#__init__,Method source.menu.BotonCP.__init__()=source.menu.BotonCP-class.html#__init__,Method source.menu.BotonNP.__init__()=source.menu.BotonNP-class.html#__init__,Method source.menu.BotonOpciones.__init__()=source.menu.BotonOpciones-class.html#__init__,Method source.menu.BotonSalir.__init__()=source.menu.BotonSalir-class.html#__init__,Method source.menu.ElementoGUI.__init__()=source.menu.ElementoGUI-class.html#__init__,Method source.menu.Menu.__init__()=source.menu.Menu-class.html#__init__,Method source.menu.PantallaGUI.__init__()=source.menu.PantallaGUI-class.html#__init__,Method source.menu.PantallaInicialGUI.__init__()=source.menu.PantallaInicialGUI-class.html#__init__,Method source.menu.TextoCP.__init__()=source.menu.TextoCP-class.html#__init__,Method source.menu.TextoGUI.__init__()=source.menu.TextoGUI-class.html#__init__,Method source.menu.TextoNP.__init__()=source.menu.TextoNP-class.html#__init__,Method source.menu.TextoOpciones.__init__()=source.menu.TextoOpciones-class.html#__init__,Method source.menu.TextoSalir.__init__()=source.menu.TextoSalir-class.html#__init__,Method source.menuOpciones.Boton.__init__()=source.menuOpciones.Boton-class.html#__init__,Method source.menuOpciones.BotonVolver.__init__()=source.menuOpciones.BotonVolver-class.html#__init__,Method source.menuOpciones.ElementoGUI.__init__()=source.menuOpciones.ElementoGUI-class.html#__init__,Method source.menuOpciones.MenuOpciones.__init__()=source.menuOpciones.MenuOpciones-class.html#__init__,Method source.menuOpciones.PantallaGUI.__init__()=source.menuOpciones.PantallaGUI-class.html#__init__,Method source.menuOpciones.PantallaInicialGUI.__init__()=source.menuOpciones.PantallaInicialGUI-class.html#__init__,Method source.menuOpciones.TextoGUI.__init__()=source.menuOpciones.TextoGUI-class.html#__init__,Method source.menuOpciones.TextoVolver.__init__()=source.menuOpciones.TextoVolver-class.html#__init__,Method source.menuPartidas.Boton.__init__()=source.menuPartidas.Boton-class.html#__init__,Method source.menuPartidas.BotonVolver.__init__()=source.menuPartidas.BotonVolver-class.html#__init__,Method source.menuPartidas.ElementoGUI.__init__()=source.menuPartidas.ElementoGUI-class.html#__init__,Method source.menuPartidas.Menu.__init__()=source.menuPartidas.Menu-class.html#__init__,Method source.menuPartidas.PantallaGUI.__init__()=source.menuPartidas.PantallaGUI-class.html#__init__,Method source.menuPartidas.PantallaInicialGUI.__init__()=source.menuPartidas.PantallaInicialGUI-class.html#__init__,Method source.menuPartidas.TextoGUI.__init__()=source.menuPartidas.TextoGUI-class.html#__init__,Method source.menuPartidas.TextoVolver.__init__()=source.menuPartidas.TextoVolver-class.html#__init__,Method source.menuantiguo.Boton.__init__()=source.menuantiguo.Boton-class.html#__init__,Method source.menuantiguo.BotonJugar.__init__()=source.menuantiguo.BotonJugar-class.html#__init__,Method source.menuantiguo.BotonSalir.__init__()=source.menuantiguo.BotonSalir-class.html#__init__,Method source.menuantiguo.ElementoGUI.__init__()=source.menuantiguo.ElementoGUI-class.html#__init__,Method source.menuantiguo.Menu.__init__()=source.menuantiguo.Menu-class.html#__init__,Method source.menuantiguo.PantallaGUI.__init__()=source.menuantiguo.PantallaGUI-class.html#__init__,Method source.menuantiguo.PantallaInicialGUI.__init__()=source.menuantiguo.PantallaInicialGUI-class.html#__init__,Method source.menuantiguo.TextoGUI.__init__()=source.menuantiguo.TextoGUI-class.html#__init__,Method source.menuantiguo.TextoJugar.__init__()=source.menuantiguo.TextoJugar-class.html#__init__,Method source.menuantiguo.TextoSalir.__init__()=source.menuantiguo.TextoSalir-class.html#__init__,Method source.mysprite.MiSprite.__init__()=source.mysprite.MiSprite-class.html#__init__,Method source.nodo.Nodo.__init__()=source.nodo.Nodo-class.html#__init__,Method source.objetos.Camara.__init__()=source.objetos.Camara-class.html#__init__,Method source.objetos.Cuadro.__init__()=source.objetos.Cuadro-class.html#__init__,Method source.objetos.CuadroTexto.__init__()=source.objetos.CuadroTexto-class.html#__init__,Method source.objetos.Diamante.__init__()=source.objetos.Diamante-class.html#__init__,Method source.objetos.Interruptor.__init__()=source.objetos.Interruptor-class.html#__init__,Method source.objetos.Luz.__init__()=source.objetos.Luz-class.html#__init__,Method source.objetos.LuzVieja.__init__()=source.objetos.LuzVieja-class.html#__init__,Method source.objetos.Meta.__init__()=source.objetos.Meta-class.html#__init__,Method source.objetos.Puerta_grande.__init__()=source.objetos.Puerta_grande-class.html#__init__,Method source.objetos.Puerta_pequena.__init__()=source.objetos.Puerta_pequena-class.html#__init__,Method source.objetos.Puerta_vertical.__init__()=source.objetos.Puerta_vertical-class.html#__init__,Method source.objetos.Puerta_vertical_grande.__init__()=source.objetos.Puerta_vertical_grande-class.html#__init__,Method source.objetos.accionable.__init__()=source.objetos.accionable-class.html#__init__,Method source.objetos.activable.__init__()=source.objetos.activable-class.html#__init__,Method source.objetos.puerta.__init__()=source.objetos.puerta-class.html#__init__,Method source.personajes.Jugador.__init__()=source.personajes.Jugador-class.html#__init__,Method source.personajes.NoJugador.__init__()=source.personajes.NoJugador-class.html#__init__,Method source.personajes.Personaje.__init__()=source.personajes.Personaje-class.html#__init__"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-30', '__init__', 'link-30');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-comment"># Se carga la hoja (por ahora no se usa sino que cojo nu sprite normal y lo giro</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">hoja</tt> <tt class="py-op">=</tt> <tt id="link-31" class="py-name" targets="Class source.gestorRecursos.GestorRecursos=source.gestorRecursos.GestorRecursos-class.html"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-31', 'GestorRecursos', 'link-31');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Class Method source.gestorRecursos.GestorRecursos.CargarImagenSprite()=source.gestorRecursos.GestorRecursos-class.html#CargarImagenSprite"><a title="source.gestorRecursos.GestorRecursos.CargarImagenSprite" class="py-name" href="#" onclick="return doclink('link-32', 'CargarImagenSprite', 'link-32');">CargarImagenSprite</a></tt><tt class="py-op">(</tt><tt class="py-name">archivoImagen</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">hoja</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">hoja</tt><tt class="py-op">.</tt><tt class="py-name">convert_alpha</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">datos</tt> <tt class="py-op">=</tt> <tt id="link-33" class="py-name"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-33', 'GestorRecursos', 'link-31');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Class Method source.gestorRecursos.GestorRecursos.CargarArchivoCoordenadas()=source.gestorRecursos.GestorRecursos-class.html#CargarArchivoCoordenadas"><a title="source.gestorRecursos.GestorRecursos.CargarArchivoCoordenadas" class="py-name" href="#" onclick="return doclink('link-34', 'CargarArchivoCoordenadas', 'link-34');">CargarArchivoCoordenadas</a></tt><tt class="py-op">(</tt><tt class="py-name">archivoCoordenadas</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">datos</tt> <tt class="py-op">=</tt> <tt class="py-name">datos</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">cont</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-comment">#CARGAMOS LOS DATOS DE LA ANIMACION</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-comment">#</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-comment">#Valores para la imagen de la animacion. las posturas en este caso son las direcciones y las imagenes los distintos frames</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numPostura</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">;</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt><tt class="py-op">;</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">linea</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> <tt class="py-number">4</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-name">tmp</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">[</tt><tt class="py-name">linea</tt><tt class="py-op">]</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">postura</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-number">5</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">                <tt class="py-name">tmp</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Rect</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">datos</tt><tt class="py-op">[</tt><tt class="py-name">cont</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">datos</tt><tt class="py-op">[</tt><tt class="py-name">cont</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">datos</tt><tt class="py-op">[</tt><tt class="py-name">cont</tt><tt class="py-op">+</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">datos</tt><tt class="py-op">[</tt><tt class="py-name">cont</tt><tt class="py-op">+</tt><tt class="py-number">3</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">                <tt class="py-name">cont</tt> <tt class="py-op">+=</tt> <tt class="py-number">4</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-comment"># El movimiento que esta realizando</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">movimiento</tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name"><a title="source.Enemigo2.QUIETO
+source.Eventos.QUIETO
+source.enemigo.QUIETO
+source.fase.QUIETO
+source.main.QUIETO
+source.mapa.QUIETO
+source.menu.QUIETO
+source.menuOpciones.QUIETO
+source.menuPartidas.QUIETO
+source.menuantiguo.QUIETO
+source.objetos.QUIETO
+source.personajes.QUIETO" class="py-name" href="#" onclick="return doclink('link-35', 'QUIETO', 'link-9');">QUIETO</a></tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-comment"># Lado hacia el que esta mirando</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name"><a title="source.Enemigo2.ABAJO
+source.Eventos.ABAJO
+source.enemigo.ABAJO
+source.fase.ABAJO
+source.main.ABAJO
+source.mapa.ABAJO
+source.menu.ABAJO
+source.menuOpciones.ABAJO
+source.menuPartidas.ABAJO
+source.menuantiguo.ABAJO
+source.objetos.ABAJO
+source.personajes.ABAJO" class="py-name" href="#" onclick="return doclink('link-36', 'ABAJO', 'link-19');">ABAJO</a></tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadMovimiento</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method source.fase.Fase.colision()=source.fase.Fase-class.html#colision,Method source.mapa.Mapa.colision()=source.mapa.Mapa-class.html#colision"><a title="source.fase.Fase.colision
+source.mapa.Mapa.colision" class="py-name" href="#" onclick="return doclink('link-37', 'colision', 'link-37');">colision</a></tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-comment"># El retardo a la hora de cambiar la imagen del Sprite (para que no se mueva demasiado r&#225;pido)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">retardoMovimiento</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt><tt class="py-op">;</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-comment"># El rectangulo del Sprite</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Rect</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">width</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">height</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">newposrect</tt><tt class="py-op">=</tt><tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Rect</tt><tt class="py-op">(</tt><tt class="py-number">800</tt><tt class="py-op">,</tt><tt class="py-number">600</tt><tt class="py-op">,</tt><tt class="py-number">32</tt><tt class="py-op">,</tt><tt class="py-number">54</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-comment"># Las velocidades de caminar , correr, etc</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadCarrera</tt> <tt class="py-op">=</tt> <tt class="py-name">velocidadCarrera</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-comment"># El retardo en la animacion del personaje (podria y deberia ser distinto para cada postura)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">retardoAnimacion</tt> <tt class="py-op">=</tt> <tt class="py-name">retardoAnimacion</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-comment"># Y actualizamos la postura del Sprite inicial, llamando al metodo correspondiente</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Method source.personajes.Personaje.actualizarPostura()=source.personajes.Personaje-class.html#actualizarPostura"><a title="source.personajes.Personaje.actualizarPostura" class="py-name" href="#" onclick="return doclink('link-38', 'actualizarPostura', 'link-38');">actualizarPostura</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-comment"># Metodo base para realizar el movimiento: simplemente se le indica cual va a hacer, y lo almacena</tt> </tt>
+<a name="Personaje.mover"></a><div id="Personaje.mover-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="Personaje.mover-toggle" onclick="return toggle('Personaje.mover');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Personaje-class.html#mover">mover</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">movimiento</tt><tt class="py-op">,</tt><tt class="py-param">direccion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Personaje.mover-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Personaje.mover-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">movimiento</tt><tt class="py-op">=</tt><tt class="py-name">movimiento</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt><tt class="py-op">=</tt><tt class="py-name">direccion</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadMovimiento</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadCarrera</tt><tt class="py-op">*</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">movimiento</tt><tt class="py-op">/</tt><tt class="py-number">4</tt> </tt>
+</div><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="Personaje.actualizarPostura"></a><div id="Personaje.actualizarPostura-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="Personaje.actualizarPostura-toggle" onclick="return toggle('Personaje.actualizarPostura');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Personaje-class.html#actualizarPostura">actualizarPostura</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Personaje.actualizarPostura-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Personaje.actualizarPostura-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-comment"># Coloca al personaje mirando hacia la direccion correcta y en el punto adecuado de la animacion</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-comment"># self.image= pygame.transform.rotate(self.imagen,self.mirando)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numPostura</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">movimiento</tt><tt class="py-op">!=</tt><tt id="link-39" class="py-name"><a title="source.Enemigo2.QUIETO
+source.Eventos.QUIETO
+source.enemigo.QUIETO
+source.fase.QUIETO
+source.main.QUIETO
+source.mapa.QUIETO
+source.menu.QUIETO
+source.menuOpciones.QUIETO
+source.menuPartidas.QUIETO
+source.menuantiguo.QUIETO
+source.objetos.QUIETO
+source.personajes.QUIETO" class="py-name" href="#" onclick="return doclink('link-39', 'QUIETO', 'link-9');">QUIETO</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">retardoMovimiento</tt> <tt class="py-op">-=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-comment"># Miramos si ha pasado el retardo para dibujar una nueva postura</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">retardoMovimiento</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">retardoMovimiento</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">retardoAnimacion</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-comment"># Si ha pasado, actualizamos la postura</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-comment">#Si llega al final vuelve al principio</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt> <tt class="py-op">&gt;=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numPostura</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt><tt class="py-op">;</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt> <tt class="py-op">=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numPostura</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">image</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">hoja</tt><tt class="py-op">.</tt><tt class="py-name">subsurface</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">coordenadasHoja</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numPostura</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">numImagenPostura</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="Personaje.update"></a><div id="Personaje.update-def"><a name="L160"></a><tt class="py-lineno">160</tt> <a class="py-toggle" href="#" id="Personaje.update-toggle" onclick="return toggle('Personaje.update');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Personaje-class.html#update">update</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">fase</tt><tt class="py-op">,</tt> <tt class="py-param">tiempo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Personaje.update-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Personaje.update-expanded"><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-comment">#if tiempo&gt;1000 :tiempo=1000</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="source.fase.Fase.colision
+source.mapa.Mapa.colision" class="py-name" href="#" onclick="return doclink('link-40', 'colision', 'link-37');">colision</a></tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-name">velocidadx</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">        <tt class="py-name">velocidady</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">        <tt class="py-comment"># Esta mirando hacia donde vayamos</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt><tt class="py-op">==</tt><tt id="link-41" class="py-name"><a title="source.Enemigo2.ARRIBA
+source.Eventos.ARRIBA
+source.enemigo.ARRIBA
+source.fase.ARRIBA
+source.main.ARRIBA
+source.mapa.ARRIBA
+source.menu.ARRIBA
+source.menuOpciones.ARRIBA
+source.menuPartidas.ARRIBA
+source.menuantiguo.ARRIBA
+source.objetos.ARRIBA
+source.personajes.ARRIBA" class="py-name" href="#" onclick="return doclink('link-41', 'ARRIBA', 'link-22');">ARRIBA</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">            <tt class="py-name">velocidady</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadMovimiento</tt><tt class="py-op">*</tt><tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt><tt class="py-op">==</tt><tt id="link-42" class="py-name"><a title="source.Enemigo2.ABAJO
+source.Eventos.ABAJO
+source.enemigo.ABAJO
+source.fase.ABAJO
+source.main.ABAJO
+source.mapa.ABAJO
+source.menu.ABAJO
+source.menuOpciones.ABAJO
+source.menuPartidas.ABAJO
+source.menuantiguo.ABAJO
+source.objetos.ABAJO
+source.personajes.ABAJO" class="py-name" href="#" onclick="return doclink('link-42', 'ABAJO', 'link-19');">ABAJO</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-name">velocidady</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadMovimiento</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt><tt class="py-op">==</tt><tt id="link-43" class="py-name"><a title="source.Enemigo2.DERECHA
+source.Eventos.DERECHA
+source.enemigo.DERECHA
+source.fase.DERECHA
+source.main.DERECHA
+source.mapa.DERECHA
+source.menu.DERECHA
+source.menuOpciones.DERECHA
+source.menuPartidas.DERECHA
+source.menuantiguo.DERECHA
+source.objetos.DERECHA
+source.personajes.DERECHA" class="py-name" href="#" onclick="return doclink('link-43', 'DERECHA', 'link-21');">DERECHA</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">            <tt class="py-name">velocidadx</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadMovimiento</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt><tt class="py-op">==</tt><tt id="link-44" class="py-name"><a title="source.Enemigo2.IZQUIERDA
+source.Eventos.IZQUIERDA
+source.enemigo.IZQUIERDA
+source.fase.IZQUIERDA
+source.main.IZQUIERDA
+source.mapa.IZQUIERDA
+source.menu.IZQUIERDA
+source.menuOpciones.IZQUIERDA
+source.menuPartidas.IZQUIERDA
+source.menuantiguo.IZQUIERDA
+source.objetos.IZQUIERDA
+source.personajes.IZQUIERDA" class="py-name" href="#" onclick="return doclink('link-44', 'IZQUIERDA', 'link-20');">IZQUIERDA</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">            <tt class="py-name">velocidadx</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidadMovimiento</tt><tt class="py-op">*</tt><tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="source.personajes.Personaje.actualizarPostura" class="py-name" href="#" onclick="return doclink('link-45', 'actualizarPostura', 'link-38');">actualizarPostura</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-comment"># Aplicamos la velocidad en cada eje</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidad</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">velocidadx</tt><tt class="py-op">,</tt> <tt class="py-name">velocidady</tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-comment">#Comprobamos las colisiones primero en el eje x</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-comment">#Si colisiona en el eje x ponemos la velocidad x a 0</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-comment">#print self.posicion</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">newposrect</tt><tt class="py-op">=</tt><tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Rect</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">width</tt><tt class="py-op">/</tt><tt class="py-number">3</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">height</tt><tt class="py-op">/</tt><tt class="py-number">6</tt><tt class="py-op">)</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-name">newposrect</tt><tt class="py-op">.</tt><tt class="py-name">center</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-name">newposrect</tt><tt class="py-op">.</tt><tt class="py-name">left</tt><tt class="py-op">=</tt><tt class="py-name">newposrect</tt><tt class="py-op">.</tt><tt class="py-name">left</tt><tt class="py-op">+</tt><tt class="py-name">velocidadx</tt><tt class="py-op">*</tt><tt class="py-name">tiempo</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-name">newposrect</tt><tt class="py-op">.</tt><tt class="py-name">bottom</tt><tt class="py-op">=</tt><tt class="py-name">newposrect</tt><tt class="py-op">.</tt><tt class="py-name">bottom</tt><tt class="py-op">+</tt><tt class="py-name">velocidady</tt><tt class="py-op">*</tt><tt class="py-name">tiempo</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">newposrect</tt><tt class="py-op">=</tt><tt class="py-name">newposrect</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt id="link-46" class="py-name" targets="Module source.fase=source.fase-module.html"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-46', 'fase', 'link-46');">fase</a></tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="source.fase.Fase.colision
+source.mapa.Mapa.colision" class="py-name" href="#" onclick="return doclink('link-47', 'colision', 'link-37');">colision</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">newposrect</tt><tt class="py-op">.</tt><tt class="py-name">copy</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">velocidad</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="source.fase.Fase.colision
+source.mapa.Mapa.colision" class="py-name" href="#" onclick="return doclink('link-48', 'colision', 'link-37');">colision</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-comment">#Debuger.anadirRectangulo(newposrect)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt id="link-49" class="py-name"><a title="source.mysprite.MiSprite" class="py-name" href="#" onclick="return doclink('link-49', 'MiSprite', 'link-29');">MiSprite</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Method source.Enemigo2.Enemigo2.update()=source.Enemigo2.Enemigo2-class.html#update,Method source.enemigo.Enemigo.update()=source.enemigo.Enemigo-class.html#update,Method source.escena.Escena.update()=source.escena.Escena-class.html#update,Method source.fase.Fase.update()=source.fase.Fase-class.html#update,Method source.mapa.Mapa.update()=source.mapa.Mapa-class.html#update,Method source.menu.Menu.update()=source.menu.Menu-class.html#update,Method source.menuOpciones.MenuOpciones.update()=source.menuOpciones.MenuOpciones-class.html#update,Method source.menuPartidas.Menu.update()=source.menuPartidas.Menu-class.html#update,Method source.menuantiguo.Menu.update()=source.menuantiguo.Menu-class.html#update,Method source.mysprite.MiSprite.update()=source.mysprite.MiSprite-class.html#update,Method source.objetos.Camara.update()=source.objetos.Camara-class.html#update,Method source.objetos.Luz.update()=source.objetos.Luz-class.html#update,Method source.objetos.activable.update()=source.objetos.activable-class.html#update,Method source.personajes.Jugador.update()=source.personajes.Jugador-class.html#update,Method source.personajes.Personaje.update()=source.personajes.Personaje-class.html#update"><a title="source.Enemigo2.Enemigo2.update
+source.enemigo.Enemigo.update
+source.escena.Escena.update
+source.fase.Fase.update
+source.mapa.Mapa.update
+source.menu.Menu.update
+source.menuOpciones.MenuOpciones.update
+source.menuPartidas.Menu.update
+source.menuantiguo.Menu.update
+source.mysprite.MiSprite.update
+source.objetos.Camara.update
+source.objetos.Luz.update
+source.objetos.activable.update
+source.personajes.Jugador.update
+source.personajes.Personaje.update" class="py-name" href="#" onclick="return doclink('link-50', 'update', 'link-50');">update</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">tiempo</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-comment"># Y llamamos al m&#233;todo de la superclase para que, seg&#250;n la velocidad y el tiempo</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-comment">#  calcule la nueva posici&#243;n del Sprite</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+</div></div><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt class="py-comment"># Clase Jugador</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"> </tt>
+<a name="Jugador"></a><div id="Jugador-def"><a name="L202"></a><tt class="py-lineno">202</tt> <a class="py-toggle" href="#" id="Jugador-toggle" onclick="return toggle('Jugador');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.personajes.Jugador-class.html">Jugador</a><tt class="py-op">(</tt><tt class="py-base-class">Personaje</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Jugador-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Jugador-expanded"><a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">    <tt class="py-docstring">"Cualquier personaje del juego"</tt> </tt>
+<a name="Jugador.__init__"></a><div id="Jugador.__init__-def"><a name="L204"></a><tt class="py-lineno">204</tt> <a class="py-toggle" href="#" id="Jugador.__init__-toggle" onclick="return toggle('Jugador.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Jugador-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Jugador.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Jugador.__init__-expanded"><a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">        <tt class="py-comment"># Invocamos al constructor de la clase padre con la configuracion de este personaje concreto</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt id="link-51" class="py-name" targets="Class source.personajes.Personaje=source.personajes.Personaje-class.html"><a title="source.personajes.Personaje" class="py-name" href="#" onclick="return doclink('link-51', 'Personaje', 'link-51');">Personaje</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-52', '__init__', 'link-30');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-string">'oak'</tt><tt class="py-op">,</tt><tt class="py-string">'oak'</tt><tt class="py-op">,</tt> <tt id="link-53" class="py-name"><a title="source.Enemigo2.VELOCIDAD_JUGADOR
+source.Eventos.VELOCIDAD_JUGADOR
+source.enemigo.VELOCIDAD_JUGADOR
+source.fase.VELOCIDAD_JUGADOR
+source.main.VELOCIDAD_JUGADOR
+source.mapa.VELOCIDAD_JUGADOR
+source.menu.VELOCIDAD_JUGADOR
+source.menuOpciones.VELOCIDAD_JUGADOR
+source.menuPartidas.VELOCIDAD_JUGADOR
+source.menuantiguo.VELOCIDAD_JUGADOR
+source.objetos.VELOCIDAD_JUGADOR
+source.personajes.VELOCIDAD_JUGADOR" class="py-name" href="#" onclick="return doclink('link-53', 'VELOCIDAD_JUGADOR', 'link-25');">VELOCIDAD_JUGADOR</a></tt><tt class="py-op">,</tt>  <tt id="link-54" class="py-name"><a title="source.Enemigo2.RETARDO_ANIMACION_JUGADOR
+source.Eventos.RETARDO_ANIMACION_JUGADOR
+source.enemigo.RETARDO_ANIMACION_JUGADOR
+source.fase.RETARDO_ANIMACION_JUGADOR
+source.main.RETARDO_ANIMACION_JUGADOR
+source.mapa.RETARDO_ANIMACION_JUGADOR
+source.menu.RETARDO_ANIMACION_JUGADOR
+source.menuOpciones.RETARDO_ANIMACION_JUGADOR
+source.menuPartidas.RETARDO_ANIMACION_JUGADOR
+source.menuantiguo.RETARDO_ANIMACION_JUGADOR
+source.objetos.RETARDO_ANIMACION_JUGADOR
+source.personajes.RETARDO_ANIMACION_JUGADOR" class="py-name" href="#" onclick="return doclink('link-54', 'RETARDO_ANIMACION_JUGADOR', 'link-26');">RETARDO_ANIMACION_JUGADOR</a></tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+</div><a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"> </tt>
+<a name="Jugador.mover"></a><div id="Jugador.mover-def"><a name="L209"></a><tt class="py-lineno">209</tt> <a class="py-toggle" href="#" id="Jugador.mover-toggle" onclick="return toggle('Jugador.mover');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Jugador-class.html#mover">mover</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">teclasPulsadas</tt><tt class="py-op">,</tt> <tt class="py-param">arriba</tt><tt class="py-op">,</tt> <tt class="py-param">abajo</tt><tt class="py-op">,</tt> <tt class="py-param">izquierda</tt><tt class="py-op">,</tt> <tt class="py-param">derecha</tt><tt class="py-op">,</tt><tt class="py-param">sigilo</tt><tt class="py-op">,</tt><tt class="py-param">correr</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Jugador.mover-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Jugador.mover-expanded"><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-comment"># Indicamos la acci&#243;n a realizar segun la tecla pulsada para el jugador</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-name">direccion</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mirando</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt class="py-name">movimiento</tt><tt class="py-op">=</tt><tt id="link-55" class="py-name"><a title="source.Enemigo2.NORMAL
+source.Eventos.NORMAL
+source.enemigo.NORMAL
+source.fase.NORMAL
+source.main.NORMAL
+source.mapa.NORMAL
+source.menu.NORMAL
+source.menuOpciones.NORMAL
+source.menuPartidas.NORMAL
+source.menuantiguo.NORMAL
+source.objetos.NORMAL
+source.personajes.NORMAL" class="py-name" href="#" onclick="return doclink('link-55', 'NORMAL', 'link-17');">NORMAL</a></tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">teclasPulsadas</tt><tt class="py-op">[</tt><tt class="py-name">arriba</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">            <tt class="py-name">direccion</tt><tt class="py-op">=</tt><tt id="link-56" class="py-name"><a title="source.Enemigo2.ARRIBA
+source.Eventos.ARRIBA
+source.enemigo.ARRIBA
+source.fase.ARRIBA
+source.main.ARRIBA
+source.mapa.ARRIBA
+source.menu.ARRIBA
+source.menuOpciones.ARRIBA
+source.menuPartidas.ARRIBA
+source.menuantiguo.ARRIBA
+source.objetos.ARRIBA
+source.personajes.ARRIBA" class="py-name" href="#" onclick="return doclink('link-56', 'ARRIBA', 'link-22');">ARRIBA</a></tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">teclasPulsadas</tt><tt class="py-op">[</tt><tt class="py-name">abajo</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">            <tt class="py-name">direccion</tt><tt class="py-op">=</tt><tt id="link-57" class="py-name"><a title="source.Enemigo2.ABAJO
+source.Eventos.ABAJO
+source.enemigo.ABAJO
+source.fase.ABAJO
+source.main.ABAJO
+source.mapa.ABAJO
+source.menu.ABAJO
+source.menuOpciones.ABAJO
+source.menuPartidas.ABAJO
+source.menuantiguo.ABAJO
+source.objetos.ABAJO
+source.personajes.ABAJO" class="py-name" href="#" onclick="return doclink('link-57', 'ABAJO', 'link-19');">ABAJO</a></tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">teclasPulsadas</tt><tt class="py-op">[</tt><tt class="py-name">izquierda</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">            <tt class="py-name">direccion</tt><tt class="py-op">=</tt><tt id="link-58" class="py-name"><a title="source.Enemigo2.IZQUIERDA
+source.Eventos.IZQUIERDA
+source.enemigo.IZQUIERDA
+source.fase.IZQUIERDA
+source.main.IZQUIERDA
+source.mapa.IZQUIERDA
+source.menu.IZQUIERDA
+source.menuOpciones.IZQUIERDA
+source.menuPartidas.IZQUIERDA
+source.menuantiguo.IZQUIERDA
+source.objetos.IZQUIERDA
+source.personajes.IZQUIERDA" class="py-name" href="#" onclick="return doclink('link-58', 'IZQUIERDA', 'link-20');">IZQUIERDA</a></tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">teclasPulsadas</tt><tt class="py-op">[</tt><tt class="py-name">derecha</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">            <tt class="py-name">direccion</tt><tt class="py-op">=</tt><tt id="link-59" class="py-name"><a title="source.Enemigo2.DERECHA
+source.Eventos.DERECHA
+source.enemigo.DERECHA
+source.fase.DERECHA
+source.main.DERECHA
+source.mapa.DERECHA
+source.menu.DERECHA
+source.menuOpciones.DERECHA
+source.menuPartidas.DERECHA
+source.menuantiguo.DERECHA
+source.objetos.DERECHA
+source.personajes.DERECHA" class="py-name" href="#" onclick="return doclink('link-59', 'DERECHA', 'link-21');">DERECHA</a></tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">            <tt class="py-name">movimiento</tt><tt class="py-op">=</tt><tt id="link-60" class="py-name"><a title="source.Enemigo2.QUIETO
+source.Eventos.QUIETO
+source.enemigo.QUIETO
+source.fase.QUIETO
+source.main.QUIETO
+source.mapa.QUIETO
+source.menu.QUIETO
+source.menuOpciones.QUIETO
+source.menuPartidas.QUIETO
+source.menuantiguo.QUIETO
+source.objetos.QUIETO
+source.personajes.QUIETO" class="py-name" href="#" onclick="return doclink('link-60', 'QUIETO', 'link-9');">QUIETO</a></tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line"> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">movimiento</tt><tt class="py-op">!=</tt><tt id="link-61" class="py-name"><a title="source.Enemigo2.QUIETO
+source.Eventos.QUIETO
+source.enemigo.QUIETO
+source.fase.QUIETO
+source.main.QUIETO
+source.mapa.QUIETO
+source.menu.QUIETO
+source.menuOpciones.QUIETO
+source.menuPartidas.QUIETO
+source.menuantiguo.QUIETO
+source.objetos.QUIETO
+source.personajes.QUIETO" class="py-name" href="#" onclick="return doclink('link-61', 'QUIETO', 'link-9');">QUIETO</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">teclasPulsadas</tt><tt class="py-op">[</tt><tt class="py-name">sigilo</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">                <tt class="py-name">movimiento</tt><tt class="py-op">=</tt><tt id="link-62" class="py-name"><a title="source.Enemigo2.SIGILO
+source.Eventos.SIGILO
+source.enemigo.SIGILO
+source.fase.SIGILO
+source.main.SIGILO
+source.mapa.SIGILO
+source.menu.SIGILO
+source.menuOpciones.SIGILO
+source.menuPartidas.SIGILO
+source.menuantiguo.SIGILO
+source.objetos.SIGILO
+source.personajes.SIGILO" class="py-name" href="#" onclick="return doclink('link-62', 'SIGILO', 'link-16');">SIGILO</a></tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">teclasPulsadas</tt><tt class="py-op">[</tt><tt class="py-name">correr</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">                <tt class="py-name">movimiento</tt><tt class="py-op">=</tt><tt id="link-63" class="py-name"><a title="source.Enemigo2.CARRERA
+source.Eventos.CARRERA
+source.enemigo.CARRERA
+source.fase.CARRERA
+source.main.CARRERA
+source.mapa.CARRERA
+source.menu.CARRERA
+source.menuOpciones.CARRERA
+source.menuPartidas.CARRERA
+source.menuantiguo.CARRERA
+source.objetos.CARRERA
+source.personajes.CARRERA" class="py-name" href="#" onclick="return doclink('link-63', 'CARRERA', 'link-18');">CARRERA</a></tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">                <tt class="py-name">movimiento</tt><tt class="py-op">=</tt><tt id="link-64" class="py-name"><a title="source.Enemigo2.NORMAL
+source.Eventos.NORMAL
+source.enemigo.NORMAL
+source.fase.NORMAL
+source.main.NORMAL
+source.mapa.NORMAL
+source.menu.NORMAL
+source.menuOpciones.NORMAL
+source.menuPartidas.NORMAL
+source.menuantiguo.NORMAL
+source.objetos.NORMAL
+source.personajes.NORMAL" class="py-name" href="#" onclick="return doclink('link-64', 'NORMAL', 'link-17');">NORMAL</a></tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt id="link-65" class="py-name"><a title="source.personajes.Personaje" class="py-name" href="#" onclick="return doclink('link-65', 'Personaje', 'link-51');">Personaje</a></tt><tt class="py-op">.</tt><tt id="link-66" class="py-name" targets="Method source.personajes.Jugador.mover()=source.personajes.Jugador-class.html#mover,Method source.personajes.Personaje.mover()=source.personajes.Personaje-class.html#mover"><a title="source.personajes.Jugador.mover
+source.personajes.Personaje.mover" class="py-name" href="#" onclick="return doclink('link-66', 'mover', 'link-66');">mover</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">movimiento</tt><tt class="py-op">,</tt><tt class="py-name">direccion</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"> </tt>
+<a name="Jugador.update"></a><div id="Jugador.update-def"><a name="L234"></a><tt class="py-lineno">234</tt> <a class="py-toggle" href="#" id="Jugador.update-toggle" onclick="return toggle('Jugador.update');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.Jugador-class.html#update">update</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">fase</tt><tt class="py-op">,</tt><tt class="py-param">tiempo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Jugador.update-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Jugador.update-expanded"><a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-docstring">"Acciones especificas del jugador(activar objetos etc)"</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">        <tt id="link-67" class="py-name"><a title="source.personajes.Personaje" class="py-name" href="#" onclick="return doclink('link-67', 'Personaje', 'link-51');">Personaje</a></tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="source.Enemigo2.Enemigo2.update
+source.enemigo.Enemigo.update
+source.escena.Escena.update
+source.fase.Fase.update
+source.mapa.Mapa.update
+source.menu.Menu.update
+source.menuOpciones.MenuOpciones.update
+source.menuPartidas.Menu.update
+source.menuantiguo.Menu.update
+source.mysprite.MiSprite.update
+source.objetos.Camara.update
+source.objetos.Luz.update
+source.objetos.activable.update
+source.personajes.Jugador.update
+source.personajes.Personaje.update" class="py-name" href="#" onclick="return doclink('link-68', 'update', 'link-50');">update</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-69" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-69', 'fase', 'link-46');">fase</a></tt><tt class="py-op">,</tt><tt class="py-name">tiempo</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line"><tt class="py-comment"># -------------------------------------------------</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line"><tt class="py-comment"># Clase NoJugador</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"> </tt>
+<a name="NoJugador"></a><div id="NoJugador-def"><a name="L240"></a><tt class="py-lineno">240</tt> <a class="py-toggle" href="#" id="NoJugador-toggle" onclick="return toggle('NoJugador');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.personajes.NoJugador-class.html">NoJugador</a><tt class="py-op">(</tt><tt class="py-base-class">Personaje</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoJugador-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="NoJugador-expanded"><a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">    <tt class="py-docstring">"El resto de personajes no jugadores"</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">    <tt class="py-comment">#Interfaz para las clases de los no jugadores que implementa mover_cpu para la IA</tt> </tt>
+<a name="NoJugador.__init__"></a><div id="NoJugador.__init__-def"><a name="L243"></a><tt class="py-lineno">243</tt> <a class="py-toggle" href="#" id="NoJugador.__init__-toggle" onclick="return toggle('NoJugador.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.NoJugador-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">archivoImagen</tt><tt class="py-op">,</tt> <tt class="py-param">archivoCoordenadas</tt><tt class="py-op">,</tt>  <tt class="py-param">velocidad</tt><tt class="py-op">,</tt>  <tt class="py-param">retardoAnimacion</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoJugador.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="NoJugador.__init__-expanded"><a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">        <tt class="py-comment"># Primero invocamos al constructor de la clase padre con los parametros pasados</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">        <tt id="link-70" class="py-name"><a title="source.personajes.Personaje" class="py-name" href="#" onclick="return doclink('link-70', 'Personaje', 'link-51');">Personaje</a></tt><tt class="py-op">.</tt><tt id="link-71" class="py-name"><a title="source.Enemigo2.Enemigo2.__init__
+source.Eventos.Accion.__init__
+source.Eventos.Causa.__init__
+source.Eventos.Evento.__init__
+source.director.Director.__init__
+source.enemigo.Enemigo.__init__
+source.escena.Escena.__init__
+source.fase.Fase.__init__
+source.mapa.Mapa.__init__
+source.menu.Boton.__init__
+source.menu.BotonCP.__init__
+source.menu.BotonNP.__init__
+source.menu.BotonOpciones.__init__
+source.menu.BotonSalir.__init__
+source.menu.ElementoGUI.__init__
+source.menu.Menu.__init__
+source.menu.PantallaGUI.__init__
+source.menu.PantallaInicialGUI.__init__
+source.menu.TextoCP.__init__
+source.menu.TextoGUI.__init__
+source.menu.TextoNP.__init__
+source.menu.TextoOpciones.__init__
+source.menu.TextoSalir.__init__
+source.menuOpciones.Boton.__init__
+source.menuOpciones.BotonVolver.__init__
+source.menuOpciones.ElementoGUI.__init__
+source.menuOpciones.MenuOpciones.__init__
+source.menuOpciones.PantallaGUI.__init__
+source.menuOpciones.PantallaInicialGUI.__init__
+source.menuOpciones.TextoGUI.__init__
+source.menuOpciones.TextoVolver.__init__
+source.menuPartidas.Boton.__init__
+source.menuPartidas.BotonVolver.__init__
+source.menuPartidas.ElementoGUI.__init__
+source.menuPartidas.Menu.__init__
+source.menuPartidas.PantallaGUI.__init__
+source.menuPartidas.PantallaInicialGUI.__init__
+source.menuPartidas.TextoGUI.__init__
+source.menuPartidas.TextoVolver.__init__
+source.menuantiguo.Boton.__init__
+source.menuantiguo.BotonJugar.__init__
+source.menuantiguo.BotonSalir.__init__
+source.menuantiguo.ElementoGUI.__init__
+source.menuantiguo.Menu.__init__
+source.menuantiguo.PantallaGUI.__init__
+source.menuantiguo.PantallaInicialGUI.__init__
+source.menuantiguo.TextoGUI.__init__
+source.menuantiguo.TextoJugar.__init__
+source.menuantiguo.TextoSalir.__init__
+source.mysprite.MiSprite.__init__
+source.nodo.Nodo.__init__
+source.objetos.Camara.__init__
+source.objetos.Cuadro.__init__
+source.objetos.CuadroTexto.__init__
+source.objetos.Diamante.__init__
+source.objetos.Interruptor.__init__
+source.objetos.Luz.__init__
+source.objetos.LuzVieja.__init__
+source.objetos.Meta.__init__
+source.objetos.Puerta_grande.__init__
+source.objetos.Puerta_pequena.__init__
+source.objetos.Puerta_vertical.__init__
+source.objetos.Puerta_vertical_grande.__init__
+source.objetos.accionable.__init__
+source.objetos.activable.__init__
+source.objetos.puerta.__init__
+source.personajes.Jugador.__init__
+source.personajes.NoJugador.__init__
+source.personajes.Personaje.__init__" class="py-name" href="#" onclick="return doclink('link-71', '__init__', 'link-30');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">archivoImagen</tt><tt class="py-op">,</tt> <tt class="py-name">archivoCoordenadas</tt><tt class="py-op">,</tt>  <tt class="py-name">velocidad</tt><tt class="py-op">,</tt>  <tt class="py-name">retardoAnimacion</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+</div><a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">    <tt class="py-comment"># Aqui vendria la implementacion de la IA segun las posiciones de los jugadores</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">    <tt class="py-comment"># La implementacion por defecto, este metodo deberia de ser implementado en las clases inferiores</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">    <tt class="py-comment">#  mostrando la personalidad de cada enemigo</tt> </tt>
+<a name="NoJugador.mover_cpu"></a><div id="NoJugador.mover_cpu-def"><a name="L250"></a><tt class="py-lineno">250</tt> <a class="py-toggle" href="#" id="NoJugador.mover_cpu-toggle" onclick="return toggle('NoJugador.mover_cpu');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.personajes.NoJugador-class.html#mover_cpu">mover_cpu</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">jugador1</tt><tt class="py-op">,</tt> <tt class="py-param">fase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="NoJugador.mover_cpu-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="NoJugador.mover_cpu-expanded"><a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-comment"># Por defecto un enemigo no hace nada</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-comment">#  (se podria programar, por ejemplo, que disparase al jugador por defecto)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+</div></div><a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr  3 16:22:12 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

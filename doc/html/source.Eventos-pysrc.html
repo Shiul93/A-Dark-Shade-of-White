@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>source.Eventos</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="source-module.html">Package&nbsp;source</a> ::
+        Module&nbsp;Eventos
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="source.Eventos-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="source.Eventos-module.html">Module source.Eventos</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygame</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">locals</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module source.escena=source.escena-module.html"><a title="source.escena" class="py-name" href="#" onclick="return doclink('link-0', 'escena', 'link-0');">escena</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module source.gestorRecursos=source.gestorRecursos-module.html"><a title="source.gestorRecursos" class="py-name" href="#" onclick="return doclink('link-1', 'gestorRecursos', 'link-1');">gestorRecursos</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module source.fase=source.fase-module.html"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-2', 'fase', 'link-2');">fase</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#Causas</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#Entrar en un area</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable source.Eventos.AREA=source.Eventos-module.html#AREA,Variable source.fase.AREA=source.fase-module.html#AREA,Variable source.main.AREA=source.main-module.html#AREA,Variable source.menu.AREA=source.menu-module.html#AREA,Variable source.menuOpciones.AREA=source.menuOpciones-module.html#AREA,Variable source.menuPartidas.AREA=source.menuPartidas-module.html#AREA,Variable source.menuantiguo.AREA=source.menuantiguo-module.html#AREA"><a title="source.Eventos.AREA
+source.fase.AREA
+source.main.AREA
+source.menu.AREA
+source.menuOpciones.AREA
+source.menuPartidas.AREA
+source.menuantiguo.AREA" class="py-name" href="#" onclick="return doclink('link-3', 'AREA', 'link-3');">AREA</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#Pulsar accion estando en el area de un accionable</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable source.Eventos.ACCION_AREA=source.Eventos-module.html#ACCION_AREA,Variable source.fase.ACCION_AREA=source.fase-module.html#ACCION_AREA,Variable source.main.ACCION_AREA=source.main-module.html#ACCION_AREA,Variable source.menu.ACCION_AREA=source.menu-module.html#ACCION_AREA,Variable source.menuOpciones.ACCION_AREA=source.menuOpciones-module.html#ACCION_AREA,Variable source.menuPartidas.ACCION_AREA=source.menuPartidas-module.html#ACCION_AREA,Variable source.menuantiguo.ACCION_AREA=source.menuantiguo-module.html#ACCION_AREA"><a title="source.Eventos.ACCION_AREA
+source.fase.ACCION_AREA
+source.main.ACCION_AREA
+source.menu.ACCION_AREA
+source.menuOpciones.ACCION_AREA
+source.menuPartidas.ACCION_AREA
+source.menuantiguo.ACCION_AREA" class="py-name" href="#" onclick="return doclink('link-4', 'ACCION_AREA', 'link-4');">ACCION_AREA</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable source.Eventos.VISTO_CAMARA=source.Eventos-module.html#VISTO_CAMARA,Variable source.fase.VISTO_CAMARA=source.fase-module.html#VISTO_CAMARA,Variable source.main.VISTO_CAMARA=source.main-module.html#VISTO_CAMARA,Variable source.menu.VISTO_CAMARA=source.menu-module.html#VISTO_CAMARA,Variable source.menuOpciones.VISTO_CAMARA=source.menuOpciones-module.html#VISTO_CAMARA,Variable source.menuPartidas.VISTO_CAMARA=source.menuPartidas-module.html#VISTO_CAMARA,Variable source.menuantiguo.VISTO_CAMARA=source.menuantiguo-module.html#VISTO_CAMARA"><a title="source.Eventos.VISTO_CAMARA
+source.fase.VISTO_CAMARA
+source.main.VISTO_CAMARA
+source.menu.VISTO_CAMARA
+source.menuOpciones.VISTO_CAMARA
+source.menuPartidas.VISTO_CAMARA
+source.menuantiguo.VISTO_CAMARA" class="py-name" href="#" onclick="return doclink('link-5', 'VISTO_CAMARA', 'link-5');">VISTO_CAMARA</a></tt><tt class="py-op">=</tt><tt class="py-number">2</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable source.Eventos.DiccCausas=source.Eventos-module.html#DiccCausas,Variable source.fase.DiccCausas=source.fase-module.html#DiccCausas,Variable source.main.DiccCausas=source.main-module.html#DiccCausas,Variable source.menu.DiccCausas=source.menu-module.html#DiccCausas,Variable source.menuOpciones.DiccCausas=source.menuOpciones-module.html#DiccCausas,Variable source.menuPartidas.DiccCausas=source.menuPartidas-module.html#DiccCausas,Variable source.menuantiguo.DiccCausas=source.menuantiguo-module.html#DiccCausas"><a title="source.Eventos.DiccCausas
+source.fase.DiccCausas
+source.main.DiccCausas
+source.menu.DiccCausas
+source.menuOpciones.DiccCausas
+source.menuPartidas.DiccCausas
+source.menuantiguo.DiccCausas" class="py-name" href="#" onclick="return doclink('link-6', 'DiccCausas', 'link-6');">DiccCausas</a></tt><tt class="py-op">=</tt><tt class="py-op">{</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt class="py-string">"area"</tt><tt class="py-op">:</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-string">"accion"</tt><tt class="py-op">:</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt class="py-string">"visto_camara"</tt><tt class="py-op">:</tt><tt class="py-number">2</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-op">}</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">#Consecuencias</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">#Activar un objeto activable, desactivar o cambiar su estado (si esta encendid apagar ys i esta apagado encender</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable source.Eventos.ACTIVAR=source.Eventos-module.html#ACTIVAR,Variable source.fase.ACTIVAR=source.fase-module.html#ACTIVAR,Variable source.main.ACTIVAR=source.main-module.html#ACTIVAR,Variable source.menu.ACTIVAR=source.menu-module.html#ACTIVAR,Variable source.menuOpciones.ACTIVAR=source.menuOpciones-module.html#ACTIVAR,Variable source.menuPartidas.ACTIVAR=source.menuPartidas-module.html#ACTIVAR,Variable source.menuantiguo.ACTIVAR=source.menuantiguo-module.html#ACTIVAR"><a title="source.Eventos.ACTIVAR
+source.fase.ACTIVAR
+source.main.ACTIVAR
+source.menu.ACTIVAR
+source.menuOpciones.ACTIVAR
+source.menuPartidas.ACTIVAR
+source.menuantiguo.ACTIVAR" class="py-name" href="#" onclick="return doclink('link-7', 'ACTIVAR', 'link-7');">ACTIVAR</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable source.Eventos.DESACTIVAR=source.Eventos-module.html#DESACTIVAR,Variable source.fase.DESACTIVAR=source.fase-module.html#DESACTIVAR,Variable source.main.DESACTIVAR=source.main-module.html#DESACTIVAR,Variable source.menu.DESACTIVAR=source.menu-module.html#DESACTIVAR,Variable source.menuOpciones.DESACTIVAR=source.menuOpciones-module.html#DESACTIVAR,Variable source.menuPartidas.DESACTIVAR=source.menuPartidas-module.html#DESACTIVAR,Variable source.menuantiguo.DESACTIVAR=source.menuantiguo-module.html#DESACTIVAR"><a title="source.Eventos.DESACTIVAR
+source.fase.DESACTIVAR
+source.main.DESACTIVAR
+source.menu.DESACTIVAR
+source.menuOpciones.DESACTIVAR
+source.menuPartidas.DESACTIVAR
+source.menuantiguo.DESACTIVAR" class="py-name" href="#" onclick="return doclink('link-8', 'DESACTIVAR', 'link-8');">DESACTIVAR</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable source.Eventos.CAMBIAR=source.Eventos-module.html#CAMBIAR,Variable source.fase.CAMBIAR=source.fase-module.html#CAMBIAR,Variable source.main.CAMBIAR=source.main-module.html#CAMBIAR,Variable source.menu.CAMBIAR=source.menu-module.html#CAMBIAR,Variable source.menuOpciones.CAMBIAR=source.menuOpciones-module.html#CAMBIAR,Variable source.menuPartidas.CAMBIAR=source.menuPartidas-module.html#CAMBIAR,Variable source.menuantiguo.CAMBIAR=source.menuantiguo-module.html#CAMBIAR"><a title="source.Eventos.CAMBIAR
+source.fase.CAMBIAR
+source.main.CAMBIAR
+source.menu.CAMBIAR
+source.menuOpciones.CAMBIAR
+source.menuPartidas.CAMBIAR
+source.menuantiguo.CAMBIAR" class="py-name" href="#" onclick="return doclink('link-9', 'CAMBIAR', 'link-9');">CAMBIAR</a></tt><tt class="py-op">=</tt><tt class="py-number">2</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-comment">#Imprimir un mensaje</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable source.Eventos.MENSAJE=source.Eventos-module.html#MENSAJE,Variable source.fase.MENSAJE=source.fase-module.html#MENSAJE,Variable source.main.MENSAJE=source.main-module.html#MENSAJE,Variable source.menu.MENSAJE=source.menu-module.html#MENSAJE,Variable source.menuOpciones.MENSAJE=source.menuOpciones-module.html#MENSAJE,Variable source.menuPartidas.MENSAJE=source.menuPartidas-module.html#MENSAJE,Variable source.menuantiguo.MENSAJE=source.menuantiguo-module.html#MENSAJE"><a title="source.Eventos.MENSAJE
+source.fase.MENSAJE
+source.main.MENSAJE
+source.menu.MENSAJE
+source.menuOpciones.MENSAJE
+source.menuPartidas.MENSAJE
+source.menuantiguo.MENSAJE" class="py-name" href="#" onclick="return doclink('link-10', 'MENSAJE', 'link-10');">MENSAJE</a></tt><tt class="py-op">=</tt><tt class="py-number">3</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-comment">#Emite un sonido</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt id="link-11" class="py-name" targets="Variable source.Eventos.SONIDO=source.Eventos-module.html#SONIDO,Variable source.fase.SONIDO=source.fase-module.html#SONIDO,Variable source.main.SONIDO=source.main-module.html#SONIDO,Variable source.menu.SONIDO=source.menu-module.html#SONIDO,Variable source.menuOpciones.SONIDO=source.menuOpciones-module.html#SONIDO,Variable source.menuPartidas.SONIDO=source.menuPartidas-module.html#SONIDO,Variable source.menuantiguo.SONIDO=source.menuantiguo-module.html#SONIDO"><a title="source.Eventos.SONIDO
+source.fase.SONIDO
+source.main.SONIDO
+source.menu.SONIDO
+source.menuOpciones.SONIDO
+source.menuPartidas.SONIDO
+source.menuantiguo.SONIDO" class="py-name" href="#" onclick="return doclink('link-11', 'SONIDO', 'link-11');">SONIDO</a></tt><tt class="py-op">=</tt><tt class="py-number">4</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-comment">#Termina la escena</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable source.Eventos.ALARMA=source.Eventos-module.html#ALARMA,Variable source.fase.ALARMA=source.fase-module.html#ALARMA,Variable source.main.ALARMA=source.main-module.html#ALARMA,Variable source.menu.ALARMA=source.menu-module.html#ALARMA,Variable source.menuOpciones.ALARMA=source.menuOpciones-module.html#ALARMA,Variable source.menuPartidas.ALARMA=source.menuPartidas-module.html#ALARMA,Variable source.menuantiguo.ALARMA=source.menuantiguo-module.html#ALARMA"><a title="source.Eventos.ALARMA
+source.fase.ALARMA
+source.main.ALARMA
+source.menu.ALARMA
+source.menuOpciones.ALARMA
+source.menuPartidas.ALARMA
+source.menuantiguo.ALARMA" class="py-name" href="#" onclick="return doclink('link-12', 'ALARMA', 'link-12');">ALARMA</a></tt><tt class="py-op">=</tt><tt class="py-number">5</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable source.Eventos.FIN=source.Eventos-module.html#FIN,Variable source.fase.FIN=source.fase-module.html#FIN,Variable source.main.FIN=source.main-module.html#FIN,Variable source.menu.FIN=source.menu-module.html#FIN,Variable source.menuOpciones.FIN=source.menuOpciones-module.html#FIN,Variable source.menuPartidas.FIN=source.menuPartidas-module.html#FIN,Variable source.menuantiguo.FIN=source.menuantiguo-module.html#FIN"><a title="source.Eventos.FIN
+source.fase.FIN
+source.main.FIN
+source.menu.FIN
+source.menuOpciones.FIN
+source.menuPartidas.FIN
+source.menuantiguo.FIN" class="py-name" href="#" onclick="return doclink('link-13', 'FIN', 'link-13');">FIN</a></tt><tt class="py-op">=</tt><tt class="py-number">6</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable source.Eventos.PILLADO=source.Eventos-module.html#PILLADO,Variable source.fase.PILLADO=source.fase-module.html#PILLADO,Variable source.main.PILLADO=source.main-module.html#PILLADO,Variable source.menu.PILLADO=source.menu-module.html#PILLADO,Variable source.menuOpciones.PILLADO=source.menuOpciones-module.html#PILLADO,Variable source.menuPartidas.PILLADO=source.menuPartidas-module.html#PILLADO,Variable source.menuantiguo.PILLADO=source.menuantiguo-module.html#PILLADO"><a title="source.Eventos.PILLADO
+source.fase.PILLADO
+source.main.PILLADO
+source.menu.PILLADO
+source.menuOpciones.PILLADO
+source.menuPartidas.PILLADO
+source.menuantiguo.PILLADO" class="py-name" href="#" onclick="return doclink('link-14', 'PILLADO', 'link-14');">PILLADO</a></tt><tt class="py-op">=</tt><tt class="py-number">7</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable source.Eventos.DiccConsecuencias=source.Eventos-module.html#DiccConsecuencias,Variable source.fase.DiccConsecuencias=source.fase-module.html#DiccConsecuencias,Variable source.main.DiccConsecuencias=source.main-module.html#DiccConsecuencias,Variable source.menu.DiccConsecuencias=source.menu-module.html#DiccConsecuencias,Variable source.menuOpciones.DiccConsecuencias=source.menuOpciones-module.html#DiccConsecuencias,Variable source.menuPartidas.DiccConsecuencias=source.menuPartidas-module.html#DiccConsecuencias,Variable source.menuantiguo.DiccConsecuencias=source.menuantiguo-module.html#DiccConsecuencias"><a title="source.Eventos.DiccConsecuencias
+source.fase.DiccConsecuencias
+source.main.DiccConsecuencias
+source.menu.DiccConsecuencias
+source.menuOpciones.DiccConsecuencias
+source.menuPartidas.DiccConsecuencias
+source.menuantiguo.DiccConsecuencias" class="py-name" href="#" onclick="return doclink('link-15', 'DiccConsecuencias', 'link-15');">DiccConsecuencias</a></tt><tt class="py-op">=</tt><tt class="py-op">{</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt class="py-string">"cambiar"</tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">,</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-string">"mensaje"</tt><tt class="py-op">:</tt><tt class="py-number">3</tt><tt class="py-op">,</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-string">"sonido"</tt><tt class="py-op">:</tt><tt class="py-number">4</tt><tt class="py-op">,</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt class="py-string">"alarma"</tt><tt class="py-op">:</tt><tt class="py-number">5</tt><tt class="py-op">,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-string">"fin"</tt><tt class="py-op">:</tt><tt class="py-number">6</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-string">"pillado"</tt><tt class="py-op">:</tt><tt class="py-number">7</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-op">}</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="Evento"></a><div id="Evento-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="Evento-toggle" onclick="return toggle('Evento');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.Eventos.Evento-class.html">Evento</a><tt class="py-op">:</tt> </tt>
+</div><div id="Evento-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Evento-expanded"><a name="Evento.__init__"></a><div id="Evento.__init__-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="Evento.__init__-toggle" onclick="return toggle('Evento.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Evento-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">listaCausas</tt><tt class="py-op">,</tt><tt class="py-param">listaAcciones</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Evento.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Evento.__init__-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">causas</tt><tt class="py-op">=</tt><tt class="py-name">listaCausas</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">acciones</tt><tt class="py-op">=</tt><tt class="py-name">listaAcciones</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="Evento.comprobar"></a><div id="Evento.comprobar-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="Evento.comprobar-toggle" onclick="return toggle('Evento.comprobar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Evento-class.html#comprobar">comprobar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">personaje</tt><tt class="py-op">,</tt><tt class="py-param">fase</tt><tt class="py-op">,</tt><tt class="py-param">action</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Evento.comprobar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Evento.comprobar-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">causa</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">causas</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">causa</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method source.Eventos.Causa.comprobar()=source.Eventos.Causa-class.html#comprobar,Method source.Eventos.Evento.comprobar()=source.Eventos.Evento-class.html#comprobar"><a title="source.Eventos.Causa.comprobar
+source.Eventos.Evento.comprobar" class="py-name" href="#" onclick="return doclink('link-16', 'comprobar', 'link-16');">comprobar</a></tt><tt class="py-op">(</tt><tt class="py-name">personaje</tt><tt class="py-op">,</tt><tt id="link-17" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-17', 'fase', 'link-2');">fase</a></tt><tt class="py-op">,</tt><tt class="py-name">action</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="Evento.lanzar"></a><div id="Evento.lanzar-def"><a name="L54"></a><tt class="py-lineno"> 54</tt> <a class="py-toggle" href="#" id="Evento.lanzar-toggle" onclick="return toggle('Evento.lanzar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Evento-class.html#lanzar">lanzar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">fase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Evento.lanzar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Evento.lanzar-expanded"><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-18" class="py-name" targets="Method source.menu.BotonCP.accion()=source.menu.BotonCP-class.html#accion,Method source.menu.BotonNP.accion()=source.menu.BotonNP-class.html#accion,Method source.menu.BotonOpciones.accion()=source.menu.BotonOpciones-class.html#accion,Method source.menu.BotonSalir.accion()=source.menu.BotonSalir-class.html#accion,Method source.menu.ElementoGUI.accion()=source.menu.ElementoGUI-class.html#accion,Method source.menu.TextoCP.accion()=source.menu.TextoCP-class.html#accion,Method source.menu.TextoNP.accion()=source.menu.TextoNP-class.html#accion,Method source.menu.TextoOpciones.accion()=source.menu.TextoOpciones-class.html#accion,Method source.menu.TextoSalir.accion()=source.menu.TextoSalir-class.html#accion,Method source.menuOpciones.BotonVolver.accion()=source.menuOpciones.BotonVolver-class.html#accion,Method source.menuOpciones.ElementoGUI.accion()=source.menuOpciones.ElementoGUI-class.html#accion,Method source.menuOpciones.TextoVolver.accion()=source.menuOpciones.TextoVolver-class.html#accion,Method source.menuPartidas.BotonVolver.accion()=source.menuPartidas.BotonVolver-class.html#accion,Method source.menuPartidas.ElementoGUI.accion()=source.menuPartidas.ElementoGUI-class.html#accion,Method source.menuPartidas.TextoVolver.accion()=source.menuPartidas.TextoVolver-class.html#accion,Method source.menuantiguo.BotonJugar.accion()=source.menuantiguo.BotonJugar-class.html#accion,Method source.menuantiguo.BotonSalir.accion()=source.menuantiguo.BotonSalir-class.html#accion,Method source.menuantiguo.ElementoGUI.accion()=source.menuantiguo.ElementoGUI-class.html#accion,Method source.menuantiguo.TextoJugar.accion()=source.menuantiguo.TextoJugar-class.html#accion,Method source.menuantiguo.TextoSalir.accion()=source.menuantiguo.TextoSalir-class.html#accion"><a title="source.menu.BotonCP.accion
+source.menu.BotonNP.accion
+source.menu.BotonOpciones.accion
+source.menu.BotonSalir.accion
+source.menu.ElementoGUI.accion
+source.menu.TextoCP.accion
+source.menu.TextoNP.accion
+source.menu.TextoOpciones.accion
+source.menu.TextoSalir.accion
+source.menuOpciones.BotonVolver.accion
+source.menuOpciones.ElementoGUI.accion
+source.menuOpciones.TextoVolver.accion
+source.menuPartidas.BotonVolver.accion
+source.menuPartidas.ElementoGUI.accion
+source.menuPartidas.TextoVolver.accion
+source.menuantiguo.BotonJugar.accion
+source.menuantiguo.BotonSalir.accion
+source.menuantiguo.ElementoGUI.accion
+source.menuantiguo.TextoJugar.accion
+source.menuantiguo.TextoSalir.accion" class="py-name" href="#" onclick="return doclink('link-18', 'accion', 'link-18');">accion</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">acciones</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt id="link-19" class="py-name"><a title="source.menu.BotonCP.accion
+source.menu.BotonNP.accion
+source.menu.BotonOpciones.accion
+source.menu.BotonSalir.accion
+source.menu.ElementoGUI.accion
+source.menu.TextoCP.accion
+source.menu.TextoNP.accion
+source.menu.TextoOpciones.accion
+source.menu.TextoSalir.accion
+source.menuOpciones.BotonVolver.accion
+source.menuOpciones.ElementoGUI.accion
+source.menuOpciones.TextoVolver.accion
+source.menuPartidas.BotonVolver.accion
+source.menuPartidas.ElementoGUI.accion
+source.menuPartidas.TextoVolver.accion
+source.menuantiguo.BotonJugar.accion
+source.menuantiguo.BotonSalir.accion
+source.menuantiguo.ElementoGUI.accion
+source.menuantiguo.TextoJugar.accion
+source.menuantiguo.TextoSalir.accion" class="py-name" href="#" onclick="return doclink('link-19', 'accion', 'link-18');">accion</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method source.Eventos.Accion.lanzar()=source.Eventos.Accion-class.html#lanzar,Method source.Eventos.Evento.lanzar()=source.Eventos.Evento-class.html#lanzar"><a title="source.Eventos.Accion.lanzar
+source.Eventos.Evento.lanzar" class="py-name" href="#" onclick="return doclink('link-20', 'lanzar', 'link-20');">lanzar</a></tt><tt class="py-op">(</tt><tt id="link-21" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-21', 'fase', 'link-2');">fase</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="Causa"></a><div id="Causa-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="Causa-toggle" onclick="return toggle('Causa');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.Eventos.Causa-class.html">Causa</a><tt class="py-op">:</tt> </tt>
+</div><div id="Causa-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Causa-expanded"><a name="Causa.__init__"></a><div id="Causa.__init__-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="Causa.__init__-toggle" onclick="return toggle('Causa.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Causa-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">tipo</tt><tt class="py-op">,</tt><tt class="py-param">objeto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Causa.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Causa.__init__-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">=</tt><tt class="py-name">tipo</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">=</tt><tt class="py-name">objeto</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="Causa.comprobar"></a><div id="Causa.comprobar-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="Causa.comprobar-toggle" onclick="return toggle('Causa.comprobar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Causa-class.html#comprobar">comprobar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">personaje</tt><tt class="py-op">,</tt><tt class="py-param">fase</tt><tt class="py-op">,</tt><tt class="py-param">action</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Causa.comprobar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Causa.comprobar-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method source.objetos.accionable.objetoEnArea()=source.objetos.accionable-class.html#objetoEnArea"><a title="source.objetos.accionable.objetoEnArea" class="py-name" href="#" onclick="return doclink('link-22', 'objetoEnArea', 'link-22');">objetoEnArea</a></tt><tt class="py-op">(</tt><tt class="py-name">personaje</tt><tt class="py-op">.</tt><tt class="py-name">newposrect</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-23" class="py-name"><a title="source.Eventos.AREA
+source.fase.AREA
+source.main.AREA
+source.menu.AREA
+source.menuOpciones.AREA
+source.menuPartidas.AREA
+source.menuantiguo.AREA" class="py-name" href="#" onclick="return doclink('link-23', 'AREA', 'link-3');">AREA</a></tt> <tt class="py-keyword">or</tt> <tt class="py-name">action</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-24" class="py-name"><a title="source.Eventos.VISTO_CAMARA
+source.fase.VISTO_CAMARA
+source.main.VISTO_CAMARA
+source.menu.VISTO_CAMARA
+source.menuOpciones.VISTO_CAMARA
+source.menuPartidas.VISTO_CAMARA
+source.menuantiguo.VISTO_CAMARA" class="py-name" href="#" onclick="return doclink('link-24', 'VISTO_CAMARA', 'link-5');">VISTO_CAMARA</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method source.Enemigo2.Enemigo2.estaViendo()=source.Enemigo2.Enemigo2-class.html#estaViendo,Method source.enemigo.Enemigo.estaViendo()=source.enemigo.Enemigo-class.html#estaViendo,Method source.objetos.Camara.estaViendo()=source.objetos.Camara-class.html#estaViendo,Method source.objetos.accionable.estaViendo()=source.objetos.accionable-class.html#estaViendo"><a title="source.Enemigo2.Enemigo2.estaViendo
+source.enemigo.Enemigo.estaViendo
+source.objetos.Camara.estaViendo
+source.objetos.accionable.estaViendo" class="py-name" href="#" onclick="return doclink('link-25', 'estaViendo', 'link-25');">estaViendo</a></tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-26', 'fase', 'link-2');">fase</a></tt><tt class="py-op">,</tt><tt class="py-name">personaje</tt><tt class="py-op">.</tt><tt class="py-name">posicion</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div></div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="Accion"></a><div id="Accion-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="Accion-toggle" onclick="return toggle('Accion');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.Eventos.Accion-class.html">Accion</a><tt class="py-op">:</tt> </tt>
+</div><div id="Accion-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Accion-expanded"><a name="Accion.__init__"></a><div id="Accion.__init__-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="Accion.__init__-toggle" onclick="return toggle('Accion.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Accion-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">tipo</tt><tt class="py-op">,</tt><tt class="py-param">objeto</tt><tt class="py-op">,</tt><tt class="py-param">mensaje</tt><tt class="py-op">,</tt><tt class="py-param">sonido</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Accion.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Accion.__init__-expanded"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">=</tt><tt class="py-name">tipo</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-27" class="py-name"><a title="source.Eventos.ACTIVAR
+source.fase.ACTIVAR
+source.main.ACTIVAR
+source.menu.ACTIVAR
+source.menuOpciones.ACTIVAR
+source.menuPartidas.ACTIVAR
+source.menuantiguo.ACTIVAR" class="py-name" href="#" onclick="return doclink('link-27', 'ACTIVAR', 'link-7');">ACTIVAR</a></tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-28" class="py-name"><a title="source.Eventos.DESACTIVAR
+source.fase.DESACTIVAR
+source.main.DESACTIVAR
+source.menu.DESACTIVAR
+source.menuOpciones.DESACTIVAR
+source.menuPartidas.DESACTIVAR
+source.menuantiguo.DESACTIVAR" class="py-name" href="#" onclick="return doclink('link-28', 'DESACTIVAR', 'link-8');">DESACTIVAR</a></tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-29" class="py-name"><a title="source.Eventos.CAMBIAR
+source.fase.CAMBIAR
+source.main.CAMBIAR
+source.menu.CAMBIAR
+source.menuOpciones.CAMBIAR
+source.menuPartidas.CAMBIAR
+source.menuantiguo.CAMBIAR" class="py-name" href="#" onclick="return doclink('link-29', 'CAMBIAR', 'link-9');">CAMBIAR</a></tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-30" class="py-name"><a title="source.Eventos.ALARMA
+source.fase.ALARMA
+source.main.ALARMA
+source.menu.ALARMA
+source.menuOpciones.ALARMA
+source.menuPartidas.ALARMA
+source.menuantiguo.ALARMA" class="py-name" href="#" onclick="return doclink('link-30', 'ALARMA', 'link-12');">ALARMA</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">=</tt><tt class="py-name">objeto</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-31" class="py-name"><a title="source.Eventos.MENSAJE
+source.fase.MENSAJE
+source.main.MENSAJE
+source.menu.MENSAJE
+source.menuOpciones.MENSAJE
+source.menuPartidas.MENSAJE
+source.menuantiguo.MENSAJE" class="py-name" href="#" onclick="return doclink('link-31', 'MENSAJE', 'link-10');">MENSAJE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mensaje</tt><tt class="py-op">=</tt><tt class="py-name">mensaje</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-32" class="py-name"><a title="source.Eventos.SONIDO
+source.fase.SONIDO
+source.main.SONIDO
+source.menu.SONIDO
+source.menuOpciones.SONIDO
+source.menuPartidas.SONIDO
+source.menuantiguo.SONIDO" class="py-name" href="#" onclick="return doclink('link-32', 'SONIDO', 'link-11');">SONIDO</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sonido</tt><tt class="py-op">=</tt><tt class="py-name">sonido</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="Accion.lanzar"></a><div id="Accion.lanzar-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="Accion.lanzar-toggle" onclick="return toggle('Accion.lanzar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.Eventos.Accion-class.html#lanzar">lanzar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">fase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt>  <tt class="py-comment">#Recibe fasre para los mensajes si tuvoeramos un objeto en cargado de los mensajes sepasaria solo ese objeto</tt> </tt>
+</div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-33" class="py-name"><a title="source.Eventos.ACTIVAR
+source.fase.ACTIVAR
+source.main.ACTIVAR
+source.menu.ACTIVAR
+source.menuOpciones.ACTIVAR
+source.menuPartidas.ACTIVAR
+source.menuantiguo.ACTIVAR" class="py-name" href="#" onclick="return doclink('link-33', 'ACTIVAR', 'link-7');">ACTIVAR</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method source.objetos.activable.activar()=source.objetos.activable-class.html#activar"><a title="source.objetos.activable.activar" class="py-name" href="#" onclick="return doclink('link-34', 'activar', 'link-34');">activar</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-35" class="py-name"><a title="source.Eventos.DESACTIVAR
+source.fase.DESACTIVAR
+source.main.DESACTIVAR
+source.menu.DESACTIVAR
+source.menuOpciones.DESACTIVAR
+source.menuPartidas.DESACTIVAR
+source.menuantiguo.DESACTIVAR" class="py-name" href="#" onclick="return doclink('link-35', 'DESACTIVAR', 'link-8');">DESACTIVAR</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method source.objetos.activable.desactivar()=source.objetos.activable-class.html#desactivar"><a title="source.objetos.activable.desactivar" class="py-name" href="#" onclick="return doclink('link-36', 'desactivar', 'link-36');">desactivar</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-37" class="py-name"><a title="source.Eventos.CAMBIAR
+source.fase.CAMBIAR
+source.main.CAMBIAR
+source.menu.CAMBIAR
+source.menuOpciones.CAMBIAR
+source.menuPartidas.CAMBIAR
+source.menuantiguo.CAMBIAR" class="py-name" href="#" onclick="return doclink('link-37', 'CAMBIAR', 'link-9');">CAMBIAR</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">objeto</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Method source.objetos.Camara.cambiarEstado()=source.objetos.Camara-class.html#cambiarEstado,Method source.objetos.activable.cambiarEstado()=source.objetos.activable-class.html#cambiarEstado,Method source.objetos.puerta.cambiarEstado()=source.objetos.puerta-class.html#cambiarEstado"><a title="source.objetos.Camara.cambiarEstado
+source.objetos.activable.cambiarEstado
+source.objetos.puerta.cambiarEstado" class="py-name" href="#" onclick="return doclink('link-38', 'cambiarEstado', 'link-38');">cambiarEstado</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-39" class="py-name"><a title="source.Eventos.MENSAJE
+source.fase.MENSAJE
+source.main.MENSAJE
+source.menu.MENSAJE
+source.menuOpciones.MENSAJE
+source.menuPartidas.MENSAJE
+source.menuantiguo.MENSAJE" class="py-name" href="#" onclick="return doclink('link-39', 'MENSAJE', 'link-10');">MENSAJE</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt id="link-40" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-40', 'fase', 'link-2');">fase</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Method source.fase.Fase.mostrarMensaje()=source.fase.Fase-class.html#mostrarMensaje"><a title="source.fase.Fase.mostrarMensaje" class="py-name" href="#" onclick="return doclink('link-41', 'mostrarMensaje', 'link-41');">mostrarMensaje</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mensaje</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-42" class="py-name"><a title="source.Eventos.SONIDO
+source.fase.SONIDO
+source.main.SONIDO
+source.menu.SONIDO
+source.menuOpciones.SONIDO
+source.menuPartidas.SONIDO
+source.menuantiguo.SONIDO" class="py-name" href="#" onclick="return doclink('link-42', 'SONIDO', 'link-11');">SONIDO</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-name">son</tt> <tt class="py-op">=</tt> <tt id="link-43" class="py-name" targets="Class source.gestorRecursos.GestorRecursos=source.gestorRecursos.GestorRecursos-class.html"><a title="source.gestorRecursos.GestorRecursos" class="py-name" href="#" onclick="return doclink('link-43', 'GestorRecursos', 'link-43');">GestorRecursos</a></tt><tt class="py-op">.</tt><tt class="py-name">CargarArchivoSonido</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sonido</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-name">son</tt><tt class="py-op">.</tt><tt class="py-name">play</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-44" class="py-name"><a title="source.Eventos.ALARMA
+source.fase.ALARMA
+source.main.ALARMA
+source.menu.ALARMA
+source.menuOpciones.ALARMA
+source.menuPartidas.ALARMA
+source.menuantiguo.ALARMA" class="py-name" href="#" onclick="return doclink('link-44', 'ALARMA', 'link-12');">ALARMA</a></tt> <tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt id="link-45" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-45', 'fase', 'link-2');">fase</a></tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method source.fase.Fase.dispararAlarma()=source.fase.Fase-class.html#dispararAlarma"><a title="source.fase.Fase.dispararAlarma" class="py-name" href="#" onclick="return doclink('link-46', 'dispararAlarma', 'link-46');">dispararAlarma</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-47" class="py-name"><a title="source.Eventos.FIN
+source.fase.FIN
+source.main.FIN
+source.menu.FIN
+source.menuOpciones.FIN
+source.menuPartidas.FIN
+source.menuantiguo.FIN" class="py-name" href="#" onclick="return doclink('link-47', 'FIN', 'link-13');">FIN</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt id="link-48" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-48', 'fase', 'link-2');">fase</a></tt><tt class="py-op">.</tt><tt class="py-name">finfase</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt id="link-49" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-49', 'fase', 'link-2');">fase</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="source.fase.Fase.mostrarMensaje" class="py-name" href="#" onclick="return doclink('link-50', 'mostrarMensaje', 'link-41');">mostrarMensaje</a></tt><tt class="py-op">(</tt><tt class="py-string">"Fase terminada, enhorabuena"</tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tipo</tt><tt class="py-op">==</tt><tt id="link-51" class="py-name"><a title="source.Eventos.PILLADO
+source.fase.PILLADO
+source.main.PILLADO
+source.menu.PILLADO
+source.menuOpciones.PILLADO
+source.menuPartidas.PILLADO
+source.menuantiguo.PILLADO" class="py-name" href="#" onclick="return doclink('link-51', 'PILLADO', 'link-14');">PILLADO</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt id="link-52" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-52', 'fase', 'link-2');">fase</a></tt><tt class="py-op">.</tt><tt class="py-name">pillado</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt id="link-53" class="py-name"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-53', 'fase', 'link-2');">fase</a></tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="source.fase.Fase.mostrarMensaje" class="py-name" href="#" onclick="return doclink('link-54', 'mostrarMensaje', 'link-41');">mostrarMensaje</a></tt><tt class="py-op">(</tt><tt class="py-string">"Te han pillado..."</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr  3 16:22:12 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

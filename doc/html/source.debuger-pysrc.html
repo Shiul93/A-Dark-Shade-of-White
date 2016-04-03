@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>source.debuger</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="source-module.html">Package&nbsp;source</a> ::
+        Module&nbsp;debuger
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="source.debuger-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="source.debuger-module.html">Module source.debuger</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">pygame</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module source.escena=source.escena-module.html"><a title="source.escena" class="py-name" href="#" onclick="return doclink('link-0', 'escena', 'link-0');">escena</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module source.fase=source.fase-module.html"><a title="source.fase" class="py-name" href="#" onclick="return doclink('link-1', 'fase', 'link-1');">fase</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module source.gestorRecursos=source.gestorRecursos-module.html"><a title="source.gestorRecursos" class="py-name" href="#" onclick="return doclink('link-2', 'gestorRecursos', 'link-2');">gestorRecursos</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module source.menuantiguo=source.menuantiguo-module.html"><a title="source.menuantiguo" class="py-name" href="#" onclick="return doclink('link-3', 'menuantiguo', 'link-3');">menuantiguo</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">math</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="Debuger"></a><div id="Debuger-def"><a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt> <a class="py-toggle" href="#" id="Debuger-toggle" onclick="return toggle('Debuger');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html">Debuger</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Debuger-expanded"><a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable source.debuger.Debuger.textos=source.debuger.Debuger-class.html#textos"><a title="source.debuger.Debuger.textos" class="py-name" href="#" onclick="return doclink('link-4', 'textos', 'link-4');">textos</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable source.debuger.Debuger.puntos=source.debuger.Debuger-class.html#puntos"><a title="source.debuger.Debuger.puntos" class="py-name" href="#" onclick="return doclink('link-5', 'puntos', 'link-5');">puntos</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable source.debuger.Debuger.lineas=source.debuger.Debuger-class.html#lineas"><a title="source.debuger.Debuger.lineas" class="py-name" href="#" onclick="return doclink('link-6', 'lineas', 'link-6');">lineas</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable source.debuger.Debuger.objetos=source.debuger.Debuger-class.html#objetos,Module source.objetos=source.objetos-module.html"><a title="source.debuger.Debuger.objetos
+source.objetos" class="py-name" href="#" onclick="return doclink('link-7', 'objetos', 'link-7');">objetos</a></tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable source.debuger.Debuger.imagenTexto=source.debuger.Debuger-class.html#imagenTexto"><a title="source.debuger.Debuger.imagenTexto" class="py-name" href="#" onclick="return doclink('link-8', 'imagenTexto', 'link-8');">imagenTexto</a></tt><tt class="py-op">=</tt><tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Surface</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name" targets="Variable source.Enemigo2.ANCHO_PANTALLA=source.Enemigo2-module.html#ANCHO_PANTALLA,Variable source.Eventos.ANCHO_PANTALLA=source.Eventos-module.html#ANCHO_PANTALLA,Variable source.debuger.ANCHO_PANTALLA=source.debuger-module.html#ANCHO_PANTALLA,Variable source.director.ANCHO_PANTALLA=source.director-module.html#ANCHO_PANTALLA,Variable source.enemigo.ANCHO_PANTALLA=source.enemigo-module.html#ANCHO_PANTALLA,Variable source.escena.ANCHO_PANTALLA=source.escena-module.html#ANCHO_PANTALLA,Variable source.fase.ANCHO_PANTALLA=source.fase-module.html#ANCHO_PANTALLA,Variable source.main.ANCHO_PANTALLA=source.main-module.html#ANCHO_PANTALLA,Variable source.mapa.ANCHO_PANTALLA=source.mapa-module.html#ANCHO_PANTALLA,Variable source.menu.ANCHO_PANTALLA=source.menu-module.html#ANCHO_PANTALLA,Variable source.menuOpciones.ANCHO_PANTALLA=source.menuOpciones-module.html#ANCHO_PANTALLA,Variable source.menuPartidas.ANCHO_PANTALLA=source.menuPartidas-module.html#ANCHO_PANTALLA,Variable source.menuantiguo.ANCHO_PANTALLA=source.menuantiguo-module.html#ANCHO_PANTALLA,Variable source.objetos.ANCHO_PANTALLA=source.objetos-module.html#ANCHO_PANTALLA,Variable source.personajes.ANCHO_PANTALLA=source.personajes-module.html#ANCHO_PANTALLA"><a title="source.Enemigo2.ANCHO_PANTALLA
+source.Eventos.ANCHO_PANTALLA
+source.debuger.ANCHO_PANTALLA
+source.director.ANCHO_PANTALLA
+source.enemigo.ANCHO_PANTALLA
+source.escena.ANCHO_PANTALLA
+source.fase.ANCHO_PANTALLA
+source.main.ANCHO_PANTALLA
+source.mapa.ANCHO_PANTALLA
+source.menu.ANCHO_PANTALLA
+source.menuOpciones.ANCHO_PANTALLA
+source.menuPartidas.ANCHO_PANTALLA
+source.menuantiguo.ANCHO_PANTALLA
+source.objetos.ANCHO_PANTALLA
+source.personajes.ANCHO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-9', 'ANCHO_PANTALLA', 'link-9');">ANCHO_PANTALLA</a></tt><tt class="py-op">,</tt><tt class="py-number">95</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable source.debuger.Debuger.imagenLineas=source.debuger.Debuger-class.html#imagenLineas"><a title="source.debuger.Debuger.imagenLineas" class="py-name" href="#" onclick="return doclink('link-10', 'imagenLineas', 'link-10');">imagenLineas</a></tt><tt class="py-op">=</tt><tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Surface</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="source.Enemigo2.ANCHO_PANTALLA
+source.Eventos.ANCHO_PANTALLA
+source.debuger.ANCHO_PANTALLA
+source.director.ANCHO_PANTALLA
+source.enemigo.ANCHO_PANTALLA
+source.escena.ANCHO_PANTALLA
+source.fase.ANCHO_PANTALLA
+source.main.ANCHO_PANTALLA
+source.mapa.ANCHO_PANTALLA
+source.menu.ANCHO_PANTALLA
+source.menuOpciones.ANCHO_PANTALLA
+source.menuPartidas.ANCHO_PANTALLA
+source.menuantiguo.ANCHO_PANTALLA
+source.objetos.ANCHO_PANTALLA
+source.personajes.ANCHO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-11', 'ANCHO_PANTALLA', 'link-9');">ANCHO_PANTALLA</a></tt><tt class="py-op">,</tt><tt id="link-12" class="py-name" targets="Variable source.Enemigo2.ALTO_PANTALLA=source.Enemigo2-module.html#ALTO_PANTALLA,Variable source.Eventos.ALTO_PANTALLA=source.Eventos-module.html#ALTO_PANTALLA,Variable source.debuger.ALTO_PANTALLA=source.debuger-module.html#ALTO_PANTALLA,Variable source.director.ALTO_PANTALLA=source.director-module.html#ALTO_PANTALLA,Variable source.enemigo.ALTO_PANTALLA=source.enemigo-module.html#ALTO_PANTALLA,Variable source.escena.ALTO_PANTALLA=source.escena-module.html#ALTO_PANTALLA,Variable source.fase.ALTO_PANTALLA=source.fase-module.html#ALTO_PANTALLA,Variable source.main.ALTO_PANTALLA=source.main-module.html#ALTO_PANTALLA,Variable source.mapa.ALTO_PANTALLA=source.mapa-module.html#ALTO_PANTALLA,Variable source.menu.ALTO_PANTALLA=source.menu-module.html#ALTO_PANTALLA,Variable source.menuOpciones.ALTO_PANTALLA=source.menuOpciones-module.html#ALTO_PANTALLA,Variable source.menuPartidas.ALTO_PANTALLA=source.menuPartidas-module.html#ALTO_PANTALLA,Variable source.menuantiguo.ALTO_PANTALLA=source.menuantiguo-module.html#ALTO_PANTALLA,Variable source.objetos.ALTO_PANTALLA=source.objetos-module.html#ALTO_PANTALLA,Variable source.personajes.ALTO_PANTALLA=source.personajes-module.html#ALTO_PANTALLA"><a title="source.Enemigo2.ALTO_PANTALLA
+source.Eventos.ALTO_PANTALLA
+source.debuger.ALTO_PANTALLA
+source.director.ALTO_PANTALLA
+source.enemigo.ALTO_PANTALLA
+source.escena.ALTO_PANTALLA
+source.fase.ALTO_PANTALLA
+source.main.ALTO_PANTALLA
+source.mapa.ALTO_PANTALLA
+source.menu.ALTO_PANTALLA
+source.menuOpciones.ALTO_PANTALLA
+source.menuPartidas.ALTO_PANTALLA
+source.menuantiguo.ALTO_PANTALLA
+source.objetos.ALTO_PANTALLA
+source.personajes.ALTO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-12', 'ALTO_PANTALLA', 'link-12');">ALTO_PANTALLA</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">    <tt id="link-13" class="py-name"><a title="source.debuger.Debuger.imagenLineas" class="py-name" href="#" onclick="return doclink('link-13', 'imagenLineas', 'link-10');">imagenLineas</a></tt><tt class="py-op">.</tt><tt class="py-name">set_colorkey</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt id="link-14" class="py-name" targets="Variable source.debuger.Debuger.debugcolor=source.debuger.Debuger-class.html#debugcolor"><a title="source.debuger.Debuger.debugcolor" class="py-name" href="#" onclick="return doclink('link-14', 'debugcolor', 'link-14');">debugcolor</a></tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-number">255</tt><tt class="py-op">,</tt><tt class="py-number">64</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirTextoDebug"></a><div id="Debuger.anadirTextoDebug-def"><a name="L24"></a><tt class="py-lineno"> 24</tt> <a class="py-toggle" href="#" id="Debuger.anadirTextoDebug-toggle" onclick="return toggle('Debuger.anadirTextoDebug');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirTextoDebug">anadirTextoDebug</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">texto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirTextoDebug-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirTextoDebug-expanded"><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="source.debuger.Debuger.textos" class="py-name" href="#" onclick="return doclink('link-15', 'textos', 'link-4');">textos</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">texto</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirObjeto"></a><div id="Debuger.anadirObjeto-def"><a name="L28"></a><tt class="py-lineno"> 28</tt> <a class="py-toggle" href="#" id="Debuger.anadirObjeto-toggle" onclick="return toggle('Debuger.anadirObjeto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirObjeto">anadirObjeto</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">clave</tt><tt class="py-op">,</tt><tt class="py-param">valor</tt><tt class="py-op">)</tt><tt class="py-op">:</tt><tt class="py-comment">#si funciona el name con 0bjetos solo se pasaria el objeto</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="source.debuger.Debuger.objetos
+source.objetos" class="py-name" href="#" onclick="return doclink('link-16', 'objetos', 'link-7');">objetos</a></tt><tt class="py-op">[</tt><tt class="py-name">clave</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">valor</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirPunto"></a><div id="Debuger.anadirPunto-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="Debuger.anadirPunto-toggle" onclick="return toggle('Debuger.anadirPunto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirPunto">anadirPunto</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirPunto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirPunto-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="source.debuger.Debuger.puntos" class="py-name" href="#" onclick="return doclink('link-17', 'puntos', 'link-5');">puntos</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirPuntos"></a><div id="Debuger.anadirPuntos-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="Debuger.anadirPuntos-toggle" onclick="return toggle('Debuger.anadirPuntos');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirPuntos">anadirPuntos</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">list</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirPuntos-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirPuntos-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">punto</tt> <tt class="py-keyword">in</tt> <tt class="py-name">list</tt><tt class="py-op">:</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">,</tt><tt class="py-name">tuple</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">                <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="source.debuger.Debuger.puntos" class="py-name" href="#" onclick="return doclink('link-18', 'puntos', 'link-5');">puntos</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirLinea"></a><div id="Debuger.anadirLinea-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="Debuger.anadirLinea-toggle" onclick="return toggle('Debuger.anadirLinea');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirLinea">anadirLinea</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-param">x1</tt><tt class="py-op">,</tt><tt class="py-param">y1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-param">x2</tt><tt class="py-op">,</tt><tt class="py-param">y2</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirLinea-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirLinea-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="source.debuger.Debuger.lineas" class="py-name" href="#" onclick="return doclink('link-19', 'lineas', 'link-6');">lineas</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">x1</tt><tt class="py-op">,</tt><tt class="py-name">y1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-name">x2</tt><tt class="py-op">,</tt><tt class="py-name">y2</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirRadio"></a><div id="Debuger.anadirRadio-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="Debuger.anadirRadio-toggle" onclick="return toggle('Debuger.anadirRadio');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirRadio">anadirRadio</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">pos</tt><tt class="py-op">,</tt><tt class="py-param">angulo</tt><tt class="py-op">,</tt><tt class="py-param">longitud</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirRadio-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirRadio-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-name">pos2</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-name">pos</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">longitud</tt><tt class="py-op">*</tt><tt class="py-name">sin</tt><tt class="py-op">(</tt><tt class="py-name">angulo</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">pos</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">longitud</tt><tt class="py-op">*</tt><tt class="py-name">cos</tt><tt class="py-op">(</tt><tt class="py-name">angulo</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Class Method source.debuger.Debuger.anadirLinea()=source.debuger.Debuger-class.html#anadirLinea"><a title="source.debuger.Debuger.anadirLinea" class="py-name" href="#" onclick="return doclink('link-20', 'anadirLinea', 'link-20');">anadirLinea</a></tt><tt class="py-op">(</tt><tt class="py-name">pos</tt><tt class="py-op">,</tt><tt class="py-name">pos2</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirLineas"></a><div id="Debuger.anadirLineas-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="Debuger.anadirLineas-toggle" onclick="return toggle('Debuger.anadirLineas');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirLineas">anadirLineas</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">list</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirLineas-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirLineas-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">linea</tt> <tt class="py-keyword">in</tt> <tt class="py-name">list</tt><tt class="py-op">:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">,</tt><tt class="py-name">tuple</tt><tt class="py-op">)</tt><tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">tuple</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">tuple</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">2</tt> <tt class="py-keyword">and</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                    <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="source.debuger.Debuger.puntos" class="py-name" href="#" onclick="return doclink('link-21', 'puntos', 'link-5');">puntos</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.anadirRectangulo"></a><div id="Debuger.anadirRectangulo-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="Debuger.anadirRectangulo-toggle" onclick="return toggle('Debuger.anadirRectangulo');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#anadirRectangulo">anadirRectangulo</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">rect</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.anadirRectangulo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.anadirRectangulo-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="source.debuger.Debuger.anadirLinea" class="py-name" href="#" onclick="return doclink('link-22', 'anadirLinea', 'link-20');">anadirLinea</a></tt><tt class="py-op">(</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">topleft</tt><tt class="py-op">,</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">topright</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="source.debuger.Debuger.anadirLinea" class="py-name" href="#" onclick="return doclink('link-23', 'anadirLinea', 'link-20');">anadirLinea</a></tt><tt class="py-op">(</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">topleft</tt><tt class="py-op">,</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottomleft</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="source.debuger.Debuger.anadirLinea" class="py-name" href="#" onclick="return doclink('link-24', 'anadirLinea', 'link-20');">anadirLinea</a></tt><tt class="py-op">(</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">topright</tt><tt class="py-op">,</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottomright</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="source.debuger.Debuger.anadirLinea" class="py-name" href="#" onclick="return doclink('link-25', 'anadirLinea', 'link-20');">anadirLinea</a></tt><tt class="py-op">(</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottomleft</tt><tt class="py-op">,</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottomright</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.dibujarTexto"></a><div id="Debuger.dibujarTexto-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="Debuger.dibujarTexto-toggle" onclick="return toggle('Debuger.dibujarTexto');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#dibujarTexto">dibujarTexto</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">pantalla</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.dibujarTexto-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.dibujarTexto-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">i</tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-comment">#Si hay objetos los a&#241;ade</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="source.debuger.Debuger.objetos
+source.objetos" class="py-name" href="#" onclick="return doclink('link-26', 'objetos', 'link-7');">objetos</a></tt><tt class="py-op">)</tt><tt class="py-op">&gt;</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">key</tt><tt class="py-op">,</tt><tt class="py-name">value</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="source.debuger.Debuger.objetos
+source.objetos" class="py-name" href="#" onclick="return doclink('link-27', 'objetos', 'link-7');">objetos</a></tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="source.debuger.Debuger.textos" class="py-name" href="#" onclick="return doclink('link-28', 'textos', 'link-4');">textos</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">key</tt> <tt class="py-op">+</tt> <tt class="py-string">" : "</tt> <tt class="py-op">+</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> <tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-comment">#carga la fuente</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">fuente</tt> <tt class="py-op">=</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">font</tt><tt class="py-op">.</tt><tt class="py-name">SysFont</tt><tt class="py-op">(</tt><tt class="py-string">'arial'</tt><tt class="py-op">,</tt> <tt class="py-number">16</tt><tt class="py-op">)</tt><tt class="py-op">;</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-comment"># Se crea la imagen del texto</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">texto</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="source.debuger.Debuger.textos" class="py-name" href="#" onclick="return doclink('link-29', 'textos', 'link-4');">textos</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-name">i</tt><tt class="py-op">+=</tt><tt class="py-number">1</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="source.debuger.Debuger.imagenTexto" class="py-name" href="#" onclick="return doclink('link-30', 'imagenTexto', 'link-8');">imagenTexto</a></tt> <tt class="py-op">=</tt> <tt class="py-name">fuente</tt><tt class="py-op">.</tt><tt class="py-name">render</tt><tt class="py-op">(</tt><tt class="py-name">texto</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="source.debuger.Debuger.debugcolor" class="py-name" href="#" onclick="return doclink('link-31', 'debugcolor', 'link-14');">debugcolor</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt class="py-name">blit</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="source.debuger.Debuger.imagenTexto" class="py-name" href="#" onclick="return doclink('link-32', 'imagenTexto', 'link-8');">imagenTexto</a></tt><tt class="py-op">,</tt> <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Rect</tt><tt class="py-op">(</tt><tt class="py-number">5</tt><tt class="py-op">,</tt><tt class="py-number">5</tt><tt class="py-op">+</tt><tt class="py-name">i</tt><tt class="py-op">*</tt><tt class="py-number">20</tt><tt class="py-op">,</tt><tt id="link-33" class="py-name"><a title="source.Enemigo2.ANCHO_PANTALLA
+source.Eventos.ANCHO_PANTALLA
+source.debuger.ANCHO_PANTALLA
+source.director.ANCHO_PANTALLA
+source.enemigo.ANCHO_PANTALLA
+source.escena.ANCHO_PANTALLA
+source.fase.ANCHO_PANTALLA
+source.main.ANCHO_PANTALLA
+source.mapa.ANCHO_PANTALLA
+source.menu.ANCHO_PANTALLA
+source.menuOpciones.ANCHO_PANTALLA
+source.menuPartidas.ANCHO_PANTALLA
+source.menuantiguo.ANCHO_PANTALLA
+source.objetos.ANCHO_PANTALLA
+source.personajes.ANCHO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-33', 'ANCHO_PANTALLA', 'link-9');">ANCHO_PANTALLA</a></tt><tt class="py-op">-</tt><tt class="py-number">5</tt><tt class="py-op">,</tt><tt class="py-number">100</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="source.debuger.Debuger.textos" class="py-name" href="#" onclick="return doclink('link-34', 'textos', 'link-4');">textos</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="source.debuger.Debuger.objetos
+source.objetos" class="py-name" href="#" onclick="return doclink('link-35', 'objetos', 'link-7');">objetos</a></tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+</div><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.dibujarLineas"></a><div id="Debuger.dibujarLineas-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="Debuger.dibujarLineas-toggle" onclick="return toggle('Debuger.dibujarLineas');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#dibujarLineas">dibujarLineas</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">pantalla</tt><tt class="py-op">,</tt><tt class="py-param">scroll</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.dibujarLineas-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.dibujarLineas-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">linea</tt> <tt class="py-keyword">in</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="source.debuger.Debuger.lineas" class="py-name" href="#" onclick="return doclink('link-36', 'lineas', 'link-6');">lineas</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-name">screenline</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">-</tt><tt class="py-name">scroll</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">-</tt><tt class="py-name">scroll</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">-</tt><tt class="py-name">scroll</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">linea</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">-</tt><tt class="py-name">scroll</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-comment">#        if cls.enPantalla(screenline[0]) and cls.enPantalla(screenline[1]):</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method source.objetos.CuadroTexto.draw()=source.objetos.CuadroTexto-class.html#draw"><a title="source.objetos.CuadroTexto.draw" class="py-name" href="#" onclick="return doclink('link-37', 'draw', 'link-37');">draw</a></tt><tt class="py-op">.</tt><tt class="py-name">line</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="source.debuger.Debuger.imagenLineas" class="py-name" href="#" onclick="return doclink('link-38', 'imagenLineas', 'link-10');">imagenLineas</a></tt><tt class="py-op">,</tt><tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="source.debuger.Debuger.debugcolor" class="py-name" href="#" onclick="return doclink('link-39', 'debugcolor', 'link-14');">debugcolor</a></tt><tt class="py-op">,</tt><tt class="py-name">screenline</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">screenline</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">pantalla</tt><tt class="py-op">.</tt><tt class="py-name">blit</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="source.debuger.Debuger.imagenLineas" class="py-name" href="#" onclick="return doclink('link-40', 'imagenLineas', 'link-10');">imagenLineas</a></tt><tt class="py-op">,</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="source.debuger.Debuger.imagenLineas" class="py-name" href="#" onclick="return doclink('link-41', 'imagenLineas', 'link-10');">imagenLineas</a></tt><tt class="py-op">.</tt><tt class="py-name">fill</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-comment">#cls.imagenLineas.set_colorkey((0,0,0))</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="source.debuger.Debuger.lineas" class="py-name" href="#" onclick="return doclink('link-42', 'lineas', 'link-6');">lineas</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.enRectangulo"></a><div id="Debuger.enRectangulo-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="Debuger.enRectangulo-toggle" onclick="return toggle('Debuger.enRectangulo');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#enRectangulo">enRectangulo</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">rect</tt><tt class="py-op">,</tt><tt class="py-param">punto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.enRectangulo-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.enRectangulo-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">&gt;=</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">left</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">&lt;=</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">right</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">&gt;=</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">top</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">punto</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">&lt;=</tt><tt class="py-name">rect</tt><tt class="py-op">.</tt><tt class="py-name">bottom</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-decorator">@</tt><tt class="py-decorator">classmethod</tt> </tt>
+<a name="Debuger.enPantalla"></a><div id="Debuger.enPantalla-def"><a name="L101"></a><tt class="py-lineno">101</tt> <a class="py-toggle" href="#" id="Debuger.enPantalla-toggle" onclick="return toggle('Debuger.enPantalla');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="source.debuger.Debuger-class.html#enPantalla">enPantalla</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt><tt class="py-param">punto</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Debuger.enPantalla-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Debuger.enPantalla-expanded"><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-name">rect</tt><tt class="py-op">=</tt><tt class="py-name">pygame</tt><tt class="py-op">.</tt><tt class="py-name">Rect</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt id="link-43" class="py-name"><a title="source.Enemigo2.ANCHO_PANTALLA
+source.Eventos.ANCHO_PANTALLA
+source.debuger.ANCHO_PANTALLA
+source.director.ANCHO_PANTALLA
+source.enemigo.ANCHO_PANTALLA
+source.escena.ANCHO_PANTALLA
+source.fase.ANCHO_PANTALLA
+source.main.ANCHO_PANTALLA
+source.mapa.ANCHO_PANTALLA
+source.menu.ANCHO_PANTALLA
+source.menuOpciones.ANCHO_PANTALLA
+source.menuPartidas.ANCHO_PANTALLA
+source.menuantiguo.ANCHO_PANTALLA
+source.objetos.ANCHO_PANTALLA
+source.personajes.ANCHO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-43', 'ANCHO_PANTALLA', 'link-9');">ANCHO_PANTALLA</a></tt><tt class="py-op">,</tt><tt id="link-44" class="py-name"><a title="source.Enemigo2.ALTO_PANTALLA
+source.Eventos.ALTO_PANTALLA
+source.debuger.ALTO_PANTALLA
+source.director.ALTO_PANTALLA
+source.enemigo.ALTO_PANTALLA
+source.escena.ALTO_PANTALLA
+source.fase.ALTO_PANTALLA
+source.main.ALTO_PANTALLA
+source.mapa.ALTO_PANTALLA
+source.menu.ALTO_PANTALLA
+source.menuOpciones.ALTO_PANTALLA
+source.menuPartidas.ALTO_PANTALLA
+source.menuantiguo.ALTO_PANTALLA
+source.objetos.ALTO_PANTALLA
+source.personajes.ALTO_PANTALLA" class="py-name" href="#" onclick="return doclink('link-44', 'ALTO_PANTALLA', 'link-12');">ALTO_PANTALLA</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Class Method source.debuger.Debuger.enRectangulo()=source.debuger.Debuger-class.html#enRectangulo"><a title="source.debuger.Debuger.enRectangulo" class="py-name" href="#" onclick="return doclink('link-45', 'enRectangulo', 'link-45');">enRectangulo</a></tt><tt class="py-op">(</tt><tt class="py-name">rect</tt><tt class="py-op">,</tt><tt class="py-name">punto</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="source-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr  3 16:22:12 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
