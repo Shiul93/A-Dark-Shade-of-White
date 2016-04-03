@@ -165,13 +165,13 @@ class puerta(activable):
 class Puerta_pequena(puerta):
     def __init__(self,pos,area):
         puerta.__init__(self,"puerta_pequena","puerta_pequena",pos,area,False,200)
-class Cuadro(activable):
+class Cuadro(accionable):
     def __init__(self,pos,area):
-        activable.__init__(self,"cuadro","cuadro",pos,area,False,100)
+        accionable.__init__(self,"cuadro",pos,area)
 
-class Diamante(activable):
+class Diamante(accionable):
     def __init__(self,pos,area):
-        activable.__init__(self,"diamante","diamante",pos,area,False,100)
+        accionable.__init__(self,"diamante",pos,area)
 class Puerta_vertical(puerta):
     def __init__(self,pos,area):
         puerta.__init__(self,"puerta_vertical","puerta_vertical",pos,area,False,200)

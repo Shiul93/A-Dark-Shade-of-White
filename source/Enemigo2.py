@@ -264,7 +264,7 @@ class Enemigo2(NoJugador):
             self.alarmapendiente=True
             self.nodoalarmapendiente=nodo
         else:
-            if(self.nodoalarmapendiente!=nodo):
+            if(self.nodoalarmapendiente!=nodo or self.estado != LLENDO_A_ALARMA):
                 self.nodoalarmapendiente=nodo
                 #siguiente sigue siendo el mismo
                 #tambien puoedo usar la alarma pendiente

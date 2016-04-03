@@ -120,17 +120,9 @@ class Fase(Escena):
 		for nombre,cuadro in datos["Cuadros"].iteritems():
 			self.objetos[nombre]=Cuadro(cuadro[0], pygame.Rect(cuadro[1][0], cuadro[1][1], cuadro[1][2], cuadro[1][3]))
 			self.grupoSprites.add(self.objetos[nombre])
-			self.grupoSpritesDinamicos.add(self.objetos[nombre])
-			self.grupoColisionables.add(self.objetos[nombre])
-			self.grupoOpacos.add(self.objetos[nombre])
-			self.grupoOpacos.add(self.objetos[nombre])
 		for nombre,diamante in datos["Diamantes"].iteritems():
 			self.objetos[nombre]=Diamante(diamante[0], pygame.Rect(diamante[1][0], diamante[1][1], diamante[1][2], diamante[1][3]))
 			self.grupoSprites.add(self.objetos[nombre])
-			self.grupoSpritesDinamicos.add(self.objetos[nombre])
-			self.grupoColisionables.add(self.objetos[nombre])
-
-
 		for nombre,puerta in datos["Puertas_grandes"].iteritems():
 			self.objetos[nombre]=Puerta_grande(puerta[0], pygame.Rect(puerta[1][0], puerta[1][1], puerta[1][2], puerta[1][3]))
 			self.grupoSprites.add(self.objetos[nombre])
@@ -355,7 +347,10 @@ class Fase(Escena):
 	def colisionLinea(self,origen,destino,step,capa):
 		dif=(destino[0]-origen[0],destino[1]-origen[1])
 		distancia=dist(origen,destino)
-		rectlist=self.listaRectangulosOpacos()
+		if capa == "colisiones":
+			rectlist=self.listaRectangulosColisionables()
+		else:
+			rectlist=self.listaRectangulosOpacos()
 		pointlist=[]
 		for i in range(0,int(distancia),step):
 			punto=(int(origen[0]+dif[0]*i/distancia),int(origen[1]+dif[1]*i/distancia))
